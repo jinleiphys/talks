@@ -13,7 +13,6 @@ fonts:
   local: 'Caveat'
 drawings:
   persist: false
-navigator: false
 layout: cover
 class: text-center
 ---

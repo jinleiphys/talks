@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "slidev",
-    "build": "slidev build --base /talks/sjtu-talk/",
+    "build": "slidev build --base /talks/ruichang26-talk/",
     "export": "slidev export"
   },
   "dependencies": {

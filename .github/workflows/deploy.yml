@@ -57,7 +57,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       # Try to restore previous build cache
       - name: Restore build cache
@@ -92,7 +92,7 @@ jobs:
               echo "::group::Building $talk"
               cd "$talk"
               npm install
-              npx @slidev/cli build --base /talks/$talk/
+              npm run build
               cd ..
               # Save to cache
               rm -rf "_cache/$talk"
