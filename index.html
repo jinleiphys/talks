@@ -3,168 +3,336 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Talks - Jin Lei</title>
+  <title>Talks &mdash; Jin Lei</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
     :root {
-      --bg: #fafafa;
+      --bg: #f8fafc;
+      --hero-bg: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
       --card-bg: #ffffff;
-      --text: #333;
-      --text-secondary: #666;
-      --accent: #2563eb;
-      --border: #e5e7eb;
-      --tag-bg: #eff6ff;
-      --tag-text: #1d4ed8;
+      --text: #1e293b;
+      --text-secondary: #64748b;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --border: #e2e8f0;
+      --tag-bg: #f0f9ff;
+      --tag-text: #0369a1;
+      --tag-border: #bae6fd;
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-hover: 0 20px 40px rgba(0,0,0,0.08), 0 8px 16px rgba(0,0,0,0.06);
+      --dot-color: rgba(148, 163, 184, 0.15);
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #0f172a;
-        --card-bg: #1e293b;
+        --bg: #0b1120;
+        --card-bg: #162032;
         --text: #e2e8f0;
         --text-secondary: #94a3b8;
+        --text-muted: #64748b;
         --accent: #60a5fa;
-        --border: #334155;
-        --tag-bg: #1e3a5f;
-        --tag-text: #93c5fd;
+        --accent-hover: #93bbfd;
+        --border: #1e3048;
+        --tag-bg: #0c2d4a;
+        --tag-text: #7dd3fc;
+        --tag-border: #164e73;
+        --shadow: 0 1px 3px rgba(0,0,0,0.2);
+        --shadow-hover: 0 20px 40px rgba(0,0,0,0.3);
+        --dot-color: rgba(148, 163, 184, 0.06);
       }
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      min-height: 100vh;
     }
 
-    .container {
-      max-width: 800px;
+    /* Hero section */
+    .hero {
+      background: var(--hero-bg);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(59,130,246,0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 50%, rgba(139,92,246,0.1) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
       margin: 0 auto;
-      padding: 3rem 1.5rem;
     }
 
-    header {
-      margin-bottom: 3rem;
-    }
-
-    header h1 {
-      font-size: 1.8rem;
+    .hero h1 {
+      font-size: 2.5rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      color: #f8fafc;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
     }
 
-    header p {
-      color: var(--text-secondary);
-      font-size: 1rem;
+    .hero .subtitle {
+      font-size: 1.1rem;
+      color: #94a3b8;
+      font-weight: 300;
     }
 
-    .talk-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
+    .hero .subtitle strong {
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+
+    .hero .affiliation {
+      margin-top: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: #64748b;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Main content */
+    .main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--border);
+      border-radius: 1px;
+    }
+
+    .talk-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .talk-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 1.4rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+      z-index: 1;
     }
 
     .talk-card {
+      display: block;
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.5rem;
+      border-radius: 14px;
+      padding: 1.75rem 2rem;
       text-decoration: none;
       color: inherit;
-      transition: box-shadow 0.2s, transform 0.2s;
-      display: block;
+      box-shadow: var(--shadow);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .talk-card:hover {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+
+    .talk-date {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .talk-date .venue {
+      color: var(--text-muted);
+      font-weight: 400;
     }
 
     .talk-title {
-      font-size: 1.15rem;
+      font-size: 1.25rem;
       font-weight: 600;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .talk-card:hover .talk-title {
       color: var(--accent);
     }
 
-    .talk-meta {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      margin-bottom: 0.6rem;
-    }
-
     .talk-desc {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: var(--text-secondary);
-      line-height: 1.5;
+      line-height: 1.6;
+      margin-bottom: 1rem;
     }
 
     .talk-tags {
-      margin-top: 0.8rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
+      gap: 0.5rem;
     }
 
     .tag {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 500;
       background: var(--tag-bg);
       color: var(--tag-text);
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      border-radius: 6px;
+      border: 1px solid var(--tag-border);
+      letter-spacing: 0.02em;
     }
 
+    .talk-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-top: 0.75rem;
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: all 0.3s;
+    }
+
+    .talk-card:hover .talk-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Footer */
     footer {
-      margin-top: 4rem;
       text-align: center;
-      color: var(--text-secondary);
-      font-size: 0.8rem;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      border-top: 1px solid var(--border);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 3rem 1.5rem 2.5rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .talk-card { padding: 1.25rem 1.5rem; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
+
+  <div class="hero">
+    <div class="hero-content">
       <h1>Talks</h1>
-      <p>Jin Lei (金磊) &middot; Tongji University</p>
-    </header>
-
-    <div class="talk-list">
-      <a class="talk-card" href="sjtu-talk/">
-        <div class="talk-title">Vibe Research 在直接核反应理论中的实战</div>
-        <div class="talk-meta">2026-04-20 &middot; 上海交通大学核物理报告</div>
-        <div class="talk-desc">
-          四天 vs 三个月：LLM-Assisted Research in Direct Nuclear Reactions.
-          展示如何利用 Claude Code 加速低能核反应理论研究，包含 DBMM 和 CDCC reduced-basis emulator 两个案例。
-        </div>
-        <div class="talk-tags">
-          <span class="tag">Nuclear Physics</span>
-          <span class="tag">LLM</span>
-          <span class="tag">Vibe Research</span>
-          <span class="tag">Slidev</span>
-        </div>
-      </a>
-
-      <a class="talk-card" href="fudan-talk/">
-        <div class="talk-title">Vibe Research 在直接核反应理论中的实战</div>
-        <div class="talk-meta">2026-04-21 &middot; 复旦大学核物理报告</div>
-        <div class="talk-desc">
-          四天 vs 三个月：LLM-Assisted Research in Direct Nuclear Reactions.
-          展示如何利用 Claude Code 加速低能核反应理论研究，包含 DBMM 和 CDCC reduced-basis emulator 两个案例。
-        </div>
-        <div class="talk-tags">
-          <span class="tag">Nuclear Physics</span>
-          <span class="tag">LLM</span>
-          <span class="tag">Vibe Research</span>
-          <span class="tag">Slidev</span>
-        </div>
-      </a>
+      <p class="subtitle">Conference talks &amp; seminar presentations on <strong>nuclear reaction theory</strong> and <strong>AI-assisted research</strong></p>
+      <div class="affiliation">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Jin Lei &middot; Tongji University
+      </div>
     </div>
-
-    <footer>
-      Powered by <a href="https://sli.dev" style="color: var(--accent)">Slidev</a> &amp; GitHub Pages
-    </footer>
   </div>
+
+  <div class="main">
+    <div class="section-label">Upcoming &amp; Recent</div>
+
+    <div class="timeline">
+      <div class="talk-item">
+        <a class="talk-card" href="fudan-talk/">
+          <div class="talk-date">
+            2026-04-21
+            <span class="venue">&middot; 复旦大学</span>
+          </div>
+          <div class="talk-title">Vibe Research 在直接核反应理论中的实战</div>
+          <div class="talk-desc">
+            四天 vs 三个月：LLM-Assisted Research in Direct Nuclear Reactions.
+            展示如何利用 Claude Code 加速低能核反应理论研究，包含 DBMM 和 CDCC reduced-basis emulator 两个案例。
+          </div>
+          <div class="talk-tags">
+            <span class="tag">Nuclear Physics</span>
+            <span class="tag">LLM</span>
+            <span class="tag">Vibe Research</span>
+          </div>
+          <div class="talk-arrow">View slides &rarr;</div>
+        </a>
+      </div>
+
+      <div class="talk-item">
+        <a class="talk-card" href="sjtu-talk/">
+          <div class="talk-date">
+            2026-04-20
+            <span class="venue">&middot; 上海交通大学</span>
+          </div>
+          <div class="talk-title">Vibe Research 在直接核反应理论中的实战</div>
+          <div class="talk-desc">
+            四天 vs 三个月：LLM-Assisted Research in Direct Nuclear Reactions.
+            展示如何利用 Claude Code 加速低能核反应理论研究，包含 DBMM 和 CDCC reduced-basis emulator 两个案例。
+          </div>
+          <div class="talk-tags">
+            <span class="tag">Nuclear Physics</span>
+            <span class="tag">LLM</span>
+            <span class="tag">Vibe Research</span>
+          </div>
+          <div class="talk-arrow">View slides &rarr;</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Powered by <a href="https://sli.dev">Slidev</a> &amp; GitHub Pages
+  </footer>
+
 </body>
 </html>
