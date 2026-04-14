@@ -253,3 +253,8 @@
 .slidev-vclick-target {
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+
+/* Hide Slidev goto-dialog sidebar and bottom nav in production build */
+#slidev-goto-dialog {
+  display: none !important;
+}
