@@ -32,12 +32,20 @@ jobs:
           npx @slidev/cli build --base /talks/fudan-talk/
           cd ..
 
+      - name: Build sjtu-talk
+        run: |
+          cd sjtu-talk
+          npm install
+          npx @slidev/cli build --base /talks/sjtu-talk/
+          cd ..
+
       # Assemble the site
       - name: Assemble site
         run: |
-          mkdir -p _site/fudan-talk
+          mkdir -p _site/fudan-talk _site/sjtu-talk
           cp index.html _site/
           cp -r fudan-talk/dist/* _site/fudan-talk/
+          cp -r sjtu-talk/dist/* _site/sjtu-talk/
 
       - uses: actions/upload-pages-artifact@v3
         with:
