@@ -27,7 +27,7 @@ class: text-center
 **Jin Lei (金磊)**<br>
 同济大学物理科学与工程学院 / Tongji University
 
-复旦大学核物理报告 · April 2026
+复旦大学核物理报告 · 2026年4月21日
 
 </div>
 
