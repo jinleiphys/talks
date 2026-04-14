@@ -9,13 +9,48 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      talks: ${{ steps.scan.outputs.talks }}
+      changed: ${{ steps.diff.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      # Auto-detect all talk directories (any dir containing slides.md)
+      - name: Scan talks
+        id: scan
+        run: |
+          talks=$(find . -maxdepth 2 -name slides.md -exec dirname {} \; \
+            | sed 's|^\./||' | sort | jq -R -s -c 'split("\n") | map(select(. != ""))')
+          echo "talks=$talks" >> "$GITHUB_OUTPUT"
+          echo "Found talks: $talks"
+
+      # Detect which talks changed
+      - name: Detect changes
+        id: diff
+        run: |
+          if git rev-parse HEAD~1 >/dev/null 2>&1; then
+            changed=$(git diff --name-only HEAD~1 HEAD | cut -d/ -f1 | sort -u \
+              | jq -R -s -c 'split("\n") | map(select(. != ""))')
+          else
+            # First commit — build everything
+            changed='["__all__"]'
+          fi
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
+          echo "Changed dirs: $changed"
+
   build:
+    needs: detect
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,28 +59,57 @@ jobs:
         with:
           node-version: 20
 
-      # Build each talk into its own subdirectory
-      - name: Build fudan-talk
-        run: |
-          cd fudan-talk
-          npm install
-          npx @slidev/cli build --base /talks/fudan-talk/
-          cd ..
+      # Try to restore previous build cache
+      - name: Restore build cache
+        uses: actions/cache@v4
+        with:
+          path: _cache
+          key: talks-build-${{ github.sha }}
+          restore-keys: talks-build-
 
-      - name: Build sjtu-talk
+      - name: Build talks
+        env:
+          ALL_TALKS: ${{ needs.detect.outputs.talks }}
+          CHANGED: ${{ needs.detect.outputs.changed }}
         run: |
-          cd sjtu-talk
-          npm install
-          npx @slidev/cli build --base /talks/sjtu-talk/
-          cd ..
+          mkdir -p _site _cache
 
-      # Assemble the site
-      - name: Assemble site
-        run: |
-          mkdir -p _site/fudan-talk _site/sjtu-talk
+          # Copy index.html (always fresh)
           cp index.html _site/
-          cp -r fudan-talk/dist/* _site/fudan-talk/
-          cp -r sjtu-talk/dist/* _site/sjtu-talk/
+
+          for talk in $(echo "$ALL_TALKS" | jq -r '.[]'); do
+            # Check if this talk changed or if index.html/workflow changed
+            needs_build=false
+            if echo "$CHANGED" | jq -e 'index("__all__")' > /dev/null 2>&1; then
+              needs_build=true
+            elif echo "$CHANGED" | jq -e "index(\"$talk\")" > /dev/null 2>&1; then
+              needs_build=true
+            elif echo "$CHANGED" | jq -e 'index(".github")' > /dev/null 2>&1; then
+              needs_build=true
+            fi
+
+            if [ "$needs_build" = true ]; then
+              echo "::group::Building $talk"
+              cd "$talk"
+              npm install
+              npx @slidev/cli build --base /talks/$talk/
+              cd ..
+              # Save to cache
+              rm -rf "_cache/$talk"
+              cp -r "$talk/dist" "_cache/$talk"
+              echo "::endgroup::"
+            else
+              echo "Skipping $talk (unchanged)"
+            fi
+
+            # Assemble from cache
+            if [ -d "_cache/$talk" ]; then
+              mkdir -p "_site/$talk"
+              cp -r "_cache/$talk"/* "_site/$talk/"
+            else
+              echo "::warning::No cached build for $talk and it was not rebuilt"
+            fi
+          done
 
       - uses: actions/upload-pages-artifact@v3
         with:
