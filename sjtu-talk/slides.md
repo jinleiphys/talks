@@ -30,7 +30,7 @@ class: text-center
 </div>
 
 <div class="abs-bl m-6 text-sm" style="color: var(--pencil-brown); opacity: 0.7;">
-Dec 2025 to Apr 2026: 14 papers, 10 on arXiv, 2 published + 1 accepted by Phys. Rev. C
+Dec 2025 to Apr 2026: 16 papers, 11 on arXiv, 2 published + 1 accepted by Phys. Rev. C
 </div>
 
 <div class="abs-br m-6 text-xs" style="color: var(--pencil-red); opacity: 0.9; max-width: 320px; text-align: right;">
@@ -38,9 +38,9 @@ Dec 2025 to Apr 2026: 14 papers, 10 on arXiv, 2 published + 1 accepted by Phys. 
 </div>
 
 <!--
-Central message: 今天的焦点不是"14 篇"这个数字, 而是让它在一个成熟子领域里变得可能的那套研究者与工具的分工, 以及它对整个核物理可能意味着什么.
+Central message: 今天的焦点不是"16 篇"这个数字, 而是让它在一个成熟子领域里变得可能的那套研究者与工具的分工, 以及它对整个核物理可能意味着什么.
 
-开场: 各位老师下午好, 感谢王思敏老师的邀请. 过去四个月, 2025 年 12 月到今天, 我在大语言模型的日常协助下完成了十四篇论文, 十篇已经上了 arXiv, 两篇已在 Phys. Rev. C 发表, 一篇刚被接收. 今天不来炫耀数字, 来讲清楚这个数字怎么来的, 以及它背后那套我称为 Vibe Research 的工作流.
+开场: 各位老师下午好, 感谢王思敏老师的邀请. 过去四个月, 2025 年 12 月到今天, 我在大语言模型的日常协助下完成了十六篇论文, 十一篇已经上了 arXiv, 两篇已在 Phys. Rev. C 发表, 一篇刚被接收. 今天不来炫耀数字, 来讲清楚这个数字怎么来的, 以及它背后那套我称为 Vibe Research 的工作流.
 
 Time: 0:00 to 0:30
 过渡: 先给你们一个非常不对称的对照实验.
@@ -1544,7 +1544,7 @@ Central message: 整场报告收束在一个问题上. 这个问题不是我的,
 
 但"成熟"从来不是指物理问题都被回答了. 成熟只是指我们没有足够的人去回答它们. 这是一个重大的 re-framing. 如果你接受它, 核物理的未来不是"精致地守住已有的工作", 而是"重新成为一个对最深的问题主动设问的前沿".
 
-我过去四个月的十四篇论文不是答案. 只是一个早期证据. 证明这件事在一个子领域已经可行. 剩下的问题是, 它会不会从这个房间出发, 扩散到核物理的每一个角落.
+我过去四个月的十六篇论文不是答案. 只是一个早期证据. 证明这件事在一个子领域已经可行. 剩下的问题是, 它会不会从这个房间出发, 扩散到核物理的每一个角落.
 
 谢谢大家. 问题的话我们可以开始讨论.
 
@@ -1610,7 +1610,7 @@ Time: 37:00 to 38:30
 layout: default
 ---
 
-# Backup B1: 完整 14 篇论文清单
+# Backup B1: 完整 16 篇论文清单
 
 <div class="text-xs">
 
@@ -1626,19 +1626,21 @@ layout: default
 | 8 | 2603.24253 | 2026-03-25 | Deletion Does Not Measure (CC Dynamics) | Jin Lei, Liu |
 | 9 | 2604.00471 | 2026-04-01 | Exact CC Green Function | Liu, Jin Lei, Ren |
 | 10 | 2604.05600 | 2026-04-07 | Channel couplings redirect absorbed flux | Liu, Jin Lei, Ren |
-| 11 | draft | 2026-04-11 | Intrinsic Information Limit in OP Extraction | Jin Lei |
-| 12 | draft | 2026-04-11 | IAV breakup generalization | Jin Lei |
+| 11 | 2604.11226 | 2026-04-15 | IAV breakup generalization | Jin Lei |
+| 12 | submitted | 2026-04-11 | Intrinsic Information Limit in OP Extraction | Jin Lei |
 | 13 | draft | 2026-04-11 | High-Dim Bayesian Calibration | Jin Lei, Furnstahl |
 | 14 | draft | 2026-04-11 | Info Geometry of Power Counting | Jin Lei, Hu, Phillips, Furnstahl |
+| 15 | draft | 2026-04 | Inclusive breakup of three-body projectiles | Jin Lei |
+| 16 | draft | 2026-04 | Dispersive CDCC elastic effective interaction | Liu, Jin Lei, Ren |
 
 </div>
 
 <div class="mt-4 text-sm" style="color: var(--pencil-brown);">
-2025 年 12 月至 2026 年 4 月. 10 篇上 arXiv, 2 篇 PRC 已发表, 1 篇 PRC 已接收, 4 篇准备中. Solo × 8, 同济本地组 × 4, Furnstahl/Phillips/Hu × 2.
+2025 年 12 月至 2026 年 4 月. 11 篇上 arXiv, 2 篇 PRC 已发表, 1 篇 PRC 已接收, 1 篇已投稿, 4 篇准备中. Solo × 9, 同济本地组 × 5, w/ Furnstahl × 2, w/ Hu+Phillips+Furnstahl × 1 (重叠计).
 </div>
 
 <!--
-完整 14 篇清单可追溯可验证. 答问时翻出来.
+完整 16 篇清单可追溯可验证. 答问时翻出来.
 -->
 
 ---
