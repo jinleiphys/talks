@@ -1,0 +1,260 @@
+/* Chinese + English handwritten fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Patrick+Hand&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,400&family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&family=Liu+Jian+Mao+Cao&family=ZCOOL+XiaoWei&display=swap');
+
+:root {
+  /* Colored pencil palette */
+  --pencil-blue: #648cc8;
+  --pencil-cyan: #50b4c8;
+  --pencil-pink: #dc8298;
+  --pencil-orange: #f0aa64;
+  --pencil-green: #78b48c;
+  --pencil-purple: #a082be;
+  --pencil-teal: #5abeb0;
+  --pencil-brown: #a08060;
+  --pencil-red: #d87070;
+  --pencil-yellow: #e8c864;
+
+  /* Paper base */
+  --paper-base: #fcf8f0;
+  --paper-fiber: #f5ebdc;
+  --paper-fiber-dark: #dccdb4;
+
+  /* Shadows */
+  --shadow-pencil: 2px 3px 0 rgba(160, 128, 96, 0.15);
+  --shadow-pencil-hover: 3px 4px 0 rgba(160, 128, 96, 0.25);
+
+  /* Font stacks with Chinese handwriting support */
+  --font-hand-title: 'Ma Shan Zheng', 'Caveat', 'PingFang SC', 'Hiragino Sans GB', cursive;
+  --font-hand-body: 'ZCOOL XiaoWei', 'Patrick Hand', 'Comic Neue', 'PingFang SC', 'Hiragino Sans GB', cursive;
+  --font-hand-fun: 'ZCOOL KuaiLe', 'Caveat', 'PingFang SC', 'Hiragino Sans GB', cursive;
+}
+
+/* ====== RICE PAPER BACKGROUND ====== */
+.slidev-layout {
+  background:
+    repeating-linear-gradient(
+      0deg, transparent, transparent 3px,
+      rgba(245, 235, 220, 0.5) 3px, rgba(245, 235, 220, 0.5) 4px
+    ),
+    repeating-linear-gradient(
+      90deg, transparent, transparent 5px,
+      rgba(220, 205, 180, 0.2) 5px, rgba(220, 205, 180, 0.2) 6px
+    ),
+    radial-gradient(circle at 15% 25%, rgba(220, 205, 180, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 75% 55%, rgba(245, 235, 220, 0.35) 0%, transparent 40%),
+    radial-gradient(circle at 45% 85%, rgba(220, 205, 180, 0.2) 0%, transparent 45%),
+    var(--paper-base) !important;
+  color: #4a3728 !important;
+  overflow-y: auto !important;
+}
+
+/* Kill theme overlays */
+.slidev-layout::before,
+.slidev-layout::after {
+  background: none !important;
+  background-image: none !important;
+  display: none !important;
+}
+
+/* ====== TYPOGRAPHY ====== */
+.slidev-layout h1 {
+  font-family: var(--font-hand-title) !important;
+  color: var(--pencil-blue) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 0 rgba(100, 140, 200, 0.1);
+}
+
+.slidev-layout h2 {
+  font-family: var(--font-hand-fun) !important;
+  color: var(--pencil-brown) !important;
+  font-weight: 400 !important;
+  font-size: 1.3em !important;
+  opacity: 0.85;
+}
+
+.slidev-layout h3 {
+  font-family: var(--font-hand-body) !important;
+  color: var(--pencil-teal) !important;
+}
+
+.slidev-layout p, .slidev-layout li, .slidev-layout div,
+.slidev-layout span, .slidev-layout td, .slidev-layout th,
+.slidev-layout label, .slidev-layout a {
+  font-family: var(--font-hand-body) !important;
+  color: #4a3728;
+}
+
+.slidev-layout strong, .slidev-layout b {
+  color: var(--pencil-blue);
+  font-family: var(--font-hand-title) !important;
+}
+
+/* SVG text: use Patrick Hand which renders smaller than Chinese fonts */
+.slidev-layout svg text {
+  font-family: 'Patrick Hand', 'Comic Neue', sans-serif !important;
+}
+
+.slidev-layout ul > li::marker { color: var(--pencil-orange); }
+.slidev-layout ol > li::marker { color: var(--pencil-blue); font-weight: 700; }
+
+/* ====== SKETCH CARDS ====== */
+.sketch-card {
+  padding: 1.25rem;
+  border: 2px solid var(--pencil-brown);
+  border-radius: 0 !important;
+  background: rgba(252, 248, 240, 0.8);
+  box-shadow: var(--shadow-pencil);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.sketch-card::before, .sketch-card::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+}
+
+.sketch-card::before {
+  top: -4px; left: -4px;
+  border-top: 2px solid; border-left: 2px solid;
+}
+
+.sketch-card::after {
+  bottom: -4px; right: -4px;
+  border-bottom: 2px solid; border-right: 2px solid;
+}
+
+.sketch-card-blue { border-color: var(--pencil-blue); }
+.sketch-card-blue::before, .sketch-card-blue::after { border-color: var(--pencil-blue); }
+
+.sketch-card-green { border-color: var(--pencil-green); }
+.sketch-card-green::before, .sketch-card-green::after { border-color: var(--pencil-green); }
+
+.sketch-card-purple { border-color: var(--pencil-purple); }
+.sketch-card-purple::before, .sketch-card-purple::after { border-color: var(--pencil-purple); }
+
+.sketch-card-red { border-color: var(--pencil-red); }
+.sketch-card-red::before, .sketch-card-red::after { border-color: var(--pencil-red); }
+
+.sketch-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-pencil-hover);
+}
+
+/* ====== COLORED BOXES ====== */
+.box-gap {
+  background: rgba(216, 112, 112, 0.08);
+  border-left: 4px solid var(--pencil-red);
+  border-top: none; border-right: none;
+  border-bottom: 1px dashed rgba(216, 112, 112, 0.3);
+  padding: 1rem 1.25rem;
+  border-radius: 0 !important;
+  box-shadow: var(--shadow-pencil);
+}
+
+.box-idea {
+  background: rgba(100, 140, 200, 0.08);
+  border-left: 4px solid var(--pencil-blue);
+  border-top: none; border-right: none;
+  border-bottom: 1px dashed rgba(100, 140, 200, 0.3);
+  padding: 1rem 1.25rem;
+  border-radius: 0 !important;
+  box-shadow: var(--shadow-pencil);
+}
+
+.box-evidence {
+  background: rgba(120, 180, 140, 0.08);
+  border-left: 4px solid var(--pencil-green);
+  border-top: none; border-right: none;
+  border-bottom: 1px dashed rgba(120, 180, 140, 0.3);
+  padding: 1rem 1.25rem;
+  border-radius: 0 !important;
+  box-shadow: var(--shadow-pencil);
+}
+
+/* ====== TAKEAWAY LABEL ====== */
+.takeaway {
+  font-weight: 700;
+  font-family: var(--font-hand-title) !important;
+  color: var(--pencil-blue);
+  border-bottom: 2px solid var(--pencil-orange);
+  display: inline;
+  padding-bottom: 2px;
+  font-size: 1.1em;
+}
+
+/* ====== FIGURE CAPTIONS ====== */
+.fig-caption {
+  font-size: 0.8rem;
+  color: var(--pencil-brown);
+  margin-top: 0.5rem;
+  text-align: center;
+  font-family: var(--font-hand-body) !important;
+  font-style: italic;
+}
+
+/* ====== IMAGES ====== */
+.sketch-img {
+  height: 16rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid var(--pencil-brown);
+  border-radius: 0 !important;
+  box-shadow: 3px 3px 0 rgba(160, 128, 96, 0.2);
+  background: white;
+  padding: 4px;
+}
+
+/* ====== TABLES ====== */
+.slidev-layout table { border-collapse: collapse; }
+
+.slidev-layout th {
+  background: rgba(100, 140, 200, 0.1) !important;
+  color: var(--pencil-blue) !important;
+  font-family: var(--font-hand-title) !important;
+  font-size: 1.05em;
+  border-bottom: 2px solid var(--pencil-blue) !important;
+}
+
+.slidev-layout td {
+  border-bottom: 1px dashed var(--paper-fiber-dark) !important;
+}
+
+/* ====== CODE BLOCKS ====== */
+.slidev-layout pre {
+  background: rgba(252, 248, 240, 0.9) !important;
+  border: 1px solid var(--paper-fiber-dark) !important;
+  border-left: 3px solid var(--pencil-teal) !important;
+  border-radius: 0 !important;
+  box-shadow: var(--shadow-pencil);
+}
+
+/* ====== MATH ====== */
+.slidev-layout .katex { color: #4a3728 !important; }
+
+/* ====== SPECIAL LAYOUTS ====== */
+.slidev-layout.slidev-layout-section h1 { font-size: 2.8em !important; }
+.slidev-layout.slidev-layout-fact h1 { font-size: 2.2em !important; }
+
+/* ====== ITALIC = wavy underline ====== */
+.slidev-layout em {
+  font-style: normal;
+  text-decoration: underline;
+  text-decoration-color: var(--pencil-orange);
+  text-decoration-style: wavy;
+  text-underline-offset: 3px;
+}
+
+/* ====== ANIMATIONS ====== */
+.slidev-vclick-target {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Hide Slidev goto-dialog sidebar and bottom nav in production build */
+#slidev-goto-dialog {
+  display: none !important;
+}
