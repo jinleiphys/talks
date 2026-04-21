@@ -265,7 +265,88 @@ Central message: LLM-for-science 的讨论被两个极端占据, 两边都没被
 讲: 两边各自有一部分对. 怀疑派说"需要验证"对, 但不等于"不能用", 等于"不能盲用". 热情派说"能写样板代码"对, 但不等于"能做决策". Sakana AI 的 AI Scientist 我读过, 证明了 LLM 能端到端出论文, 每篇 $15, 但那些论文都是现有方法的增量变体, 没有新洞见. 这和我的经验一致: LLM 不会帮你想出新东西, 它让你更快做完那些本来想做但没时间做的东西.
 
 Time: 5:00 to 6:30
-过渡: 下一页给出精确定义.
+过渡: 下一页先交代 "vibe" 这个词的来源.
+-->
+
+---
+layout: default
+---
+
+# <span style="color: var(--pencil-blue)">●</span> 先交代一下: "Vibe" 从哪来?
+
+<div class="grid gap-6 mt-4" style="grid-template-columns: 3fr 2fr;">
+
+<div v-click>
+
+<div class="box-evidence">
+
+<div class="text-lg" style="color: var(--pencil-blue); font-style: italic;">
+
+"There's a new kind of coding I call <strong>vibe coding</strong>, where you fully give in to the vibes, embrace exponentials, and <strong>forget that the code even exists</strong>."
+
+</div>
+
+<div class="text-right text-sm mt-3" style="color: var(--pencil-brown);">
+
+— Andrej Karpathy, 2025 年 2 月<br>
+<span class="text-xs">OpenAI 联合创始人 · 前 Tesla AI 负责人</span>
+
+</div>
+
+</div>
+
+<div class="mt-4 text-sm">
+
+**Vibe Coding 的原味** (消费级):
+
+- 自然语言描述需求, 语音也行
+- 接受 AI 生成的代码, **不逐行审读**
+- 出错就把报错丢回去继续改
+- 写个周末小工具, "跑得起来就行"
+
+</div>
+
+</div>
+
+<div v-click class="sketch-card sketch-card-blue">
+
+<div class="font-bold mb-2">一年内进入主流词汇</div>
+<div class="text-xs" style="color: var(--pencil-brown);">
+
+- Collins 英语词典 **Word of the Year 2025**
+- Merriam-Webster 2025 年 3 月收录
+- 一条推特 → 行业术语
+
+</div>
+
+<div class="box-gap mt-4 text-sm">
+
+**但科研不能照抄:**<br>
+"forget the code" 在消费级 app 里可行, 在 Phys. Rev. 上不可行. 物理错误不会报错, LLM 会自信地给你一个看起来对的错结论.
+
+</div>
+
+</div>
+
+</div>
+
+<v-click>
+
+<div class="box-idea mt-6 text-center">
+所以今天讲的不是 Vibe Coding, 是 <strong>Vibe Research</strong> — 借 Karpathy 的加速直觉, 但把"放弃理解代码"换成"放弃手写代码"; 物理判断必须由研究者亲手把关.
+</div>
+
+</v-click>
+
+<!--
+Central message: "Vibe" 不是我造的词, 是 Karpathy 2025 年 2 月的推特引爆的. 我借了这个词和它背后的加速直觉, 但改掉了一条关键约束.
+
+讲: 很多老师可能第一次听到 vibe 这个词, 先花一分钟交代来源. Andrej Karpathy, OpenAI 联合创始人, 前 Tesla AI 负责人, 2025 年 2 月一条推特: "有一种新的写代码方式, 我叫它 vibe coding, 完全跟着感觉走, 相信指数增长, 忘了代码还存在". 他当时在用 Cursor + Claude 语音指令写一个菜单生成器, 出错就把 error message 丢回去, 从不读 diff. 一年之内这个词进了 Collins 年度词和 Merriam-Webster.
+
+但这套消费级玩法直接搬到科研就是灾难. 物理错误 LLM 不会报错, 它会自信地给你一个看起来合理的错结论. 所以我借了这个词和它的加速直觉, 但把"放弃理解代码"改成"放弃手写代码, 保留理解物理". 这就是为什么下一页要给 Vibe Research 一个精确定义, 而不是直接用 vibe coding.
+
+Time: 6:30 to 8:00
+过渡: 下一页, Vibe Research 的精确定义.
 -->
 
 ---

@@ -1,6 +1,6 @@
 <template>
-  <footer v-if="$nav.currentPage <= 24" class="slide-page-number">
-    {{ $nav.currentPage }} / 24
+  <footer v-if="$nav.currentPage <= 25" class="slide-page-number">
+    {{ $nav.currentPage }} / 25
   </footer>
 </template>
 
