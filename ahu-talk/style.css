@@ -350,6 +350,11 @@
   line-height: 1.62;
 }
 
+/* Hide Slidev goto-dialog sidebar that leaks into production build */
+#slidev-goto-dialog {
+  display: none !important;
+}
+
 /* =============================================================
    Legacy sketch-token compatibility shim.
    Maps --pencil-* variables and .sketch-card* / .sketch-img classes
