@@ -1,376 +1,243 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Talks · Make Direct Reactions Great Again</title>
-<meta name="description" content="Make Direct Reactions Great Again. Campaign rally talks by Jin Lei." />
+<title>Talks · Jin Lei</title>
+<meta name="description" content="Jin Lei (金磊, 同济大学物理系) 的学术报告合集：直接核反应理论与 LLM 辅助科研工作流。" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Comic+Neue:wght@300;400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
 <style>
   :root {
-    --red: #b31942;
-    --red-dk: #8a1232;
-    --blue: #0a3161;
-    --blue-dk: #061e3d;
-    --cream: #f5f0e1;
-    --paper: #fffaf0;
-    --ink: #0b0b0b;
-    --gold: #ffd700;
+    /* Rice paper background */
+    --paper-base: #fcf8f0;
+    --paper-fiber: #f5ebdc;
+    --paper-warm: #eee4d2;
+    --paper-aged: #dccdb4;
+
+    /* Colored pencil palette */
+    --pencil-blue: #648cc8;
+    --pencil-cyan: #50b4c8;
+    --pencil-pink: #dc8298;
+    --pencil-orange: #f0aa64;
+    --pencil-green: #78b48c;
+    --pencil-purple: #a082be;
+    --pencil-teal: #5abeb0;
+    --pencil-brown: #a08060;
+    --pencil-red: #d87070;
+    --pencil-yellow: #e8c864;
+
+    --ink: #4a4036;
+    --shadow-pencil: 2px 3px 0 rgba(160, 128, 96, 0.15);
+    --shadow-pencil-hover: 4px 6px 0 rgba(160, 128, 96, 0.22);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: Baskerville, "Palatino Linotype", "Book Antiqua", serif;
-    background: var(--cream);
+    font-family: 'Patrick Hand', 'Comic Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--paper-base);
     color: var(--ink);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
-    line-height: 1.5;
+    line-height: 1.6;
   }
   .bg {
     position: fixed; inset: 0; z-index: -1;
     background:
-      radial-gradient(circle at 10% 10%, rgba(255, 215, 0, 0.08), transparent 24%),
-      radial-gradient(circle at 80% 14%, rgba(179, 25, 66, 0.12), transparent 24%),
-      repeating-linear-gradient(
-        180deg,
-        var(--cream) 0 80px,
-        rgba(10, 49, 97, 0.035) 80px 160px
-      );
+      radial-gradient(circle at 12% 10%, rgba(100, 140, 200, 0.05), transparent 30%),
+      radial-gradient(circle at 85% 18%, rgba(220, 130, 152, 0.05), transparent 30%),
+      radial-gradient(circle at 50% 90%, rgba(120, 180, 140, 0.05), transparent 35%),
+      var(--paper-base);
+  }
+
+  h1, h2, h3 {
+    font-family: 'Caveat', 'Comic Neue', cursive;
+    font-weight: 700;
+    letter-spacing: 0.5px;
   }
 
   nav {
     position: sticky;
     top: 0;
     z-index: 25;
-    background: rgba(6, 30, 61, 0.9);
-    color: #fff;
-    padding: 1rem 4vw;
+    background: rgba(252, 248, 240, 0.85);
+    border-bottom: 2px dashed var(--pencil-teal);
+    backdrop-filter: blur(10px);
+    padding: 0.9rem 5vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    border-bottom: 4px solid var(--red);
-    backdrop-filter: blur(14px);
   }
   .brand {
-    color: #fff;
+    color: var(--pencil-teal);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.6rem;
+    font-family: 'Caveat', cursive;
+    font-size: 1.7rem;
+    font-weight: 700;
   }
-  .brand .mark {
-    width: 38px;
-    height: 38px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    background: var(--red);
-    border: 2px solid rgba(255,255,255,0.6);
-    font-size: 1.2rem;
-  }
-  .brand .text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.02;
-  }
-  .brand strong {
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 1rem;
-  }
-  .brand span.sub {
-    font-family: "Courier New", monospace;
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.75);
-  }
-  .nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 0.9rem;
-  }
+  .brand .mark { font-size: 1.4rem; }
+  .nav-links { display: flex; flex-wrap: wrap; gap: 1.2rem; }
   .nav-links a {
-    color: var(--gold);
+    color: var(--pencil-brown);
     text-decoration: none;
-    font-family: "Courier New", monospace;
-    font-size: 0.76rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.05rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
   }
-  .nav-links a:hover { color: #fff; }
+  .nav-links a:hover { color: var(--pencil-blue); border-bottom-color: var(--pencil-blue); }
 
   /* Hero */
   .hero {
-    min-height: 70vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 8vh 6vw 4vh;
     text-align: center;
+    padding: 9vh 6vw 5vh;
   }
-  .eyebrow {
-    display: inline-block;
-    background: var(--blue);
-    color: #fff;
-    padding: 0.55rem 1.3rem;
-    font-family: "Courier New", monospace;
-    font-size: clamp(0.75rem, 1.4vw, 1rem);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    border: 3px solid var(--ink);
-    box-shadow: 6px 6px 0 var(--ink);
-    margin-bottom: 1.2rem;
-    transform: rotate(-1deg);
-    animation: tilt 6s ease-in-out infinite;
-  }
-  @keyframes tilt {
-    0%, 100% { transform: rotate(-1deg); }
-    50%      { transform: rotate(1deg); }
-  }
-  h1 {
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    font-size: clamp(2.4rem, 8vw, 8rem);
+  .hero h1 {
+    font-size: clamp(3.2rem, 11vw, 7rem);
+    color: var(--pencil-blue);
+    text-shadow: 3px 3px 0 rgba(100, 140, 200, 0.18);
     line-height: 1;
-    letter-spacing: -0.01em;
-    text-transform: uppercase;
-    color: var(--blue);
-    text-shadow: 3px 3px 0 var(--red), 6px 6px 0 var(--ink);
-    margin-bottom: 1.4rem;
-    max-width: 18ch;
+    margin-bottom: 0.6rem;
   }
-  h1 .great { color: var(--red); }
-  h1 .again {
-    display: inline-block;
-    background: var(--blue);
-    color: var(--gold);
-    padding: 0 0.2em;
-    transform: rotate(-2deg);
+  .hero .tagline {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(1.4rem, 3.4vw, 2.1rem);
+    color: var(--pencil-teal);
+    margin-bottom: 0.8rem;
   }
-  .tagline {
-    font-size: clamp(1.1rem, 2.6vw, 1.8rem);
-    color: var(--ink);
-    max-width: 36ch;
-    margin: 1rem auto 2rem;
-    font-style: italic;
-  }
-  .tagline strong { font-style: normal; color: var(--red); text-transform: uppercase; }
-
-  .acronym {
-    font-family: "Courier New", monospace;
-    font-size: clamp(0.78rem, 1.4vw, 1rem);
-    color: var(--blue);
-    border-top: 3px solid var(--ink);
-    border-bottom: 3px solid var(--ink);
-    padding: 0.6rem 1.2rem;
-    margin: 0 0 2rem;
-    letter-spacing: 0.08em;
-  }
-  .acronym b { color: var(--red); }
-
-  /* Rally Schedule = Talks */
-  .section {
-    padding: 6vh 6vw;
-    max-width: 1100px;
+  .hero .meta {
+    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+    color: var(--pencil-brown);
+    max-width: 44ch;
     margin: 0 auto;
   }
+
+  /* Talks */
+  .section { padding: 3vh 6vw 7vh; max-width: 1120px; margin: 0 auto; }
   .section-title {
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    font-size: clamp(2rem, 6vw, 4rem);
-    text-transform: uppercase;
-    color: var(--red);
-    text-shadow: 3px 3px 0 var(--ink);
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--pencil-pink);
     text-align: center;
-    margin-bottom: 2.5rem;
-    letter-spacing: 0.02em;
+    margin-bottom: 0.4rem;
   }
   .section-subtitle {
     text-align: center;
-    font-style: italic;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    color: var(--blue);
-    margin-top: -1.5rem;
-    margin-bottom: 3rem;
+    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+    color: var(--pencil-brown);
+    margin-bottom: 2.8rem;
   }
 
-  .rally-grid {
+  .talk-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 1.8rem;
   }
-  .rally-card {
-    background: var(--paper);
-    border: 4px solid var(--ink);
-    box-shadow: 8px 8px 0 var(--blue);
-    padding: 0;
+  .talk-card {
+    background: #fffdf8;
+    border: 2px solid var(--pencil-brown);
+    border-radius: 10px;
+    box-shadow: var(--shadow-pencil);
     text-decoration: none;
     color: inherit;
     display: flex;
     flex-direction: column;
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
-    position: relative;
     overflow: hidden;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .rally-card:nth-child(even) { box-shadow: 8px 8px 0 var(--red); transform: rotate(0.3deg); }
-  .rally-card:nth-child(3n) { transform: rotate(-0.4deg); }
-  .rally-card:hover {
-    transform: translate(-3px, -3px) rotate(0) !important;
-    box-shadow: 12px 12px 0 var(--ink) !important;
+  .talk-card:hover {
+    transform: translate(-2px, -3px);
+    box-shadow: var(--shadow-pencil-hover);
   }
 
-  .rally-header {
-    background: var(--blue);
-    color: #fff;
-    padding: 1rem 1.4rem;
+  /* per-card accent color cycle */
+  .talk-card:nth-child(6n+1) { --accent: var(--pencil-blue); }
+  .talk-card:nth-child(6n+2) { --accent: var(--pencil-pink); }
+  .talk-card:nth-child(6n+3) { --accent: var(--pencil-green); }
+  .talk-card:nth-child(6n+4) { --accent: var(--pencil-orange); }
+  .talk-card:nth-child(6n+5) { --accent: var(--pencil-purple); }
+  .talk-card:nth-child(6n+6) { --accent: var(--pencil-teal); }
+
+  .talk-header {
+    border-bottom: 2px dashed var(--accent);
+    padding: 0.9rem 1.3rem 0.7rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
+    gap: 0.8rem;
   }
-  .rally-card:nth-child(even) .rally-header { background: var(--red); }
-
-  .rally-date {
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    font-size: 1.6rem;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: var(--gold);
+  .talk-date {
+    font-family: 'Caveat', cursive;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
   }
-  .rally-venue {
-    font-family: "Courier New", monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+  .talk-venue {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 0.82rem;
+    color: var(--pencil-brown);
     text-align: right;
-    max-width: 14ch;
     line-height: 1.3;
   }
 
-  .rally-body {
-    padding: 1.4rem 1.4rem 1.2rem;
-    flex: 1;
-  }
-  .rally-title {
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    font-size: 1.3rem;
-    text-transform: uppercase;
-    color: var(--blue);
-    letter-spacing: 0.02em;
+  .talk-body { padding: 1.1rem 1.3rem 1.2rem; flex: 1; }
+  .talk-title {
+    font-family: 'Caveat', cursive;
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.15;
     margin-bottom: 0.6rem;
-    line-height: 1.2;
   }
-  .rally-card:nth-child(even) .rally-title { color: var(--red); }
-
-  .rally-desc {
-    font-size: 0.92rem;
+  .talk-desc {
+    font-size: 0.98rem;
     line-height: 1.55;
-    color: #333;
-    margin-bottom: 1rem;
+    color: var(--ink);
+    margin-bottom: 0.9rem;
   }
-
-  .rally-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-bottom: 1rem;
-  }
-  .rally-tag {
-    font-family: "Courier New", monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: var(--cream);
-    border: 2px solid var(--ink);
-    padding: 0.2rem 0.5rem;
-    box-shadow: 2px 2px 0 var(--ink);
-  }
-
-  .rally-cta {
-    display: block;
-    background: var(--ink);
-    color: var(--gold);
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    text-align: center;
-    padding: 0.8rem;
-    transition: background 0.15s;
-  }
-  .rally-card:hover .rally-cta {
-    background: var(--red);
-    color: #fff;
-  }
-
-  /* Ticker */
-  .ticker {
-    background: var(--red);
-    color: #fff;
-    border-top: 4px solid var(--ink);
-    border-bottom: 4px solid var(--ink);
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 0.9rem 0;
-    font-family: "Courier New", monospace;
-    font-size: 1rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-top: 4rem;
-  }
-  .ticker-track {
-    display: inline-block;
-    padding-left: 100%;
-    animation: scroll 50s linear infinite;
-  }
-  .ticker-track span { margin: 0 2.5rem; }
-  .ticker-track span::before { content: "⚛ "; color: var(--gold); }
-  @keyframes scroll {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
-  }
-
-  /* Footer */
-  footer {
-    background: var(--ink);
-    color: #aaa;
-    font-family: "Courier New", monospace;
+  .talk-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .talk-tag {
+    font-family: 'Patrick Hand', cursive;
     font-size: 0.78rem;
+    color: var(--pencil-brown);
+    background: var(--paper-fiber);
+    border: 1.5px solid var(--paper-aged);
+    border-radius: 20px;
+    padding: 0.15rem 0.7rem;
+  }
+  .talk-cta {
+    display: block;
     text-align: center;
-    padding: 2rem 1.5rem;
-    line-height: 1.6;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 0.95rem;
+    color: #fff;
+    background: var(--accent);
+    padding: 0.65rem;
+    opacity: 0.9;
+    transition: opacity 0.15s;
   }
-  footer .site { color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; }
-  footer .disclaimer {
-    margin-top: 0.6rem;
-    font-style: italic;
-    opacity: 0.75;
-    max-width: 60ch;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  .talk-card:hover .talk-cta { opacity: 1; }
 
-  @media (max-width: 840px) {
-    nav { flex-direction: column; align-items: flex-start; }
-    .nav-links { justify-content: flex-start; }
+  footer {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    border-top: 2px dashed var(--pencil-teal);
+    color: var(--pencil-brown);
+    font-family: 'Patrick Hand', cursive;
+    font-size: 0.95rem;
+    line-height: 1.7;
   }
-  @media (max-width: 600px) {
-    .hero { padding: 6vh 5vw 4vh; }
-    h1 {
-      font-size: 2.4rem;
-      text-shadow: 2px 2px 0 var(--red), 4px 4px 0 var(--ink);
-    }
-    h1 .again { transform: rotate(-1deg); }
-    .eyebrow { font-size: 0.65rem; padding: 0.4rem 0.9rem; box-shadow: 4px 4px 0 var(--ink); }
-    .section { padding: 5vh 5vw; }
-    .section-title { font-size: 1.8rem; text-shadow: 2px 2px 0 var(--ink); }
-    .rally-grid { grid-template-columns: 1fr; gap: 1.4rem; }
-    .rally-card { box-shadow: 6px 6px 0 var(--blue) !important; }
-    .rally-card:nth-child(even) { box-shadow: 6px 6px 0 var(--red) !important; }
-    .ticker { font-size: 0.85rem; padding: 0.7rem 0; }
+  footer .site { color: var(--pencil-teal); font-size: 1.05rem; }
+
+  @media (max-width: 720px) {
+    nav { flex-direction: column; align-items: flex-start; }
+    .talk-grid { grid-template-columns: 1fr; gap: 1.3rem; }
   }
 </style>
 </head>
@@ -380,10 +247,7 @@
   <nav>
     <a class="brand" href="./">
       <span class="mark">⚛</span>
-      <span class="text">
-        <strong>TALKS HQ</strong>
-        <span class="sub">Jin Lei Campaign Trail</span>
-      </span>
+      <span>Jin Lei · Talks</span>
     </a>
     <div class="nav-links">
       <a href="https://github.com/jinleiphys">GitHub</a>
@@ -392,297 +256,289 @@
   </nav>
 
   <section class="hero">
-    <span class="eyebrow">⚛ Official Campaign Rally Schedule ⚛</span>
-
-    <h1>
-      Make<br />
-      Direct Reactions<br />
-      <span class="great">Great</span> <span class="again">Again</span>
-    </h1>
-
-    <p class="tagline">
-      Believe me, <strong>nobody</strong> gives talks like we do. Tremendous talks. The best.
-    </p>
-
-    <div class="acronym">
-      <b>J</b>IN&nbsp;<b>L</b>EI&nbsp;&middot;&nbsp;<b>T</b>ONGJI&nbsp;<b>U</b>NIVERSITY&nbsp;&middot;&nbsp;同济大学物理科学与工程学院
-    </div>
+    <h1>Talks</h1>
+    <p class="tagline">金磊 · 同济大学物理系</p>
+    <p class="meta">直接核反应理论 &middot; Vibe Research &middot; LLM 辅助科研工作流</p>
   </section>
 
   <section class="section">
-    <h2 class="section-title">Campaign Rally Schedule</h2>
-    <p class="section-subtitle">Every rally is a tremendous rally. Every slide is a winner.</p>
+    <h2 class="section-title">学术报告合集</h2>
+    <p class="section-subtitle">按日期排列，最新在前</p>
 
-    <div class="rally-grid">
+    <div class="talk-grid">
 
-      <a class="rally-card" href="fudan-agent-talk/">
-        <div class="rally-header">
-          <span class="rally-date">JUL 4</span>
-          <span class="rally-venue">复旦大学 · AI Agent 研讨会</span>
+      <a class="talk-card" href="fudan-agent-talk/">
+        <div class="talk-header">
+          <span class="talk-date">JUL 4</span>
+          <span class="talk-venue">复旦大学 · AI Agent 研讨会</span>
         </div>
-        <div class="rally-body">
-          <div class="rally-title">把 AI Agent 培养成你的研究生</div>
-          <div class="rally-desc">
-            Your agent is a brilliant grad student with amnesia every morning. You don't swap in a smarter one, you train this one: make him read, give him taste, teach the SOP, correct him, keep the lab notebook. That training, written down, IS a personal knowledge base. This deck was written by that student. Tremendous.
+        <div class="talk-body">
+          <div class="talk-title">把 AI Agent 培养成你的研究生</div>
+          <div class="talk-desc">
+            把 AI agent 当作每天清晨都会失忆的研究生来培养：让他读文献、给他品味、教他 SOP、纠正他、替他记实验记录。这套训练写下来，就是一个人的知识库。这份 slides 就是这个学生写的。
           </div>
-          <div class="rally-tags">
-            <span class="rally-tag">Knowledge Base</span>
-            <span class="rally-tag">AI Agent</span>
-            <span class="rally-tag">Mentoring</span>
+          <div class="talk-tags">
+            <span class="talk-tag">Knowledge Base</span>
+            <span class="talk-tag">AI Agent</span>
+            <span class="talk-tag">Mentoring</span>
           </div>
         </div>
-        <span class="rally-cta">View Slides &rarr;</span>
+        <span class="talk-cta">View Slides &rarr;</span>
       </a>
 
-      <a class="rally-card" href="zhi-qijun-talk/">
-        <div class="rally-header">
-          <span class="rally-date">MAY 20</span>
-          <span class="rally-venue">支启军教授课题组</span>
+      <a class="talk-card" href="sustech-talk/">
+        <div class="talk-header">
+          <span class="talk-date">JUN 17</span>
+          <span class="talk-venue">南方科技大学物理系</span>
         </div>
-        <div class="rally-body">
-          <div class="rally-title">Vibe Research 在直接核反应理论中的实战</div>
-          <div class="rally-desc">
-            Taking the rally to Guizhou. Host does pulsars and astro data, but the AI playbook is universal. For students who have never used AI in research: this is your starter pack. Same Vibe, same speed, brand new audience.
+        <div class="talk-body">
+          <div class="talk-title">Vibe Research 在直接核反应理论中的实战</div>
+          <div class="talk-desc">
+            面向南科大物理系。以两篇 Phys. Rev. C (DBMM 与 CDCC 代理模型) 为锚，讲四个月十六篇论文背后的 LLM 辅助研究工作流。
           </div>
-          <div class="rally-tags">
-            <span class="rally-tag">AI for Science</span>
-            <span class="rally-tag">LLM</span>
-            <span class="rally-tag">Vibe Research</span>
+          <div class="talk-tags">
+            <span class="talk-tag">Nuclear Physics</span>
+            <span class="talk-tag">LLM</span>
+            <span class="talk-tag">Vibe Research</span>
           </div>
         </div>
-        <span class="rally-cta">View Slides &rarr;</span>
+        <span class="talk-cta">View Slides &rarr;</span>
       </a>
 
-      <a class="rally-card" href="itp-talk/">
-        <div class="rally-header">
-          <span class="rally-date">MAY 9</span>
-          <span class="rally-venue">中国科学院理论物理研究所</span>
+      <a class="talk-card" href="ipoe-talk/">
+        <div class="talk-header">
+          <span class="talk-date">JUN 9</span>
+          <span class="talk-venue">同济大学 · 精密光学工程技术研究所</span>
         </div>
-        <div class="rally-body">
-          <div class="rally-title">Vibe Research 在直接核反应理论中的实战</div>
-          <div class="rally-desc">
-            Taking the rally to ITP-CAS, where China's top theorists work. Heavyweights only. Same DBMM, same CDCC emulator, same tremendous workflow. Four rallies in four days. Folks, nobody has ever done four rallies in four days. Nobody.
+        <div class="talk-body">
+          <div class="talk-title">Vibe Research：把"做完"的时间还给研究者</div>
+          <div class="talk-desc">
+            为精密光学工程研究所定制。s-SNOM 数据流程、泵浦探测全局拟合、FDTD 参数扫描，同一套框架，换一种工作流。
           </div>
-          <div class="rally-tags">
-            <span class="rally-tag">Nuclear Physics</span>
-            <span class="rally-tag">LLM</span>
-            <span class="rally-tag">Vibe Research</span>
+          <div class="talk-tags">
+            <span class="talk-tag">Optics</span>
+            <span class="talk-tag">Experiment</span>
+            <span class="talk-tag">LLM</span>
           </div>
         </div>
-        <span class="rally-cta">View Slides &rarr;</span>
+        <span class="talk-cta">View Slides &rarr;</span>
       </a>
 
-      <a class="rally-card" href="pku-talk/">
-        <div class="rally-header">
-          <span class="rally-date">MAY 8</span>
-          <span class="rally-venue">北京大学物理学院</span>
+      <a class="talk-card" href="zhi-qijun-talk/">
+        <div class="talk-header">
+          <span class="talk-date">MAY 20</span>
+          <span class="talk-venue">支启军教授课题组</span>
         </div>
-        <div class="rally-body">
-          <div class="rally-title">Vibe Research 在直接核反应理论中的实战</div>
-          <div class="rally-desc">
-            Bringing the rally to Peking University, China's #1 physics school, the best of the best. Same DBMM, same CDCC emulator, same tremendous workflow. Three rallies in three days. Nobody, and I mean nobody, can keep up with this energy.
+        <div class="talk-body">
+          <div class="talk-title">Vibe Research 在直接核反应理论中的实战</div>
+          <div class="talk-desc">
+            主人课题组做脉冲星与天文数据，但 AI 工作流是通用的。这一场是给从没在科研中用过 AI 的学生准备的入门包。
           </div>
-          <div class="rally-tags">
-            <span class="rally-tag">Nuclear Physics</span>
-            <span class="rally-tag">LLM</span>
-            <span class="rally-tag">Vibe Research</span>
+          <div class="talk-tags">
+            <span class="talk-tag">AI for Science</span>
+            <span class="talk-tag">LLM</span>
+            <span class="talk-tag">Vibe Research</span>
           </div>
         </div>
-        <span class="rally-cta">View Slides &rarr;</span>
+        <span class="talk-cta">View Slides &rarr;</span>
       </a>
 
-      <a class="rally-card" href="buaa-talk/">
-        <div class="rally-header">
-          <span class="rally-date">MAY 7</span>
-          <span class="rally-venue">北京航空航天大学</span>
+      <a class="talk-card" href="itp-talk/">
+        <div class="talk-header">
+          <span class="talk-date">MAY 9</span>
+          <span class="talk-venue">中国科学院理论物理研究所</span>
         </div>
-        <div class="rally-body">
-          <div class="rally-title">Vibe Research 在直接核反应理论中的实战</div>
-          <div class="rally-desc">
-            Taking the rally to Beihang — top aerospace school, very smart people, the best engineers. Same DBMM, same CDCC emulator, same tremendous workflow. Two days in a row. Nobody runs back-to-back rallies like this. Nobody.
+        <div class="talk-body">
+          <div class="talk-title">Vibe Research 在直接核反应理论中的实战</div>
+          <div class="talk-desc">
+            面向理论物理所。DBMM、CDCC 代理模型，以及把它们串起来的完整 LLM 辅助工作流。
           </div>
-          <div class="rally-tags">
-            <span class="rally-tag">Nuclear Physics</span>
-            <span class="rally-tag">LLM</span>
-            <span class="rally-tag">Vibe Research</span>
+          <div class="talk-tags">
+            <span class="talk-tag">Nuclear Physics</span>
+            <span class="talk-tag">LLM</span>
+            <span class="talk-tag">Vibe Research</span>
           </div>
         </div>
-        <span class="rally-cta">View Slides &rarr;</span>
+        <span class="talk-cta">View Slides &rarr;</span>
       </a>
 
-      <a class="rally-card" href="401-talk/">
-        <div class="rally-header">
-          <span class="rally-date">MAY 6</span>
-          <span class="rally-venue">中国原子能科学研究院</span>
+      <a class="talk-card" href="pku-talk/">
+        <div class="talk-header">
+          <span class="talk-date">MAY 8</span>
+          <span class="talk-venue">北京大学物理学院</span>
         </div>
-        <div class="rally-body">
-          <div class="rally-title">Vibe Research 在直接核反应理论中的实战</div>
-          <div class="rally-desc">
-            Bringing the rally to CIAE — China's nuclear flagship since 1950. Same DBMM. Same CDCC emulator. Same tremendous workflow. The reactor crowd is gonna love it. Believe me.
+        <div class="talk-body">
+          <div class="talk-title">Vibe Research 在直接核反应理论中的实战</div>
+          <div class="talk-desc">
+            面向北大物理学院。DBMM、CDCC 代理模型，以及完整的 LLM 辅助研究工作流。
           </div>
-          <div class="rally-tags">
-            <span class="rally-tag">Nuclear Physics</span>
-            <span class="rally-tag">LLM</span>
-            <span class="rally-tag">Vibe Research</span>
+          <div class="talk-tags">
+            <span class="talk-tag">Nuclear Physics</span>
+            <span class="talk-tag">LLM</span>
+            <span class="talk-tag">Vibe Research</span>
           </div>
         </div>
-        <span class="rally-cta">View Slides &rarr;</span>
+        <span class="talk-cta">View Slides &rarr;</span>
       </a>
 
-      <a class="rally-card" href="ahu-talk/">
-        <div class="rally-header">
-          <span class="rally-date">APR 25</span>
-          <span class="rally-venue">安徽大学 · 核物理报告会</span>
+      <a class="talk-card" href="buaa-talk/">
+        <div class="talk-header">
+          <span class="talk-date">MAY 7</span>
+          <span class="talk-venue">北京航空航天大学</span>
         </div>
-        <div class="rally-body">
-          <div class="rally-title">Vibe Research 在直接核反应理论中的实战</div>
-          <div class="rally-desc">
-            Bringing the tour to Anhui University. Same direct reactions. Same tremendous workflow. Kami editorial style — warm parchment, ink blue, very classy. Nobody does slides like we do.
+        <div class="talk-body">
+          <div class="talk-title">Vibe Research 在直接核反应理论中的实战</div>
+          <div class="talk-desc">
+            面向北航。DBMM、CDCC 代理模型，以及完整的 LLM 辅助研究工作流。
           </div>
-          <div class="rally-tags">
-            <span class="rally-tag">Nuclear Physics</span>
-            <span class="rally-tag">LLM</span>
-            <span class="rally-tag">Vibe Research</span>
+          <div class="talk-tags">
+            <span class="talk-tag">Nuclear Physics</span>
+            <span class="talk-tag">LLM</span>
+            <span class="talk-tag">Vibe Research</span>
           </div>
         </div>
-        <span class="rally-cta">View Slides &rarr;</span>
+        <span class="talk-cta">View Slides &rarr;</span>
       </a>
 
-      <a class="rally-card" href="jiangtao-talk/">
-        <div class="rally-header">
-          <span class="rally-date">APR 23</span>
-          <span class="rally-venue">同济大学 · 江涛组</span>
+      <a class="talk-card" href="401-talk/">
+        <div class="talk-header">
+          <span class="talk-date">MAY 6</span>
+          <span class="talk-venue">中国原子能科学研究院</span>
         </div>
-        <div class="rally-body">
-          <div class="rally-title">Vibe Research：把"做完"的时间还给研究者</div>
-          <div class="rally-desc">
-            Tailored for an experimental nano-optics group. s-SNOM pipelines. Pump-probe global fits. FDTD sweeps. Same framework, different workflow. Tremendous.
+        <div class="talk-body">
+          <div class="talk-title">Vibe Research 在直接核反应理论中的实战</div>
+          <div class="talk-desc">
+            面向原子能院 (CIAE)。DBMM、CDCC 代理模型，直接反应理论里的 vibe research。
           </div>
-          <div class="rally-tags">
-            <span class="rally-tag">Nano-Optics</span>
-            <span class="rally-tag">Experiment</span>
-            <span class="rally-tag">LLM</span>
+          <div class="talk-tags">
+            <span class="talk-tag">Nuclear Physics</span>
+            <span class="talk-tag">LLM</span>
+            <span class="talk-tag">Vibe Research</span>
           </div>
         </div>
-        <span class="rally-cta">View Slides &rarr;</span>
+        <span class="talk-cta">View Slides &rarr;</span>
       </a>
 
-      <a class="rally-card" href="ipoe-talk/">
-        <div class="rally-header">
-          <span class="rally-date">JUN 9</span>
-          <span class="rally-venue">同济大学 · 精密光学工程技术研究所</span>
+      <a class="talk-card" href="ahu-talk/">
+        <div class="talk-header">
+          <span class="talk-date">APR 25</span>
+          <span class="talk-venue">安徽大学 · 核物理报告会</span>
         </div>
-        <div class="rally-body">
-          <div class="rally-title">Vibe Research：把"做完"的时间还给研究者</div>
-          <div class="rally-desc">
-            Tailored for a precision optical engineering institute. s-SNOM pipelines. Pump-probe global fits. FDTD sweeps. Same framework, different workflow. Tremendous.
+        <div class="talk-body">
+          <div class="talk-title">Vibe Research 在直接核反应理论中的实战</div>
+          <div class="talk-desc">
+            安徽大学核物理报告会。同一套直接反应工作流，换上 Kami 编辑风格：暖色羊皮纸、墨蓝主调。
           </div>
-          <div class="rally-tags">
-            <span class="rally-tag">Optics</span>
-            <span class="rally-tag">Experiment</span>
-            <span class="rally-tag">LLM</span>
+          <div class="talk-tags">
+            <span class="talk-tag">Nuclear Physics</span>
+            <span class="talk-tag">LLM</span>
+            <span class="talk-tag">Vibe Research</span>
           </div>
         </div>
-        <span class="rally-cta">View Slides &rarr;</span>
+        <span class="talk-cta">View Slides &rarr;</span>
       </a>
 
-      <a class="rally-card" href="ustc-talk/">
-        <div class="rally-header">
-          <span class="rally-date">APR 24</span>
-          <span class="rally-venue">中国科学技术大学</span>
+      <a class="talk-card" href="ustc-talk/">
+        <div class="talk-header">
+          <span class="talk-date">APR 24</span>
+          <span class="talk-venue">中国科学技术大学</span>
         </div>
-        <div class="rally-body">
-          <div class="rally-title">Vibe Research：大语言模型时代的理论物理研究工作流</div>
-          <div class="rally-desc">
-            Cross-community version. From nuclear reactions to quantum information. Four prerequisites. One framework. We're bringing the message to USTC.
+        <div class="talk-body">
+          <div class="talk-title">Vibe Research：大语言模型时代的理论物理研究工作流</div>
+          <div class="talk-desc">
+            跨方向版本。从核反应到量子信息：四个前提，一套框架。
           </div>
-          <div class="rally-tags">
-            <span class="rally-tag">Quantum Information</span>
-            <span class="rally-tag">LLM</span>
-            <span class="rally-tag">Cross-Community</span>
+          <div class="talk-tags">
+            <span class="talk-tag">Quantum Information</span>
+            <span class="talk-tag">LLM</span>
+            <span class="talk-tag">Cross-Community</span>
           </div>
         </div>
-        <span class="rally-cta">View Slides &rarr;</span>
+        <span class="talk-cta">View Slides &rarr;</span>
       </a>
 
-      <a class="rally-card" href="fudan-talk/">
-        <div class="rally-header">
-          <span class="rally-date">APR 21</span>
-          <span class="rally-venue">复旦大学</span>
+      <a class="talk-card" href="jiangtao-talk/">
+        <div class="talk-header">
+          <span class="talk-date">APR 23</span>
+          <span class="talk-venue">同济大学 · 江涛组</span>
         </div>
-        <div class="rally-body">
-          <div class="rally-title">Vibe Research 在直接核反应理论中的实战</div>
-          <div class="rally-desc">
-            四天 vs 三个月. LLM-assisted research in direct nuclear reactions. DBMM and CDCC emulator. Tremendous speedup. The best speedup.
+        <div class="talk-body">
+          <div class="talk-title">Vibe Research：把"做完"的时间还给研究者</div>
+          <div class="talk-desc">
+            为实验纳米光学组定制。s-SNOM 数据流程、泵浦探测全局拟合、FDTD 参数扫描，同一套框架，换一种工作流。
           </div>
-          <div class="rally-tags">
-            <span class="rally-tag">Nuclear Physics</span>
-            <span class="rally-tag">LLM</span>
-            <span class="rally-tag">Vibe Research</span>
+          <div class="talk-tags">
+            <span class="talk-tag">Nano-Optics</span>
+            <span class="talk-tag">Experiment</span>
+            <span class="talk-tag">LLM</span>
           </div>
         </div>
-        <span class="rally-cta">View Slides &rarr;</span>
+        <span class="talk-cta">View Slides &rarr;</span>
       </a>
 
-      <a class="rally-card" href="sjtu-talk/">
-        <div class="rally-header">
-          <span class="rally-date">APR 20</span>
-          <span class="rally-venue">上海交通大学</span>
+      <a class="talk-card" href="fudan-talk/">
+        <div class="talk-header">
+          <span class="talk-date">APR 21</span>
+          <span class="talk-venue">复旦大学</span>
         </div>
-        <div class="rally-body">
-          <div class="rally-title">Vibe Research 在直接核反应理论中的实战</div>
-          <div class="rally-desc">
-            Same tremendous talk, different tremendous venue. We're bringing the message to every campus. EVERY campus.
+        <div class="talk-body">
+          <div class="talk-title">Vibe Research 在直接核反应理论中的实战</div>
+          <div class="talk-desc">
+            四天 vs 三个月。直接核反应理论中的 LLM 辅助研究：DBMM 与 CDCC 代理模型。
           </div>
-          <div class="rally-tags">
-            <span class="rally-tag">Nuclear Physics</span>
-            <span class="rally-tag">LLM</span>
-            <span class="rally-tag">Vibe Research</span>
+          <div class="talk-tags">
+            <span class="talk-tag">Nuclear Physics</span>
+            <span class="talk-tag">LLM</span>
+            <span class="talk-tag">Vibe Research</span>
           </div>
         </div>
-        <span class="rally-cta">View Slides &rarr;</span>
+        <span class="talk-cta">View Slides &rarr;</span>
       </a>
 
-      <a class="rally-card" href="ruichang26-talk/">
-        <div class="rally-header">
-          <span class="rally-date">MAR 30</span>
-          <span class="rally-venue">第十九届全国核物理大会</span>
+      <a class="talk-card" href="sjtu-talk/">
+        <div class="talk-header">
+          <span class="talk-date">APR 20</span>
+          <span class="talk-venue">上海交通大学</span>
         </div>
-        <div class="rally-body">
-          <div class="rally-title">核反应研究中的代理模型</div>
-          <div class="rally-desc">
-            Surrogate models for nuclear reaction studies. From emulators to neural networks. Fast. Accurate. Beautiful. Nobody does emulators like we do.
+        <div class="talk-body">
+          <div class="talk-title">Vibe Research 在直接核反应理论中的实战</div>
+          <div class="talk-desc">
+            与复旦同款内容，不同场地。
           </div>
-          <div class="rally-tags">
-            <span class="rally-tag">Nuclear Physics</span>
-            <span class="rally-tag">Surrogate Model</span>
-            <span class="rally-tag">Emulator</span>
+          <div class="talk-tags">
+            <span class="talk-tag">Nuclear Physics</span>
+            <span class="talk-tag">LLM</span>
+            <span class="talk-tag">Vibe Research</span>
           </div>
         </div>
-        <span class="rally-cta">View Slides &rarr;</span>
+        <span class="talk-cta">View Slides &rarr;</span>
+      </a>
+
+      <a class="talk-card" href="ruichang26-talk/">
+        <div class="talk-header">
+          <span class="talk-date">MAR 30</span>
+          <span class="talk-venue">第十九届全国核物理大会</span>
+        </div>
+        <div class="talk-body">
+          <div class="talk-title">核反应研究中的代理模型</div>
+          <div class="talk-desc">
+            核反应研究中的代理模型：从 emulator 到神经网络，又快又准。
+          </div>
+          <div class="talk-tags">
+            <span class="talk-tag">Nuclear Physics</span>
+            <span class="talk-tag">Surrogate Model</span>
+            <span class="talk-tag">Emulator</span>
+          </div>
+        </div>
+        <span class="talk-cta">View Slides &rarr;</span>
       </a>
 
     </div>
   </section>
 
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <span>16 papers in 4 months. SIXTEEN. Nobody writes papers like this.</span>
-      <span>They said direct reactions were dead. WRONG. So wrong.</span>
-      <span>Claude Code + Expert Filter = Tremendous results. The best results.</span>
-      <span>CDCC emulator: 37 channels, 18 parameters, 4 days. A record.</span>
-      <span>Some people use GPT-4. We use Claude. Much better. Believe me.</span>
-      <span>Vibe Research is the future. They'll all be doing it. Watch.</span>
-      <span>DBMM: Beautiful boundary matching. Nobody matches boundaries like us.</span>
-      <span>Optical potentials are complex. Tremendously complex. Both parts beautiful.</span>
-    </div>
-  </div>
-
   <footer>
     <div class="site">jinleiphys.github.io/talks</div>
-    <div class="disclaimer">
-      This is a collection of academic talks on nuclear reaction theory. The reactions are very real, very direct, and very great. Powered by Slidev &amp; GitHub Pages.
-    </div>
+    <div>同济大学物理系核反应理论组 &middot; Powered by Slidev &amp; GitHub Pages</div>
   </footer>
 
 </body>
