@@ -2430,7 +2430,58 @@ Central message: 主动交代四个真实局限（浅读丢细节、概念分裂
 讲点：在座懂行的人多，这些坑与其被问出来不如自己讲。每条都是我真踩过的："no summary available" 那批条目现在还在库里；概念分裂靠 lint 收拾；单源标记是我跨模型工作流的硬规矩。落点还是那句：像管学生，不像用魔法。
 
 Time target: 35:00-36:30
-过渡：毛病也交代完了，收个尾。
+过渡：毛病也交代完了，但还有个绕不开的问题：这么用，期刊认吗？
+-->
+
+---
+layout: default
+---
+
+# <span style="color: var(--ink-blue)">●</span> 这么用，期刊认吗？APS 刚给了答案
+## APS 期刊 AI 新政　·　2026 年 6 月 17 日（三天前）
+
+<v-clicks>
+
+<div class="box-idea mt-2 text-sm">
+<span class="takeaway">转向：</span>旧政策只许 AI 做"润色、精简、轻度编辑"；<strong>新政策允许实质性使用</strong>——文献综合、数据分析、科学推理、图表生成、代码、翻译——<strong>条件是披露</strong>。
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-3 text-sm">
+
+<div class="kami-card-accent">
+<strong style="color: var(--ink-blue)">作者（Authors）</strong>
+<ul class="mt-1" style="line-height:1.5">
+<li>AI 不能当作者；准确性、责任<strong>全在人</strong></li>
+<li>实质性使用须披露：<strong>工具名 + 版本、如何协助、如何指导与核验</strong></li>
+<li>图表由 AI 生成 → 在图注里说明并自验</li>
+<li>纯语言润色不必披露</li>
+</ul>
+</div>
+
+<div class="kami-card-accent">
+<strong style="color: var(--color-evidence)">审稿人（Reviewers）</strong>
+<ul class="mt-1" style="line-height:1.5">
+<li>可用 AI 理顺思路、改语气、翻译</li>
+<li><strong>禁止把稿件/报告上传到不受限的 AI 工具</strong>（保密：作者未同意未发表工作进训练集）</li>
+<li>超出轻度编辑须在给编辑的note里披露</li>
+</ul>
+</div>
+
+</div>
+
+<div class="box-evidence mt-3 text-sm">
+<span class="takeaway">落点：</span>今天这套工作流，正好踩在新政策的三条线内——<strong>人负责、要披露、护保密</strong>。Vibe Research 不是灰色地带，是被官方写进规范的做法。
+</div>
+
+</v-clicks>
+
+<!--
+Central message: 用 APS 2026-06-17 新政为整套 AI 工作流背书——实质性使用被明确允许，边界是披露+问责+保密，正好对上我前面演示的做法。
+
+讲点：这是三天前的新闻，时间点正好。旧政策只让 AI 润色，新政策放开到文献综合、数据分析、推理、图表、代码、翻译，前提是披露三件事：工具名版本、怎么帮的、怎么核验的。作者侧：AI 不能署名、责任全在人；审稿侧最硬的一条——不能把别人未发表的稿子喂给不受限的 AI，这是保密红线，我自己跨模型验证时也守这条。结论：在座要投 PRC/PRL 的，这条路是被写进规范的，不是钻空子。
+
+Time target: 36:30-37:30
+过渡：规范有了，收个尾。
 -->
 
 ---
