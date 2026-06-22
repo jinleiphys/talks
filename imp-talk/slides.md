@@ -35,7 +35,7 @@ LLM-Assisted Research in Low-Energy Nuclear Theory
 </div>
 
 <div class="abs-bl m-6 text-xs" style="color: var(--stone); max-width: 420px; text-align: left; line-height: 1.5;">
-Dec 2025 – Apr 2026 · 16 papers · 11 on arXiv · 3 published in Phys. Rev. C + 1 published in Phys. Lett. B + 2 accepted in Phys. Rev. C
+Dec 2025 – Apr 2026 · 16 papers · 11 on arXiv · 4 published in Phys. Rev. C + 1 published in Phys. Lett. B + 1 accepted in Phys. Rev. C
 </div>
 
 <div class="abs-br m-6 text-xs" style="color: var(--color-gap); max-width: 320px; text-align: right; line-height: 1.55;">
@@ -2589,7 +2589,7 @@ layout: default
 | 3 | 2512.17687 | 2025-12-19 | Reduced basis emulator for CDCC | Jin Lei ⭐ PRC 113, 044610 |
 | 4 | 2512.22500 | 2025-12-27 | BiLNN Global Nucleon-Nucleus Optical Model | Jin Lei ⭐ PRC 已接收 |
 | 5 | 2601.08245 | 2026-01-13 | Coherent Absorption Dynamics | Liu, Jin Lei, Ren ⭐ PRC 113, 054601 |
-| 6 | 2602.04553 | 2026-02-04 | Exterior Complex Scaling PINN for scattering | Jin Lei ⭐ PRC 已接收 |
+| 6 | 2602.04553 | 2026-02-04 | Exterior Complex Scaling PINN for scattering | Jin Lei ⭐ PRC 113, 064618 |
 | 7 | 2602.12690 | 2026-02-13 | Dynamical Origin of Quenching (Knockout) | Jin Lei |
 | 8 | 2603.24253 | 2026-03-25 | Deletion Does Not Measure (CC Dynamics) | Jin Lei, Liu |
 | 9 | 2604.00471 | 2026-04-01 | Exact CC Green Function | Liu, Jin Lei, Ren |
@@ -2604,7 +2604,7 @@ layout: default
 </div>
 
 <div class="mt-4 text-sm" style="color: var(--pencil-brown);">
-2025 年 12 月至 2026 年 4 月. 11 篇上 arXiv, 其中 3 篇已发表于 PRC、1 篇已发表于 PLB、2 篇 PRC 已接收; 另有 1 篇已投稿, 4 篇准备中. Solo × 9, 同济本地组 × 5, w/ Furnstahl × 2, w/ Hu+Phillips+Furnstahl × 1 (重叠计).
+2025 年 12 月至 2026 年 4 月. 11 篇上 arXiv, 其中 4 篇已发表于 PRC、1 篇已发表于 PLB、1 篇 PRC 已接收; 另有 1 篇已投稿, 4 篇准备中. Solo × 9, 同济本地组 × 5, w/ Furnstahl × 2, w/ Hu+Phillips+Furnstahl × 1 (重叠计).
 </div>
 
 ---
