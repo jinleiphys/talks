@@ -142,7 +142,7 @@ layout: default
 ## Make him read until he has a map of the field
 
 <div class="text-base mt-1" style="color: var(--olive)">
-好导师都这样干：让学生精读经典、跟踪前沿，脑子里建一张领域地图。
+好导师都这样干：让学生精读经典、跟踪前沿，脑子里建一张领域地图；再给他办张图书馆借书证。
 </div>
 
 <div class="grid gap-5 mt-3" style="grid-template-columns: 3fr 2fr;">
@@ -159,8 +159,12 @@ layout: default
 <strong>培养好：</strong>每读一篇，就把它写进对应的概念页。三年下来，每个方法 / 体系页，都是一篇<strong>自动长出来的小综述</strong>。
 </div>
 
+<div class="kami-card mt-3" style="border-left: 3px solid var(--ink-blue);">
+<strong>再办张借书证：</strong>读过的进 wiki 是他的本事；<strong>没读过</strong>的，让他去全领域语料（~6.2 万篇 nucl-th 全文）里查，投稿前扫一遍漏引。
+</div>
+
 <div class="box-idea mt-3">
-<span class="takeaway">科研收益：</span>一句"谁做过 X""我读过的谁和谁矛盾"，答案早就攒好了。
+<span class="takeaway">科研收益：</span>"谁做过 X""我读过的谁和谁矛盾"答案早就攒好了；<strong>写作不漏引</strong>，连没读过、该引的也兜得住。
 </div>
 
 </v-clicks>
@@ -188,13 +192,13 @@ layout: default
 </div>
 
 <div class="mt-2 text-center">
-<span class="tag">571 篇精读</span> &nbsp; <span class="tag">365 实体页</span> &nbsp; <span class="tag">195 方法页</span> &nbsp; <a href="graph.html" target="_blank" class="tag" style="border-bottom: none;">点开看图谱 ↗ 1425 节点 · 6432 链接</a>
+<span class="tag">571 篇精读</span> &nbsp; <span class="tag">365 实体页</span> &nbsp; <span class="tag">195 方法页</span> &nbsp; <span class="tag">6.2万篇全文可查</span> &nbsp; <a href="graph.html" target="_blank" class="tag" style="border-bottom: none;">点开看图谱 ↗ 1425 节点 · 6432 链接</a>
 </div>
 
 <!--
-Central message: 像要求学生建立领域地图一样，知识库把每篇论文写进概念页，使领域综述随阅读自动累积。
+Central message: 像要求学生建立领域地图一样，知识库把每篇论文写进概念页，使领域综述随阅读自动累积；再加一张"借书证"——全领域全文语料——补上没读过、该引的。
 
-讲点：571 篇精读不是躺在 571 个 PDF 里，而是沉淀成 365 个实体页、195 个方法页。我真有一个 debates 页记着 post-prior 那个三十年的争论。好学生和复读机的区别：好学生读完会更新他的领域认知，RAG 读完什么都没留下。
+讲点：571 篇精读不是躺在 571 个 PDF 里，而是沉淀成 365 个实体页、195 个方法页。我真有一个 debates 页记着 post-prior 那个三十年的争论。好学生和复读机的区别：好学生读完会更新他的领域认知，RAG 读完什么都没留下。读文献还有另一半：培养沉淀的是"他读过的"，可写作不漏引还得管"他没读过、但该引的"。所以我还给他办了张图书馆借书证——一层本地全领域全文语料（~6.2 万篇 nucl-th arXiv），投稿前拿关键词、方法名去全领域扫一遍漏引。读过的是他的本事，没读过的是书库的存货，两样都要。（细节：三层栈见 backup。）
 
 现场演示：点"点开看图谱"那个链接，新标签页打开真实的 wiki 关系图谱（1301 节点 · 5814 链接），可以搜索、拖拽、点节点看摘要，给大家看这个"学生的脑子"长什么样，看完关掉标签页回到 slides。
 
@@ -1040,7 +1044,7 @@ layout: default
 </v-click>
 
 <div class="abs-br m-4 text-xs" style="color: var(--stone);">
-上手：A. Karpathy "LLM Wiki" (gist) · 我的 literature-wiki / research-profile 技能
+上手：A. Karpathy "LLM Wiki" (gist) · 我的技能已开源 <a href="https://github.com/jinleiphys/research_LLM_wiki" target="_blank" style="color: var(--ink-blue);">github.com/jinleiphys/research_LLM_wiki</a>
 </div>
 
 <!--
@@ -1254,10 +1258,14 @@ class: text-center
 
 </div>
 
-<div class="flex justify-center gap-12 mt-5">
+<div class="flex justify-center gap-10 mt-5">
 <div class="text-center">
 <img src="./figures/qr-gist.png" style="width: 5.2rem; margin: 0 auto;" />
 <div class="text-xs mt-1" style="color: var(--olive);">Karpathy "LLM Wiki" gist</div>
+</div>
+<div class="text-center">
+<img src="./figures/qr-repo.png" style="width: 5.2rem; margin: 0 auto;" />
+<div class="text-xs mt-1" style="color: var(--olive);">我的技能已开源<br>research_LLM_wiki</div>
 </div>
 <div class="text-center">
 <img src="./figures/qr-talk.png" style="width: 5.2rem; margin: 0 auto;" />
@@ -1337,4 +1345,64 @@ layout: default
 
 <!--
 Backup：回答"具体用什么工具""怎么保证可靠"。知识库与具体 agent 解耦，多个"老师"可以共用同一个"学生"、互相验证。
+-->
+
+---
+layout: default
+---
+
+# Backup: 只靠读过的几百篇，会不会漏引？
+
+<div class="text-base mt-1" style="color: var(--olive)">
+wiki 只知道你读过的（571 篇）。该引、但你没读过的怎么办？
+</div>
+
+<div class="grid gap-6 mt-3" style="grid-template-columns: 3fr 2fr;">
+
+<div>
+
+<v-clicks>
+
+<div class="box-gap">
+<strong>缺口：</strong>"一篇不漏"只覆盖读过的。真正危险的是<strong>你根本没读、却该引</strong>的那篇。
+</div>
+
+<div class="box-evidence mt-3">
+<strong>兜底：</strong>再垫一层<strong>本地全文语料</strong>（~6.2 万篇 nucl-th arXiv 全文，离线、按篇零 token 机械构建）。投稿前拿稿子里的关键词、方法名去全领域<strong>词法扫一遍漏引</strong>，不只扫读过的。
+</div>
+
+<div class="box-idea mt-3">
+<span class="takeaway">本地扫不到 ≠ 没人做过：</span>语料只有 nucl-th、只按字面匹配，命中"存在"、落空要升级到在线检索再下结论。
+</div>
+
+</v-clicks>
+
+</div>
+
+<div>
+
+<v-click>
+
+<div class="kami-card">
+<strong>文献三层栈</strong>
+<div class="mt-2 text-sm" style="line-height:1.8">
+① <strong>发现</strong>　在线<br>
+&nbsp;&nbsp;<span style="color: var(--olive)">INSPIRE / arXiv，全世界</span><br>
+② <strong>全文语料</strong>　本地<br>
+&nbsp;&nbsp;<span style="color: var(--olive)">~6.2 万篇，穷尽、可 grep</span><br>
+③ <strong>综合</strong>　读过的<br>
+&nbsp;&nbsp;<span style="color: var(--olive)">wiki，几百篇，已消化</span>
+</div>
+</div>
+
+<div class="fig-caption">literature-corpus 是 wiki 底下的批量层</div>
+
+</v-click>
+
+</div>
+
+</div>
+
+<!--
+Backup：回答"你只靠读过的几百篇，会不会漏引你没读过的？"。literature-corpus 是三层栈最底下的批量词法层，本地 6.2 万篇 nucl-th 全文，机械构建、零 token，投稿前做全领域漏引扫描。强调它不属于"培养"（机械灌入，不是带出来的），所以放 backup 不进主线；本地落空不等于新颖，要升级到在线检索。
 -->
