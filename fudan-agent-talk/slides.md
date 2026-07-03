@@ -511,64 +511,21 @@ Central message: 同一个模型，带不带知识库的回答天差地别，证
 讲点：左边不是贬低模型，它说的都对，但都是教科书，跟"我"无关，而且追问引用容易编。右边的回答来自我库里真实的一条：DREAM 贝叶斯校准发现 d+58Ni 数据要求氘核表面吸收比 KD 高约 36%，出处直接指向 source 笔记。重音：模型相同，差别全在上下文。
 
 Time target: 16:00-17:30
-过渡：静态的对比看完了，再看动起来的：一句真实指令，让他写一篇综述（录屏）。
+过渡：对比看完了，再看一个实战成品：一句话指令，他交回来一篇综述初稿。
 -->
 
 ---
 layout: default
 ---
 
-<div class="ui-label">实战演示 · LIVE DEMO</div>
+<div class="ui-label">实战演示 · ONE PROMPT</div>
 
-# <span style="color: var(--color-evidence)">●</span> 一句话，让"学生"写出一篇综述
-## review-writing in action
+# <span style="color: var(--color-evidence)">●</span> 一句话指令，交回一篇 14 页综述初稿
+## One prompt in, a 14-page review draft out
 
-<div class="grid gap-5" style="grid-template-columns: 3fr 2fr;">
-
-<div>
-
-<video controls class="kami-img" style="height: auto; width: 100%; max-height: 21rem; object-fit: contain;" src="./figures/review-writing-demo.mp4"></video>
-
-<div class="fig-caption">真实录屏：调用 review-writing 技能，agent 自动起草一篇综述</div>
-
+<div class="kami-card mt-2 text-sm">
+<strong>指令就一句：</strong>"写一篇三体核反应的综述。" 它<strong>先查我的文献库</strong>，框定论点、定好该引谁，再补检索，最后成文。
 </div>
-
-<div class="flex flex-col justify-center">
-
-<v-clicks>
-
-<div class="box-evidence">
-<strong>它先查我的文献库</strong>，框定论点、定好该引谁，再补检索，最后成文。我读过的相关文献<strong>一篇不漏</strong>。
-</div>
-
-<div class="box-idea mt-3">
-<span class="takeaway">这就是"出师"：</span>你给一句指令，培养好的"学生"交回一篇初稿。
-</div>
-
-</v-clicks>
-
-</div>
-
-</div>
-
-<!--
-Central message: 一段真实录屏证明，培养好的 agent 调用 review-writing 技能，能先查文献库再自动起草一篇不漏引的综述。
-
-讲点：这段视频是现场实拍，不是演示文稿。注意它的动作顺序：先去翻我的文献库，把该引的、我读过的先列出来，再补检索，最后成文。这正好印证前面所有的层：文献库出综述素材，技能管写作流程，身份层定我的标准。讲的时候可以暂停，指出它在查哪些概念页。
-
-视频时长约 3 分钟，现场按需播放片段即可。
-
-Time target: 17:30-19:30
-过渡：那它最后交出来的成品长什么样？就在这里，可以直接翻。
--->
-
----
-layout: default
----
-
-<div class="ui-label">实战演示 · 成品 OUTPUT</div>
-
-# <span style="color: var(--color-evidence)">●</span> 它交出来的成品：一篇 14 页综述初稿
 
 <div class="grid grid-cols-7 gap-2 mt-2">
 <img src="./figures/review-pages/p-01.png" class="review-thumb" />
@@ -592,55 +549,18 @@ layout: default
 <v-click>
 
 <div class="box-evidence mt-3">
-<span class="takeaway">关键：</span>结构、论点、引用骨架都搭好了；引文只从我<strong>已入库</strong>的论文里取，库里没有的就标出来或再补查，不硬编。这是初稿，物理判断和润色还得我自己来。
+<span class="takeaway">关键：</span>结构、论点、引用骨架都搭好了；引文只从我<strong>已入库</strong>的论文里取，我读过的相关文献<strong>一篇不漏</strong>，库里没有的就标出来或再补查，不硬编。这是初稿，物理判断和润色还得我自己来。
 </div>
 
 </v-click>
 
 <!--
-Central message: 演示产出的是一份铺满全宽、14 页的综述初稿，引用受限于已入库论文，输出可追溯、不硬编，而非模型臆造。
+Central message: 一句话指令，培养好的 agent 先查文献库再成文，交回一篇 14 页、引用可追溯的综述初稿，这就是"出师"。
 
-讲点：这就是上一页那段录屏的产出物，我把 14 页直接铺出来给大家看个规模。强调一点：引文不是模型随口编的，我要求它只从我读过、已入库的论文里取，库里没有的就标出来或再补查。这正是知识库相对裸用大模型最大的差别，输出可追溯。当然这是初稿，物理判断和润色还得我自己来，但它把最累的搭架子和铺引用做完了。现场想细看，可以点"打开完整 PDF"。
+讲点：这是真实产出，不是摆拍，14 页直接铺出来给大家看个规模。它的动作顺序：先翻我的文献库，把该引的、我读过的列出来，再补检索，最后成文。强调一点：引文不是模型随口编的，只从已入库的论文里取，库里没有的标出来或再补查，输出可追溯，这是知识库相对裸用大模型最大的差别。当然这是初稿，物理判断和润色还得我自己来，但最累的搭架子和铺引用它做完了。现场想细看，可以点"打开完整 PDF"。
 
-Time target: 19:30-20:30
-过渡：把这五步的收益归到一张表上。
--->
-
----
-layout: default
----
-
-# <span style="color: var(--ink-blue)">●</span> 一个好研究生需要什么，知识库就给什么
-## What a good student needs, the knowledge base provides
-
-<div class="mt-2">
-
-| 一个好研究生需要 | 知识库对应 | 对科研的帮助 |
-|---|---|---|
-| 读文献、建全景 | 概念页 / debates | 综述自动累积，随时可查 |
-| 知道方向和标准 | 常驻身份 profile | 开口进入工作状态 |
-| 一套做事方法 | 技能 skills | agent 自己按流程维护 |
-| 挨批能改、记得住 | 记忆 memory | 不重复犯错，越用越像你 |
-| 记录、不踩坑 | 失败库 / 想法库 | 开题不重复劳动 |
-| 出师、能传承 | 复利闭环 + git | 写作不漏引，攒下的家底带得走 |
-
-</div>
-
-<v-click>
-
-<div class="text-center mt-3 text-lg" style="color: var(--ink-blue);">
-一处培养，<strong>处处受益</strong>：同一个"学生"，喂饱了读、想、写、协作全流程。
-</div>
-
-</v-click>
-
-<!--
-Central message: 好研究生的每一项素质都对应知识库的一个部分，并转化为读、想、写、协作各环节的具体科研收益。
-
-讲点：这张表把比喻和收益钉在一起。重点是这些收益来自同一个库，你只培养一次，它喂饱所有环节，这就是复利。第一幕到此结束。
-
-Time target: 20:30-21:30
-过渡：很多人会好奇，这个"学生的脑子"到底怎么搭的？第二幕揭开盖子。
+Time target: 17:30-18:30
+过渡：第一幕到这里。很多人会好奇，这个"学生的脑子"到底怎么搭的？第二幕揭开盖子。
 -->
 
 ---
@@ -698,7 +618,7 @@ Central message: 用一个持久、可增量维护、能复利的 wiki 取代无
 
 讲点：诚实交代思想来源。核心区别就一句：RAG 是查询时才检索，wiki 是整理一次、持续更新。这个范式 Karpathy 在他的 LLM Wiki gist 里讲得很清楚，我在他基础上做成了一个科研系统。
 
-Time target: 21:30-23:30
+Time target: 18:45-20:00
 过渡：那这个 wiki，针对科研我拆成了五层，正好对应第一幕的五步。
 -->
 
@@ -719,305 +639,25 @@ layout: default
 
 </div>
 
-<div v-click class="mt-4 text-center">
+<div v-click class="mt-3 text-center">
 <span class="tag">1425 文献笔记</span> &nbsp; <span class="tag">571 篇精读</span> &nbsp; <span class="tag">97 篇个人档案</span> &nbsp; <span class="tag">38 位合作者</span>
 </div>
 
-<!--
-Central message: 第一幕的五个培养步骤，在实现上对应知识库的五层架构，下面逐层拆开。
-
-讲点：这是连接两幕的桥。左边的层号，右边标着它实现的是哪一步。底部数字是我两个 wiki 的真实规模。接下来五页，一层一层看实现。
-
-Time target: 23:30-24:30
-过渡：从最底下的载体讲起：为什么是纯文本。
--->
-
----
-layout: default
----
-
-# <span style="color: var(--ink-blue)">●</span> L1　纯文本 + 链接：人和 agent 读同一份文件
-## Plain text and links, not an app
-
-<div class="grid gap-6" style="grid-template-columns: 2fr 3fr;">
-
-<div class="text-base">
-
-<v-clicks>
-
-- **人可读**：Obsidian 里是一张可点击的知识图谱
-- **Agent 可读**：纯文件，`grep` / `read` 直接拿
-- **可 diff**：git 记录每次改了什么，能回滚
-- **不绑平台**：纯文本，二十年后还能打开
+<v-click>
 
 <div class="box-evidence mt-3">
-<span class="takeaway">要点：</span>选纯文本，就是为了让人和 agent 读的<strong>是同一份文件</strong>，不搞两套数据。
-</div>
-
-</v-clicks>
-
-</div>
-
-<div>
-
-```text
-research-wiki-personal/
-├── profile.md         # L2 常驻身份层
-├── projects/          # active / paused / done
-├── papers/            # 97
-├── ideas/             # promising / killed
-├── failures/          # 死路登记
-├── methods-mine/      # 自有代码 (8)
-├── collaborators/     # 38
-└── index/             # by-topic / method ...
-```
-
-<div class="fig-caption">同一份目录：我在 Obsidian 浏览，agent 用文件系统读写</div>
-
-</div>
-
-</div>
-
-<!--
-Central message: 纯文本加链接加 git，让人和 agent 共享同一份能改、不被锁死的东西。
-
-讲点：为什么不是 Notion、不是数据库？那些是给人的 UI 优化的，agent 抓不到。纯 Markdown，对人是图谱，对 agent 是一次 read，对 git 是一个 diff，三方看同一个字节。
-
-Time target: 24:30-26:00
-过渡：载体之上，第一块常驻内容是身份层。
--->
-
----
-layout: default
----
-
-# <span style="color: var(--ink-blue)">●</span> L2　常驻身份：profile.md 每次对话第一行
-## The always-loaded identity layer
-
-<div class="grid gap-6" style="grid-template-columns: 3fr 2fr;">
-
-<div class="text-base">
-
-一行 `@import`，让个人档案<strong>每次对话自动带上</strong>：
-
-```text
-# ~/.claude/CLAUDE.md
-@~/research-wiki-personal/profile.md
-```
-
-<v-click>
-
-<div class="kami-card mt-2">
-档案里装着 agent 每次都得知道的"你"：<br>
-· 研究方向、正在投的稿子<br>
-· 硬规矩：不用 em-dash、物理优先、先跑再想<br>
-· 算力清单、合作者权重
-</div>
-
-</v-click>
-
-</div>
-
-<div>
-
-<v-click>
-
-<div class="box-idea">
-<strong>一页小而精的档案，每次对话都带着，比一大坨现查出来的零碎好用。</strong><br><br>
-身份层是"一直带着"，不是"问到了才翻"。
-</div>
-
-</v-click>
-
-</div>
-
-</div>
-
-<!--
-Central message: 用 @import 把小而精的个人档案每次对话都带上，等于给 agent 一个你掌控的 system prompt。
-
-讲点：注意它和检索的区别。研究方向、硬规矩、算力，这些每个任务都用得到，不该靠检索碰运气，要钉死在上下文最前面。
-
-Time target: 26:00-27:00
-过渡：身份之外，读过的几百篇怎么存？这是 L3，也是整套系统最值钱的一层。
--->
-
----
-layout: default
----
-
-# <span style="color: var(--ink-blue)">●</span> L3　概念笔记 + 统一词表：综述怎么长出来
-## Atomic notes and a controlled vocabulary
-
-<div class="grid gap-6" style="grid-template-columns: 3fr 2fr;">
-
-<div>
-
-```text
- raw/paper.pdf
-      │ 读一遍，抽要点 + 关键数字
-      ▼
- sources/<paper>.md   摘要·数字·tags·出处
-      │ 按词表查重，自动追加引用
-      ▼
- methods/  systems/  entities/
-   每个概念页底部："用到它的论文 (N)"
-```
-
-</div>
-
-<div>
-
-```yaml
-methods:
-  threshold-anomaly:
-    canonical: "Threshold anomaly (TA): ..."
-    aliases: ["TA", "threshold anomaly",
-      "dispersion-relation OMP"]
-```
-
-<v-click>
-
-<div class="box-evidence mt-2 text-sm">
-<span class="takeaway">关键：</span>统一词表让四种写法都归到<strong>同一页</strong>。先查重再新建，概念不散架，综述才攒得起来。这是 RAG 给不了的。
-</div>
-
-<div class="mt-3 text-center">
-<a href="graph.html" target="_blank" class="tag" style="border-bottom: none;">点开真实图谱 ↗ 1425 节点 · 6432 链接</a>
-</div>
-
-</v-click>
-
-</div>
-
-</div>
-
-<!--
-Central message: 每篇论文被写进概念页，统一词表保证同一概念归并到一页，使综述随阅读自动累积。
-
-讲点：关键动作是查重加追加。读完一篇讲 CDCC 的论文，去 methods/cdcc.md 底部追加一行。统一词表是综述能不能积累的技术前提，没有它，一个概念会因为五种写法散成五页。
-
-Time target: 27:00-28:30
-过渡：这些维护动作谁来做？L4：把方法写成技能。
--->
-
----
-layout: default
----
-
-# <span style="color: var(--ink-blue)">●</span> L4　技能：把标准流程变成一句话触发
-## Skills are the read/write protocol
-
-<v-clicks>
-
-<div class="grid grid-cols-2 gap-3 mt-2">
-<div class="kami-card-accent">
-<strong>literature-wiki</strong><br>
-读论文 → 写 source 笔记 → 更新概念页 → 标矛盾
-</div>
-<div class="kami-card-accent">
-<strong>research-profile</strong><br>
-记 project / paper / idea / failure，刷新 profile
-</div>
-</div>
-
-<div class="box-idea mt-3">
-<strong>四条硬规矩：</strong>统一 schema、每条声明带出处、不用 em-dash、<strong>先查重再新建</strong>。
-</div>
-
-<div class="kami-card mt-3" style="border-left: 3px solid var(--ink-blue);">
-三类操作：<strong>ingest</strong>（入库）· <strong>query</strong>（提问，好答案归档回库）· <strong>lint</strong>（体检，找矛盾与孤儿页）。
-</div>
-
-</v-clicks>
-
-<!--
-Central message: 把维护知识库的流程写成可一句话触发的技能，agent 就按统一规范自动维护。
-
-讲点：这是从 Karpathy 的 schema 文档再往前一步：不只写规则，而是封装成 ingest / query / lint 这类一句话触发的技能。技能本身也是纯文本，在库里，可版本管理、可迭代。
-
-Time target: 28:30-29:30
-过渡：最后一层，让系统记住你的脾气：L5 记忆，加上它带来的复利闭环。
--->
-
----
-layout: default
----
-
-# <span style="color: var(--ink-blue)">●</span> L5　记忆 + 闭环：越用越强
-## Memory and the compounding loop
-
-<div class="grid gap-6 mt-2" style="grid-template-columns: 2fr 3fr;">
-
-<div class="text-base">
-
-每个纠正 → 一个文件 → `MEMORY.md` 索引<strong>自动加载</strong>。模型一个参数没动，它却越来越懂你的规矩。
-
-</div>
-
-<div>
-
-<div class="grid grid-cols-4 gap-2 text-center text-sm">
-<div class="kami-card"><strong>① 读库</strong><br>身份+检索</div>
-<div class="kami-card"><strong>② 干活</strong><br>读写画</div>
-<div class="kami-card"><strong>③ 写回</strong><br>新笔记/记忆</div>
-<div class="kami-card"><strong>④ 更高</strong><br>下次更省力</div>
-</div>
-
-<div class="text-center text-xl my-2" style="color: var(--ink-blue);">① → ② → ③ → ④ → ①</div>
-
-</div>
-
-</div>
-
-<v-click>
-
-<div class="box-evidence mt-2">
-<span class="takeaway">复利：</span>关键是第三步"写回"。大多数人用 AI 是开环的——问完就走，什么都没留下。闭环就是把每次问出来的好东西写回库里，垫高下次的起点。
+<span class="takeaway">概括出来就是一组 skill：</span>五层全是纯文本，怎么建、怎么维护的规矩写成了 skills，<strong>已开源</strong>，clone 下来就能开始带你自己的"学生"。&nbsp;<a href="https://github.com/jinleiphys/research_LLM_wiki" target="_blank" style="color: var(--ink-blue);">github.com/jinleiphys/research_LLM_wiki</a>
 </div>
 
 </v-click>
 
 <!--
-Central message: 记忆自动加载加上读、干、写回、更高起点的闭环，让 agent 越用越强。
+Central message: 第一幕的五个培养步骤，在实现上就是知识库的五层架构；这一整套已封装成开源 skills，拿去就能用。
 
-讲点：复利的关键是写回。Karpathy 也强调，好答案应该归档回 wiki，而不是消失在聊天记录里。这样你的探索也在复利。
+讲点：这是第二幕的全部架构，一页讲完。左边层号，右边标着它实现第一幕的哪一步；底部数字是我两个 wiki 的真实规模。重点在最后一击：这五层没有任何黑科技，全是纯文本，维护规矩封装成了 skills，已经开源。每一层的实现细节（为什么纯文本、词表怎么防概念分裂、记忆怎么加载）都在 backup，Q&A 被问到再翻。
 
-Time target: 29:30-31:00
-过渡：五层拼起来，是这样一张全景。
--->
-
----
-layout: default
----
-
-# <span style="color: var(--ink-blue)">●</span> 全景：原始文件怎么变成 agent 的脑子
-## The full stack, end to end
-
-<div class="grid gap-2 mt-3 text-center">
-
-<div class="kami-card-accent"><strong>AGENT</strong> &nbsp;<span style="color: var(--olive)">读 + 写，干活</span></div>
-<div class="text-xl" style="color: var(--ink-blue)">▲ &nbsp; 始终加载 + 按需检索 &nbsp; ▼ &nbsp; 经 skill 写回</div>
-<div class="grid grid-cols-2 gap-2">
-<div class="kami-card"><strong>profile + memory</strong><br><span style="color: var(--olive)">L2 + L5　常驻身份 + 纠错记忆</span></div>
-<div class="kami-card"><strong>skills</strong><br><span style="color: var(--olive)">L4　读写规矩</span></div>
-</div>
-<div class="kami-card"><strong>wiki：概念笔记 + 统一词表 + index</strong> &nbsp;<span style="color: var(--olive)">L3　综合，越攒越厚</span></div>
-<div class="kami-card"><strong>raw files</strong>：PDF · 代码 · 数据 &nbsp;<span style="color: var(--olive)">L1　纯文本，git 管版本</span></div>
-
-</div>
-
-<div v-click class="text-center mt-4 text-lg" style="color: var(--ink-blue);">
-人在 Obsidian 这头整理，agent 在文件那头读写，git 里存的是同一本账。
-</div>
-
-<!--
-Central message: 五层拼成一条从原始文件到 agent 脑子的链路，人与 agent 在两侧操作同一份 git 管理的真相。
-
-讲点：从下往上读：原始文件是地基，wiki 整理成概念，profile 和 memory 始终加载，skills 是规范，最上面 agent 干活。箭头双向：向下加载检索，向上经技能写回。
-
-Time target: 31:00-32:00
-过渡：架构讲完了。那我自己怎么开始带的？比你想的简单。
+Time target: 20:00-21:15
+过渡：想动手的话，最小起步长什么样？五个零件。
 -->
 
 ---
@@ -1052,65 +692,7 @@ Central message: 搭一个知识库只需五个零件，起步成本极低，从
 
 讲点：别被吓住，最小可行就五样。Karpathy 的 gist 可以直接复制给你的 agent，剩下的它会和你一起长出来。带学生第一天也不用万事俱备，先开始。
 
-Time target: 32:00-33:30
-过渡：那日常"带"起来长什么样？
--->
-
----
-layout: default
----
-
-# <span style="color: var(--ink-blue)">●</span> 日常长什么样：读一篇、问一句
-## A day with your student: ingest one, ask one
-
-<div class="grid grid-cols-2 gap-4 mt-3 text-sm">
-
-<div>
-
-**读一篇（教他入库）**
-
-```text
-你：把这篇加进文献库
-agent：
-  · 写一页摘要 + 关键数字 + 出处
-  · 按词表查重，更新相关概念页
-  · 与旧结论比对，标出矛盾
-  · 追加一条时间线日志
-```
-
-</div>
-
-<div>
-
-**问一句（用他的积累）**
-
-```text
-你：我读过的谁在 d+58Ni 上
-    和 KD 光学势不一致？
-agent：
-  · 读索引 + 相关概念页
-  · 给出带出处的回答
-  · 好答案归档回库，成为新页
-```
-
-</div>
-
-</div>
-
-<v-click>
-
-<div class="box-idea mt-4">
-<span class="takeaway">闭环：</span>读 → 干活 → 把成果<strong>写回库</strong> → 下次起点更高。跟带学生一样，每一次都让下一次更省力。
-</div>
-
-</v-click>
-
-<!--
-Central message: 日常使用就是教 agent 入库和用它的积累两个动作，加上把好结果写回库。
-
-讲点：用起来非常朴素。读一篇就一句"加进文献库"。关键一步：好回答要归档回库，不要消失在聊天记录里，跟学生写组会纪要一个道理。
-
-Time target: 33:30-35:00
+Time target: 21:15-22:15
 过渡：好处讲完了，丑话也要说在前面。
 -->
 
@@ -1141,7 +723,7 @@ Central message: 主动交代四个真实局限（浅读丢细节、概念分裂
 
 讲点：在座懂行的人多，这些坑与其被问出来不如自己讲。每条都是我真踩过的："no summary available" 那批条目现在还在库里；概念分裂靠 lint 收拾；单源标记是我跨模型工作流的硬规矩。落点还是那句：像管学生，不像用魔法。
 
-Time target: 35:00-36:30
+Time target: 22:15-23:15
 过渡：毛病交代完了，最后说一句:这么用,期刊认吗?
 -->
 
@@ -1192,7 +774,7 @@ Central message: 用 APS 2026-06-17 新政为整套"培养 agent"工作流背书
 
 讲点：这是最近的新闻，时间点正好。旧政策只让 AI 润色，新政策放开到文献综合、数据分析、推理、图表、代码、翻译，前提是披露三件事：工具名版本、怎么帮的、怎么核验的。作者侧：AI 不能署名、责任全在人；审稿侧最硬的一条——不能把别人未发表的稿子喂给不受限的 AI，这是保密红线，跨模型验证时我自己也守这条。结论：把 agent 当研究生用、投 PRC/PRL，这条路是被写进规范的，不是钻空子。
 
-Time target: 36:30-37:15
+Time target: 23:15-24:00
 过渡：规范有了，收个尾。
 -->
 
@@ -1228,7 +810,7 @@ Central message: 为什么需要、怎么办、对科研有哪些帮助，三句
 
 讲点：回到比喻。agent 像个失忆的天才新生；你要做的是培养他，而不是等一个更聪明的；培养的成果，就是一个会帮你读、想、写、而且永不毕业的研究生。题眼是：知识库就是培养。
 
-Time target: 36:30-38:00
+Time target: 24:00-24:30
 过渡：最后一个小彩蛋。
 -->
 
@@ -1284,7 +866,7 @@ Central message: 这套 slides 本身就是被培养出来的 agent 的产物，
 
 结束语："今天这个报告，我没单独准备素材，是我那个一直在带的 agent，读它自己的知识库写出来的。先开始培养你的学生，他会复利，模型只是随时可换的引擎。谢谢大家。"
 
-Time target: 38:00-39:00（留 Q&A）
+Time target: 24:30-25:00（之后 Q&A 5 分钟，backup 有 10 页兜底）
 -->
 
 ---
@@ -1405,4 +987,336 @@ wiki 只知道你读过的（571 篇）。该引、但你没读过的怎么办�
 
 <!--
 Backup：回答"你只靠读过的几百篇，会不会漏引你没读过的？"。literature-corpus 是三层栈最底下的批量词法层，本地 6.2 万篇 nucl-th 全文，机械构建、零 token，投稿前做全领域漏引扫描。强调它不属于"培养"（机械灌入，不是带出来的），所以放 backup 不进主线；本地落空不等于新颖，要升级到在线检索。
+-->
+
+---
+layout: default
+---
+
+# Backup: L1　纯文本 + 链接：人和 agent 读同一份文件
+## Plain text and links, not an app
+
+<div class="grid gap-6" style="grid-template-columns: 2fr 3fr;">
+
+<div class="text-base">
+
+<v-clicks>
+
+- **人可读**：Obsidian 里是一张可点击的知识图谱
+- **Agent 可读**：纯文件，`grep` / `read` 直接拿
+- **可 diff**：git 记录每次改了什么，能回滚
+- **不绑平台**：纯文本，二十年后还能打开
+
+<div class="box-evidence mt-3">
+<span class="takeaway">要点：</span>选纯文本，就是为了让人和 agent 读的<strong>是同一份文件</strong>，不搞两套数据。
+</div>
+
+</v-clicks>
+
+</div>
+
+<div>
+
+```text
+research-wiki-personal/
+├── profile.md         # L2 常驻身份层
+├── projects/          # active / paused / done
+├── papers/            # 97
+├── ideas/             # promising / killed
+├── failures/          # 死路登记
+├── methods-mine/      # 自有代码 (8)
+├── collaborators/     # 38
+└── index/             # by-topic / method ...
+```
+
+<div class="fig-caption">同一份目录：我在 Obsidian 浏览，agent 用文件系统读写</div>
+
+</div>
+
+</div>
+
+<!--
+Central message: 纯文本加链接加 git，让人和 agent 共享同一份能改、不被锁死的东西。
+
+讲点：为什么不是 Notion、不是数据库？那些是给人的 UI 优化的，agent 抓不到。纯 Markdown，对人是图谱，对 agent 是一次 read，对 git 是一个 diff，三方看同一个字节。
+
+-->
+
+---
+layout: default
+---
+
+# Backup: L2　常驻身份：profile.md 每次对话第一行
+## The always-loaded identity layer
+
+<div class="grid gap-6" style="grid-template-columns: 3fr 2fr;">
+
+<div class="text-base">
+
+一行 `@import`，让个人档案<strong>每次对话自动带上</strong>：
+
+```text
+# ~/.claude/CLAUDE.md
+@~/research-wiki-personal/profile.md
+```
+
+<v-click>
+
+<div class="kami-card mt-2">
+档案里装着 agent 每次都得知道的"你"：<br>
+· 研究方向、正在投的稿子<br>
+· 硬规矩：不用 em-dash、物理优先、先跑再想<br>
+· 算力清单、合作者权重
+</div>
+
+</v-click>
+
+</div>
+
+<div>
+
+<v-click>
+
+<div class="box-idea">
+<strong>一页小而精的档案，每次对话都带着，比一大坨现查出来的零碎好用。</strong><br><br>
+身份层是"一直带着"，不是"问到了才翻"。
+</div>
+
+</v-click>
+
+</div>
+
+</div>
+
+<!--
+Central message: 用 @import 把小而精的个人档案每次对话都带上，等于给 agent 一个你掌控的 system prompt。
+
+讲点：注意它和检索的区别。研究方向、硬规矩、算力，这些每个任务都用得到，不该靠检索碰运气，要钉死在上下文最前面。
+
+-->
+
+---
+layout: default
+---
+
+# Backup: L3　概念笔记 + 统一词表：综述怎么长出来
+## Atomic notes and a controlled vocabulary
+
+<div class="grid gap-6" style="grid-template-columns: 3fr 2fr;">
+
+<div>
+
+```text
+ raw/paper.pdf
+      │ 读一遍，抽要点 + 关键数字
+      ▼
+ sources/<paper>.md   摘要·数字·tags·出处
+      │ 按词表查重，自动追加引用
+      ▼
+ methods/  systems/  entities/
+   每个概念页底部："用到它的论文 (N)"
+```
+
+</div>
+
+<div>
+
+```yaml
+methods:
+  threshold-anomaly:
+    canonical: "Threshold anomaly (TA): ..."
+    aliases: ["TA", "threshold anomaly",
+      "dispersion-relation OMP"]
+```
+
+<v-click>
+
+<div class="box-evidence mt-2 text-sm">
+<span class="takeaway">关键：</span>统一词表让四种写法都归到<strong>同一页</strong>。先查重再新建，概念不散架，综述才攒得起来。这是 RAG 给不了的。
+</div>
+
+<div class="mt-3 text-center">
+<a href="graph.html" target="_blank" class="tag" style="border-bottom: none;">点开真实图谱 ↗ 1425 节点 · 6432 链接</a>
+</div>
+
+</v-click>
+
+</div>
+
+</div>
+
+<!--
+Central message: 每篇论文被写进概念页，统一词表保证同一概念归并到一页，使综述随阅读自动累积。
+
+讲点：关键动作是查重加追加。读完一篇讲 CDCC 的论文，去 methods/cdcc.md 底部追加一行。统一词表是综述能不能积累的技术前提，没有它，一个概念会因为五种写法散成五页。
+
+-->
+
+---
+layout: default
+---
+
+# Backup: L4　技能：把标准流程变成一句话触发
+## Skills are the read/write protocol
+
+<v-clicks>
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="kami-card-accent">
+<strong>literature-wiki</strong><br>
+读论文 → 写 source 笔记 → 更新概念页 → 标矛盾
+</div>
+<div class="kami-card-accent">
+<strong>research-profile</strong><br>
+记 project / paper / idea / failure，刷新 profile
+</div>
+</div>
+
+<div class="box-idea mt-3">
+<strong>四条硬规矩：</strong>统一 schema、每条声明带出处、不用 em-dash、<strong>先查重再新建</strong>。
+</div>
+
+<div class="kami-card mt-3" style="border-left: 3px solid var(--ink-blue);">
+三类操作：<strong>ingest</strong>（入库）· <strong>query</strong>（提问，好答案归档回库）· <strong>lint</strong>（体检，找矛盾与孤儿页）。
+</div>
+
+</v-clicks>
+
+<!--
+Central message: 把维护知识库的流程写成可一句话触发的技能，agent 就按统一规范自动维护。
+
+讲点：这是从 Karpathy 的 schema 文档再往前一步：不只写规则，而是封装成 ingest / query / lint 这类一句话触发的技能。技能本身也是纯文本，在库里，可版本管理、可迭代。
+
+-->
+
+---
+layout: default
+---
+
+# Backup: L5　记忆 + 闭环：越用越强
+## Memory and the compounding loop
+
+<div class="grid gap-6 mt-2" style="grid-template-columns: 2fr 3fr;">
+
+<div class="text-base">
+
+每个纠正 → 一个文件 → `MEMORY.md` 索引<strong>自动加载</strong>。模型一个参数没动，它却越来越懂你的规矩。
+
+</div>
+
+<div>
+
+<div class="grid grid-cols-4 gap-2 text-center text-sm">
+<div class="kami-card"><strong>① 读库</strong><br>身份+检索</div>
+<div class="kami-card"><strong>② 干活</strong><br>读写画</div>
+<div class="kami-card"><strong>③ 写回</strong><br>新笔记/记忆</div>
+<div class="kami-card"><strong>④ 更高</strong><br>下次更省力</div>
+</div>
+
+<div class="text-center text-xl my-2" style="color: var(--ink-blue);">① → ② → ③ → ④ → ①</div>
+
+</div>
+
+</div>
+
+<v-click>
+
+<div class="box-evidence mt-2">
+<span class="takeaway">复利：</span>关键是第三步"写回"。大多数人用 AI 是开环的——问完就走，什么都没留下。闭环就是把每次问出来的好东西写回库里，垫高下次的起点。
+</div>
+
+</v-click>
+
+<!--
+Central message: 记忆自动加载加上读、干、写回、更高起点的闭环，让 agent 越用越强。
+
+讲点：复利的关键是写回。Karpathy 也强调，好答案应该归档回 wiki，而不是消失在聊天记录里。这样你的探索也在复利。
+
+-->
+
+---
+layout: default
+---
+
+# Backup: 全景：原始文件怎么变成 agent 的脑子
+## The full stack, end to end
+
+<div class="grid gap-2 mt-3 text-center">
+
+<div class="kami-card-accent"><strong>AGENT</strong> &nbsp;<span style="color: var(--olive)">读 + 写，干活</span></div>
+<div class="text-xl" style="color: var(--ink-blue)">▲ &nbsp; 始终加载 + 按需检索 &nbsp; ▼ &nbsp; 经 skill 写回</div>
+<div class="grid grid-cols-2 gap-2">
+<div class="kami-card"><strong>profile + memory</strong><br><span style="color: var(--olive)">L2 + L5　常驻身份 + 纠错记忆</span></div>
+<div class="kami-card"><strong>skills</strong><br><span style="color: var(--olive)">L4　读写规矩</span></div>
+</div>
+<div class="kami-card"><strong>wiki：概念笔记 + 统一词表 + index</strong> &nbsp;<span style="color: var(--olive)">L3　综合，越攒越厚</span></div>
+<div class="kami-card"><strong>raw files</strong>：PDF · 代码 · 数据 &nbsp;<span style="color: var(--olive)">L1　纯文本，git 管版本</span></div>
+
+</div>
+
+<div v-click class="text-center mt-4 text-lg" style="color: var(--ink-blue);">
+人在 Obsidian 这头整理，agent 在文件那头读写，git 里存的是同一本账。
+</div>
+
+<!--
+Central message: 五层拼成一条从原始文件到 agent 脑子的链路，人与 agent 在两侧操作同一份 git 管理的真相。
+
+讲点：从下往上读：原始文件是地基，wiki 整理成概念，profile 和 memory 始终加载，skills 是规范，最上面 agent 干活。箭头双向：向下加载检索，向上经技能写回。
+
+-->
+
+---
+layout: default
+---
+
+# Backup: 日常长什么样：读一篇、问一句
+## A day with your student: ingest one, ask one
+
+<div class="grid grid-cols-2 gap-4 mt-3 text-sm">
+
+<div>
+
+**读一篇（教他入库）**
+
+```text
+你：把这篇加进文献库
+agent：
+  · 写一页摘要 + 关键数字 + 出处
+  · 按词表查重，更新相关概念页
+  · 与旧结论比对，标出矛盾
+  · 追加一条时间线日志
+```
+
+</div>
+
+<div>
+
+**问一句（用他的积累）**
+
+```text
+你：我读过的谁在 d+58Ni 上
+    和 KD 光学势不一致？
+agent：
+  · 读索引 + 相关概念页
+  · 给出带出处的回答
+  · 好答案归档回库，成为新页
+```
+
+</div>
+
+</div>
+
+<v-click>
+
+<div class="box-idea mt-4">
+<span class="takeaway">闭环：</span>读 → 干活 → 把成果<strong>写回库</strong> → 下次起点更高。跟带学生一样，每一次都让下一次更省力。
+</div>
+
+</v-click>
+
+<!--
+Central message: 日常使用就是教 agent 入库和用它的积累两个动作，加上把好结果写回库。
+
+讲点：用起来非常朴素。读一篇就一句"加进文献库"。关键一步：好回答要归档回库，不要消失在聊天记录里，跟学生写组会纪要一个道理。
+
 -->
