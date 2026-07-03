@@ -511,7 +511,7 @@ Central message: 同一个模型，带不带知识库的回答天差地别，证
 讲点：左边不是贬低模型，它说的都对，但都是教科书，跟"我"无关，而且追问引用容易编。右边的回答来自我库里真实的一条：DREAM 贝叶斯校准发现 d+58Ni 数据要求氘核表面吸收比 KD 高约 36%，出处直接指向 source 笔记。重音：模型相同，差别全在上下文。
 
 Time target: 16:00-17:30
-过渡：对比看完了，再看一个实战成品：一句话指令，他交回来一篇综述初稿。
+过渡：对比看完了，再看一个实战成品：一句话指令，他交回来一篇 58 页综述初稿，而且引用逐条可审计，不是普通 deep research。
 -->
 
 ---
@@ -520,14 +520,14 @@ layout: default
 
 <div class="ui-label">实战演示 · ONE PROMPT</div>
 
-# <span style="color: var(--color-evidence)">●</span> 一句话指令，交回一篇 14 页综述初稿
-## One prompt in, a 14-page review draft out
+# <span style="color: var(--color-evidence)">●</span> 一句话指令，交回一篇 58 页综述初稿
+## One prompt in, a 58-page review draft out
 
 <div class="kami-card mt-2 text-sm">
-<strong>指令就一句：</strong>"写一篇三体核反应的综述。" 它<strong>先查我的文献库</strong>，框定论点、定好该引谁，再补检索，最后成文。
+<strong>指令就一句：</strong>"写一篇三体核反应的综述。" 它<strong>先翻我的文献库</strong>定论点、定该引谁，再补检索、逐条在线核实 BibTeX，最后成文。
 </div>
 
-<div class="grid grid-cols-7 gap-2 mt-2">
+<div class="review-wall mt-2" style="display:grid; grid-template-columns:repeat(15,1fr); gap:3px;">
 <img src="./figures/review-pages/p-01.png" class="review-thumb" />
 <img src="./figures/review-pages/p-02.png" class="review-thumb" />
 <img src="./figures/review-pages/p-03.png" class="review-thumb" />
@@ -542,22 +542,66 @@ layout: default
 <img src="./figures/review-pages/p-12.png" class="review-thumb" />
 <img src="./figures/review-pages/p-13.png" class="review-thumb" />
 <img src="./figures/review-pages/p-14.png" class="review-thumb" />
+<img src="./figures/review-pages/p-15.png" class="review-thumb" />
+<img src="./figures/review-pages/p-16.png" class="review-thumb" />
+<img src="./figures/review-pages/p-17.png" class="review-thumb" />
+<img src="./figures/review-pages/p-18.png" class="review-thumb" />
+<img src="./figures/review-pages/p-19.png" class="review-thumb" />
+<img src="./figures/review-pages/p-20.png" class="review-thumb" />
+<img src="./figures/review-pages/p-21.png" class="review-thumb" />
+<img src="./figures/review-pages/p-22.png" class="review-thumb" />
+<img src="./figures/review-pages/p-23.png" class="review-thumb" />
+<img src="./figures/review-pages/p-24.png" class="review-thumb" />
+<img src="./figures/review-pages/p-25.png" class="review-thumb" />
+<img src="./figures/review-pages/p-26.png" class="review-thumb" />
+<img src="./figures/review-pages/p-27.png" class="review-thumb" />
+<img src="./figures/review-pages/p-28.png" class="review-thumb" />
+<img src="./figures/review-pages/p-29.png" class="review-thumb" />
+<img src="./figures/review-pages/p-30.png" class="review-thumb" />
+<img src="./figures/review-pages/p-31.png" class="review-thumb" />
+<img src="./figures/review-pages/p-32.png" class="review-thumb" />
+<img src="./figures/review-pages/p-33.png" class="review-thumb" />
+<img src="./figures/review-pages/p-34.png" class="review-thumb" />
+<img src="./figures/review-pages/p-35.png" class="review-thumb" />
+<img src="./figures/review-pages/p-36.png" class="review-thumb" />
+<img src="./figures/review-pages/p-37.png" class="review-thumb" />
+<img src="./figures/review-pages/p-38.png" class="review-thumb" />
+<img src="./figures/review-pages/p-39.png" class="review-thumb" />
+<img src="./figures/review-pages/p-40.png" class="review-thumb" />
+<img src="./figures/review-pages/p-41.png" class="review-thumb" />
+<img src="./figures/review-pages/p-42.png" class="review-thumb" />
+<img src="./figures/review-pages/p-43.png" class="review-thumb" />
+<img src="./figures/review-pages/p-44.png" class="review-thumb" />
+<img src="./figures/review-pages/p-45.png" class="review-thumb" />
+<img src="./figures/review-pages/p-46.png" class="review-thumb" />
+<img src="./figures/review-pages/p-47.png" class="review-thumb" />
+<img src="./figures/review-pages/p-48.png" class="review-thumb" />
+<img src="./figures/review-pages/p-49.png" class="review-thumb" />
+<img src="./figures/review-pages/p-50.png" class="review-thumb" />
+<img src="./figures/review-pages/p-51.png" class="review-thumb" />
+<img src="./figures/review-pages/p-52.png" class="review-thumb" />
+<img src="./figures/review-pages/p-53.png" class="review-thumb" />
+<img src="./figures/review-pages/p-54.png" class="review-thumb" />
+<img src="./figures/review-pages/p-55.png" class="review-thumb" />
+<img src="./figures/review-pages/p-56.png" class="review-thumb" />
+<img src="./figures/review-pages/p-57.png" class="review-thumb" />
+<img src="./figures/review-pages/p-58.png" class="review-thumb" />
 </div>
 
-<div class="fig-caption mt-2">三体核反应综述初稿，14 页 · <a href="./threebody-review.pdf" target="_blank">打开完整 PDF</a></div>
+<div class="fig-caption mt-2">三体核反应综述初稿，58 页 · 199 篇参考文献 · <a href="./threebody-review.pdf" target="_blank">打开完整 PDF</a></div>
 
 <v-click>
 
 <div class="box-evidence mt-3">
-<span class="takeaway">关键：</span>结构、论点、引用骨架都搭好了；引文只从我<strong>已入库</strong>的论文里取，我读过的相关文献<strong>一篇不漏</strong>，库里没有的就标出来或再补查，不硬编。这是初稿，物理判断和润色还得我自己来。
+<span class="takeaway">这不是普通的 deep research：</span>普通 deep research 全网抓取，引用常常"看着对"却是编的、没出处。这一篇 <strong>199 条引用里 181 条挂着我读过的 wiki 源</strong>（每条一个 wiki-id + 在线核实过的 DOI）；<strong>我没读过的 18 条不藏</strong>，全拎进一份"待精读清单"让我去补；全程留一份 <code>citations-ledger</code>，哪条来自我读的、哪条外部补的、有没有核实，逐条可审计。
 </div>
 
 </v-click>
 
 <!--
-Central message: 一句话指令，培养好的 agent 先查文献库再成文，交回一篇 14 页、引用可追溯的综述初稿，这就是"出师"。
+Central message: 一句话指令，培养好的 agent 先查文献库再成文，交回一篇 58 页、引用逐条可审计的综述初稿；跟普通 GPT deep research 的差别就在这份出处台账。
 
-讲点：这是真实产出，不是摆拍，14 页直接铺出来给大家看个规模。它的动作顺序：先翻我的文献库，把该引的、我读过的列出来，再补检索，最后成文。强调一点：引文不是模型随口编的，只从已入库的论文里取，库里没有的标出来或再补查，输出可追溯，这是知识库相对裸用大模型最大的差别。当然这是初稿，物理判断和润色还得我自己来，但最累的搭架子和铺引用它做完了。现场想细看，可以点"打开完整 PDF"。
+讲点：这是真实产出，不是摆拍，58 页直接铺出来给大家看个规模。它的动作顺序：先翻我的文献库，把该引的、我读过的列出来，再补检索、逐条在线核实 BibTeX，最后成文。这一页的题眼是跟普通 deep research 的区别：deep research 全网抓，引用经常一本正经编、没出处；我这套 199 条引用里 181 条直接挂着我 wiki 里精读过的源，每条一个 wiki-id、DOI 在线核过；剩下我没读过的 18 条不藏着，自动拎成一份"待精读清单"逼我去补；而且全程留一份 citations-ledger，哪条来自我读的、哪条外部补的、核没核实，逐条可查。这就是个人知识库相对裸用大模型最大的差别：可追溯、可审计。当然这是初稿，物理判断和润色还得我自己来。现场想细看，可以点"打开完整 PDF"。
 
 Time target: 17:30-18:30
 过渡：第一幕到这里。很多人会好奇，这个"学生的脑子"到底怎么搭的？第二幕揭开盖子。
