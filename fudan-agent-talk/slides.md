@@ -884,6 +884,10 @@ class: text-center
 
 </div>
 
+<div class="box-evidence mt-4 text-left mx-auto" style="max-width: 40rem;">
+📖 <strong>《AI 辅助数理建模与应用实践》</strong>（写给本科生的 vibe coding 实践讲义）<span style="color: var(--olive);">，2027 年暑期开课</span>。讲义 PDF：<a href="./vibe-coding-jiangyi.pdf" target="_blank" style="color: var(--ink-blue);">点此打开</a>。
+</div>
+
 <div class="flex justify-center gap-10 mt-5">
 <div class="text-center">
 <img src="./figures/qr-gist.png" style="width: 5.2rem; margin: 0 auto;" />
