@@ -18,7 +18,7 @@ drawings:
 
 <h1 style="font-size:2.9rem; line-height:1.2; max-width: 760px">核物理需要什么样的 <span style="color:var(--plasma)">agent</span></h1>
 
-<p class="dim" style="font-size:1.15rem; margin-top:6px; max-width:680px">它得带着文献，会用我们的程序，还得能证明自己没算错</p>
+<p class="dim" style="font-size:1.15rem; margin-top:6px; max-width:680px">文献能翻回原文，程序能复现基准，还要把每次踩的坑记住</p>
 
 <div class="glass-slot" style="display:inline-flex; gap:26px; align-items:center; margin-top:44px; width:max-content; padding:16px 26px">
 <span class="mark" style="font-size:1.5rem"><span class="l">FU</span> <span class="l">▸</span><span class="r">◂</span> <span class="r">SION</span></span>
@@ -30,9 +30,9 @@ drawings:
 </div>
 
 <!--
-中心信息：今天讲的不是一个软件，是我们这个领域需要一个什么样的 agent。
+这页只定一个问题：核物理同行真正需要什么样的 agent。
 
-开场：今天讲的东西跟我平时讲的反应理论不一样。副标题那三件事，带着文献、会用程序、能证明自己没算错，就是今天要谈的三件事。
+开场：今天不讲具体的反应理论。我想说说，文献、程序和验证怎么才能真正交给 agent 做一部分。
 
 时间：0:00 到 0:40。
 转场：先说清楚 agent 这个词。
@@ -42,7 +42,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">一 · 什么是 agent</div>
 
-# 从回答问题到自己往下做
+# chatbot 停在答案，agent 会继续往下做
 
 <div style="display:grid; grid-template-columns: 1fr 1.25fr; gap: 22px; margin-top: 22px">
 
@@ -65,7 +65,7 @@ drawings:
 <div class="glass" style="padding:14px 18px"><div class="ui-label plasma">循环</div><p style="font-size:.92rem; margin-top:6px">让它连续走很多步</p></div>
 </div>
 
-<div class="takeaway">差别不在于它多说了几句话，在于它能不能把事情继续做下去。</div>
+<div class="takeaway">我今天说的 agent，就是多了这个“看完结果再往下做”的循环。</div>
 
 <!--
 中心信息：agent 就是把模型放进一个"看结果再决定下一步"的循环里。
@@ -80,7 +80,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">一 · 什么是 agent</div>
 
-# 编程 agent 已经能在仓库里干活
+# 编程 agent 已经进了代码仓库
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 22px">
 
@@ -100,7 +100,7 @@ drawings:
 <p style="font-size:1.0rem">我通常不让一个模型既出主意又给自己打分。一个模型提方案，换一个模型挑错，最后的判断由我来做。</p>
 </div>
 
-<div class="takeaway">它已经不只是聊天窗口里的东西了。</div>
+<div class="takeaway">我现在已经把它当作日常工具，但不让它自己验收自己。</div>
 
 <!--
 中心信息：agent 在软件界已经是日常工具，我自己也在这么用。
@@ -115,7 +115,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">一 · 什么是 agent</div>
 
-# agent 能做什么，取决于它手边有什么
+# 同一个模型，换一套工具就是另一种 agent
 
 <p style="margin-top:8px; max-width: 820px">模型当然重要，但同一个模型接上不同的工具、读到不同的资料，做出来的事会差很多。我把它写成一个很粗的式子：</p>
 
@@ -137,7 +137,7 @@ drawings:
 
 </div>
 
-<div class="takeaway">模型可以换，写下来的东西不用跟着重来。</div>
+<div class="takeaway">模型会换代，自己写下的经验不必清零。</div>
 
 <!--
 中心信息：全场论点。模型是租来的，工具和知识是我们自己的。
@@ -152,7 +152,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">二 · 核物理的 agent 长什么样</div>
 
-# 核理论一天的活，拆开看
+# 我们一天里到底在忙什么
 
 <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 26px">
 <div class="glass" style="padding:14px 12px; text-align:center"><div class="ui-label">1</div><p style="font-size:.95rem; margin-top:6px">读文献</p></div>
@@ -166,17 +166,17 @@ drawings:
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 26px">
 <div class="glass">
-<p style="font-size:.98rem">找源码，等编译，对着 300 页手册（或者没有手册）猜输入格式，这些占掉一天里的大部分时间。它们是体力，不是物理。</p>
+<p style="font-size:.98rem">找源码，等编译，对着 300 页手册（或者没有手册）猜输入格式。这些琐事很容易吃掉大半天，物理判断却没往前走多少。</p>
 </div>
 <div class="glass glass-core">
-<p style="font-size:.98rem">第 6 步才是物理：这个数对不对。这一步没有手册，没有报错信息，也没有人告诉你。</p>
+<p style="font-size:.98rem">第 6 步最吃物理判断：这个数对不对。这里没有手册，没有报错信息，也没有人自动告诉你。</p>
 </div>
 </div>
 
-<div class="takeaway">七步里，只有一步是物理，而恰恰这一步没有任何工具支持。</div>
+<div class="takeaway">程序能告诉你它跑完了，不会告诉你这个数该不该信。</div>
 
 <!--
-中心信息：核理论的日常大部分是体力活，唯一的物理那一步没有工具。
+这页要停在第 6 步：整条链里，它最需要物理判断，也最缺工具。
 
 讲什么：七个框一口气过完，在第 6 个停下来。问一句：你上次算出一个数，是怎么确定它对的？
 
@@ -188,7 +188,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">二 · 核物理的 agent 长什么样</div>
 
-# 通用 agent 来干，会出什么事
+# 最危险的错，程序照样给你一张好看的图
 
 <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap: 22px; margin-top: 20px">
 
@@ -211,7 +211,7 @@ drawings:
 <div class="glass" style="padding:14px 18px"><p style="font-size:.92rem">每次对话从零开始，踩过的坑不积累</p></div>
 </div>
 
-<div class="takeaway">22% 这种错最麻烦，它正好落在"你会相信它"和"它会毁掉结论"之间。</div>
+<div class="takeaway">22% 很尴尬：不至于一眼假，又足以改变物理结论。</div>
 
 <!--
 中心信息：通用 agent 的失败方式不是不会做，是做出一个看起来对的错结果。
@@ -226,7 +226,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">二 · 核物理的 agent 长什么样</div>
 
-# 我心里的核物理 agent，有三样东西
+# 我希望核物理 agent 随手能拿到这些
 
 <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 30px">
 
@@ -247,7 +247,7 @@ drawings:
 
 </div>
 
-<div class="takeaway">模型是租来的。文献、程序经验和档案，是我们自己的。</div>
+<div class="takeaway">模型是租来的。我真正想留下的，是文献、程序经验和自己的记录。</div>
 
 <!--
 中心信息：核物理 agent 的核心不是模型，是它手边的三样东西。
@@ -262,7 +262,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">二 · 核物理的 agent 长什么样</div>
 
-# 这是 FUSION
+# 我把它做成了 FUSION
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 20px">
 
@@ -286,7 +286,7 @@ drawings:
 <div class="glass" style="padding:14px 18px"><div class="ui-label">开源</div><p style="font-size:.92rem; margin-top:6px">MIT · github.com/jinleiphys/FUSION</p></div>
 </div>
 
-<div class="takeaway">技能是 Markdown 和 shell 脚本。绑定的是我们的程序，不是某家公司的模型。</div>
+<div class="takeaway">主体就是 Markdown 和 shell 脚本，换模型时不用搬家。</div>
 
 <!--
 中心信息：FUSION 就是上一页三样东西的实现，两层，开源。
@@ -301,7 +301,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">三 · 文献：它能帮你做什么</div>
 
-# 六万篇论文是怎么放的
+# 六万篇论文，就放在一批普通文件里
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 20px">
 
@@ -327,7 +327,7 @@ drawings:
 
 </div>
 
-<div class="takeaway">全部是 Markdown 和 TSV。没有服务器，没有 API key，没有网络，agent 用 grep 读。</div>
+<div class="takeaway">只要能读 Markdown、TSV 和 grep，它就能查这批文献。</div>
 
 <!--
 中心信息：文献层不是一个搜索引擎，是一堆本地文本文件，任何 agent 都能直接读。
@@ -346,7 +346,7 @@ drawings:
 <img src="./figures/corpus-map.png" class="fig" style="max-height: 440px" />
 <div style="max-width: 300px">
 <div class="glass">
-<div class="ui-label plasma">语料地图</div>
+<div class="ui-label plasma">引用关系的二维投影</div>
 <p style="font-size:.92rem; margin-top:8px">55,850 篇论文的引用投影。地形是论文密度，一个点是一篇论文，面积正比于语料内被引次数。地名取自 PhySH 主题。</p>
 <p class="faint" style="margin-top:8px">一条引用边都没画。这个量级画边一定是毛球。</p>
 </div>
@@ -366,7 +366,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">三 · 文献：它能帮你做什么</div>
 
-# 演示一：只给它一篇 PDF，断网
+# 演示一：断网，只给它一篇 PDF
 
 <div class="glass glass-plasma" style="margin-top: 20px; max-width: 760px">
 <div class="ui-label plasma">交给它的原话</div>
@@ -374,9 +374,9 @@ drawings:
 </div>
 
 <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; max-width: 860px">
-<div class="glass" style="padding:14px 18px"><div class="ui-label">要看的第一件事</div><p style="font-size:.92rem; margin-top:6px">它把 PDF 定位到 <code>0710.4193</code>，靠的是标题和作者，不是联网</p></div>
-<div class="glass" style="padding:14px 18px"><div class="ui-label">第二件</div><p style="font-size:.92rem; margin-top:6px">引用网络给出它引的 8 篇、引它的 5 篇，包括同组前作和 <sup>22</sup>C 双中子晕的工作</p></div>
-<div class="glass" style="padding:14px 18px"><div class="ui-label">第三件</div><p style="font-size:.92rem; margin-top:6px">摘要里带着数字：p+<sup>12</sup>C 在 40 MeV 的 σ<sub>R</sub> = 432 mb，可以翻原文核对</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label">先定位论文</div><p style="font-size:.92rem; margin-top:6px">它靠标题和作者把 PDF 定位到 <code>0710.4193</code>，没有联网</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label">再顺着引用走</div><p style="font-size:.92rem; margin-top:6px">这篇在语料内引了 8 篇，被 5 篇引用，包括同组前作和 <sup>22</sup>C 双中子晕的工作</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label">落到可核对的数字</div><p style="font-size:.92rem; margin-top:6px">p+<sup>12</sup>C 在 40 MeV 的 σ<sub>R</sub> = 432 mb，可以直接翻原文</p></div>
 </div>
 
 <p class="faint" style="margin-top: 22px">备份录屏：<code>demo-kb.mp4</code></p>
@@ -394,7 +394,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">三 · 文献：它能帮你做什么</div>
 
-# 文献层的两条边界
+# 这批文献不能替你引文
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 24px">
 
@@ -410,7 +410,7 @@ drawings:
 
 </div>
 
-<div class="takeaway">给一个能力，就得紧接着给它的边界，不能放到最后一页去。</div>
+<div class="takeaway">所以我把它当导航，不当引用来源；一次搜不到，也不能说文献不存在。</div>
 
 <!--
 中心信息：文献层的价值在于离线和可核对，它的两条限制要跟能力放在同一页讲。
@@ -423,7 +423,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">四 · 程序：它能帮你做什么</div>
 
-# 一份技能长什么样：FRESCO
+# FRESCO 那个 22% 的坑，写下来只占一行
 
 <div style="display:grid; grid-template-columns: 1.15fr 1fr; gap: 18px; margin-top: 10px">
 
@@ -451,7 +451,7 @@ drawings:
 
 </div>
 
-<div class="takeaway" style="margin-top:14px">技能就是文档。那个 22% 的坑在这里是一行字，脚本每次都写出 ap=0。</div>
+<div class="takeaway" style="margin-top:14px">下次再写输入卡，脚本会直接给出 <code>ap=0</code>，不靠 agent 临场想起来。</div>
 
 <!--
 中心信息：技能不是模型，是一份写着"怎么装、怎么写、怎么验、坑在哪"的文档，agent 需要时读。
@@ -466,7 +466,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">四 · 程序：它能帮你做什么</div>
 
-# 覆盖了哪些程序
+# 现在有 20 份程序技能
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px">
 <div class="glass" style="padding:16px 20px"><div class="ui-label plasma">反应、光学模型</div><p style="font-size:.95rem; margin-top:6px">FRESCO（含 SFRESCO 拟合）、COLOSS、CCFULL、pikoe、NLAT、CNOK、SIDES、SWANLOP</p></div>
@@ -477,7 +477,7 @@ drawings:
 <div class="glass" style="padding:16px 20px"><div class="ui-label core">实验数据</div><p style="font-size:.95rem; margin-top:6px">EXFOR 检索与解析</p></div>
 </div>
 
-<div class="takeaway">入选条件：公开可得，能从源码编译，有发表的论文。每份技能带一个诚实的证据等级。</div>
+<div class="takeaway">我只收公开可得、能从源码编译、有正式论文的程序。能验到什么程度，每份都明写。</div>
 
 <!--
 中心信息：20 个程序，覆盖反应、结构、裂变、核天体、重离子五块，加实验数据。
@@ -492,7 +492,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">四 · 程序：它能帮你做什么</div>
 
-# 演示二：一句话，从光学势到实验数据
+# 演示二：一句话算 n+<sup>90</sup>Zr
 
 <div class="glass glass-plasma" style="margin-top: 20px; max-width: 760px">
 <div class="ui-label plasma">交给它的原话</div>
@@ -500,10 +500,10 @@ drawings:
 </div>
 
 <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 20px">
-<div class="glass" style="padding:14px 18px"><div class="ui-label">看它做的第一件事</div><p style="font-size:.9rem; margin-top:6px">参数取自本地那份 Koning 原始 <code>kd02.f</code>，不是凭记忆写公式</p></div>
-<div class="glass" style="padding:14px 18px"><div class="ui-label">第二件</div><p style="font-size:.9rem; margin-top:6px">它写出 <code>ap=0</code></p></div>
-<div class="glass" style="padding:14px 18px"><div class="ui-label">第三件</div><p style="font-size:.9rem; margin-top:6px">步长减半、分波数加倍，做收敛检查</p></div>
-<div class="glass" style="padding:14px 18px"><div class="ui-label">第四件</div><p style="font-size:.9rem; margin-top:6px">查 EXFOR，然后告诉你 50 MeV 没有数据</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label">参数有出处</div><p style="font-size:.9rem; margin-top:6px">直接读本地的 Koning 原始 <code>kd02.f</code>，不凭记忆拼公式</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label">半径约定</div><p style="font-size:.9rem; margin-top:6px">输入卡里明确写出 <code>ap=0</code></p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label">收敛</div><p style="font-size:.9rem; margin-top:6px">步长减半，分波数加倍，再算一遍</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label">EXFOR</div><p style="font-size:.9rem; margin-top:6px">查完如实报告：50 MeV 没有数据</p></div>
 </div>
 
 <p class="faint" style="margin-top: 22px">这句话里没有任何一个文件名、路径或者参数。备份录屏：<code>demo-n90zr.mp4</code></p>
@@ -523,7 +523,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">四 · 程序：它能帮你做什么</div>
 
-# 凭什么信它：四层检查
+# 我怎么知道它没有偷偷跑错
 
 <div class="tight" style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px">
 
@@ -549,7 +549,7 @@ drawings:
 
 </div>
 
-<div class="takeaway" style="margin-top:16px">第四层抓到的，正是这个项目要防的那类假阳性，出现在了它自己的脚本里。</div>
+<div class="takeaway" style="margin-top:16px">TALYS 那次最刺眼：脚本跑的是旧输入卡，却很自信地报告成功。</div>
 
 <!--
 中心信息：可信度是分层的、公开的、逐条可查的，不是一句"我们测试过了"。
@@ -566,12 +566,12 @@ drawings:
 
 <div style="display:flex; flex-direction:column; justify-content:center; height:88%">
 
-<h1 style="font-size:2.3rem; max-width: 900px">基准证明的是这次构建复现了一个已知结果</h1>
-<h1 style="font-size:2.3rem; color: var(--core); max-width: 900px">它不证明你的计算是对的</h1>
+<h1 style="font-size:2.3rem; max-width: 900px">基准过了，只能说这次构建复现了已知结果</h1>
+<h1 style="font-size:2.3rem; color: var(--core); max-width: 900px">离“这次物理算对了”还差一步</h1>
 
 <div class="glass" style="margin-top: 30px; max-width: 720px">
 <p>选哪个光学势，连续态怎么切，能量范围合不合适，这些还是你的事。</p>
-<p style="margin-top:6px"><strong>物理仍然是你的。</strong></p>
+<p style="margin-top:6px"><strong>这一步，我不交给 agent。</strong></p>
 </div>
 
 </div>
@@ -589,26 +589,26 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">五 · 这对研究方式意味着什么</div>
 
-# 把口传经验写进仓库
+# 很多关键经验，手册里根本没写
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 22px">
 
 <div class="glass">
-<div class="ui-label">过去</div>
+<div class="ui-label">靠口头传</div>
 <p style="margin-top:10px; font-size:.98rem">核物理程序里很多经验不在手册里。某一行输入为什么必须这样写，哪个默认值不能信，一次计算该拿什么结果来检查，只有实际用过的人知道。这些话在课题组里口传。学生毕业，电脑换了，很多细节就断了。</p>
 </div>
 
 <div class="glass glass-plasma">
-<div class="ui-label plasma">现在</div>
+<div class="ui-label plasma">写进仓库</div>
 <p style="margin-top:10px; font-size:.98rem">写成仓库里的 Markdown。别人可以直接读，可以指出哪一句有问题，也可以提交修改。下次 agent 再遇到同一个坑，读到的是已经改过的版本。</p>
 </div>
 
 </div>
 
-<div class="takeaway">踩过一次的坑，没有必要让下一个人再猜一遍。</div>
+<div class="takeaway">我想留下的，就是这些手册里找不到的一句话。</div>
 
 <!--
-中心信息：agent 带来的最大变化不是速度，是隐性经验第一次有了一个可以被检查和继承的形式。
+这页讲我最在意的变化：那些口头经验终于有了可以检查、修改和继续用的形式。
 
 时间：35:30 到 37:30。
 转场：那一天的工作会变成什么样。
@@ -618,7 +618,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">五 · 这对研究方式意味着什么</div>
 
-# 我想把时间留给判断
+# 我不想再把大半天花在找文件和猜格式上
 
 <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 22px">
 
@@ -639,10 +639,10 @@ drawings:
 
 </div>
 
-<div class="takeaway">这些判断我不会交给模型。</div>
+<div class="takeaway">到了物理模型、近似和结果解释，还是我来定。</div>
 
 <!--
-中心信息：agent 替我做体力那六步，判断那一步留给我。
+这页别讲成全自动流水线。agent 负责把问题缩小，物理判断留给我。
 
 讲什么：中间那一栏要讲，别把它说成流水线。真实计算会报错、会不一致，agent 的价值是把这些过程留下来给你看。
 
@@ -654,7 +654,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">五 · 这对研究方式意味着什么</div>
 
-# 现在能用，但远没有到开箱即用
+# v0.1.0 还有这些硬伤
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px">
 <div class="glass"><div class="ui-label core">冷启动安装</div><p style="font-size:.95rem; margin-top:6px">只完整验过 FRESCO 能从空缓存装起来。其余 19 个程序没有逐个做同样的测试，别的机器上大概率缺依赖。</p></div>
@@ -663,7 +663,7 @@ drawings:
 <div class="glass"><div class="ui-label core">用过的人</div><p style="font-size:.95rem; margin-top:6px">v0.1.0 是第一个公开版本。我每天在用，除我之外还没有人用过。</p></div>
 </div>
 
-<div class="takeaway">这些写在这里，免得演示顺利就让人以为它已经成熟。</div>
+<div class="takeaway">演示能顺利跑完，不等于别人的机器上也能开箱即用。</div>
 
 <!--
 中心信息：把已知的坑一次说完，不留给听众自己去踩。
@@ -678,7 +678,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">五 · 这对研究方式意味着什么</div>
 
-# 我最想看到它在哪儿算错
+# 如果它算错了，请直接告诉我
 
 <div class="glass glass-core" style="margin-top: 20px; max-width: 820px">
 <p style="font-size:1.02rem">对我最有用的反馈，是一个看起来合理、图也画得很好，但物理上其实错了的结果。请告诉我错在哪里，为什么现有基准没有拦住它。</p>
@@ -690,7 +690,7 @@ drawings:
 <div class="glass" style="padding:14px 18px"><div class="ui-label">缺一份</div><p style="font-size:.92rem; margin-top:6px">你常用的程序还没有技能，直接提</p></div>
 </div>
 
-<div class="takeaway">一个真实的失败，比一句"很好用"更能帮我改东西。</div>
+<div class="takeaway">对我来说，一个真的失败样例，比“很好用”有价值得多。</div>
 
 <!--
 中心信息：把最有价值的反馈类型说清楚，降低反馈门槛。
@@ -707,10 +707,10 @@ drawings:
 
 <div class="mark" style="font-size:1.6rem; margin-bottom:30px"><span class="l">FU</span> <span class="l">▸</span><span class="r">◂</span> <span class="r">SION</span></div>
 
-<h1 style="font-size:2.4rem; max-width: 860px">最难的是知道它跑对了</h1>
+<h1 style="font-size:2.4rem; max-width: 860px">跑起来不难，难的是知道它跑对了</h1>
 
 <div class="glass" style="margin-top: 22px; max-width: 800px">
-<p style="font-size:1.0rem">让一个核物理程序正常结束，通常不算最难。真正费经验的是后面的判断：输入约定有没有弄错，数值是否收敛，结果能不能复现已知基准，物理条件是否适用。这些判断过去靠口口相传。我做 FUSION，是想把其中能写清楚的部分留下来，让人和 agent 都能读，也让别人有机会检查和修改。</p>
+<p style="font-size:1.0rem">程序返回退出码 0，图也画出来了，还不够。你得知道输入约定有没有弄错，数值收敛了没有，能不能复现已知基准，这套物理在当前条件下能不能用。我做 FUSION，是想把这些能写清楚的经验留下来。人可以读，agent 也可以读；哪句写错了，别人还能直接改。</p>
 </div>
 
 <p style="margin-top: 30px; font-size:1.15rem; font-weight:500">模型是租来的；文献、程序经验和档案，是我们自己的。</p>
@@ -785,7 +785,7 @@ xattr -d com.apple.quarantine fusion &nbsp;&nbsp;# macOS<br>
 
 <div class="ui-label" style="margin-bottom:6px">备用</div>
 
-# 如果被问到：这跟通用 AI 编程助手有什么区别
+# 这跟通用 AI 编程助手有什么区别
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 18px">
 <div class="glass">
@@ -798,5 +798,4 @@ xattr -d com.apple.quarantine fusion &nbsp;&nbsp;# macOS<br>
 </div>
 </div>
 
-<div class="takeaway">区别不在模型，在知识放在哪里，以及有没有人为它的正确性负责。</div>
-
+<div class="takeaway">我关心的是知识放在哪里，能不能被审，以及出错以后谁来改。</div>
