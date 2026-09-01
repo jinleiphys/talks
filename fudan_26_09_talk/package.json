@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "slidev",
+    "present": "slidev --presenter",
+    "build": "slidev build --base /talks/fudan_26_09_talk/",
+    "export": "slidev export slides.md --output fusion-fudan.pdf"
+  },
+  "dependencies": {
+    "@slidev/cli": "^51.8.2",
+    "@slidev/theme-default": "^0.25.0",
+    "vue": "^3.5.16"
+  }
+}
