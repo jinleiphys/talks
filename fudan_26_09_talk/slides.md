@@ -383,7 +383,7 @@ drawings:
 <div class="glass" style="padding:14px 18px"><div class="ui-label">落到可核对的数字</div><p style="font-size:.92rem; margin-top:6px">p+<sup>12</sup>C 在 40 MeV 的 σ<sub>R</sub> = 432 mb，可以直接翻原文</p></div>
 </div>
 
-<p class="faint" style="margin-top: 22px">备份录屏：<code>demo-kb.mp4</code></p>
+<p class="faint" style="margin-top: 22px">备份回放在下一页</p>
 
 <!--
 中心信息：一句自然语言，离线，从一篇 PDF 走到可核对的数字。
@@ -394,6 +394,22 @@ drawings:
 转场：回来以后先讲它的两条限制。
 -->
 
+---
+title: 演示一 · 录屏回放
+clicks: 3
+---
+
+<div class="ui-label" style="margin-bottom:10px">演示一 · 录屏回放 <span class="dim" style="text-transform:none; letter-spacing:0">按一下走一段</span></div>
+
+<Cast src="/casts/demo-kb.cast" :clicks="$clicks" :speed="1" :markers="[[2.92, '离线检索'], [31.76, '定位到 0710.4193'], [36.48, '引用 8 篇，被引 5 篇']]" />
+
+<!--
+真实录制，不是演示脚本。deepseek-v4-pro，51 秒。
+
+三个停顿点分别对应上一页的三张卡。按翻页笔继续。
+
+如果现场演示顺利，这页跳过。
+-->
 ---
 
 <div class="ui-label" style="margin-bottom:6px">三 · 文献：它能帮你做什么</div>
@@ -510,7 +526,7 @@ drawings:
 <div class="glass" style="padding:14px 18px"><div class="ui-label">EXFOR</div><p style="font-size:.9rem; margin-top:6px">查完如实报告：50 MeV 没有数据</p></div>
 </div>
 
-<p class="faint" style="margin-top: 22px">这句话里没有任何一个文件名、路径或者参数。备份录屏：<code>demo-n90zr.mp4</code></p>
+<p class="faint" style="margin-top: 22px">这句话里没有任何一个文件名、路径或者参数。备份回放在下一页</p>
 
 <!--
 中心信息：一句自然语言，覆盖找参数、写输入、编译、运行、解析、找数据、作图。
@@ -523,6 +539,25 @@ drawings:
 转场：回来以后讲凭什么信它。
 -->
 
+---
+title: 演示二 · 录屏回放
+clicks: 4
+---
+
+<div class="ui-label" style="margin-bottom:10px">演示二 · 录屏回放 <span class="dim" style="text-transform:none; letter-spacing:0">按一下走一段</span></div>
+
+<Cast src="/casts/demo-n90zr.cast" :clicks="$clicks" :speed="1.8" :markers="[[18.8, '选定工具'], [27.79, '参数有出处 · ap=0'], [84.74, '收敛与锚值'], [327.06, 'EXFOR：50 MeV 没有数据']]" />
+
+<!--
+真实录制，不是演示脚本。deepseek-v4-pro，原始 414 秒，这里 1.8 倍速播放，约 3 分 50 秒。
+
+四个停顿点就是上一页那四张卡。
+
+σ_R = 1301.64 mb，与技能内置锚值 1301.64017 mb 一致到 5.7 位有效数字。
+EXFOR 50 MeV 无数据，改用 24 MeV（calc/data 0.93）和 55 MeV（0.995）交叉验证。
+
+如果现场演示顺利，这页跳过。
+-->
 ---
 
 <div class="ui-label" style="margin-bottom:6px">四 · 程序：它能帮你做什么</div>

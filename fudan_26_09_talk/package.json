@@ -9,6 +9,7 @@
   "dependencies": {
     "@slidev/cli": "^51.8.2",
     "@slidev/theme-default": "^0.25.0",
-    "vue": "^3.5.16"
+    "vue": "^3.5.16",
+    "asciinema-player": "^3.17.0"
   }
 }
