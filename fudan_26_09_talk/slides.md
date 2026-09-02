@@ -13,7 +13,7 @@ drawings:
   persist: false
 ---
 
-<LiquidGlass :rect="{ x: -0.07, y: -0.09, hw: 0.675, hh: 0.14, r: 0.05 }" :circle="{ x: 0.66, y: 0.2, r: 0.075, orbit: 0.07 }" />
+<LiquidGlass :rect="{ x: -0.2491, y: -0.1097, hw: 0.4966, hh: 0.1222, r: 0.05 }" :circle="{ x: 0.60, y: 0.20, r: 0.072, orbit: 0.06 }" />
 
 <div style="display:flex; flex-direction:column; justify-content:center; height:100%; padding: 0 30px; position:relative; z-index:1">
 
@@ -23,19 +23,10 @@ drawings:
 
 <p class="dim" style="font-size:1.15rem; margin-top:6px; max-width:680px">查到的文献能追溯到原文，算出的结果能复现基准，踩过的坑能留下记录</p>
 
-<div class="glass-slot" style="display:inline-flex; gap:30px; align-items:center; margin-top:26px; width:max-content; padding:14px 26px">
-<div style="display:flex; flex-direction:column; gap:6px; align-items:flex-start">
-<span class="mark" style="font-size:1.5rem"><span class="l">FU</span> <span class="l">▸</span><span class="r">◂</span> <span class="r">SION</span></span>
+<div class="glass-slot" id="cover-slot">
+<span class="mark" style="font-size:1.45rem; white-space:nowrap"><span class="l">FU</span> <span class="l">▸</span><span class="r">◂</span> <span class="r">SION</span></span>
+<span class="acronym"><b>F</b>ramework for <b>U</b>nified <b>S</b>cientific <b>I</b>ntelligence in <b>O</b>pen <b>N</b>uclear physics</span>
 <span class="faint" style="font-size:.82rem">六万篇本地文献 · 20 个程序的使用技能 · 开源</span>
-</div>
-<div style="display:grid; grid-template-columns:auto auto; column-gap:12px; row-gap:2px; font-size:.86rem; line-height:1.5; align-items:baseline">
-<span class="mark" style="color:var(--core-ink)">F</span><span><b>Framework</b> <span class="dim">框架：技能和文献模块可以继续往上加</span></span>
-<span class="mark" style="color:var(--plasma-ink)">U</span><span><b>Unified</b> <span class="dim">统一：程序、文献、计算共用一个入口</span></span>
-<span class="mark" style="color:var(--core-ink)">S</span><span><b>Scientific</b> <span class="dim">科学：每项能力都对照数值基准检验</span></span>
-<span class="mark" style="color:var(--plasma-ink)">I</span><span><b>Intelligence</b> <span class="dim">智能：agent 自己安装、写输入、运行、解析</span></span>
-<span class="mark" style="color:var(--core-ink)">O</span><span><b>Open</b> <span class="dim">开放：程序必须公开、可编译，许可证限制写明</span></span>
-<span class="mark" style="color:var(--plasma-ink)">N</span><span><b>Nuclear physics</b> <span class="dim">核物理：反应、结构、核天体、重离子输运</span></span>
-</div>
 </div>
 
 <p class="faint" style="margin-top:24px">金磊 　同济大学物理科学与工程学院 　jinl@tongji.edu.cn　·　官网 <a href="https://vibeinscience.com/" target="_blank" style="color:var(--plasma-ink); font-weight:600">vibeinscience.com</a></p>

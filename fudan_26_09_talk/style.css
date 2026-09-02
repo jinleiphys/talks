@@ -95,6 +95,18 @@ table.anchors td { padding: 4px 8px; white-space: nowrap; }
 
 /* Cover: the glass slab is drawn by the WebGL layer, the DOM chip only carries text */
 .glass-slot { border-radius: 22px; }
+/* The visible pane is drawn by the WebGL layer, not by this element, so the
+   two are matched by hand. Keep them in step: the rect prop is in
+   aspect-corrected plane units, x in [-aspect/2, aspect/2], y up. */
+#cover-slot {
+  display: inline-flex; flex-direction: column; align-items: flex-start;
+  gap: 5px; margin-top: 26px; width: max-content; padding: 16px 26px;
+}
+/* Same treatment the website gives the acronym: one line, initials picked
+   out in the accent. A six-row bilingual glossary is reference material,
+   and a cover slide is not where reference material goes. */
+.acronym { font-size: .94rem; line-height: 1.45; color: var(--plasma-ink); letter-spacing: .005em; white-space: nowrap; }
+.acronym b { color: var(--core-ink); font-weight: 700; }
 
 /* Hide Slidev goto-dialog sidebar that leaks into production build.
    Dev mode never shows it, so this only ever reproduces on the deployed
