@@ -24,6 +24,21 @@ jobs:
         with:
           node-version: 22
 
+      # Third time this was dropped when a deck started from a fresh
+      # style.css (ce08a7a, then 82f48e9, then fudan_26_09_talk). Dev mode
+      # never shows the dialog, so the only place it reproduces is the
+      # deployed page, which is exactly where nobody is looking for it.
+      - name: Every talk must hide the Slidev goto-dialog
+        run: |
+          missing=0
+          for dir in $(find . -maxdepth 2 -name slides.md -exec dirname {} \; | sed 's|^\./||' | sort); do
+            if ! grep -q 'slidev-goto-dialog' "$dir/style.css" 2>/dev/null; then
+              echo "::error file=$dir/style.css::$dir/style.css is missing the #slidev-goto-dialog display:none rule; the goto dialog leaks into the production build"
+              missing=1
+            fi
+          done
+          exit $missing
+
       - name: Build all talks
         run: |
           mkdir -p _site

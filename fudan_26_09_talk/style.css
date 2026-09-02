@@ -95,3 +95,12 @@ table.anchors td { padding: 4px 8px; white-space: nowrap; }
 
 /* Cover: the glass slab is drawn by the WebGL layer, the DOM chip only carries text */
 .glass-slot { border-radius: 22px; }
+
+/* Hide Slidev goto-dialog sidebar that leaks into production build.
+   Dev mode never shows it, so this only ever reproduces on the deployed
+   page. Every other talk in this repo carries the same rule; see ce08a7a
+   and 82f48e9, which is the second time it was dropped when a deck was
+   started from a fresh style.css. */
+#slidev-goto-dialog {
+  display: none !important;
+}
