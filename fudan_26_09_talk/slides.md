@@ -546,15 +546,21 @@ clicks: 4
 
 <div class="ui-label" style="margin-bottom:10px">演示二 · 录屏回放 <span class="dim" style="text-transform:none; letter-spacing:0">按一下走一段</span></div>
 
-<Cast src="/casts/demo-n90zr.cast" :clicks="$clicks" :speed="1.8" :markers="[[18.8, '选定工具'], [27.79, '参数有出处 · ap=0'], [84.74, '收敛与锚值'], [327.06, 'EXFOR：50 MeV 没有数据']]" />
+<Cast src="/casts/demo-n90zr.cast" :clicks="$clicks" :speed="1.5" :markers="[[9.53, '参数有出处 · ap=0'], [18.0, 'EXFOR：只有 8 / 10 / 24 MeV'], [99.74, '收敛：步长减半重算'], [132.79, '锚值 1301.639 mb']]" />
 
 <!--
-真实录制，不是演示脚本。deepseek-v4-pro，原始 414 秒，这里 1.8 倍速播放，约 3 分 50 秒。
+真实录制，不是演示脚本。deepseek-v4-pro，原始 221 秒，1.5 倍速播放，约 2 分 30 秒。
 
-四个停顿点就是上一页那四张卡。
+四个停顿点就是上一页那四张卡，按翻页笔继续。
 
-σ_R = 1301.64 mb，与技能内置锚值 1301.64017 mb 一致到 5.7 位有效数字。
-EXFOR 50 MeV 无数据，改用 24 MeV（calc/data 0.93）和 55 MeV（0.995）交叉验证。
+收敛那一段值得讲：它把 hcm 从 0.1 减半到 0.05 重算，又发现质量约定才是关键
+差异来源，用精确质量（中子 1.008665 u，90Zr 89.9047 u）得到 σ_R = 1301.639 mb，
+才对上 KD02 参考值；用整数质量是 1299.19 mb。
+
+EXFOR 50 MeV 无数据，改用 24 MeV（calc/data 0.93）和 55 MeV（1.00）交叉验证。
+
+中途有两处 Python traceback，是它自己写的临时解析脚本报的，当场都改好了。
+这是真实运行的样子，不是失败。
 
 如果现场演示顺利，这页跳过。
 -->

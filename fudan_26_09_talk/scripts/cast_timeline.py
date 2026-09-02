@@ -9,7 +9,7 @@ chosen lines straight into the marker array the slide needs.
 
     python3 scripts/cast_timeline.py public/casts/demo.cast
     python3 scripts/cast_timeline.py public/casts/demo.cast \
-        --grep 'kd02.f=参数有出处' --grep 'EXFOR=没有数据'
+        --grep 'kd02.f::参数有出处' --grep 'EXFOR::没有数据'
 """
 import argparse, json, re, sys
 
@@ -53,7 +53,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('cast')
     ap.add_argument('--grep', action='append', default=[],
-                    help='PATTERN=LABEL; first line matching PATTERN becomes a marker')
+                    help='PATTERN::LABEL; both sides may contain an equals sign')
     ap.add_argument('--lead', type=float, default=0.0,
                     help='seconds to place the marker before the matched line')
     args = ap.parse_args()
@@ -72,7 +72,11 @@ def main():
 
     markers, used = [], set()
     for spec in args.grep:
-        pattern, _, label = spec.partition('=')
+        # '::', not '=': patterns routinely contain an equals sign
+        # (hcm=0.05) and so do labels (ap=0), so splitting on the first
+        # one drops the label and splitting on the last one drops the
+        # pattern. Both were live bugs before this separator.
+        pattern, _, label = spec.partition('::')
         for t, text in lines:
             if pattern in text and t not in used:
                 markers.append([round(max(t - args.lead, 0.0), 2), label or pattern])
