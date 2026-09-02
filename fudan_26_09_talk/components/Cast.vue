@@ -31,6 +31,7 @@ const props = defineProps({
   speed: { type: Number, default: 1.6 },
   idleTimeLimit: { type: Number, default: 1.2 },
   fontSize: { type: String, default: 'small' },
+  poster: { type: String, default: 'npt:0:02' },
   /* The slide content box is 472 px tall. fit:'width' only constrains the
      width, so a 30-row cast renders 800 px tall and runs off the bottom;
      the height has to be pinned and the fit told to honour both axes. */
@@ -54,7 +55,7 @@ onMounted(() => {
     idleTimeLimit: props.idleTimeLimit,
     terminalFontSize: props.fontSize,
     fit: 'both',
-    poster: 'npt:0:02',   /* frame 0 is an empty screen; 2 s has the prompt */
+    poster: props.poster,
   })
 })
 

@@ -84,56 +84,45 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">一 · 什么是 agent</div>
 
-# 我现在主要把三类事交给它
+# 它已经进了我的日常工作
 
-<div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px">
-
-<div class="glass">
-<div class="ui-label plasma">改程序</div>
-<p style="margin-top:6px; font-size:.92rem">先找现有实现，只改相关文件，然后编译、跑测试。交回来的是代码改动和测试结果。</p>
+<div style="margin-top:24px; max-width:900px">
+<div style="display:grid; grid-template-columns:150px 1fr; padding:16px 4px; border-bottom:1px solid var(--hairline)">
+<strong style="color:var(--plasma-ink)">改程序</strong>
+<span>在仓库里找现有实现，改完编译、跑测试，把代码和测试结果一起交回来。</span>
+</div>
+<div style="display:grid; grid-template-columns:150px 1fr; padding:16px 4px; border-bottom:1px solid var(--hairline)">
+<strong style="color:var(--plasma-ink)">核文献</strong>
+<span>作者、DOI、公式和关键数字逐项对回原文，没找到就写没找到。</span>
+</div>
+<div style="display:grid; grid-template-columns:150px 1fr; padding:16px 4px; border-bottom:1px solid var(--hairline)">
+<strong style="color:var(--plasma-ink)">查稿件和校样</strong>
+<span>对照 LaTeX、PDF 和期刊校样，检查公式、表格、参考文献，列出需要处理的问题。</span>
+</div>
 </div>
 
-<div class="glass">
-<div class="ui-label plasma">查文献</div>
-<p style="margin-top:6px; font-size:.92rem">把作者、DOI、公式和数字逐项对回原文。交回来的是出处和核对记录。</p>
+<div style="margin-top:28px; display:flex; align-items:baseline; gap:26px">
+<span style="font-size:1.45rem; font-weight:600">今年已有 12 篇论文接收</span>
+<span><strong>9</strong> PRC　·　<strong>2</strong> PLB　·　<strong>1</strong> Computer Physics Communications</span>
 </div>
-
-<div class="glass">
-<div class="ui-label plasma">投稿前自查</div>
-<p style="margin-top:6px; font-size:.92rem">对照源文件、PDF 和期刊校样，检查公式、表格、参考文献，列出需要处理的问题。</p>
-</div>
-
-</div>
-
-<div class="glass glass-plasma" style="margin-top:16px; padding:14px 22px; display:flex; align-items:baseline; gap:24px">
-<span style="font-size:1.35rem; font-weight:600">2026 年已有 12 篇论文接收</span>
-<span style="font-size:.94rem"><strong>9</strong> PRC　·　<strong>2</strong> PLB　·　<strong>1</strong> Computer Physics Communications</span>
-</div>
-
-<div class="takeaway">这些论文的物理判断由作者负责。agent 参与的是代码检查、文献核对和投稿前自查。</div>
+<p class="faint" style="margin-top:8px">agent 参与上面这些检查。论文里的物理判断由作者负责。</p>
 
 <!--
-中心信息：2026 年已有 12 篇论文接收，agent 已经进入实际的代码检查、文献核对和投稿流程。
+中心信息：agent 已经进入我的日常工作，产出是代码、测试结果、核对记录和问题清单。
 
-讲什么：12 篇按期刊拆开讲：9 篇 PRC、2 篇 PLB、1 篇 Computer Physics Communications。不要说 agent 帮我接收了这些论文。它参与的是代码检查、文献核对、投稿稿件和校样审查，物理判断仍由作者负责。
+讲什么：按三行各举一个真实例子。12 篇放在最后，只说明这套做法已经用于真实、持续的工作，不建立因果关系。9 篇 PRC、2 篇 PLB、1 篇 Computer Physics Communications。
 
 时间：3:00 到 5:30。
-转场：那么一个 agent 到底由什么决定能干多少事。
+转场：它能这样工作，不只是因为模型本身。
 -->
 
 ---
 
 <div class="ui-label" style="margin-bottom:6px">一 · 什么是 agent</div>
 
-# 模型之外，还有一半是自己写的
+# agent 的能力 ＝ 模型 × 工具和知识
 
-<p style="margin-top:8px; max-width: 820px">模型当然重要，但同一个模型接上不同的工具、读到不同的资料，做出来的事会差很多。我把它写成一个很粗的式子：</p>
-
-<div class="glass glass-plasma" style="margin-top:16px; text-align:center; padding: 22px">
-<span style="font-size:1.55rem; font-weight:600">agent 的能力 ＝ 模型 × 工具和知识</span>
-</div>
-
-<div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 20px">
+<div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 34px">
 
 <div class="glass">
 <div class="ui-label">模型</div>
@@ -147,7 +136,7 @@ drawings:
 
 </div>
 
-<div class="takeaway">模型换得很快。文献怎么查、程序怎么验，这些可以留在自己手里。</div>
+<div class="takeaway">这一年我换过几个模型，查文献和验程序的办法一直放在同一个仓库里。</div>
 
 <!--
 中心信息：全场论点。模型是租来的，工具和知识是我们自己的。
@@ -162,7 +151,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">二 · 核物理的 agent 长什么样</div>
 
-# 一次计算，时间花在了哪里
+# 一次真实的核物理计算，时间花在了哪里
 
 <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 26px">
 <div class="glass" style="padding:14px 12px; text-align:center"><div class="ui-label">1</div><p style="font-size:.95rem; margin-top:6px">读文献</p></div>
@@ -171,7 +160,7 @@ drawings:
 <div class="glass" style="padding:14px 12px; text-align:center"><div class="ui-label">4</div><p style="font-size:.95rem; margin-top:6px">写输入卡</p></div>
 <div class="glass" style="padding:14px 12px; text-align:center"><div class="ui-label">5</div><p style="font-size:.95rem; margin-top:6px">跑</p></div>
 <div class="glass glass-core" style="padding:14px 12px; text-align:center"><div class="ui-label core">6</div><p style="font-size:.95rem; margin-top:6px">判断对不对</p></div>
-<div class="glass" style="padding:14px 12px; text-align:center"><div class="ui-label">7</div><p style="font-size:.95rem; margin-top:6px">写论文</p></div>
+<div class="glass" style="padding:14px 12px; text-align:center"><div class="ui-label">7</div><p style="font-size:.95rem; margin-top:6px">做记录存档</p></div>
 </div>
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 26px">
@@ -204,8 +193,8 @@ drawings:
 
 <div class="glass">
 <div class="ui-label core">一个真实的例子：FRESCO 的半径约定</div>
-<p style="margin-top:10px; font-size:.96rem">FRESCO 用 <code>R = r0 (Ap^1/3 + At^1/3)</code> 计算半径，全局光学势 KD02 和 CH89 则使用 <code>R = r0 At^1/3</code>。通用 agent 按后一种习惯写输入卡，就可能漏掉 <code>ap=0</code> 这一行。</p>
-<p style="margin-top:8px; font-size:.96rem">核子入射时每个半径偏大约 <strong>22%</strong>。程序正常结束，退出码 0，图也好看。</p>
+<p style="margin-top:10px; font-size:.96rem">FRESCO 的半径取 <code>R = r0 (Ap^1/3 + At^1/3)</code>。但 KD02 和 CH89 的核子势只用 <code>At</code>，必须写 <code>Ap=0</code>。</p>
+<p style="margin-top:8px; font-size:.96rem">n+<sup>90</sup>Zr 漏掉这一行，所有半径大 <strong>22%</strong>。程序照样正常结束，图也照样好看。</p>
 </div>
 
 <div class="glass">
@@ -272,7 +261,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">二 · 核物理的 agent 长什么样</div>
 
-# 现在的 FUSION 其实很朴素
+# FUSION 目前分为两层
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 20px">
 
@@ -291,8 +280,8 @@ drawings:
 </div>
 
 <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px">
-<div class="glass" style="padding:14px 18px"><div class="ui-label">不绑定 agent</div><p style="font-size:.92rem; margin-top:6px">opencode、Claude Code、Codex 都能直接加载</p></div>
-<div class="glass" style="padding:14px 18px"><div class="ui-label">不绑定模型</div><p style="font-size:.92rem; margin-top:6px">DeepSeek、Qwen、GLM 能跑，Claude、GPT 也能跑</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label">Agent</div><p style="font-size:.92rem; margin-top:6px">opencode 可以用；要最好的效果，还是 Claude Code 或 Codex</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label">模型</div><p style="font-size:.92rem; margin-top:6px">DeepSeek、Qwen、GLM 能跑，但复杂任务会拉开差距</p></div>
 <div class="glass" style="padding:14px 18px"><div class="ui-label">开源</div><p style="font-size:.92rem; margin-top:6px">MIT · github.com/jinleiphys/FUSION</p></div>
 </div>
 
@@ -301,7 +290,7 @@ drawings:
 <!--
 中心信息：FUSION 就是上一页三样东西的实现，两层，开源。
 
-讲什么：数字口径：20 是驱动具体程序的技能，26 是全部。第三样东西"档案"就是那两份维护研究档案的技能，今天不展开。
+讲什么：数字口径：20 是驱动具体程序的技能，26 是全部。第三样东西"档案"就是那两份维护研究档案的技能，今天不展开。FUSION 不绑 agent 和模型，但兼容不等于效果相同。opencode 可以用，要最好的效果还是 Claude Code 或 Codex。
 
 时间：14:30 到 16:00。
 转场：先看文献这一层能替你做什么。
@@ -327,7 +316,7 @@ drawings:
 
 <div class="glass">
 <div class="ui-label">citations.tsv</div>
-<p style="margin-top:8px; font-size:.95rem">70 万条语料内引用边，从 .tex 参考文献解析出来。</p>
+<p style="margin-top:8px; font-size:.95rem">这 61,059 篇论文之间共有 70 万条引用关系，从 .tex 参考文献解析出来。</p>
 </div>
 
 <div class="glass">
@@ -342,7 +331,7 @@ drawings:
 <!--
 中心信息：文献层不是一个搜索引擎，是一堆本地文本文件，任何 agent 都能直接读。
 
-讲什么：强调"离线"和"grep"。在计算节点上、在没有网的地方、在不想把稿子传出去的时候，它照样能用。
+讲什么：强调"本地文件"和"grep"。文献检索不依赖外部文献网站。模型 API 是否联网是另一回事。
 
 时间：16:00 到 18:00。
 转场：这批语料有一个可看的形态。
@@ -376,41 +365,36 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">三 · 文献：它能帮你做什么</div>
 
-# 演示一：断网，只给它一篇 PDF
+# 演示一：模型在线，只查本地文献库
 
 <div class="glass glass-plasma" style="margin-top: 20px; max-width: 760px">
 <div class="ui-label plasma">交给它的原话</div>
-<p style="margin-top:10px; font-size:1.05rem">这篇论文（Abu-Ibrahim 等，PRC 77, 034607）在我们的知识库里是哪一篇？它引了谁，谁引了它？摘要里有什么可以直接核对的数字？</p>
+<p style="margin-top:10px; font-size:1.05rem">这篇论文（Abu-Ibrahim 等，PRC 77, 034607）在我们的知识库里是哪一篇？它引了谁，谁引了它？页面里有哪些数字？把原始摘要和机器生成的 Key numbers 分开说。</p>
 </div>
 
 <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; max-width: 860px">
-<div class="glass" style="padding:14px 18px"><div class="ui-label">先定位论文</div><p style="font-size:.92rem; margin-top:6px">它靠标题和作者把 PDF 定位到 <code>0710.4193</code>，没有联网</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label">先定位论文</div><p style="font-size:.92rem; margin-top:6px">它只查本地文件，按 DOI 定位到 <code>0710.4193</code></p></div>
 <div class="glass" style="padding:14px 18px"><div class="ui-label">再顺着引用走</div><p style="font-size:.92rem; margin-top:6px">在这批语料中，该论文引用了 8 篇论文，又被 5 篇论文引用，其中包括同组前作和 <sup>22</sup>C 双中子晕研究</p></div>
-<div class="glass" style="padding:14px 18px"><div class="ui-label">落到可核对的数字</div><p style="font-size:.92rem; margin-top:6px">p+<sup>12</sup>C 在 40 MeV 的 σ<sub>R</sub> = 432 mb，可以直接翻原文</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label">分清数字来自哪里</div><p style="font-size:.92rem; margin-top:6px">原始摘要给出 N=6–16 和 40 AMeV；432 mb 来自机器生成的 Key numbers，必须回原文核对</p></div>
 </div>
 
-<p class="faint" style="margin-top: 22px">备份回放在下一页</p>
-
 <!--
-中心信息：一句自然语言，离线，从一篇 PDF 走到可核对的数字。
+中心信息：一句自然语言，只查本地文件，从一篇 PDF 走到可核对的数字。
 
-演示注意：切屏前先关 Wi-Fi，让听众看到断网。终端字号调大。30 秒没实质进展就切录屏，不解释，不道歉，不现场调试。
+演示注意：模型 API 保持联网，但不调用网络搜索，只查本地文献库。终端字号调大。30 秒没实质进展就切录屏，不解释，不道歉，不现场调试。
 
 时间：19:00 到 23:30，共 4 分半。
 转场：回来以后先讲它的两条限制。
 -->
 
 ---
-title: 演示一 · 录屏回放
 clicks: 3
 ---
 
-<div class="ui-label" style="margin-bottom:10px">演示一 · 录屏回放 <span class="dim" style="text-transform:none; letter-spacing:0">按一下走一段</span></div>
-
-<Cast src="/casts/demo-kb.cast" :clicks="$clicks" :speed="1" :markers="[[2.92, '离线检索'], [31.76, '定位到 0710.4193'], [36.48, '引用 8 篇，被引 5 篇']]" />
+<Cast src="/casts/demo-kb.cast" :clicks="$clicks" :speed="1" poster="npt:0:04" :markers="[[10.00, '定位到 0710.4193'], [17.50, '引用 8 篇，被引 5 篇'], [25.50, '分清原始摘要与机器摘要']]" />
 
 <!--
-真实录制，不是演示脚本。deepseek-v4-pro，51 秒。
+真实录制，不是演示脚本。Claude Code，Sonnet 4.5，26 秒。
 
 三个停顿点分别对应上一页的三张卡。按翻页笔继续。
 
@@ -439,7 +423,7 @@ clicks: 3
 <div class="takeaway">所以我把它当导航，不当引用来源；一次搜不到，也不能说文献不存在。</div>
 
 <!--
-中心信息：文献层的价值在于离线和可核对，它的两条限制要跟能力放在同一页讲。
+中心信息：文献层的价值在于本地检索和可核对，它的两条限制要跟能力放在同一页讲。
 
 时间：23:30 到 24:30。
 转场：第二样东西，程序。
@@ -532,8 +516,6 @@ clicks: 3
 <div class="glass" style="padding:14px 18px"><div class="ui-label">EXFOR</div><p style="font-size:.9rem; margin-top:6px">查完如实报告：50 MeV 没有数据</p></div>
 </div>
 
-<p class="faint" style="margin-top: 22px">这句话里没有任何一个文件名、路径或者参数。备份回放在下一页</p>
-
 <!--
 中心信息：一句自然语言，覆盖找参数、写输入、编译、运行、解析、找数据、作图。
 
@@ -546,27 +528,20 @@ clicks: 3
 -->
 
 ---
-title: 演示二 · 录屏回放
 clicks: 4
 ---
 
-<div class="ui-label" style="margin-bottom:10px">演示二 · 录屏回放 <span class="dim" style="text-transform:none; letter-spacing:0">按一下走一段</span></div>
-
-<Cast src="/casts/demo-n90zr.cast" :clicks="$clicks" :speed="1.5" :markers="[[9.53, '参数有出处 · ap=0'], [18.0, 'EXFOR：只有 8 / 10 / 24 MeV'], [99.74, '收敛：步长减半重算'], [132.79, '锚值 1301.639 mb']]" />
+<Cast src="/casts/demo-n90zr.cast" :clicks="$clicks" :speed="1.5" :markers="[[9.16, 'KD02 参数 · ap=0'], [18.18, '收敛 · 1301.64012 mb'], [25.43, 'EXFOR · 没有 50 MeV'], [42.86, '24 / 55 MeV · 0.929 / 0.995']]" />
 
 <!--
-真实录制，不是演示脚本。deepseek-v4-pro，原始 221 秒，1.5 倍速播放，约 2 分 30 秒。
+真实录制，不是演示脚本。Claude Code，Sonnet 4.5，原始约 43 秒。
 
 四个停顿点就是上一页那四张卡，按翻页笔继续。
 
-收敛那一段值得讲：它把 hcm 从 0.1 减半到 0.05 重算，又发现质量约定才是关键
-差异来源，用精确质量（中子 1.008665 u，90Zr 89.9047 u）得到 σ_R = 1301.639 mb，
-才对上 KD02 参考值；用整数质量是 1299.19 mb。
+收敛那一段值得讲：基准卡给出 σ_R = 1301.63782 mb；把 hcm 从 0.1 减半到 0.05，
+同时把 jtmax 从 60 增到 120，得到 1301.64012 mb，相对变化约 1.8e-6。
 
-EXFOR 50 MeV 无数据，改用 24 MeV（calc/data 0.93）和 55 MeV（1.00）交叉验证。
-
-中途有两处 Python traceback，是它自己写的临时解析脚本报的，当场都改好了。
-这是真实运行的样子，不是失败。
+EXFOR 50 MeV 无数据，改用 24 MeV（mean calc/data 0.929）和 55 MeV（0.995）交叉验证。
 
 如果现场演示顺利，这页跳过。
 -->
