@@ -17,7 +17,7 @@ drawings:
 
 <div style="display:flex; flex-direction:column; justify-content:center; padding: 0 30px; position:relative; z-index:1">
 
-<div class="ui-label plasma" style="margin-bottom:18px">复旦大学 · 2026 年 10 月 8 日</div>
+<div class="ui-label plasma" style="margin-bottom:18px">复旦大学 · 2026 年 9 月 8 日</div>
 
 <h1 style="font-size:2.9rem; line-height:1.2; max-width: 760px">核物理需要什么样的 <span style="color:var(--plasma)">agent</span></h1>
 
@@ -29,7 +29,7 @@ drawings:
 <span class="faint" style="font-size:.82rem">六万篇本地文献 · 20 个程序的使用技能 · 开源</span>
 </div>
 
-<p class="faint" style="margin-top:24px">金磊 　同济大学物理科学与工程学院 　jinl@tongji.edu.cn　·　官网 <a href="https://vibeinscience.com/" target="_blank" style="color:var(--plasma-ink); font-weight:600">vibeinscience.com</a></p>
+<p class="faint" style="margin-top:24px">金磊 　同济大学物理科学与工程学院 　jinl@tongji.edu.cn　·　<a href="https://vibeinscience.com/" target="_blank" style="color:var(--plasma-ink); font-weight:600">vibeinscience.com</a></p>
 
 </div>
 
@@ -46,35 +46,35 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">一 · 什么是 agent</div>
 
-# chatbot 停在答案，agent 会继续往下做
+# 同一个 FRESCO 任务，两种工作方式
 
 <div style="display:grid; grid-template-columns: 1fr 1.25fr; gap: 22px; margin-top: 22px">
 
 <div class="glass">
-<div class="ui-label">chatbot</div>
-<p style="margin-top:10px">我问一句，它答一句。答完这一轮它就停了，留下的是一段文字。</p>
+<div class="ui-label">普通的网页 ChatGPT</div>
+<p style="margin-top:10px">我上传论文，问它公式是什么意思；或者让它给一份 FRESCO 输入卡。它可以联网、读文件、跑一小段代码，但这一轮的交付物通常还是回答、代码块或下载文件。程序真正有没有装上，输入卡实际跑出了什么，要由我接着处理。</p>
 </div>
 
 <div class="glass glass-plasma">
 <div class="ui-label plasma">agent</div>
-<p style="margin-top:10px">多了一层循环。它读完任务，先判断下一步该做什么：打开文件、运行命令，或者查资料。工具返回结果后，它再看一遍，决定继续、换一种做法，还是停下来报告。</p>
+<p style="margin-top:10px">我把同一个任务交给 agent，它能进入工作目录，找已有输入卡，编译 FRESCO，真正运行一次，再读输出。若计算没收敛，它会改步长和分波数重跑。最后交给我的，是运行记录、结果和仍需判断的问题。</p>
 </div>
 
 </div>
 
 <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 18px">
-<div class="glass" style="padding:14px 18px"><div class="ui-label plasma">模型</div><p style="font-size:.92rem; margin-top:6px">判断下一步</p></div>
-<div class="glass" style="padding:14px 18px"><div class="ui-label plasma">工具</div><p style="font-size:.92rem; margin-top:6px">让它能实际操作</p></div>
-<div class="glass" style="padding:14px 18px"><div class="ui-label plasma">上下文</div><p style="font-size:.92rem; margin-top:6px">决定它看得到什么</p></div>
-<div class="glass" style="padding:14px 18px"><div class="ui-label plasma">循环</div><p style="font-size:.92rem; margin-top:6px">让它连续走很多步</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label plasma">工作环境</div><p style="font-size:.92rem; margin-top:6px">能看到目录、代码和文档</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label plasma">实际操作</div><p style="font-size:.92rem; margin-top:6px">能读写文件、运行命令</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label plasma">看结果</div><p style="font-size:.92rem; margin-top:6px">报错和数值都会回到上下文</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label plasma">继续做</div><p style="font-size:.92rem; margin-top:6px">失败后修改、重跑、再检查</p></div>
 </div>
 
-<div class="takeaway">我今天说的 agent，就是多了这个“看完结果再往下做”的循环。</div>
+<div class="takeaway">我看的是它交付一段回答，还是进入工作环境，把运行、检查和重试继续做完。</div>
 
 <!--
-中心信息：agent 就是把模型放进一个"看结果再决定下一步"的循环里。
+中心信息：普通网页对话以回答为交付，agent 在工作环境里执行、观察和重试。
 
-讲什么：先讲上面两个框，按真实操作顺序讲 agent 那一栏：读任务，判断，调工具，看返回，再判断。然后指着下面四个小框，一个词一个词过。不要展开讲每个部件，后面会回来。
+讲什么：直接用同一个 FRESCO 任务对比。普通对话给出输入卡，agent 则进入目录、编译、运行、读输出、检查收敛。任务有没有在工作环境中继续执行，才是这里要讲的区别。
 
 时间：0:40 到 3:00。
 转场：这不是概念，软件界已经在这么用了。
@@ -84,32 +84,38 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">一 · 什么是 agent</div>
 
-# 编程 agent 已经进了代码仓库
+# 我现在主要把三类事交给它
 
-<div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 22px">
-
-<div class="glass">
-<div class="ui-label">它在软件界做的事</div>
-<p style="margin-top:10px">进入一个代码仓库，自己读代码、改文件、运行测试。测试没过，它根据报错继续改。一项任务常常要走几十步。</p>
-</div>
+<div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px">
 
 <div class="glass">
-<div class="ui-label core">我这一年怎么用它</div>
-<p style="margin-top:10px">写代码，让它先找现有实现再动手改。查文献，让它核对出处和数字。论文送出去以前，让它专门找漏洞。</p>
+<div class="ui-label plasma">改程序</div>
+<p style="margin-top:6px; font-size:.92rem">先找现有实现，只改相关文件，然后编译、跑测试。交回来的是代码改动和测试结果。</p>
+</div>
+
+<div class="glass">
+<div class="ui-label plasma">查文献</div>
+<p style="margin-top:6px; font-size:.92rem">把作者、DOI、公式和数字逐项对回原文。交回来的是出处和核对记录。</p>
+</div>
+
+<div class="glass">
+<div class="ui-label plasma">投稿前自查</div>
+<p style="margin-top:6px; font-size:.92rem">对照源文件、PDF 和期刊校样，检查公式、表格、参考文献，列出需要处理的问题。</p>
 </div>
 
 </div>
 
-<div class="glass glass-plasma" style="margin-top:18px">
-<p style="font-size:1.0rem">我通常不让一个模型既出主意又给自己打分。一个模型提方案，换一个模型挑错，最后的判断由我来做。</p>
+<div class="glass glass-plasma" style="margin-top:16px; padding:14px 22px; display:flex; align-items:baseline; gap:24px">
+<span style="font-size:1.35rem; font-weight:600">2026 年已有 12 篇论文接收</span>
+<span style="font-size:.94rem"><strong>9</strong> PRC　·　<strong>2</strong> PLB　·　<strong>1</strong> Computer Physics Communications</span>
 </div>
 
-<div class="takeaway">我现在已经把它当作日常工具，但不让它自己验收自己。</div>
+<div class="takeaway">这些论文的物理判断由作者负责。agent 参与的是代码检查、文献核对和投稿前自查。</div>
 
 <!--
-中心信息：agent 在软件界已经是日常工具，我自己也在这么用。
+中心信息：2026 年已有 12 篇论文接收，agent 已经进入实际的代码检查、文献核对和投稿流程。
 
-讲什么：左框讲清楚"测试没过它会怎么办"，这是 agent 和 chatbot 的分界。右框讲自己的三个用法，讲得具体一点，比如审稿前让它找漏洞找到过什么。下面那句"两个模型互相挑错"是后面验证那一节的伏笔。
+讲什么：12 篇按期刊拆开讲：9 篇 PRC、2 篇 PLB、1 篇 Computer Physics Communications。不要说 agent 帮我接收了这些论文。它参与的是代码检查、文献核对、投稿稿件和校样审查，物理判断仍由作者负责。
 
 时间：3:00 到 5:30。
 转场：那么一个 agent 到底由什么决定能干多少事。
@@ -119,7 +125,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">一 · 什么是 agent</div>
 
-# 同一个模型，换一套工具就是另一种 agent
+# 模型之外，还有一半是自己写的
 
 <p style="margin-top:8px; max-width: 820px">模型当然重要，但同一个模型接上不同的工具、读到不同的资料，做出来的事会差很多。我把它写成一个很粗的式子：</p>
 
@@ -141,7 +147,7 @@ drawings:
 
 </div>
 
-<div class="takeaway">模型会换代，自己写下的经验不必清零。</div>
+<div class="takeaway">模型换得很快。文献怎么查、程序怎么验，这些可以留在自己手里。</div>
 
 <!--
 中心信息：全场论点。模型是租来的，工具和知识是我们自己的。
@@ -156,7 +162,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">二 · 核物理的 agent 长什么样</div>
 
-# 我们一天里到底在忙什么
+# 一次计算，时间花在了哪里
 
 <div style="display:grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 26px">
 <div class="glass" style="padding:14px 12px; text-align:center"><div class="ui-label">1</div><p style="font-size:.95rem; margin-top:6px">读文献</p></div>
@@ -192,7 +198,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">二 · 核物理的 agent 长什么样</div>
 
-# 最危险的错，程序照样给你一张好看的图
+# 一个我真遇到过的错：半径大了 22%
 
 <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap: 22px; margin-top: 20px">
 
@@ -215,7 +221,7 @@ drawings:
 <div class="glass" style="padding:14px 18px"><p style="font-size:.92rem">每次对话都从零开始，上次踩过的坑不会自动留下来</p></div>
 </div>
 
-<div class="takeaway">22% 很尴尬：错得没那么明显，却足以改变物理结论。</div>
+<div class="takeaway">这种错最麻烦。程序不报错，曲线也不像坏了，只是物理已经变了。</div>
 
 <!--
 中心信息：通用 agent 的失败方式不是不会做，是做出一个看起来对的错结果。
@@ -230,7 +236,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">二 · 核物理的 agent 长什么样</div>
 
-# 我希望核物理 agent 随手能拿到这些
+# 我后来给它补了三样东西
 
 <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 30px">
 
@@ -251,7 +257,7 @@ drawings:
 
 </div>
 
-<div class="takeaway">模型是租来的。我真正想留下的，是文献、程序经验和自己的记录。</div>
+<div class="takeaway">这三样都不是模型参数，换一个模型也还能用。</div>
 
 <!--
 中心信息：核物理 agent 的核心不是模型，是它手边的三样东西。
@@ -266,7 +272,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">二 · 核物理的 agent 长什么样</div>
 
-# 我把它做成了 FUSION
+# 现在的 FUSION 其实很朴素
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 20px">
 
@@ -290,7 +296,7 @@ drawings:
 <div class="glass" style="padding:14px 18px"><div class="ui-label">开源</div><p style="font-size:.92rem; margin-top:6px">MIT · github.com/jinleiphys/FUSION</p></div>
 </div>
 
-<div class="takeaway">主体就是 Markdown 和 shell 脚本，换模型时不用搬家。</div>
+<div class="takeaway">主体就是 Markdown 和 shell 脚本，没有单独训练模型。</div>
 
 <!--
 中心信息：FUSION 就是上一页三样东西的实现，两层，开源。
@@ -305,7 +311,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">三 · 文献：它能帮你做什么</div>
 
-# 六万篇论文，就放在一批普通文件里
+# 文献库就是一批普通文件
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 20px">
 
@@ -414,7 +420,7 @@ clicks: 3
 
 <div class="ui-label" style="margin-bottom:6px">三 · 文献：它能帮你做什么</div>
 
-# 知识库页面不能代替原始论文
+# 这套文献库有两个明确的限度
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 24px">
 
@@ -443,7 +449,7 @@ clicks: 3
 
 <div class="ui-label" style="margin-bottom:6px">四 · 程序：它能帮你做什么</div>
 
-# FRESCO 那个 22% 的坑，写下来只占一行
+# 那个 22% 的坑，写下来只占一行
 
 <div style="display:grid; grid-template-columns: 1.15fr 1fr; gap: 18px; margin-top: 10px">
 
@@ -486,7 +492,7 @@ clicks: 3
 
 <div class="ui-label" style="margin-bottom:6px">四 · 程序：它能帮你做什么</div>
 
-# 现在有 20 份程序技能
+# 目前写了 20 个程序的用法
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px">
 <div class="glass" style="padding:16px 20px"><div class="ui-label plasma">反应、光学模型</div><p style="font-size:.95rem; margin-top:6px">FRESCO（含 SFRESCO 拟合）、COLOSS、CCFULL、pikoe、NLAT、CNOK、SIDES、SWANLOP</p></div>
@@ -568,7 +574,7 @@ EXFOR 50 MeV 无数据，改用 24 MeV（calc/data 0.93）和 55 MeV（1.00）�
 
 <div class="ui-label" style="margin-bottom:6px">四 · 程序：它能帮你做什么</div>
 
-# 我怎么知道它没有偷偷跑错
+# 我现在怎么查它有没有跑错
 
 <div class="tight" style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px">
 
@@ -634,7 +640,7 @@ EXFOR 50 MeV 无数据，改用 24 MeV（calc/data 0.93）和 55 MeV（1.00）�
 
 <div class="ui-label" style="margin-bottom:6px">五 · 这对研究方式意味着什么</div>
 
-# 很多关键经验，手册里根本没写
+# 手册没写的东西，以前都靠口传
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 22px">
 
@@ -663,7 +669,7 @@ EXFOR 50 MeV 无数据，改用 24 MeV（calc/data 0.93）和 55 MeV（1.00）�
 
 <div class="ui-label" style="margin-bottom:6px">五 · 这对研究方式意味着什么</div>
 
-# 我不想再把大半天花在找文件和猜格式上
+# 我想省掉的是这些时间
 
 <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 22px">
 
@@ -699,7 +705,7 @@ EXFOR 50 MeV 无数据，改用 24 MeV（calc/data 0.93）和 55 MeV（1.00）�
 
 <div class="ui-label" style="margin-bottom:6px">五 · 这对研究方式意味着什么</div>
 
-# v0.1.0 还有这些硬伤
+# v0.1.0 现在确实不好装
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px">
 <div class="glass"><div class="ui-label core">从零安装</div><p style="font-size:.95rem; margin-top:6px">目前只完整验证了 FRESCO：在没有任何缓存的机器上，它可以从头安装成功。其余 19 个程序还没有逐个做同样的测试，换到别的机器上，很可能会缺少依赖库。</p></div>
@@ -723,7 +729,7 @@ EXFOR 50 MeV 无数据，改用 24 MeV（calc/data 0.93）和 55 MeV（1.00）�
 
 <div class="ui-label" style="margin-bottom:6px">五 · 这对研究方式意味着什么</div>
 
-# 如果它算错了，请直接告诉我
+# 我最想收到的是算错的例子
 
 <div class="glass glass-core" style="margin-top: 20px; max-width: 820px">
 <p style="font-size:1.02rem">对我最有用的反馈，是一个看起来合理、图也画得很好，但物理上其实错了的结果。请告诉我错在哪里，为什么现有基准没有发现这个错误。</p>
@@ -750,15 +756,15 @@ EXFOR 50 MeV 无数据，改用 24 MeV（calc/data 0.93）和 55 MeV（1.00）�
 
 <div style="display:flex; flex-direction:column; justify-content:center; padding: 0 30px">
 
-<div class="mark" style="font-size:1.6rem; margin-bottom:30px"><span class="l">FU</span> <span class="l">▸</span><span class="r">◂</span> <span class="r">SION</span></div>
+<div class="mark" style="font-size:1.4rem; margin-bottom:30px"><span class="l">FU</span><span class="r">SION</span></div>
 
-<h1 style="font-size:2.4rem; max-width: 860px">跑起来不难，难的是知道它跑对了</h1>
+<h1 style="font-size:2.25rem; max-width: 860px">我现在只把能检查的部分交给 agent</h1>
 
 <div class="glass" style="margin-top: 22px; max-width: 800px">
-<p style="font-size:1.0rem">程序返回退出码 0，图也画出来了，还不够。你得知道输入约定有没有弄错，数值收敛了没有，能不能复现已知基准，采用的物理模型在当前条件下能不能用。我做 FUSION，是想把这些能写清楚的经验留下来。人可以读，agent 也可以读；哪句写错了，别人还能直接改。</p>
+<p style="font-size:1.0rem">找文件、编译、写输入、补做收敛检查，这些可以交给它。选什么模型、近似能不能用、结果说明了什么，我自己判断。FUSION 只是把中间那些能写清楚、能复查的经验放进仓库，免得下一次又从头猜。</p>
 </div>
 
-<p style="margin-top: 30px; font-size:1.15rem; font-weight:500">模型是租来的；文献、程序经验和档案，是我们自己的。</p>
+<p style="margin-top: 30px; font-size:1.08rem; font-weight:500">模型会换。文献、程序经验和自己的记录，留在仓库里。</p>
 
 <p class="faint" style="margin-top: 26px">github.com/jinleiphys/FUSION　·　vibeinscience.com　·　MIT　·　jinl@tongji.edu.cn</p>
 
