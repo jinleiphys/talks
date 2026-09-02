@@ -15,7 +15,7 @@ drawings:
 
 <LiquidGlass :rect="{ x: -0.2491, y: -0.1097, hw: 0.4966, hh: 0.1222, r: 0.05 }" :circle="{ x: 0.60, y: 0.20, r: 0.072, orbit: 0.06 }" />
 
-<div style="display:flex; flex-direction:column; justify-content:center; height:100%; padding: 0 30px; position:relative; z-index:1">
+<div style="display:flex; flex-direction:column; justify-content:center; padding: 0 30px; position:relative; z-index:1">
 
 <div class="ui-label plasma" style="margin-bottom:18px">复旦大学 · 2026 年 10 月 8 日</div>
 
@@ -568,7 +568,7 @@ drawings:
 
 <div class="ui-label" style="margin-bottom:6px">四 · 程序：它能帮你做什么</div>
 
-<div style="display:flex; flex-direction:column; justify-content:center; height:88%">
+<div style="display:flex; flex-direction:column; justify-content:center">
 
 <h1 style="font-size:2.3rem; max-width: 900px">基准过了，只能说这套程序在当前机器上复现了已知结果</h1>
 <h1 style="font-size:2.3rem; color: var(--core); max-width: 900px">离“这次物理算对了”还差一步</h1>
@@ -707,7 +707,7 @@ drawings:
 
 ---
 
-<div style="display:flex; flex-direction:column; justify-content:center; height:100%; padding: 0 30px">
+<div style="display:flex; flex-direction:column; justify-content:center; padding: 0 30px">
 
 <div class="mark" style="font-size:1.6rem; margin-bottom:30px"><span class="l">FU</span> <span class="l">▸</span><span class="r">◂</span> <span class="r">SION</span></div>
 
