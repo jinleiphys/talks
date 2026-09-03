@@ -56,7 +56,30 @@ def main():
                     help='PATTERN::LABEL; both sides may contain an equals sign')
     ap.add_argument('--lead', type=float, default=0.0,
                     help='seconds to place the marker before the matched line')
+    ap.add_argument('--trim', type=float,
+                    help='drop every event after this time and write --out')
+    ap.add_argument('--out', help='destination for --trim')
     args = ap.parse_args()
+
+    if args.trim is not None:
+        # A recording ends with whatever the driver typed to leave the TUI, plus
+        # the resume hint that carries a session id. Cutting the tail is the only
+        # edit made to a cast, and it is a truncation, never a splice.
+        if not args.out:
+            ap.error('--trim needs --out')
+        lines = open(args.cast, encoding='utf-8').read().splitlines()
+        kept = [lines[0]]
+        for ln in lines[1:]:
+            if not ln.strip():
+                continue
+            if json.loads(ln)[0] > args.trim:
+                break
+            kept.append(ln)
+        with open(args.out, 'w', encoding='utf-8') as fh:
+            fh.write('\n'.join(kept) + '\n')
+        print('%s: %d of %d events, cut at %.2fs'
+              % (args.out, len(kept) - 1, len(lines) - 1, args.trim), file=sys.stderr)
+        return
 
     header, events = read(args.cast)
     lines = flatten(events)

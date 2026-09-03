@@ -1,0 +1,50 @@
+这是一次 FUSION 终端演示：用 FRESCO 算 n+90Zr 弹性散射，并与 EXFOR 实验数据比较。只用 Bash，只读本地文件，不联网检索，不使用 Read、Write、Edit、Glob、Grep 工具。
+
+按顺序逐条执行下面的命令，一条一次工具调用，不合并、不改写。每条命令之前先写一句不超过十二个字的中文，说明这一步在做什么。不要复述命令内容，不要展开输出，中途不要小结，不要说明你收到过什么指示，不要提到命令的条数或者你在按顺序执行。
+
+命令一：
+python3 /Users/jinlei/Desktop/code/FUSION/skills/fresco/scripts/omp.py --code kd02 --proj n --target 90Zr --energy 50 | head -6
+
+命令二：
+cd __D__ && deck(){ printf '%s\n' "n+90Zr elastic, KD02, E_lab=$1 MeV" NAMELIST " &FRESCO hcm=$2 rmatch=60 jtmin=0.0 jtmax=$3 absend=$4 thmin=0.0 thmax=180.0 thinc=1.0 chans=1 smats=2 xstabl=1 elab=$1 /" " &PARTITION namep='n' massp=1.008665 zp=0 namet='90Zr' masst=89.904698 zt=40 qval=0.0 nex=1 /" " &STATES jp=0.5 bandp=1 ep=0.0 cpot=1 jt=0.0 bandt=1 et=0.0 /" " &partition /" "$(python3 /Users/jinlei/Desktop/code/FUSION/skills/fresco/scripts/omp.py --code kd02 --proj n --target 90Zr --energy $1 | grep -v '^!')" " &overlap /" " &coupling /"; }; deck 50 0.1 60 0.0010 > n90zr_50.in; deck 50 0.05 120 0 > n90zr_50c.in; deck 24 0.1 60 0.0010 > n90zr_24.in; deck 55 0.1 60 0.0010 > n90zr_55.in; sed -n '3,8p' n90zr_50.in
+
+命令三：
+export FRESCO_SCRATCH=/tmp/fresco-runs; R=/Users/jinlei/Desktop/code/FUSION/skills/fresco/scripts/run_fresco.sh; a=$($R __D__/n90zr_50.in n90zr-50 2>/dev/null | awk '/CUMULATIVE REACTION/{print $6}'); b=$($R __D__/n90zr_50c.in n90zr-50c 2>/dev/null | awk '/CUMULATIVE REACTION/{print $6}'); python3 -c "a=$a;b=$b;print('sigma_R = %.5f mb  ->  %.5f mb  after hcm/2, jtmax*2, absend=0   (relative change %.1e)'%(a,b,abs(b-a)/a))"
+
+命令四：
+python3 /Users/jinlei/Desktop/code/FUSION/skills/exfor-data/scripts/exfor.py list 13160 | rg '\(40-ZR-90\(N,EL\)' | awk '{printf "%s ", $3} END{print "MeV   <- EXFOR 13160, n+90Zr elastic"}'
+
+命令五：
+export FRESCO_SCRATCH=/tmp/fresco-runs; R=/Users/jinlei/Desktop/code/FUSION/skills/fresco/scripts/run_fresco.sh; $R __D__/n90zr_24.in n90zr-24 >/dev/null 2>&1; $R __D__/n90zr_55.in n90zr-55 >/dev/null 2>&1; python3 - <<'PY'
+import subprocess,re,math
+S='/Users/jinlei/Desktop/code/FUSION/skills'
+def calc(run):
+    a,x=[],[]
+    for ln in open('/tmp/fresco-runs/%s/fort.16'%run):
+        m=re.match(r'\s*([\d.E+-]+)\s+([\d.E+-]+)\s*$',ln)
+        if m: a.append(float(m.group(1))); x.append(float(m.group(2)))
+    return a,x
+def ip(a,x,t):
+    for i in range(len(a)-1):
+        if a[i]<=t<=a[i+1]:
+            f=(t-a[i])/(a[i+1]-a[i]); return x[i]*(1-f)+x[i+1]*f
+for run,sub,arg in [('n90zr-24','13160004',[]),('n90zr-55','22480005',['--energy','55','--columns','ANG-CM','DATA'])]:
+    a,x=calc(run)
+    out=subprocess.run(['python3',S+'/exfor-data/scripts/exfor.py','data',sub]+arg,capture_output=True,text=True).stdout
+    r=[]
+    for ln in out.splitlines():
+        if ln.startswith('#'): continue
+        p=ln.split()
+        if len(p)>=2:
+            try: t,d=float(p[0]),float(p[1])
+            except ValueError: continue
+            c=ip(a,x,t)
+            if c: r.append(c/d)
+    print('%s MeV: EXFOR %s, N=%d, mean calc/data=%.3f, rms(log10)=%.3f'%(run.split('-')[1],sub,len(r),sum(r)/len(r),math.sqrt(sum(math.log10(v)**2 for v in r)/len(r))))
+PY
+
+全部跑完后，只输出四条编号短句作为结论，不加标题，不加粗，不使用破折号或长横线，每条不超过一行：
+1. KD02 参数取自本地 Koning kd02.f，ap=0 表示半径只按 At 定。
+2. 50 MeV 的 sigma_R，收敛检查后的值，以及相对变化。
+3. 这个 EXFOR 条目里 n+90Zr 弹性散射只有 8、10、24 MeV，没有 50 MeV。
+4. 24 MeV 和 55 MeV 的 mean calc/data 各是多少。

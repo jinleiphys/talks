@@ -10,6 +10,8 @@
 | `global-bottom.vue` | 页码，正文 22 页才显示 |
 | `OUTLINE.md` | 提纲、中心信息、写作硬规则、数字口径 |
 | `figures/` | 语料地图、KD02 对 EXFOR 图 |
+| `scripts/demos/` | 两段演示的重录脚本和交给 agent 的原始提示词 |
+| `scripts/cast_timeline.py` | 把录屏按时间轴摊开，用来剪尾和挑 marker |
 | `shots/` | 每页的 PNG 导出，改完页面后重新导出 |
 | `fusion-fudan.pdf` | PDF 导出（玻璃效果和背景漂移在 PDF 里是静态的） |
 
@@ -54,9 +56,11 @@ slidev export slides.md --format png --output shots
 
 **两段都必须先录一份剪好的备份**，命名 `public/casts/demo-kb.cast`、`public/casts/demo-n90zr.cast`。现场 30 秒没实质进展就切录屏，不解释，不道歉，不现场调试。
 
+重录：`scripts/demos/record.sh kb` 和 `scripts/demos/record.sh n90zr`，跑完按提示用 `scripts/cast_timeline.py --trim` 剪尾并重挑 markers。**agent 用 Claude Code，模型用 Opus 5。**这不是排场：同样的提示词换成更弱的模型，正确答案只是概率性地出现，而这正是这场报告要反对的失败模式。
+
 ## 数字口径
 
 - **20** = 驱动具体程序的技能；**26** = 全部技能。全场不混用
 - 61,167 页 = 61,059 篇论文页 + 108 主题页；地图投影 55,850 篇
 - Tier 1 共 14 份，Tier 2 共 6 份
-- 第 16 页互检只引 COLOSS 1299.188 / FRESCO 1299.191 这一对；`skills/fresco/SKILL.md` 另有一处同一体系 σ_R = 1301.64017 mb（不同设置，差 0.19%），被问到时要能说清各自条件
+- 第 16 页互检只引 COLOSS 1299.188 / FRESCO 1299.191 这一对。同一体系还有一个 σ_R = 1301.64017 mb，演示二和 `skills/fresco/SKILL.md` 都是这个值。两组数差 0.19%，差别只在质量约定：1299 那组用 A=1 和 A=90，1301 那组用 1.008665 和 89.904698。被问到时照这句答

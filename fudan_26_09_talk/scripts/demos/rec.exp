@@ -1,0 +1,28 @@
+#!/usr/bin/expect -f
+# rec.exp <timeout-secs> <done-pattern> <claude args...>
+set tmo  [lindex $argv 0]
+set done [lindex $argv 1]
+set rest [lrange $argv 2 end]
+log_user 1
+spawn -noecho /Users/jinlei/.local/bin/claude {*}$rest
+
+# The workspace-trust dialog appears for a fresh directory. Answer it, then the
+# recording gets trimmed back to the Claude banner in post.
+set timeout 20
+expect {
+    -re "trust" { sleep 0.4; send "\033\[B"; sleep 0.3; send "\r"; sleep 0.5 }
+    -re "Tips for getting started" { }
+    timeout { }
+}
+
+set timeout $tmo
+expect {
+    -re $done { sleep 2.0 }
+    timeout   { }
+}
+send "\003"
+sleep 0.4
+send "\003"
+sleep 1.0
+catch { send "\004" }
+expect eof
