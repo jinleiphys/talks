@@ -405,23 +405,23 @@ clicks: 3
 
 <div class="ui-label" style="margin-bottom:6px">三 · 文献：它能帮你做什么</div>
 
-# 这套文献库有两个明确的限度
+# 用这套文献库，要记住两个边界
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 24px">
 
 <div class="glass glass-core">
-<div class="ui-label core">页面会错</div>
-<p style="margin-top:10px">每页的摘要是模型读全文写出来的。它会漏，也会写错数字。所以规矩是：引论文，不引页面。页面只负责把你带到那篇论文。</p>
+<div class="ui-label core">摘要不是原文</div>
+<p style="margin-top:10px">页面上的摘要，是模型读完论文后做的笔记。笔记能帮我们很快抓住重点，但也可能漏掉条件、抄错数字。需要引用时，还是要回到论文原文。</p>
 </div>
 
 <div class="glass glass-core">
-<div class="ui-label core">引用只在语料内</div>
-<p style="margin-top:10px">刚才那篇论文的“被引 5 次”，只统计了 nucl-th 语料库内部的引用。RIKEN 的实验论文不在其中，所以这个数肯定偏低。没搜到，不等于不存在。</p>
+<div class="ui-label core">搜索范围不是全部文献</div>
+<p style="margin-top:10px">“被引 5 次”的意思是：在这套 nucl-th 语料里找到了 5 篇引用它的论文。RIKEN 的实验论文没有收进来，自然不会出现在结果里。这里没有搜到，不等于这篇文献不存在。</p>
 </div>
 
 </div>
 
-<div class="takeaway">所以我把它当导航，不当引用来源；一次搜不到，也不能说文献不存在。</div>
+<div class="takeaway">它适合帮我们找到文献，不能替我们核对文献。</div>
 
 <!--
 中心信息：文献层的价值在于本地检索和可核对，它的两条限制要跟能力放在同一页讲。
@@ -434,7 +434,7 @@ clicks: 3
 
 <div class="ui-label" style="margin-bottom:6px">四 · 程序：它能帮你做什么</div>
 
-# 那个 22% 的坑，写下来只占一行
+# 同一个坑，不该再踩第二次
 
 <div style="display:grid; grid-template-columns: 1.15fr 1fr; gap: 18px; margin-top: 10px">
 
@@ -449,7 +449,7 @@ clicks: 3
 
 <div>
 <div class="glass glass-plasma" style="padding:16px 20px">
-<div class="ui-label plasma nocaps">references/verification.md，锚点表节选</div>
+<div class="ui-label plasma nocaps">拿标准算例核对</div>
 <table class="anchors" style="margin-top:6px; font-size:.8rem"><tbody>
 <tr><td>B1 弹性 σ<sub>R</sub></td><td>1575.17495</td><td>参考 1575.17481</td><td>7 位</td></tr>
 <tr><td>B2 非弹 2<sup>+</sup></td><td>31.67415</td><td>31.67415</td><td>逐位</td></tr>
@@ -457,17 +457,17 @@ clicks: 3
 <tr><td>(d,p) DWBA</td><td>0.26397</td><td>0.26397</td><td>逐位</td></tr>
 </tbody></table>
 </div>
-<p class="faint" style="margin-top:10px">安装程序、准备输入、运行和验证的方法，都写在这份文档及其附带脚本里。安装时会重新编译项目官方提供的源代码，不会直接复制已有的编译结果。</p>
+<p class="faint" style="margin-top:10px">这份文档把四件事写清楚：怎么安装，输入卡怎么写，怎么算，算完拿什么核对。安装时也会从官方源码重新编译，不沿用机器上已有的可执行文件。</p>
 </div>
 
 </div>
 
-<div class="takeaway" style="margin-top:14px">下次再写输入卡，脚本会直接给出 <code>ap=0</code>，不靠 agent 临场想起来。</div>
+<div class="takeaway" style="margin-top:14px">以后生成输入卡时，脚本会自动写出 <code>ap=0</code>，不用再凭记忆补这一行。</div>
 
 <!--
-中心信息：技能不是模型，是一份写着"怎么装、怎么写、怎么验、坑在哪"的文档，agent 需要时读。
+中心信息：这份技能把已经踩过的坑和验证方法写下来，下一次运行直接照着做。
 
-讲什么：左边三段原文念一下，特别是第二段"a wrong deck often still runs and prints plausible garbage"。右边锚点表说明"验"是拿什么验：程序自己发行版里的参考输出，对到 7 位或逐位。
+讲什么：左边三段原文念一下，特别是第二段"a wrong deck often still runs and prints plausible garbage"。右边说明怎样判断结果算对了：重新跑程序发行版里的标准算例，再和参考输出逐项比较。
 
 时间：24:30 到 26:30。
 转场：这样的技能一共写了 20 份。
@@ -796,18 +796,20 @@ xattr -d com.apple.quarantine fusion &nbsp;&nbsp;# macOS<br>
 
 <div class="ui-label" style="margin-bottom:6px">备用</div>
 
-# 语料地图是怎么算出来的
+# 这张地图应该怎么看
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 18px">
 <div class="glass">
-<div class="ui-label plasma">布局</div>
-<p style="font-size:.95rem; margin-top:6px">引用邻接矩阵先经过截断 SVD 降到 32 维，再用 t-SNE 投影到二维。最小度数取 2，perplexity 取 200。约 6.1 万个节点需要 90 秒。</p>
+<div class="ui-label plasma">位置</div>
+<p style="font-size:.95rem; margin-top:6px">两篇论文靠得越近，说明它们在引用关系上越接近。许多点聚在一起，通常就是一个研究方向。</p>
 </div>
 <div class="glass">
-<div class="ui-label plasma">渲染</div>
-<p style="font-size:.95rem; margin-top:6px">密度场经过分箱和高斯模糊后形成地形；点的面积正比于该论文在语料库内的被引次数；地名则根据离散度比值 ≤ 0.78，从 PhySH 主题中自动筛选。渲染程序只使用 Python 标准库。</p>
+<div class="ui-label plasma">大小和地名</div>
+<p style="font-size:.95rem; margin-top:6px">点越大，说明这篇论文在语料库里被引得越多。地名是程序根据论文主题自动贴上的，只是帮我们认路，不是严格的学科分类。</p>
 </div>
 </div>
+
+<div class="takeaway" style="margin-top:18px">它画的是文献之间的关系，不是论文质量排行榜。</div>
 
 ---
 
