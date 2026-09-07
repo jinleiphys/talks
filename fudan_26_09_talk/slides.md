@@ -33,6 +33,10 @@ drawings:
 
 </div>
 
+<img src="./figures/fusion-logo.png" alt="FUSION" style="position:absolute; right:56px; bottom:150px; width:250px; border-radius:16px; box-shadow:0 10px 30px rgba(15,30,60,.22); z-index:1; pointer-events:none" />
+
+<p class="faint" style="position:absolute; left:60px; bottom:30px; margin:0; font-size:.75rem; z-index:1">本报告基于 <a href="https://arxiv.org/abs/2609.04742" target="_blank" style="color:var(--plasma-ink); font-weight:600">arXiv:2609.04742 [nucl-th]</a>　<i>FUSION: a skill-based research agent for publicly obtainable nuclear-physics codes</i></p>
+
 <!--
 这页只定一个问题：核物理同行真正需要什么样的 agent。
 
@@ -268,13 +272,13 @@ drawings:
 <div class="glass glass-plasma">
 <div class="ui-label plasma">文献层</div>
 <p style="margin-top:8px"><span style="font-size:1.7rem; font-weight:600">61,167</span> <span class="dim">页</span></p>
-<p style="font-size:.95rem">61,059 个 arXiv nucl-th 论文页，再加 108 个主题页，同时保留引用和语义关系。全部离线存放，用 grep 就能查。</p>
+<p style="font-size:.95rem">收了 61,059 个 arXiv nucl-th 论文页和 108 个主题页，也保留了引用关系和语义关系。都存在本地，用 grep 就能查。</p>
 </div>
 
 <div class="glass glass-core">
 <div class="ui-label core">技能层</div>
 <p style="margin-top:8px"><span style="font-size:1.7rem; font-weight:600">26</span> <span class="dim">份技能</span></p>
-<p style="font-size:.95rem">其中 20 份用来驱动具体的核物理程序，其余几份负责拟合、查 EXFOR、检索文献、维护研究档案和安装 FUSION。</p>
+<p style="font-size:.95rem">其中 20 份教它怎么用具体的核物理程序，其余几份用来拟合、查 EXFOR、找文献、维护研究档案和安装 FUSION。</p>
 </div>
 
 </div>
@@ -282,7 +286,7 @@ drawings:
 <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px">
 <div class="glass" style="padding:14px 18px"><div class="ui-label">Agent</div><p style="font-size:.92rem; margin-top:6px">opencode 可以用；要最好的效果，还是 Claude Code 或 Codex</p></div>
 <div class="glass" style="padding:14px 18px"><div class="ui-label">模型</div><p style="font-size:.92rem; margin-top:6px">DeepSeek、Qwen、GLM 能跑，但复杂任务会拉开差距</p></div>
-<div class="glass" style="padding:14px 18px"><div class="ui-label">开源</div><p style="font-size:.92rem; margin-top:6px">MIT · github.com/jinleiphys/FUSION</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label">开源</div><p style="font-size:.92rem; margin-top:6px">MIT · github.com/jinleiphys/FUSION</p><p class="faint" style="margin-top:4px; font-size:.78rem">只管平台和技能，程序各有各的许可</p></div>
 </div>
 
 <div class="takeaway">主体就是 Markdown 和 shell 脚本，没有单独训练模型。</div>
@@ -434,6 +438,54 @@ clicks: 3
 
 <div class="ui-label" style="margin-bottom:6px">四 · 程序：它能帮你做什么</div>
 
+# 一份技能里有什么
+
+<div style="display:grid; grid-template-columns: 0.88fr 1.22fr; gap: 18px; margin-top: 14px">
+
+<div class="glass" style="padding:14px 18px">
+<div class="ui-label nocaps">skills/fresco/</div>
+<p style="margin-top:10px; font-size:.8rem; line-height:2.1">
+<code>SKILL.md</code>　<span class="dim">写清这份技能管什么、哪些规则必须遵守</span><br>
+<code>examples/</code>　<span class="dim">能跑出已知结果的输入卡</span><br>
+<code>references/</code>　<span class="dim">输入变量、常见错误、验证结果</span><br>
+<code>scripts/</code>　<span class="dim">装、跑、核对、算势参数</span><br>
+<code>AGENTS.md</code>　<span class="dim">换个前端也读得懂</span>
+</p>
+<p class="faint" style="margin-top:12px; font-size:.82rem">全是文本和脚本，里面没有模型。</p>
+</div>
+
+<div class="glass glass-plasma" style="padding:14px 18px">
+<div class="ui-label plasma">每一份都要写清楚六件事</div>
+<p style="margin-top:8px; font-size:.85rem; line-height:1.65">
+<b>1 装</b>　从上游下载源码，固定版本。需要补丁就一起放进来。还要说明：补丁只解决编译问题，不改物理。<br>
+<b>2 输入</b>　找一个验证过的算例，照着改，不许凭记忆写。这条最要紧：凭记忆写输入卡，语法全对，物理也可能是胡的。<br>
+<b>3 跑</b>　在干净目录里跑，留下全部输出。有些约定程序自己不查，就让脚本查。<br>
+<b>4 读输出</b>　哪个量在哪个文件里，单位是什么，符号怎么定。<br>
+<b>5 失败模式</b>　这个程序会怎么坏。<br>
+<b>6 基准和容差</b>　选一个已知结果，重算一遍。能对上几位，就写几位。
+</p>
+</div>
+
+</div>
+
+<div class="glass glass-core" style="margin-top:12px; padding:12px 18px">
+<div class="ui-label core">第 5 条最值钱，手册里一个字都没有</div>
+<p style="margin-top:6px; font-size:.85rem">TALYS 报了致命错误，仍然返回 0，不能靠退出码判断成功。GiBUU 只认第一个 <code>&amp;initRandom</code> 段里的种子。脚本如果只找第一次出现 seed 的那一行，就会误报种子已固定。其实程序每次都用时钟设种子。pikoe 换个编译器重新编译，会被上次留下的 module 文件卡住。报错既不解释原因，也不说怎么处理。</p>
+</div>
+
+<!--
+中心信息：技能是一个目录，里面全是文本和脚本，六件事缺一不可。
+
+讲什么：左边不用逐行念，指一下 examples 和 scripts 就行。右边六条里第 2 条要停一下，它是整套东西的核心：不许凭记忆写输入卡。底下三个例子念完就走，它们是用来说明"失败模式"这一条为什么不能省。
+
+时间：24:30 到 26:00。
+转场：具体到 FRESCO 这一份，长这样。
+-->
+
+---
+
+<div class="ui-label" style="margin-bottom:6px">四 · 程序：它能帮你做什么</div>
+
 # 同一个坑，不该再踩第二次
 
 <div style="display:grid; grid-template-columns: 1.15fr 1fr; gap: 18px; margin-top: 10px">
@@ -469,7 +521,7 @@ clicks: 3
 
 讲什么：左边三段原文念一下，特别是第二段"a wrong deck often still runs and prints plausible garbage"。右边说明怎样判断结果算对了：重新跑程序发行版里的标准算例，再和参考输出逐项比较。
 
-时间：24:30 到 26:30。
+时间：26:00 到 27:45。
 转场：这样的技能一共写了 20 份。
 -->
 
@@ -495,7 +547,7 @@ clicks: 3
 
 讲什么：不要一个一个念。指出在座的人可能用的那几个。入选条件那句要说，它解释了为什么有些程序没进来。
 
-时间：26:30 到 27:30。
+时间：27:45 到 28:45。
 转场：现场跑一个。
 -->
 
@@ -524,7 +576,7 @@ clicks: 3
 
 演示注意：30 秒没实质进展切录屏。
 
-时间：27:30 到 32:00，共 4 分半。
+时间：28:45 到 33:00，共 4 分 15 秒。
 转场：回来以后讲凭什么信它。
 -->
 
@@ -557,34 +609,34 @@ EXFOR 50 MeV 无数据，改用 24 MeV（mean calc/data 0.929）和 55 MeV（0.9
 
 <div class="glass">
 <div class="ui-label plasma">1 · 对着已知答案</div>
-<p style="font-size:.92rem; margin-top:6px"><b>Tier 1</b>，14 份：程序发行版自带参考值，按技能中的步骤重新计算后逐一核对，其中几份能做到逐位相同。<b>Tier 2</b>，6 份：程序没有提供参考输出，就改用跨平台对比、物理恒等式或解析解检查。例如 vHLLE 核对的是 Gubser 流解析解，不是它自己生成的参考输出。</p>
+<p style="font-size:.85rem; margin-top:6px"><b>Tier 1</b>，14 份：程序发行版自带参考值。照技能里的步骤重算，再逐一核对，其中几份能做到逐位相同。<b>Tier 2</b>，6 份：程序没提供参考输出，就换个平台比较，或用物理恒等式、解析解来检查。比如 vHLLE，我拿它和 Gubser 流的解析解核对，不看它自己生成的参考输出。</p>
 </div>
 
 <div class="glass">
 <div class="ui-label plasma">2 · 两个平台</div>
-<p style="font-size:.92rem; margin-top:6px">分别在 macOS/ARM 和 Linux/x86 上编译运行。SMASH 使用同一个随机种子时，部分粒子多重数在两个平台上相差 25%；但重子数 B = 788 和电荷 Q = 316 都严格一致。所以我最后选择用守恒律验证它。</p>
+<p style="font-size:.85rem; margin-top:6px">分别在 macOS/ARM 和 Linux/x86 上编译运行。SMASH 使用同一个随机种子时，部分粒子多重数在两个平台上相差 25%；但重子数 B = 788 和电荷 Q = 316 都严格一致。所以我最后选择用守恒律验证它。</p>
 </div>
 
 <div class="glass">
 <div class="ui-label plasma">3 · 第二个求解器</div>
-<p style="font-size:.92rem; margin-top:6px">50 MeV 的 n+<sup>90</sup>Zr：COLOSS（复标度 Lagrange-Laguerre）给出 1299.188 mb，FRESCO（Numerov）给出 1299.191 mb，相对差约 2.3×10<sup>−6</sup>。两个程序不共享代码。收敛检查只能表明各自的数值结果已经稳定；两个独立实现相符，还能进一步排查单个程序的实现错误。</p>
+<p style="font-size:.85rem; margin-top:6px">50 MeV 的 n+<sup>90</sup>Zr：COLOSS（复标度 Lagrange-Laguerre）给出 1299.188 mb，FRESCO（Numerov）给出 1299.191 mb，相对差约 2.3×10<sup>−6</sup>。两个程序不共享代码。这两个数比演示里的 1301.64 mb 小了 2.45 mb，差别来自质量取整数还是取实际值，跟用哪个求解器没关系。收敛只说明各自的数值稳定。两个独立写的程序算出同一个数，才查得出某一个写错了。</p>
 </div>
 
 <div class="glass glass-core">
 <div class="ui-label core">4 · 另一个 AI 来拆台</div>
-<p style="font-size:.92rem; margin-top:6px">发布前让第二个模型读技能、跑脚本、专门找茬。它抓到过：TALYS 的运行脚本跑了一份旧输入卡然后报告成功；GiBUU 的一个自检永远不可能触发；SMASH 的测试在伪造自己的输入。</p>
+<p style="font-size:.85rem; margin-top:6px">发布前让第二个模型读技能、跑脚本、专门找茬。SMASH 那份查了五轮，每轮找出 19、2、6、2、1 个问题，其中 8 个是上一轮修的时候新带出来的。它抓到过：TALYS 的运行脚本跑了一份旧输入卡然后报告成功；GiBUU 的一个自检永远不可能触发；SMASH 的测试在伪造自己的输入。</p>
 </div>
 
 </div>
 
-<div class="takeaway" style="margin-top:16px">TALYS 那次最刺眼：脚本跑的是旧输入卡，却很自信地报告成功。</div>
+<div class="takeaway" style="margin-top:14px">这 30 个问题，没有一个是靠读代码看出来的，包括我自己写完立刻读的那一遍。</div>
 
 <!--
 中心信息：可信度是分层的、公开的、逐条可查的，不是一句"我们测试过了"。
 
-讲什么：第 3 层对做数值的听众最有说服力。第 4 层要主动讲，它是自己揭自己的短，也是最能建立信任的地方。如果有人问"审查者本身怎么保证"，答：保证不了，所以有另外三层，任何单层都不够。
+讲什么：第 3 层对做数值的听众最有说服力，但要主动把 1299 和演示里的 1301.64 之间那 2.45 mb 说掉，它来自质量取整数还是取物理值，不是求解器的差别。第 4 层要主动讲，它是自己揭自己的短，也是最能建立信任的地方。如果有人问"审查者本身怎么保证"，答：保证不了，所以有另外三层，任何单层都不够。
 
-时间：32:00 到 34:30。
+时间：33:00 到 35:15。
 转场：讲完这些，必须说一句最重要的限制。
 -->
 
@@ -609,7 +661,7 @@ EXFOR 50 MeV 无数据，改用 24 MeV（mean calc/data 0.929）和 55 MeV（0.9
 
 讲什么：这一页只有两句话，说完停一下。
 
-时间：34:30 到 35:30。
+时间：35:15 到 36:00。
 转场：最后讲这件事对我们的研究方式意味着什么。
 -->
 
@@ -638,7 +690,7 @@ EXFOR 50 MeV 无数据，改用 24 MeV（mean calc/data 0.929）和 55 MeV（0.9
 <!--
 这页讲我最在意的变化：那些口头经验终于有了可以检查、修改和继续用的形式。
 
-时间：35:30 到 37:30。
+时间：36:00 到 37:30。
 转场：那一天的工作会变成什么样。
 -->
 
@@ -651,17 +703,17 @@ EXFOR 50 MeV 无数据，改用 24 MeV（mean calc/data 0.929）和 55 MeV（0.9
 <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 22px">
 
 <div class="glass">
-<div class="ui-label">早上</div>
+<div class="ui-label">我交出去的</div>
 <p style="margin-top:8px; font-size:.95rem">给 agent 一个具体的物理问题。它先查文献，找到计算条件和可以核对的数字；再准备输入，跑两三个程序，把结果放在一起比。</p>
 </div>
 
 <div class="glass">
-<div class="ui-label">中间</div>
+<div class="ui-label">中间会出岔子</div>
 <p style="margin-top:8px; font-size:.95rem">过程不会一直顺利。程序可能装不上，输入卡可能报错，两个求解器的结果也可能不一致。agent 继续查文件、改输入、补做收敛检查，并把整个过程留下来。</p>
 </div>
 
 <div class="glass glass-core">
-<div class="ui-label core">到我这里</div>
+<div class="ui-label core">剩给我的</div>
 <p style="margin-top:8px; font-size:.95rem">最后留给我的，应当是几个明确的物理问题：模型选得对不对，近似能不能用，两个结果为什么不一样。</p>
 </div>
 
@@ -674,7 +726,7 @@ EXFOR 50 MeV 无数据，改用 24 MeV（mean calc/data 0.929）和 55 MeV（0.9
 
 讲什么：中间那一栏要讲，别把它说成流水线。真实计算会报错、会不一致，agent 的价值是把这些过程留下来给你看。
 
-时间：37:30 到 39:00。
+时间：37:30 到 38:45。
 转场：说完它能做什么，说它现在做不到的。
 -->
 
@@ -685,10 +737,10 @@ EXFOR 50 MeV 无数据，改用 24 MeV（mean calc/data 0.929）和 55 MeV（0.9
 # v0.1.0 现在确实不好装
 
 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px">
-<div class="glass"><div class="ui-label core">从零安装</div><p style="font-size:.95rem; margin-top:6px">目前只完整验证了 FRESCO：在没有任何缓存的机器上，它可以从头安装成功。其余 19 个程序还没有逐个做同样的测试，换到别的机器上，很可能会缺少依赖库。</p></div>
-<div class="glass"><div class="ui-label core">国内网络</div><p style="font-size:.95rem; margin-top:6px">国内网络直连 GitHub 常不稳定，安装时需要科学上网。目前还没有国内镜像。</p></div>
-<div class="glass"><div class="ui-label core">磁盘与平台</div><p style="font-size:.95rem; margin-top:6px">TALYS 安装后占用约 11 GB，其中 8.6 GB 是核结构数据库。第一次使用 FUSION，不建议先试它。目前也没有 Windows 版本。</p></div>
-<div class="glass"><div class="ui-label core">实际用户</div><p style="font-size:.95rem; margin-top:6px">v0.1.0 是第一个公开版本。我每天都在用，但目前还没有第二个人完整用过。</p></div>
+<div class="glass"><div class="ui-label core">从零安装</div><p style="font-size:.9rem; margin-top:6px">找了一台 Linux，只装了编译器，把 20 个安装脚本从头跑了一遍。8 个自动装完并通过验证；4 个停下来，报出缺哪个依赖；5 个因为换了平台而出错，修完能过；还有 3 个卡在运行环境，问题不在技能。换台机器还是可能缺库。</p></div>
+<div class="glass"><div class="ui-label core">国内网络</div><p style="font-size:.9rem; margin-top:6px">国内网络直连 GitHub 常不稳定，安装时需要科学上网。目前还没有国内镜像。</p></div>
+<div class="glass"><div class="ui-label core">磁盘与平台</div><p style="font-size:.9rem; margin-top:6px">TALYS 安装后占用约 11 GB，其中 8.6 GB 是核结构数据库。第一次使用 FUSION，不建议先试它。目前也没有 Windows 版本。</p></div>
+<div class="glass"><div class="ui-label core">实际用户</div><p style="font-size:.9rem; margin-top:6px">v0.1.0 是第一个公开版本。我每天都在用，但目前还没有第二个人完整用过。</p></div>
 </div>
 
 <div class="takeaway">演示能顺利跑完，不等于别人下载之后就能直接使用。</div>
@@ -696,10 +748,45 @@ EXFOR 50 MeV 无数据，改用 24 MeV（mean calc/data 0.929）和 55 MeV（0.9
 <!--
 中心信息：把已知的坑一次说完，不留给听众自己去踩。
 
-讲什么：语速可以快，一条都不省。国内网络那条在座大多数人真去试都会先撞上。
+讲什么：语速可以快，一条都不省。国内网络那条在座大多数人真去试都会先撞上。安装那条如果被追问：这次审计一共查出 6 个可移植性缺陷，最刺眼的一个是安装自检里一直带着一个除零，在 Apple Silicon 上无害，到 x86-64 直接 SIGFPE。
 
-时间：39:00 到 40:30。
-转场：所以我最想要什么反馈。
+时间：38:45 到 40:00。
+转场：如果你想把自己的程序接进来。
+-->
+
+---
+
+<div class="ui-label" style="margin-bottom:6px">五 · 这对研究方式意味着什么</div>
+
+# 想给自己的程序写一份技能
+
+<div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px">
+
+<div class="glass">
+<div class="ui-label plasma">我收哪些程序</div>
+<p style="margin-top:8px; font-size:.95rem">要满足三条：源码公开，不用注册就能下载；能在本地从源码编译；有正式发表的论文。三条都满足才收。哪些程序没收、卡在哪一条，仓库里都写了。这不代表程序好不好。</p>
+</div>
+
+<div class="glass">
+<div class="ui-label plasma">一份技能要做到哪一步</div>
+<p style="margin-top:8px; font-size:.95rem">前面那六件事都得写全，还得说清楚怎么核对结果。程序自带参考值，就拿来比；没有，就用物理恒等式、解析解、实验数据，或者另一个程序的结果。没说清楚拿什么核对，我就不合并。</p>
+</div>
+
+</div>
+
+<div class="glass glass-core" style="margin-top:16px">
+<p style="font-size:.98rem">贡献指南我还没写。现在可以开个 issue，中文英文都行。组里的程序还没公开，也可以照这个结构写一份技能，放在本地自己用，不用交给我。</p>
+</div>
+
+<div class="takeaway">我最缺的不是更多程序，是有人用完之后回来告诉我哪儿不对。</div>
+
+<!--
+中心信息：能不能接入，要看程序能否公开获取、基准有没有如实写清楚，不是看我批准谁。
+
+讲什么：第一栏那三条要说清楚，它解释了为什么在座某些人常用的程序没有进来。最后那句"没公开的程序也可以自己写一份放在本地"，对有自研代码的老师最实用。
+
+时间：40:00 到 41:00。
+转场：所以我最想收到什么反馈。
 -->
 
 ---
@@ -725,7 +812,7 @@ EXFOR 50 MeV 无数据，改用 24 MeV（mean calc/data 0.929）和 55 MeV（0.9
 
 讲什么：第一种反馈是这个项目最怕的失败，也是最不容易被报告出来的失败，因为按定义它看起来是成功的。
 
-时间：40:30 到 42:00。
+时间：41:00 到 42:15。
 转场：最后回到开头那个问题。
 -->
 
@@ -752,7 +839,15 @@ EXFOR 50 MeV 无数据，改用 24 MeV（mean calc/data 0.929）和 55 MeV（0.9
 
 讲什么：不要再复述技能数量或者语料规模。念完那一句就停，进入提问。
 
-时间：42:00 到 44:00，然后提问。
+时间：42:15 到 44:00，然后提问。
+
+提问准备（口头答，不翻页）：
+学生会不会因此不会算了：能核查的部分交出去了，物理判断没交。学生要练的东西从记输入卡格式，挪到判断一个结果该不该信。
+有没有别人做过类似的：通用编程 agent 很多，核物理专用、带本地文献和逐程序基准的，我没有见到。备用页有对比。
+它会不会在我机器上乱来：它确实会执行命令。这条的口径你自己定，别临场编。
+一次要花多少钱：按模型 API 计费，我没有做过系统统计，直接说没统计过。
+每个程序验到什么程度：翻验证清单那页。
+六万篇论文的版权：翻知识库那页。
 -->
 
 ---
@@ -779,17 +874,23 @@ EXFOR 50 MeV 无数据，改用 24 MeV（mean calc/data 0.929）和 55 MeV（0.9
 
 # 安装与网络
 
-<div style="display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 18px">
-<div class="glass" style="font-family: 'SF Mono', Menlo, monospace; font-size:.82rem; line-height:1.8">
+<div style="display:grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 14px">
+<div class="glass" style="font-family: 'SF Mono', Menlo, monospace; font-size:.74rem; line-height:1.7">
 git clone https://github.com/jinleiphys/FUSION.git && cd FUSION<br>
 curl -fsSL .../releases/latest/download/fusion-darwin-arm64.tar.gz | tar -xz<br>
 xattr -d com.apple.quarantine fusion &nbsp;&nbsp;# macOS<br>
 ./fusion
 </div>
 <div class="glass">
-<p style="font-size:.95rem">只有前两条命令需要连接 GitHub。之后安装具体程序时，FUSION 会从各自的代码仓库下载源代码。FUSION 仓库的下载量约为 256 MB，解压后占用约 950 MB，其中绝大部分是本地文献库。</p>
-<p style="font-size:.95rem; margin-top:8px">如果已经在用 Claude Code 或 Codex，下载仓库后就能直接加载这些技能，不必再安装 FUSION 的独立可执行文件。</p>
+<p style="font-size:.9rem">上面只有前两条命令需要连接 GitHub。之后安装具体程序时，FUSION 会去各个程序的代码仓库下载源码。下载 FUSION 仓库约需 256 MB，解压后约占 950 MB，绝大部分是本地文献库。</p>
+<p style="font-size:.9rem; margin-top:8px">已经在用 Claude Code 或 Codex，就可以下载仓库，直接加载这些技能，不用再装 FUSION 的独立可执行文件。</p>
 </div>
+</div>
+
+<div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px">
+<div class="glass" style="padding:14px 18px"><div class="ui-label">本地要什么</div><p style="font-size:.85rem; margin-top:6px">一个编译器就够，不用 GPU。查文献是本地 grep，联网只是为了调模型。</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label">一次任务多久</div><p style="font-size:.85rem; margin-top:6px">今天两个演示的真实耗时：查文献 23 秒，n+<sup>90</sup>Zr 大约 44 秒。</p></div>
+<div class="glass" style="padding:14px 18px"><div class="ui-label">前端</div><p style="font-size:.85rem; margin-top:6px">Claude Code、Codex、opencode 都跑通过。论文里那轮对抗审查，就是从其中一个跑的。</p></div>
 </div>
 
 ---
@@ -829,3 +930,75 @@ xattr -d com.apple.quarantine fusion &nbsp;&nbsp;# macOS<br>
 </div>
 
 <div class="takeaway">我关心的是知识放在哪里，能不能核查，以及出错以后谁来改。</div>
+
+
+---
+
+<div class="ui-label" style="margin-bottom:6px">备用</div>
+
+# 你用的那个程序，验到什么程度
+
+<div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px">
+
+<div class="glass" style="padding:14px 18px">
+<table class="anchors" style="font-size:.72rem"><tbody>
+<tr><td>FRESCO</td><td>核对 9 个官方算例的 15 个观测量，对上 6 位以上</td></tr>
+<tr><td>COLOSS</td><td>与 FRESCO 对上 4 位；检查转动不变性</td></tr>
+<tr><td>CCFULL</td><td>激发函数完全一致，尾部 4 到 5 位</td></tr>
+<tr><td>pikoe</td><td>按论文里那五张图的坐标轴读数，再核对</td></tr>
+<tr><td>NLAT</td><td>核对自带样例的 190 万个数，最差 2×10<sup>−11</sup></td></tr>
+<tr><td>CNOK</td><td>60.087 mb 与文档一致；四种编译结果相同</td></tr>
+<tr><td>SIDES</td><td>核对光学定理，达到机器精度</td></tr>
+<tr><td>SWANLOP</td><td>三个参考文件逐行一致</td></tr>
+<tr><td>GSM</td><td>重算书上的习题，对上 8 到 11 位</td></tr>
+<tr><td>KSHELL</td><td><sup>20</sup>Ne 能谱 5 位小数，两个平台一致</td></tr>
+</tbody></table>
+</div>
+
+<div class="glass" style="padding:14px 18px">
+<table class="anchors" style="font-size:.72rem"><tbody>
+<tr><td>NuclearToolkit.jl</td><td>通过测试 30/30；核对 <sup>4</sup>He 基态，到 10<sup>−6</sup></td></tr>
+<tr><td>Sky3D</td><td><sup>16</sup>O 静态解完全一致，3268 个数</td></tr>
+<tr><td>CGMF</td><td><sup>252</sup>Cf 自发裂变事件逐比特一致</td></tr>
+<tr><td>TALYS</td><td>1438 个参考文件里 1419 个逐字节一致</td></tr>
+<tr><td>AZURE2</td><td>对实验数据 χ²/N = 1.53，没有拟合参数</td></tr>
+<tr><td>SkyNet</td><td>Linux 上通过测试 19/19；核对 alpha 网络的解析解</td></tr>
+<tr><td>SMASH</td><td>通过测试 104/104；重子数与电荷严格守恒</td></tr>
+<tr><td>GiBUU</td><td>固定种子下 8 个输出文件完全一致</td></tr>
+<tr><td>Thermal-FIST</td><td>两个平台各通过测试 93/93</td></tr>
+<tr><td>vHLLE</td><td>与 Gubser 流解析解核对</td></tr>
+</tbody></table>
+</div>
+
+</div>
+
+<p class="faint" style="margin-top:12px">TALYS 这一行的结果是在 macOS/ARM 上跑出来的。同一个算例换到 Linux，大约只能对上 5.4 位有效数字。报结果时必须写明平台，不然用 Linux 的人会以为自己装错了。</p>
+
+<div class="takeaway" style="margin-top:10px">和作者给的参考输出对上，只能说明程序装对了，不能说明物理算对了。程序真有物理 bug，参考输出里也会有。</div>
+
+
+---
+
+<div class="ui-label" style="margin-bottom:6px">备用</div>
+
+# 六万篇论文，我到底存了什么
+
+<div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 18px">
+
+<div class="glass">
+<div class="ui-label plasma">页面上哪些是原文</div>
+<p style="margin-top:8px; font-size:.95rem">只有两样：元数据和摘要。元数据由 arXiv 公开，允许再用；摘要照原文保留。摘要下面的内容，都是模型读完论文后写的。每页都标明用了哪个模型、哪天写的，每句话都能追查来源。</p>
+</div>
+
+<div class="glass">
+<div class="ui-label plasma">哪些没有存</div>
+<p style="margin-top:8px; font-size:.95rem">没有转载论文原文、PDF，也没有转载任何全文数据库。每页只给出 arXiv 编号和 DOI，供人回去查原文。作者如果不想保留自己的论文页，说一声就撤。</p>
+</div>
+
+</div>
+
+<div class="glass glass-core" style="margin-top:16px">
+<p style="font-size:.95rem">程序按规则推断谁引用了谁，只统计这套语料内部的引用。每条引用关系都只是线索，还得回原文核对。被引次数也偏小。引用关系和被引次数，都不能直接当结论。</p>
+</div>
+
+<div class="takeaway">这一层是拿来找东西的，不是拿来引用的。要引就引论文，别引这个页面。</div>

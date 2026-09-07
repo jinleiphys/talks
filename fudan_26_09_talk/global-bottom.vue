@@ -1,5 +1,5 @@
 <template>
-  <footer v-if="$nav.currentPage > 1 && $nav.currentPage <= 24" class="pn">{{ $nav.currentPage }} / 24</footer>
+  <footer v-if="$nav.currentPage > 1 && $nav.currentPage <= 26" class="pn">{{ $nav.currentPage }} / 26</footer>
 </template>
 <style scoped>
 .pn { position: fixed; bottom: 14px; right: 22px; z-index: 999; pointer-events: none;
