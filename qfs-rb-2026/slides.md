@@ -174,9 +174,10 @@ Between themselves they have only V<sub>bx</sub>, the real potential that binds 
 <div>
 
 <div class="box-gap">
-This is the <b>core-spectator</b> picture. Once the residue is required to come out in its
-measured bound state, it is a spectator: nothing in this Hamiltonian can destroy it except
-the target.
+This is the <b>core-spectator</b> picture. b is a <b>structureless</b> particle: the target
+enters only through one optical S<sub>b</sub>, which removes b from the elastic channel but carries
+no internal states of b, and V<sub>bx</sub> never acts on b's internal coordinates. Nothing in this
+Hamiltonian lets the knockout change what state b is in.
 </div>
 
 </div>
@@ -184,6 +185,47 @@ the target.
 
 <div class="takeaway mt-7">
 Everybody writes this down and nobody asks what it costs.
+</div>
+
+---
+
+# What the spectator formula actually counts
+
+<div class="grid grid-cols-2 gap-8 mt-3">
+<div class="kami-card">
+<span class="ui-label">the formula</span>
+<div class="mt-2">
+Spectator b, plus <b>closure</b> over the b&thinsp;+&thinsp;x final states.
+<div class="mt-3">
+Closure sums over <b>every internal state of b</b>: bound, excited, and broken up.
+</div>
+</div>
+</div>
+<div class="kami-card">
+<span class="ui-label">the experiment</span>
+<div class="mt-2">
+Detects b <b>in its bound states</b>, identified in the spectrograph.
+<div class="mt-3">
+Events in which the reaction took b out of its bound states are <b>not in the data</b>.
+</div>
+</div>
+</div>
+</div>
+
+<div class="mt-4 text-center text-xl" style="color: var(--ink-blue);">
+&sigma;<sub>formula</sub> = &Sigma;<sub>all states of b</sub> &nbsp;&nbsp;&ne;&nbsp;&nbsp;
+&sigma;<sub>measured</sub> = P<sub>b</sub>&thinsp;(b bound)
+</div>
+
+<div class="box-evidence mt-4">
+The same statement for inclusive breakup: with a structureless, spectator b, the IAV cross section
+is the <b>total</b> summed over b's internal states, not b detected in a given state.
+<span class="text-sm" style="color: var(--stone);">&nbsp;J. Lei, Phys. Rev. C 114, 014632 (2026).</span>
+</div>
+
+<div class="takeaway" style="margin-top: 1.4rem;">
+The gap between the two is <b>b not being a spectator</b>. "Core destruction" is the part
+that leaves b outside its bound states.
 </div>
 
 ---
@@ -225,7 +267,7 @@ on what was deleted</b>.
 # What is missing has a name
 
 <div class="mt-4">
-Count the ways flux can leave the measured channel in the additive model:
+Ask, coupling by coupling, what can change the state the residue comes out in:
 </div>
 
 <div class="grid grid-cols-3 gap-6 mt-6">
@@ -234,7 +276,7 @@ Count the ways flux can leave the measured channel in the additive model:
 <span class="tag">in</span>
 <b class="ml-2">U<sub>bA</sub></b>
 <div class="mt-3 text-sm">
-The <b>target</b> destroys the residue.<br>
+The <b>target</b> removes b from the elastic channel.<br>
 This is |S<sub>c</sub>|<sup>2</sup>.
 </div>
 </div>
@@ -250,20 +292,20 @@ This is 1 &minus; |S<sub>x</sub>|<sup>2</sup>, the stripping itself.
 
 <div class="box-gap">
 <span class="tag">out</span>
-<b class="ml-2">x on b</b>
+<b class="ml-2">V<sub>bx</sub> on b's structure</b>
 <div class="mt-3 text-sm">
-The <b>removed nucleon</b> destroys the residue on its way out.<br>
-<b>No such channel exists.</b>
+The <b>removed nucleon</b> changes b's internal state, and b ends outside its bound states.<br>
+<b>No such coupling exists.</b>
 </div>
 </div>
 
 </div>
 
 <div class="mt-6 text-sm" style="color: var(--stone);">
-V<sub>bx</sub> is real and cannot destroy the residue; the two optical potentials are both
-fragment-on-target. So this third absorption is not small in the additive model, <b>it is
-absent</b>, and it has to sit in the two deleted terms. Which of the two carries it, and how
-they interfere, <b>I do not claim here</b>.
+In the additive model V<sub>bx</sub> never acts on b's internal coordinates, and both optical
+potentials are fragment-on-target. So b's non-spectator response to x is not small there,
+<b>it is absent</b>, and it has to sit in the two deleted terms. Which of the two carries it, and
+how they interfere, <b>I do not claim here</b>.
 </div>
 
 ---
@@ -291,11 +333,11 @@ S<sub>b</sub>(1)S<sub>b</sub>*(2) &nbsp;&nbsp;
 <div class="box-idea">
 <b>One point becomes two.</b> The two S matrices are evaluated at <b>different</b> positions,
 so K(1,2) = &Sigma;<sub>j&ne;0</sub> S<sub>x</sub><sup>j</sup>(1) S<sub>x</sub><sup>j</sup>*(2)
-keeps the momentum the collision transferred.
+is the closure over the target's excited states.
 </div>
 <div class="box-idea">
 <b>Closure becomes a density matrix.</b> &rho;<sub>surv</sub> is the final-state density
-restricted to the residue surviving. <b>This is where the missing absorption enters.</b>
+restricted to b in its bound states. <b>This is where b stops being a spectator.</b>
 </div>
 </div>
 
@@ -315,7 +357,7 @@ becomes the first <b>identically</b>. That is "the residue is a spectator", writ
 <b>Gomez-Ramos, Gomez-Camacho and Moro</b><br>
 <span class="ui-label">Phys. Lett. B 847, 138284 (2023)</span>
 <div class="mt-3">
-<b>&Delta;S dependent</b>: the nucleon is absorbed at a rate set by
+<b>&Delta;S dependent</b>: b leaves its bound states at a rate set by the x-b absorption
 W(E' &minus; E<sub>F</sub>), and the two channels do not sample the same W.
 <br><br>
 Their slope falls from &minus;0.013 to <b>&minus;0.004 or &minus;0.005</b> MeV<sup>-1</sup>,
@@ -330,8 +372,8 @@ a <b>62% to 69%</b> reduction.
 <b>Bertulani</b><br>
 <span class="ui-label">Phys. Lett. B 846, 138250 (2023)</span>
 <div class="mt-3">
-The same missing absorption, but <b>&Delta;S independent</b>: it reduces the cross section
-without tilting the systematics.
+The same effect, modeled as geometric rescattering with <b>free</b> NN cross sections, and
+<b>&Delta;S independent</b>: it reduces the cross section without tilting the systematics.
 <br><br>
 No contribution to the slope.
 </div>
@@ -412,8 +454,8 @@ The sudden approximation and the eikonal fragment-target S matrices. They are ho
 <div class="box-idea">
 <b>Mine, and the only thing that changes</b>
 <div class="mt-3">
-The nucleon-residue final-state step: what the struck nucleon does in the field of the
-residue after the collision.
+The nucleon-residue coupling inside the composite: how x, moving inside the projectile,
+changes the state b comes out in.
 </div>
 </div>
 
@@ -843,8 +885,9 @@ deletion has never been bounded.
 </div>
 
 <div class="box-idea mt-4">
-<b>2.</b> One consequence of the deletion is that the removed nucleon cannot destroy the
-residue. Putting that channel back is what "core destruction" means.
+<b>2.</b> One consequence of the deletion is that b is a spectator: the removed nucleon cannot
+change its internal state, and the formula counts all states of b while experiment counts b bound.
+Putting that coupling back is what "core destruction" means.
 </div>
 
 <div class="box-evidence mt-4">
