@@ -38,6 +38,7 @@ mpl.rcParams.update({
     "axes.grid": False, "legend.frameon": False,
 })
 
+GAP_TINT = "#f3e6e0"
 E_M1, E_MEAN = 21.4, 40.26
 
 p = np.loadtxt("kickE_p.dat")
@@ -51,8 +52,8 @@ fig.patch.set_facecolor(PAPER)
 ax.set_facecolor(PAPER)
 
 # the distribution itself: proton filled, neutron overlaid, they agree to 3 percent
-ax.stairs(wp, edges, fill=True, color=INK_TINT, edgecolor="none", zorder=1)
-ax.stairs(wp, edges, color=INK_BLUE, linewidth=2.2, zorder=3)
+ax.stairs(wp, edges, fill=True, color=GAP_TINT, edgecolor="none", zorder=1)
+ax.stairs(wp, edges, color=GAP_RED, linewidth=2.2, zorder=3)
 ax.stairs(wn, edges, color=OLIVE, linewidth=1.2, linestyle=(0, (5, 3)), zorder=4)
 
 top = wp.max() * 1.68
@@ -62,22 +63,22 @@ ax.set_xlim(0, 82)
 ax.set_yticks([0.0, 0.01, 0.02, 0.03, 0.04])
 
 # the two energies, drawn as segments that stop well below the label row
-ax.plot([E_M1, E_M1], [0, top * 0.58], color=GAP_RED, lw=2.6, zorder=5)
-ax.plot([E_MEAN, E_MEAN], [0, top * 0.58], color=INK_BLUE, lw=2.6,
+ax.plot([E_M1, E_M1], [0, top * 0.58], color=INK_BLUE, lw=2.6, zorder=5)
+ax.plot([E_MEAN, E_MEAN], [0, top * 0.58], color=GAP_RED, lw=2.6,
         linestyle=(0, (1, 1.6)), zorder=5)
 
 BB = dict(facecolor=PAPER, edgecolor="none", pad=2.0)
-ax.annotate("where the average impact parameter\napproximation leaves it",
+ax.annotate("picture A: x's own motion\nin the projectile, 21.4 MeV",
             xy=(E_M1, top * 0.58), xytext=(1.5, top * 0.985),
-            ha="left", va="top", color=GAP_RED, fontsize=15, linespacing=1.35,
-            bbox=BB, zorder=7,
-            arrowprops=dict(arrowstyle="-", color=GAP_RED, lw=1.1,
-                            connectionstyle="angle,angleA=0,angleB=90,rad=0"))
-ax.annotate("mean of what the NN collision\nactually delivers, 40.3 MeV",
-            xy=(E_MEAN, top * 0.58), xytext=(45.0, top * 0.985),
             ha="left", va="top", color=INK_BLUE, fontsize=15, linespacing=1.35,
             bbox=BB, zorder=7,
             arrowprops=dict(arrowstyle="-", color=INK_BLUE, lw=1.1,
+                            connectionstyle="angle,angleA=0,angleB=90,rad=0"))
+ax.annotate("picture B: what a free NN kick\nadds, mean 40.3 MeV",
+            xy=(E_MEAN, top * 0.58), xytext=(45.0, top * 0.985),
+            ha="left", va="top", color=GAP_RED, fontsize=15, linespacing=1.35,
+            bbox=BB, zorder=7,
+            arrowprops=dict(arrowstyle="-", color=GAP_RED, lw=1.1,
                             connectionstyle="angle,angleA=0,angleB=90,rad=0"))
 
 # one label for both curves: they lie on top of each other, so two direct labels would
@@ -85,14 +86,14 @@ ax.annotate("mean of what the NN collision\nactually delivers, 40.3 MeV",
 ax.text(41.0, 0.0088, "removed proton (solid) and neutron (dashed)",
         color=OLIVE, fontsize=14, ha="center", va="center", bbox=BB, zorder=7)
 
-ax.set_xlabel(r"$E'$, energy of the struck nucleon after the collision   (MeV)", labelpad=7)
+ax.set_xlabel(r"x-b energy scale   (MeV)", labelpad=7)
 ax.set_ylabel("probability per bin")
 ax.tick_params(axis="both", length=5.5, width=1.0, labelsize=13.5)
 ax.tick_params(which="minor", length=3, width=0.8)
 
 ax.text(0.5, -0.185,
         r"$^{40}$Si on $^{9}$Be at 79 MeV/nucleon, folded from the measured $pp$ and $np$ elastic amplitudes."
-        "\nThe two channels agree to 3%, so the kick itself carries no isospin asymmetry.",
+        "\nHistogram: the energy a free NN kick adds, $q^2/2\\mu$ (picture B). Line A: $\\langle T\\rangle$ of the 40Si($-p$) orbital.",
         transform=ax.transAxes, ha="center", va="top", fontsize=12.5,
         color=STONE, linespacing=1.4)
 
