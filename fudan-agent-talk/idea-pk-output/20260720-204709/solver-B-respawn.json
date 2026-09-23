@@ -1,0 +1,113 @@
+{
+  "solver": "B-respawn",
+  "stance_summary": "Treat the manuscript as an evidence audit. The cheapest useful tests are the ones that can falsify one layer of the claimed knowledge architecture using records that already existed before this manuscript.",
+  "anchored_assumption": "Can the deployed system support a measurable claim about preserved research state, controlled vocabulary, or adversarial validation, without relying on author-created questions or new literature?",
+  "candidates": [
+    {
+      "id": "B6",
+      "one_line": "Measure L2 state compression: compare the auto-loaded profile against the paper and project pages it claims to summarize, using status, dates, code links, and affiliation facts as preexisting labels.",
+      "first_concrete_step": "Run a read-only extraction over /Users/jinlei/research-wiki-personal/papers and /Users/jinlei/research-wiki-personal/projects/active to score one table: for each active or recent item, whether /Users/jinlei/research-wiki-personal/profile.md preserves its status, key date, title, and code or project link.",
+      "cost_estimate": "2-4 days for a pilot over active and recent items; about 1 week if frontmatter and prose need normalization. A public-safe writeup should report aggregate precision and recall, with raw examples limited to already published papers.",
+      "info_gain": "If fidelity is high, the manuscript gets a falsifiable result for the claim that a new session can inherit real research state from L2 rather than from chat memory. If fidelity is low, the manuscript learns that the profile is a useful diary but not a reliable state interface, and the L2 claim must be narrowed.",
+      "risk": "Frontmatter, prose timelines, and AUTO blocks may disagree, so automatic parsing can overcount errors; worst-case time loss is two days before falling back to a 30-item manual audit. Leak risk is high for submitted or draft pages, so any public artifact must omit raw lines from reviews/, private files, draft manuscripts, and collaborator notes.",
+      "orthogonality_to_tried": [
+        {
+          "tried_item": "T1",
+          "difference": "T1 inventories the system; B6 measures semantic agreement between the compressed profile and the underlying paper/project records."
+        },
+        {
+          "tried_item": "T2",
+          "difference": "It does not relabel personal practice; it tests whether a persistent state layer is accurate."
+        },
+        {
+          "tried_item": "T3",
+          "difference": "No author-written questions or quality scores are used; the labels are dated wiki records."
+        },
+        {
+          "tried_item": "T4",
+          "difference": "No external permission query is involved."
+        },
+        {
+          "tried_item": "T5",
+          "difference": "It adds a targeted measurement rather than expanding prose and citations."
+        },
+        {
+          "tried_item": "T6",
+          "difference": "T6 replays one answer from a pinned commit; B6 measures many state facts against their source records."
+        }
+      ],
+      "dependencies": "Read access to /Users/jinlei/research-wiki-personal/profile.md, papers/, projects/, and git history for date provenance; a small parser or manual extraction sheet; confidentiality filtering before any example leaves the local machine."
+    },
+    {
+      "id": "B7",
+      "one_line": "Measure L3 vocabulary control: audit canonical slug coverage and alias leakage across the source, method, system, and observable pages.",
+      "first_concrete_step": "Run a read-only alias-leak scan for the first 20 alias groups in /Users/jinlei/research-wiki/CLAUDE.md and /Users/jinlei/research-wiki-personal/CLAUDE.md over allowlisted wiki paths, reporting canonical-link hits, unlinked alias hits, and possible duplicate slugs.",
+      "cost_estimate": "3-5 days to scale from 20 groups to the full controlled vocabulary, spot-check noisy abbreviations, and produce one table plus one figure. It becomes 1 week if the alias lists need hand normalization before scoring.",
+      "info_gain": "If alias leakage is low, the manuscript can support the claim that a unified vocabulary prevents concept splitting with a mechanical measurement. If leakage is high, the manuscript learns that the vocabulary is aspirational and should present L3 as a maintenance problem rather than a solved layer.",
+      "risk": "Short aliases such as CS, MC, AD, OM, and SF will create false positives unless the scan uses word-boundary and context filters; worst-case time loss is two days of parser cleanup. Leak risk is moderate because raw hit lines may expose unpublished or private page content, so public output should be aggregate counts plus examples only from published-source pages.",
+      "orthogonality_to_tried": [
+        {
+          "tried_item": "T1",
+          "difference": "T1 says the vocabulary exists; B7 measures whether aliases actually collapse onto canonical pages."
+        },
+        {
+          "tried_item": "T2",
+          "difference": "It tests an internal data property, not a narrative positioning."
+        },
+        {
+          "tried_item": "T3",
+          "difference": "There is no human scoring task; the units are preexisting alias definitions and wiki occurrences."
+        },
+        {
+          "tried_item": "T4",
+          "difference": "No external permission query is involved."
+        },
+        {
+          "tried_item": "T5",
+          "difference": "It avoids broad literature expansion and focuses on the evidence already in the local knowledge base."
+        },
+        {
+          "tried_item": "T6",
+          "difference": "T6 checks replay stability for one question; B7 checks structural consistency of the concept layer."
+        }
+      ],
+      "dependencies": "Controlled-vocabulary blocks in the two CLAUDE.md files; read access to wiki source/method/system/observable pages; an allowlist that excludes reviews/, private files, draft manuscript text, and collaborator correspondence."
+    },
+    {
+      "id": "B8",
+      "one_line": "Measure adversarial cross-model validation as defect detection: count only preexisting audit findings that led to independently checkable changes in code, data, citations, or numerical convergence.",
+      "first_concrete_step": "Run an allowlisted rg scan over /Users/jinlei/research-wiki-personal for Codex, DeepSeek, cross-validation, PASS, benchmark, certified, and lmax, excluding reviews/ and private files, with each hit classified as objective only if it names a commit, data artifact, DOI/source check, or benchmark number.",
+      "cost_estimate": "1-2 weeks for the full path: one day for the scan, 2-3 days to retrieve supporting commits or artifacts, 2-3 days to reject unverifiable model opinions, and several days to write a small results section. If fewer than three objective episodes survive the first day, stop and treat that as a negative result.",
+      "info_gain": "If several objective episodes survive, the manuscript can replace vague cross-model-validation language with measured audit yield and concrete defect classes. If few survive, the manuscript learns that cross-model validation is a governance rule with weak recorded evidence, so the claim should be shortened rather than promoted.",
+      "risk": "Many records may be narrative summaries without saved transcripts or objective anchors; worst-case time loss is two days before the candidate is abandoned. Confidentiality risk is high because audit records touch unpublished manuscripts, appeals, and review-adjacent material, so public output must use aggregate counts and sanitized examples whose ground truth is public or numerical.",
+      "orthogonality_to_tried": [
+        {
+          "tried_item": "T1",
+          "difference": "T1 presents deployment cases; B8 measures whether adversarial validation produced objectively verified corrections."
+        },
+        {
+          "tried_item": "T2",
+          "difference": "It does not rely on personal narrative; it counts dated validation records with independent anchors."
+        },
+        {
+          "tried_item": "T3",
+          "difference": "No new with/without task set is created; the evidence comes from audits that predate this manuscript."
+        },
+        {
+          "tried_item": "T4",
+          "difference": "No external permission query is involved."
+        },
+        {
+          "tried_item": "T5",
+          "difference": "It does not expand background citations; it measures an operational claim already made by the manuscript."
+        },
+        {
+          "tried_item": "T6",
+          "difference": "T6 tests deterministic replay; B8 tests whether independent model audits found defects later verified by commits, source checks, or numerical benchmarks."
+        }
+      ],
+      "dependencies": "Profile and project history containing cross-model audit records; git repositories for supporting commits; numerical artifacts such as lmax_certification.json where available; a prewritten rule that excludes model opinions without an external or numerical anchor."
+    }
+  ],
+  "convergence_note": "These replacements stay on evidence inside the deployed system: L2 state fidelity, L3 vocabulary canonicalization, and cross-model audit yield. They intentionally avoid the already proposed citation ledger, prose ablation, wiki lint defect count, reference-support table, physics-equivalence paper, BM25 benchmark, sanitized release, and git-mined failure taxonomy."
+}

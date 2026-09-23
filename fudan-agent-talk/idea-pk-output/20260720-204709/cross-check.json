@@ -1,0 +1,118 @@
+{
+  "verdicts": [
+    {
+      "candidate_id": "A1",
+      "verdict": "kept",
+      "rationale": "This is genuinely orthogonal to T1-T6: the artifact becomes a nuclear-physics research result with independent numerical verification, not a framework paper, review rewrite, self-evaluation, editor query, or reproducibility demo. The first step is specific and startable, but the claimed failure-branch information gain is too broad.",
+      "redundant_with": null,
+      "info_gain_correction": "Failure of the EC-vs-POD example would only falsify one candidate synthesis claim, not the whole wiki's ability to surface novel checkable research claims. Treat the day-1 novelty scan as mandatory before any compute.",
+      "first_step_correction": null
+    },
+    {
+      "candidate_id": "A2",
+      "verdict": "kept",
+      "rationale": "This passes the no-self-graded-evidence test better than T3 because the labels are pre-existing source pointers and the metric is a standard retrieval rank over the 62k corpus. It is specific, feasible as a one-day pilot, and not the same artifact as T6's replay demonstration.",
+      "redundant_with": null,
+      "info_gain_correction": null,
+      "first_step_correction": "Restrict the pilot to published-source pages and aggregate ranks only; exclude reviews/, private pages, unpublished manuscripts, collaborator notes, and any text that would leak wiki contents."
+    },
+    {
+      "candidate_id": "A3",
+      "verdict": "infeasible",
+      "rationale": "A public resource release from the personal/research wikis directly touches the confidentiality constraint: referee material, unpublished manuscripts, and collaborator correspondence could leak. The first step also bundles rule-writing and a dry run, but the larger blocker is that a safe export audit is the project, not a cheap first move.",
+      "redundant_with": null,
+      "info_gain_correction": null,
+      "first_step_correction": null
+    },
+    {
+      "candidate_id": "A4",
+      "verdict": "refine_first_step",
+      "rationale": "The failure-taxonomy idea is not T6 because it studies corrections and reversals rather than deterministic replay, and pre-existing git history is stronger evidence than self-graded questions. As written, the first step can expose confidential before/after claim text from both wikis, so it needs a safer first pass.",
+      "redundant_with": null,
+      "info_gain_correction": null,
+      "first_step_correction": "First run an allowlisted, aggregate-only scan over public-safe paths and commit messages, excluding reviews/, private files, drafts with unpublished claims, and correspondence; only after counts look useful select sanitized public examples."
+    },
+    {
+      "candidate_id": "A5",
+      "verdict": "infeasible",
+      "rationale": "The essence of the first step is fetching and classifying journal archive data not present in the stuck-card, which exceeds the stated one-day operational rule. It is also near-identical to B3 and anchored on the user's genre anxiety rather than adding manuscript evidence.",
+      "redundant_with": "B3",
+      "info_gain_correction": "Even a positive precedent would not show this manuscript has enough evidence; it would only reduce genre anxiety.",
+      "first_step_correction": null
+    },
+    {
+      "candidate_id": "B1",
+      "verdict": "redundant",
+      "rationale": "This is a weaker, one-artifact provenance audit overlapping A2's broader retrieval benchmark. The 10-entry manual spot-check also risks becoming new self-graded evidence unless the labels already exist outside this paper.",
+      "redundant_with": "A2",
+      "info_gain_correction": "A pass would support one review-draft workflow, not the general claim that the discovery layer works.",
+      "first_step_correction": null
+    },
+    {
+      "candidate_id": "B2",
+      "verdict": "reinvention",
+      "rationale": "This would still produce the same kind of artifact as T1, a framework/schema manuscript in the research-article slot with static inventory evidence. The first step is manuscript-positioning cleanup that would be sensible for almost any overclaimed paper.",
+      "redundant_with": null,
+      "info_gain_correction": null,
+      "first_step_correction": null
+    },
+    {
+      "candidate_id": "B3",
+      "verdict": "infeasible",
+      "rationale": "Like A5, this requires fetching recent Nuclear Techniques papers or PDFs not stated in the stuck-card, so it fails the operational first-step rule. It is a duplicate venue-precedent test rather than an independent evidence path.",
+      "redundant_with": "A5",
+      "info_gain_correction": "A close precedent would diagnose packaging, not validate the five-layer system or satisfy the missing evidence problem.",
+      "first_step_correction": null
+    },
+    {
+      "candidate_id": "B4",
+      "verdict": "kept",
+      "rationale": "Objective lint and index counts are pre-existing, mechanically generated evidence, so this avoids T3's self-grading problem and differs from T6's single replay demo. It is narrower than A2 but cheap and directly tests the governance claims already in the manuscript.",
+      "redundant_with": null,
+      "info_gain_correction": "The result can only support maintainability/governance claims, not efficiency, research quality, or agent intelligence.",
+      "first_step_correction": "Use only existing public-safe lint reports or aggregate counts; do not include raw page names from reviews/, private files, unpublished manuscripts, or collaborator material."
+    },
+    {
+      "candidate_id": "B5",
+      "verdict": "refine_first_step",
+      "rationale": "The citation-support audit is useful because the wiki precheck already shows the LLM-agent side is thin, but the stated table would require validating up to 11 unread agent papers. That violates the 'more than 2 new papers' rule unless the first step is reduced.",
+      "redundant_with": null,
+      "info_gain_correction": "The main gain is not discovering whether the agent literature base is strong; the precheck says it is not. The gain is deciding which unsupported claims to delete or quarantine.",
+      "first_step_correction": "Make a local-only support table from the manuscript and wiki status, mark unread references as unverified, and read at most two essential agent papers today."
+    }
+  ],
+  "diagonal": {
+    "candidate_id": "A1",
+    "rationale": "It is the only survivor that changes the paper's payload from 'AI-agent/wiki system' to a checkable nuclear-physics claim produced with the system as instrument. That is most orthogonal to the tried list and to the user's current framing."
+  },
+  "cheapest_disambiguator": {
+    "candidate_id": "A2",
+    "rationale": "A one-day retrieval pilot over pre-existing source labels gives the highest evidence-per-hour: high recall supports a research-article route, while low recall is immediately decision-relevant and non-self-serving."
+  },
+  "incompatible_pairs": [
+    {
+      "a": "A1",
+      "b": "A2",
+      "reason": "They define different research articles: one is a physics-method equivalence paper, the other is a retrieval benchmark paper. Trying to make one Nuclear Techniques submission carry both would blur the central claim and expand the workload."
+    },
+    {
+      "a": "A1",
+      "b": "A4",
+      "reason": "A physics-result manuscript and a deployed-agent failure-taxonomy manuscript require different evidence, figures, and narrative framing, so both cannot be finished cleanly in this decision period."
+    },
+    {
+      "a": "A3",
+      "b": "A4",
+      "reason": "Both require auditing sensitive wiki history for public use; doing a resource release and a failure-incident dataset in the same period compounds the confidentiality risk."
+    }
+  ],
+  "groupthink_flag": {
+    "raised": true,
+    "shared_anchor": "A5 and B3 both converge on venue-precedent surveying from the user's 'probably not accepted as practice report' worry, not from independent evidence about manuscript strength.",
+    "recommended_re_prompt_target": "B"
+  },
+  "all_filtered": {
+    "raised": false,
+    "minimum_info_needed": null
+  }
+}

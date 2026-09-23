@@ -1,0 +1,93 @@
+{
+  "solver": "B",
+  "stance_summary": "Treat the manuscript as a diagnosis problem: find the cheapest test that tells whether the failure is missing evidence, wrong category, or weak packaging.",
+  "anchored_assumption": "Disambiguation question: is the manuscript actually broken because it lacks a falsifiable measurable claim, or because the five-layer wiki system is being submitted under the wrong article category despite having a usable methods contribution?",
+  "candidates": [
+    {
+      "id": "B1",
+      "one_line": "Run a traceability audit on one existing high-value artifact and make the paper's claim narrower: the system preserves source provenance in real nuclear-physics writing.",
+      "first_concrete_step": "Today, take the existing 58-page review draft citation ledger and compute a three-bin table: wiki-backed, external-discovered, unresolved, with 10 randomly selected entries manually spot-checked against their source pages.",
+      "cost_estimate": "6-10 hours for the audit table and manuscript insertion; 2-3 days if the ledger needs cleanup.",
+      "info_gain": "If it works, the manuscript gains a falsifiable result without a human-subject study. If it fails, the current evidence base is too anecdotal and the article should not be sold as original research.",
+      "risk": "The ledger may be incomplete or inconsistent, causing the test to collapse into cleanup; worst-case time loss is one day.",
+      "orthogonality_to_tried": [
+        {"tried_item": "T1", "difference": "T1 only states examples; this measures provenance on an existing artifact."},
+        {"tried_item": "T2", "difference": "It does not ask the journal to accept an experience report."},
+        {"tried_item": "T3", "difference": "No self-graded questions; the units are existing citations and source links."},
+        {"tried_item": "T4", "difference": "No editor query."},
+        {"tried_item": "T5", "difference": "It adds a small original audit, not a broad review expansion."},
+        {"tried_item": "T6", "difference": "It tests provenance quality, not commit-level replay reproducibility."}
+      ],
+      "dependencies": "Requires the existing review draft, citation ledger, and wiki source pages to be locally available."
+    },
+    {
+      "id": "B2",
+      "one_line": "Ablate the weakest component by removing efficiency language and recasting the contribution as a static, testable knowledge-schema design for nuclear theory workflows.",
+      "first_concrete_step": "Today, rewrite the abstract's Results sentence into one schema claim and one static inventory claim, then delete any sentence that implies speedup, productivity, or model improvement.",
+      "cost_estimate": "4-6 hours for the ablation pass; 1-2 days to rebalance the manuscript to 5000-8000 chars.",
+      "info_gain": "If the manuscript still reads like a contribution, the core problem was overclaiming. If it becomes empty, the five-layer architecture has no publishable claim without data.",
+      "risk": "The paper may become too descriptive for an original article; worst-case time loss is half a day before abandoning this route.",
+      "orthogonality_to_tried": [
+        {"tried_item": "T1", "difference": "It changes the claim surface rather than padding the existing draft."},
+        {"tried_item": "T2", "difference": "It frames a schema/methods article, not a practice report."},
+        {"tried_item": "T3", "difference": "It avoids invented validation and only preserves static verifiable claims."},
+        {"tried_item": "T4", "difference": "No editor query."},
+        {"tried_item": "T5", "difference": "It shrinks and sharpens the manuscript instead of expanding into a review."},
+        {"tried_item": "T6", "difference": "It changes article claim type, not reproducibility evidence."}
+      ],
+      "dependencies": "Needs only the current manuscript and willingness to cut claims that cannot be verified."
+    },
+    {
+      "id": "B3",
+      "one_line": "Use past Nuclear Techniques articles as the venue unit test: determine whether a methods-style infrastructure paper without controlled experiments is a known accepted form.",
+      "first_concrete_step": "Today, build a 10-row table from recent Nuclear Techniques AI/special-topic papers with columns: article type, evidence type, data/experiment present, word length class, and closest match to this manuscript.",
+      "cost_estimate": "3-5 hours for the venue table; one day to adjust positioning if a close precedent exists.",
+      "info_gain": "If a close precedent exists, the problem is packaging and genre language. If none exists, the current article must either add real evidence or become a review.",
+      "risk": "Public pages may not expose enough full text quickly; worst-case time loss is one afternoon.",
+      "orthogonality_to_tried": [
+        {"tried_item": "T1", "difference": "It tests venue fit rather than manuscript completeness."},
+        {"tried_item": "T2", "difference": "It does not rely on a rejected experience-report category."},
+        {"tried_item": "T3", "difference": "No new experiment or self-grading."},
+        {"tried_item": "T4", "difference": "It uses public precedent, not editor permission."},
+        {"tried_item": "T5", "difference": "It may justify original-article packaging without review expansion."},
+        {"tried_item": "T6", "difference": "It tests journal genre constraints, not system reproducibility."}
+      ],
+      "dependencies": "Requires public access to recent Nuclear Techniques articles or downloaded PDFs."
+    },
+    {
+      "id": "B4",
+      "one_line": "Convert one manuscript claim into a static lint benchmark over the existing wikis: the architecture makes stale links, orphan pages, and missing provenance mechanically discoverable.",
+      "first_concrete_step": "Today, run the existing wiki lint or git-backed index check once and extract only objective counts: broken links, orphan pages, stale frontmatter, and resolved findings from the last report.",
+      "cost_estimate": "4-8 hours if the lint pipeline already runs; 2 days if report parsing needs manual cleanup.",
+      "info_gain": "If objective defects and fixes are recoverable, the paper gains an engineering validation that matches its governance claims. If not, the governance section is aspirational and should be shortened.",
+      "risk": "The lint report may mix private and public material or be too wiki-specific; worst-case time loss is one day.",
+      "orthogonality_to_tried": [
+        {"tried_item": "T1", "difference": "It adds objective maintenance data rather than descriptive inventory."},
+        {"tried_item": "T2", "difference": "It supports a methods/tooling claim, not a practice narrative."},
+        {"tried_item": "T3", "difference": "No human scoring; counts come from static checks."},
+        {"tried_item": "T4", "difference": "No editor query."},
+        {"tried_item": "T5", "difference": "It avoids agent-literature expansion and stays evidence-first."},
+        {"tried_item": "T6", "difference": "It validates maintainability, not replay of a single answer."}
+      ],
+      "dependencies": "Requires existing lint reports or scripts and careful exclusion of confidential review material."
+    },
+    {
+      "id": "B5",
+      "one_line": "Make the negative result explicit: test whether the current wiki can support an AI-agent review section, and if it cannot, use that as a boundary condition rather than filling it with shallow citations.",
+      "first_concrete_step": "Today, write a one-page appendix-style table listing the 11 current agent references with status columns: in wiki, read depth, supports which sentence, and must-keep or removable.",
+      "cost_estimate": "3-6 hours for the table; 1 day to prune or quarantine unsupported claims.",
+      "info_gain": "If most references support precise claims, the intro can stay. If not, the manuscript should stop pretending to review AI agents and present them only as minimal background.",
+      "risk": "This may reveal that the opening literature frame is thin; worst-case time loss is half a day and a shorter, more honest introduction.",
+      "orthogonality_to_tried": [
+        {"tried_item": "T1", "difference": "It stress-tests the current reference frame rather than accepting it."},
+        {"tried_item": "T2", "difference": "It does not change into a practice report."},
+        {"tried_item": "T3", "difference": "No new self-generated performance evidence."},
+        {"tried_item": "T4", "difference": "No editor query."},
+        {"tried_item": "T5", "difference": "It rejects broad agent-literature expansion unless the current claims require it."},
+        {"tried_item": "T6", "difference": "It audits citation support, not reproducibility."}
+      ],
+      "dependencies": "Requires only the current 11 references and local notes; no more than two new papers if a crucial citation is missing."
+    }
+  ],
+  "convergence_note": "The other solver may also propose B3, because venue-precedent testing is the cheapest way to separate category failure from evidence failure."
+}

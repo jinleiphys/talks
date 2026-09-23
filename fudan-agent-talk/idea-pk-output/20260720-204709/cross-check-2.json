@@ -1,0 +1,75 @@
+{
+  "verdicts_new": [
+    {
+      "candidate_id": "B6",
+      "verdict": "generic",
+      "rationale": "The evidence would be pre-existing and not self-graded, and the one-day extraction is plausible. The problem is relevance: status, date, title, and link fidelity between profile.md and underlying pages measures filing hygiene for a personal state interface, not a result that would interest nuclear-physics readers. With the stuck-card deleted, this would still be sensible advice for almost any knowledge-base manuscript, so it is generic even if the measurement is clean.",
+      "redundant_with": "B4",
+      "info_gain_correction": "A high score would support only the narrow L2 claim that the profile mirrors its source records. It would not show technical breakthrough, research output, literature discovery, or any nuclear-physics gain.",
+      "first_step_correction": "If run at all, restrict the audit to public or already published paper/project pages and report aggregate counts only. Exclude reviews/, private files, submitted or draft manuscripts, collaborator notes, correspondence, and raw lines from any public artifact."
+    },
+    {
+      "candidate_id": "B7",
+      "verdict": "generic",
+      "rationale": "Alias leakage and canonical slug coverage are mechanically measurable and can use pre-existing vocabulary labels, but the dependent variable is still wiki maintenance. Nuclear-physics readers do not care whether a private concept graph uses aliases consistently unless this is tied to retrieval accuracy, missed-citation discovery, or a physics claim. As stated, it measures filing discipline rather than nuclear-research value.",
+      "redundant_with": "B4",
+      "info_gain_correction": "Low alias leakage would only say that L3 is internally tidy. To become publishable evidence, the metric would need a downstream endpoint such as improved recall of supporting nuclear papers or reduced duplicate concept discovery.",
+      "first_step_correction": "Use an allowlist of public-safe pages, predefine word-boundary rules for short aliases, and publish only aggregate counts plus examples from published-source pages. Do not expose raw hits from private, review, draft, submitted, or collaborator material."
+    },
+    {
+      "candidate_id": "B8",
+      "verdict": "kept",
+      "rationale": "This is the only B6-B8 candidate that can measure something beyond filing hygiene: whether adversarial AI review caught independently checkable defects in nuclear-research work, such as convergence errors, benchmark mismatches, citation errors, or data-artifact corrections. It can pass the self-grading rule if every counted episode has a timestamp before this manuscript and an external or numerical anchor. It is close to A4, but sharper and more connected to a claim already made by the manuscript.",
+      "redundant_with": null,
+      "info_gain_correction": "A positive result supports only cross-model validation as defect detection. It does not validate the full five-layer architecture, and the denominator must be all eligible audit episodes in the scoped log, not a hand-picked list of wins.",
+      "first_step_correction": "Pre-register the inclusion rule before scanning: count only pre-manuscript episodes with a commit, data artifact, benchmark number, DOI/source check, or reproducible numerical correction. Exclude reviews/, private files, draft-only claims, submitted-manuscript details, collaborator correspondence, and raw hit lines from any public artifact."
+    }
+  ],
+  "redundancy_updates": [
+    {
+      "candidate_id": "A4",
+      "new_verdict": "redundant",
+      "rationale": "B8 uses the same pre-existing incident and audit-history evidence channel but narrows it to objective cross-model defect detections with external or numerical anchors. That makes A4's broad git-mined failure taxonomy leakier, less focused, and unnecessary as a primary candidate."
+    }
+  ],
+  "diagonal": {
+    "candidate_id": "A1",
+    "rationale": "A1 remains the most diagonal because it stops trying to make the wiki architecture itself carry the paper. It turns the AI system into an instrument for producing a checkable nuclear-physics claim, which is the cleanest escape from the filing-hygiene trap."
+  },
+  "cheapest_disambiguator": {
+    "candidate_id": "B8",
+    "rationale": "A one-day public-safe audit scan can quickly decide whether there are at least three objective, publishable defect-detection episodes. If not, the current cross-validation claims should be demoted immediately; if yes, the manuscript gets a narrow but real results section."
+  },
+  "incompatible_pairs": [
+    {
+      "a": "A1",
+      "b": "A2",
+      "reason": "They are different research articles: A1 is a physics-method equivalence result, while A2 is a retrieval benchmark over the nuclear literature corpus."
+    },
+    {
+      "a": "A1",
+      "b": "B8",
+      "reason": "A1 makes the nuclear-physics claim central; B8 makes AI audit yield central. Combining them would blur the submission's main result."
+    },
+    {
+      "a": "A2",
+      "b": "B8",
+      "reason": "A2 evaluates literature retrieval, while B8 evaluates adversarial validation. Both could be small side evidence, but only one can be the core results section in a 5000-8000 character article."
+    },
+    {
+      "a": "A4",
+      "b": "B8",
+      "reason": "They draw from the same incident-history pool. B8 should replace A4 as the safer and more objective version rather than being run in parallel."
+    }
+  ],
+  "groupthink_flag": {
+    "raised": true,
+    "shared_anchor": "After the venue-anchor was removed, B6 and B7 still assume that internal measurements of the personal wiki are publishable payloads. That repeats the deeper bias of rescuing the existing architecture paper with audit numbers instead of asking whether the measured endpoint matters to nuclear physics.",
+    "recommended_re_prompt_target": "B"
+  },
+  "all_filtered": {
+    "raised": false,
+    "minimum_info_needed": null
+  },
+  "editor_note": "The augmented set has one clean escape, A1, but it solves the problem by abandoning the current paper's payload and writing a nuclear-physics result. A2 and B8 can make the existing agent paper less weak, but they trade one weakness for another: hard local measurements whose relevance to nuclear-physics readers must be argued carefully. B6 and B7 are tidy audits, not paper-saving evidence."
+}

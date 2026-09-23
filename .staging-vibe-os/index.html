@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vibe科研模拟器</title>
+  <meta name="description" content="一个假的科研 AI 操作系统，也是一个关于 tokens、算力、聘期、学生情绪和审稿人恶意的网页游戏。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314243a'/%3E%3Cpath d='M18 20h28v6H18zm0 10h18v6H18zm0 10h28v6H18z' fill='%2342b4b1'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+  <div class="ambient ambient-c"></div>
+
+  <div class="overlay-shell" id="start-overlay" aria-hidden="false">
+    <div class="overlay-panel">
+      <p class="overlay-kicker">Launch Build</p>
+      <h1>vibe科研模拟器</h1>
+      <p class="overlay-copy">
+        假的 Claude / Codex 科研操作台，真的青椒生存压力。
+        你要采购模型，烧 tokens，买算力，安抚学生，回审稿，在聘期归零之前把自己和实验室一起送到岸上。
+      </p>
+
+      <div class="overlay-strip">
+        <div class="overlay-chip">
+          <span>Genre</span>
+          <strong>Fake IDE + Strategy Roguelite</strong>
+        </div>
+        <div class="overlay-chip">
+          <span>Hook</span>
+          <strong>Tokens 只负责想法，GPU 才负责结果</strong>
+        </div>
+        <div class="overlay-chip">
+          <span>Warning</span>
+          <strong>学生也需要情绪价值</strong>
+        </div>
+      </div>
+
+      <div class="overlay-grid">
+        <div class="overlay-main">
+          <div class="overlay-section">
+            <div class="section-head compact">
+              <div>
+                <p class="section-label">Run Mode</p>
+                <h2>启动模式</h2>
+              </div>
+              <p class="section-note">标准 career、每日挑战和速冲模式各有不同的坏消息。</p>
+            </div>
+            <div class="mode-grid" id="mode-grid"></div>
+          </div>
+
+          <div class="overlay-section">
+            <div class="section-head compact">
+              <div>
+                <p class="section-label">Choose A Run</p>
+                <h2>开局流派</h2>
+              </div>
+              <p class="section-note">每种开局都偏执地强化一种科研人格。</p>
+            </div>
+            <div class="archetype-grid" id="archetype-grid"></div>
+          </div>
+        </div>
+
+        <aside class="launch-rail">
+          <article class="launch-card">
+            <p class="section-label">Daily Directive</p>
+            <h3 id="daily-title">今日挑战</h3>
+            <p class="launch-copy" id="daily-copy">每日局会带一个固定 modifier，把正常工作流再扭一点。</p>
+          </article>
+
+          <article class="launch-card">
+            <p class="section-label">Build Hooks</p>
+            <div class="launch-list">
+              <div>
+                <strong>14+</strong>
+                <span>学术黑色幽默事件池</span>
+              </div>
+              <div>
+                <strong>6</strong>
+                <span>坑货成员 trait</span>
+              </div>
+              <div>
+                <strong>3</strong>
+                <span>启动模式</span>
+              </div>
+              <div>
+                <strong>2</strong>
+                <span>隐藏结局专门给内审狂魔和指标奴</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="launch-card">
+            <p class="section-label">Pitch</p>
+            <p class="launch-copy">
+              你不是在优化 prompt，你是在优化一套会把人、钱、算力、信誉和情绪一起烧掉的现代科研流水线。
+            </p>
+          </article>
+        </aside>
+      </div>
+
+      <div class="overlay-actions">
+        <button class="primary-button" id="continue-run">继续上次 run</button>
+        <button class="ghost-button" id="wipe-save">清空存档</button>
+      </div>
+
+      <div class="overlay-footer">
+        <p id="meta-summary">尚无最佳战绩。适合现在开始第一局。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay-shell hidden" id="end-overlay" aria-hidden="true">
+    <div class="overlay-panel end-panel">
+      <p class="overlay-kicker">Run Summary</p>
+      <h2 id="ending-title">实验室还活着</h2>
+      <p class="overlay-copy" id="ending-copy"></p>
+
+      <div class="ending-grid" id="ending-grid"></div>
+
+      <div class="overlay-actions">
+        <button class="primary-button" id="copy-result">复制战报</button>
+        <button class="ghost-button" id="restart-run">再开一局</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay-shell hidden" id="recruit-overlay" aria-hidden="true">
+    <div class="overlay-panel recruit-panel">
+      <div class="section-head compact">
+        <div>
+          <p class="overlay-kicker">Hiring Desk</p>
+          <h2 id="recruit-title">本周候选池</h2>
+        </div>
+        <div class="overlay-actions overlay-actions-compact">
+          <button class="ghost-button" id="refresh-candidates">刷新名单</button>
+          <button class="ghost-button" id="close-recruit">先不招</button>
+        </div>
+      </div>
+      <p class="overlay-copy recruit-copy" id="recruit-copy">
+        先看 3 份简历。录用才会扣行动点和现金，trait 只给模糊推荐信，真正的人品得进组后自己承担。
+      </p>
+      <div class="candidate-grid" id="candidate-grid"></div>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Research Agent Operating Theatre</p>
+      <h1>vibe科研模拟器</h1>
+    </div>
+    <div class="topbar-meta">
+      <div class="meta-chip">
+        <span>模式</span>
+        <strong id="mode-label">Career</strong>
+      </div>
+      <div class="meta-chip">
+        <span>周数</span>
+        <strong id="runtime-label">Week 1</strong>
+      </div>
+      <div class="meta-chip">
+        <span>行动点</span>
+        <strong id="actions-left-label">3 / 3</strong>
+      </div>
+      <div class="meta-chip">
+        <span>头衔</span>
+        <strong id="career-title-label">新晋青椒</strong>
+      </div>
+      <div class="meta-chip accent">
+        <span>当前模型</span>
+        <strong id="agent-label">Frontier Pro · 未充分实测</strong>
+      </div>
+    </div>
+  </header>
+
+  <main class="table-layout">
+    <div class="table-grid">
+      <aside class="panel rail rail-left">
+        <div class="rail-block">
+          <p class="section-label">Runway</p>
+          <h3>本局驾驶舱</h3>
+          <div class="hero-badges hero-badges-compact">
+            <span class="hero-badge" id="mode-badge">Mode: Career</span>
+            <span class="hero-badge" id="best-run-badge">Best: 暂无</span>
+            <span class="hero-badge" id="papers-badge">Papers: 0</span>
+            <span class="hero-badge" id="grants-badge">Grants: 0</span>
+          </div>
+          <div class="runway-grid" id="runway-grid"></div>
+        </div>
+
+        <div class="rail-block">
+          <p class="section-label">Current Focus</p>
+          <h3>当前焦点</h3>
+          <div class="focus-stack">
+            <article class="focus-card" id="project-focus-card"></article>
+            <article class="focus-card" id="model-focus-card"></article>
+          </div>
+        </div>
+
+        <div class="rail-block">
+          <div class="section-head compact">
+            <div>
+              <p class="section-label">Quickstart</p>
+              <h4>这周怎么打</h4>
+            </div>
+            <button class="ghost-button" id="advance-week">结束本周</button>
+          </div>
+          <article class="guide-card guide-card-primary guide-card-tight">
+            <p class="guide-kicker">推荐下一步</p>
+            <h4 id="guide-title">先选一个开局</h4>
+            <p id="guide-copy">开始后，先看推荐动作，再决定这周是补资源、冲进度还是压风险。</p>
+            <div class="guide-tags" id="guide-tags"></div>
+          </article>
+          <div class="guide-checklist guide-checklist-compact" id="guide-checklist"></div>
+        </div>
+      </aside>
+
+      <section class="panel board-panel">
+        <div class="board-hero">
+          <div class="board-copy">
+            <p class="section-label">Fake Terminal</p>
+            <h2>把它当成科研牌桌，不是管理后台。</h2>
+            <p class="lede">先定这周 agenda，再打一手顺序。系统会用 review、预算和学生状态告诉你这一手值不值。</p>
+          </div>
+          <div class="terminal-stack terminal-stack-compact">
+            <div class="headline-strip" id="headline-strip"></div>
+            <div class="terminal">
+              <div class="terminal-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+                <p>agent://vibe-research/shell</p>
+              </div>
+              <div class="terminal-body" id="terminal-log" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="impact-banner" id="impact-banner">
+          <span class="impact-label">Last Outcome</span>
+          <strong id="impact-text">系统上线。先选模型，再决定这周是烧钱、交稿，还是先别翻车。</strong>
+        </div>
+
+        <div class="board-topline">
+          <article class="engine-card" id="bet-card"></article>
+          <article class="engine-card" id="pressure-card"></article>
+        </div>
+
+        <div class="board-midline">
+          <article class="opportunity-card" id="opportunity-card"></article>
+          <div class="board-sidecards">
+            <article class="engine-card" id="combo-card"></article>
+            <article class="engine-card" id="perk-card"></article>
+          </div>
+        </div>
+
+        <div class="subpanel tactic-panel">
+          <div class="section-head compact">
+            <div>
+              <p class="section-label">Tactical Hand</p>
+              <h4>本周战术手牌</h4>
+            </div>
+            <p class="section-note">先点这里，再看下面备用动作。</p>
+          </div>
+          <div class="tactical-grid" id="tactical-grid"></div>
+        </div>
+
+        <div class="subpanel action-market-panel">
+          <div class="section-head compact">
+            <div>
+              <p class="section-label">Action Deck</p>
+              <h4>动作牌库</h4>
+            </div>
+            <p class="section-note">推荐牌打完后，再从分类里补充动作。</p>
+          </div>
+          <div class="action-filter-bar" id="action-filter-bar"></div>
+          <div class="action-deck" id="action-deck"></div>
+        </div>
+      </section>
+
+      <aside class="panel rail rail-right">
+        <div class="section-head compact">
+          <div>
+            <p class="section-label">Intel Drawer</p>
+            <h4>二级信息</h4>
+          </div>
+          <button class="ghost-button" id="clear-log">清空日志</button>
+        </div>
+
+        <div class="drawer-tabs" id="drawer-tabs">
+          <button class="drawer-tab active" data-drawer-tab="overview">总览</button>
+          <button class="drawer-tab" data-drawer-tab="team">团队</button>
+          <button class="drawer-tab" data-drawer-tab="models">模型</button>
+          <button class="drawer-tab" data-drawer-tab="feed">事件</button>
+          <button class="drawer-tab" data-drawer-tab="share">战报</button>
+        </div>
+
+        <div class="drawer-body">
+          <section class="drawer-panel active" data-drawer-panel="overview">
+            <div class="subpanel drawer-section drawer-section-first">
+              <div class="section-head compact">
+                <div>
+                  <p class="section-label">Weekly Goals</p>
+                  <h4>本周任务</h4>
+                </div>
+                <p class="section-note">只保留短目标和即时奖励。</p>
+              </div>
+              <div class="mission-list" id="mission-list"></div>
+            </div>
+
+            <div class="subpanel drawer-section">
+              <div class="section-head compact">
+                <div>
+                  <p class="section-label">Research Board</p>
+                  <h4>项目池</h4>
+                </div>
+                <p class="section-note">主线在这切，细节放在二级层。</p>
+              </div>
+              <div class="project-grid" id="project-grid"></div>
+            </div>
+
+            <div class="subpanel drawer-section">
+              <div class="section-head compact">
+                <div>
+                  <p class="section-label">Deep Metrics</p>
+                  <h4>完整资源</h4>
+                </div>
+                <p class="section-note">全量数值放这里，不挤进主桌面。</p>
+              </div>
+              <div class="stat-grid" id="stat-grid"></div>
+            </div>
+          </section>
+
+          <section class="drawer-panel" data-drawer-panel="team">
+            <div class="section-head compact">
+              <div>
+                <p class="section-label">Lab Management</p>
+                <h4>实验室成员</h4>
+              </div>
+              <p class="section-note" id="lab-summary">没人会自动成长成理想研究生，你得付出管理成本。</p>
+            </div>
+            <div class="lab-roster" id="lab-roster"></div>
+          </section>
+
+          <section class="drawer-panel" data-drawer-panel="models">
+            <div class="section-head compact">
+              <div>
+                <p class="section-label">Model Market</p>
+                <h4>模型市场</h4>
+              </div>
+              <p class="section-note">不是所有 LLM 都配叫科研代理。</p>
+            </div>
+            <div class="model-grid" id="model-grid"></div>
+          </section>
+
+          <section class="drawer-panel" data-drawer-panel="feed">
+            <div class="section-head compact">
+              <div>
+                <p class="section-label">Signal Stream</p>
+                <h4>系统事件</h4>
+              </div>
+              <p class="section-note">战报和事故流都放这里。</p>
+            </div>
+            <div class="feed-list" id="event-feed"></div>
+          </section>
+
+          <section class="drawer-panel" data-drawer-panel="share">
+            <div class="section-head compact">
+              <div>
+                <p class="section-label">Shareable Outcome</p>
+                <h4>战报卡片</h4>
+              </div>
+              <div class="share-actions">
+                <button class="ghost-button" id="toggle-poster">Poster 模式</button>
+                <button class="ghost-button" id="copy-live-summary">复制当前战报</button>
+              </div>
+            </div>
+
+            <div class="share-card" id="share-card">
+              <p class="share-kicker" id="share-kicker">Current Run</p>
+              <h4 id="share-title">新晋青椒，实验室尚未爆炸</h4>
+              <p class="share-copy" id="share-copy">
+                目前正在用 Frontier Pro 推项目。供应商说得都很好听，实验室还在自己试。
+              </p>
+              <div class="share-metrics" id="share-metrics"></div>
+            </div>
+          </section>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="toast hidden" id="toast"></div>
+
+  <template id="stat-template">
+    <article class="stat-card">
+      <div class="stat-top">
+        <span class="stat-name"></span>
+        <span class="stat-value"></span>
+      </div>
+      <div class="meter">
+        <div class="meter-fill"></div>
+      </div>
+      <p class="stat-help"></p>
+    </article>
+  </template>
+
+  <template id="mission-template">
+    <article class="mission-card">
+      <div class="mission-top">
+        <strong class="mission-title"></strong>
+        <span class="mission-reward"></span>
+      </div>
+      <p class="mission-desc"></p>
+      <div class="mission-status"></div>
+    </article>
+  </template>
+
+  <template id="member-template">
+    <article class="member-card">
+      <div class="member-top">
+        <div>
+          <p class="member-role"></p>
+          <h4 class="member-name"></h4>
+        </div>
+        <span class="member-status"></span>
+      </div>
+      <p class="member-quirk"></p>
+      <div class="member-metrics"></div>
+    </article>
+  </template>
+
+  <template id="project-template">
+    <article class="project-card">
+      <div class="project-head">
+        <div>
+          <p class="project-field"></p>
+          <h4 class="project-title"></h4>
+        </div>
+        <button class="ghost-button select-project">设为主线</button>
+      </div>
+      <p class="project-summary"></p>
+      <div class="project-metrics"></div>
+      <div class="project-bars"></div>
+    </article>
+  </template>
+
+  <template id="model-template">
+    <article class="model-card">
+      <div class="model-top">
+        <div>
+          <p class="model-tier"></p>
+          <h4 class="model-name"></h4>
+        </div>
+        <button class="ghost-button select-model">启用</button>
+      </div>
+      <p class="model-copy"></p>
+      <div class="model-metrics"></div>
+    </article>
+  </template>
+
+  <template id="feed-template">
+    <article class="feed-item">
+      <div class="feed-top">
+        <span class="feed-week"></span>
+        <span class="feed-tag"></span>
+      </div>
+      <p class="feed-text"></p>
+    </article>
+  </template>
+
+  <template id="archetype-template">
+    <button class="archetype-card">
+      <div class="archetype-top">
+        <p class="archetype-type"></p>
+        <h3 class="archetype-name"></h3>
+      </div>
+      <p class="archetype-copy"></p>
+      <div class="archetype-buffs"></div>
+    </button>
+  </template>
+
+  <script src="./app.js"></script>
+</body>
+</html>

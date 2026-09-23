@@ -1,0 +1,69 @@
+# R_s against Delta S, Tostevin and Gade, Phys. Rev. C 103, 054610 (2021), Fig. 1.
+# Extracted 2026-09-22 from the PDF vector drawing operators of that figure and calibrated on
+# its own major ticks (x: -30 at 332.16 pt, +20 at 531.56 pt; y: 1.0 at 92.61 pt, 0.2 at 218.38 pt).
+# NOT pixel digitisation and NOT colour-based curve identification: marker centres and series are
+# read from the drawing operators themselves. Validated against the two points the paper prints in
+# its text: 16C(-p) Rs = 0.34(4) at dS = 18.1, and 25F(-p) Rs = 0.48(5) at dS = 10.17. Both exact.
+# Legend markers and axis-label glyphs removed. Error bars are NOT extracted.
+# dS(MeV)  Rs   marker  series
+ -26.147  0.9800  circle n-removal
+ -25.586  0.9900  circle n-removal
+ -21.300  1.0601  circle n-removal
+ -20.048  1.0700  circle n-removal
+ -19.857  0.9601  circle n-removal
+ -19.040  0.9200  circle p-removal
+ -18.566  0.7600  circle p-removal
+ -17.897  0.8700  circle n-removal
+ -17.799  0.8001  circle p-removal
+ -16.742  0.8200  circle p-removal
+ -15.996  0.9001  circle n-removal
+ -15.620  0.8600  circle n-removal
+ -13.355  0.7900  circle n-removal
+ -12.957  0.8200  circle p-removal
+ -12.931  1.0000  square p-removal
+ -12.930  1.0000  circle p-removal
+ -12.821  0.6900  circle n-removal
+ -12.821  0.8600  circle p-removal
+ -10.632  0.8501  circle n-removal
+  -9.880  0.8600  circle n-removal
+  -9.711  0.8900  circle n-removal
+  -7.320  0.6500  square eep
+  -5.009  0.6800  square eep
+  -3.621  0.5600  square eep
+  -3.529  0.6400  square eep
+  -2.989  0.4900  square eep
+  -2.760  0.6000  square eep
+  -2.430  0.5300  circle p-removal
+   0.629  0.4900  square eep
+   0.679  0.6800  circle p-removal
+   2.730  0.6300  square eep
+   2.900  0.5800  square eep
+   3.070  0.4901  circle n-removal
+   3.248  0.5100  square n-removal
+   5.862  0.5400  square eep
+   6.098  0.4800  circle n-removal
+   6.730  0.5500  circle p-removal
+   6.920  0.4700  square n-removal
+   7.639  0.5600  circle n-removal
+   8.282  0.6501  circle p-removal
+  10.171  0.4830  square p-removal
+  11.720  0.2643  circle p-removal
+  12.481  0.2801  circle p-removal
+  12.824  0.4200  circle p-removal
+  13.357  0.3901  circle p-removal
+  13.880  0.3500  circle n-removal
+  13.940  0.4100  circle n-removal
+  15.628  0.3000  circle p-removal
+  15.628  0.3200  circle p-removal
+  16.745  0.2400  circle n-removal
+  17.283  0.4500  square n-removal
+  17.284  0.4901  circle n-removal
+  17.801  0.3901  circle n-removal
+  17.899  0.3000  circle p-removal
+  18.098  0.3400  square p-removal
+  18.101  0.3401  circle p-removal
+  18.367  0.3700  circle p-removal
+  18.368  0.3700  square p-removal
+  19.037  0.3099  circle n-removal
+  19.201  0.2500  circle n-removal
+  21.079  0.3500  circle p-removal
