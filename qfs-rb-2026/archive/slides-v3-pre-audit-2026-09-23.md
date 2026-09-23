@@ -43,42 +43,103 @@ NSFC 12475132 and 12535009 &nbsp;&middot;&nbsp; Fundamental Research Funds for t
 <div class="grid grid-cols-5 gap-6 mt-1">
 <div class="col-span-3">
 
-<iframe src="./nuclides/nuclides.html?embed" class="kami-img" style="width: 100%; height: 23rem; border: 0; border-radius: 6px;" loading="eager"></iframe>
+<svg viewBox="0 0 640 400" width="100%" style="font-family: Newsreader, Georgia, serif;">
+<path d="M63.7 339.6 L65.9 337.6 L68.0 335.5 L70.2 333.5 L72.4 331.5 L74.5 329.4 L76.7 327.4 L78.9 325.4 L81.0 323.4 L83.2 321.3 L85.4 319.3 L87.5 317.3 L89.7 315.3 L93.4 311.8 L97.1 308.3 L100.9 304.8 L104.6 301.4 L108.3 297.9 L112.0 294.4 L115.7 290.9 L119.4 287.5 L123.1 284.0 L126.9 280.5 L130.6 277.1 L134.3 273.6 L143.6 265.5 L152.9 257.4 L162.1 249.3 L171.4 241.2 L180.7 233.1 L190.0 224.9 L199.3 216.8 L208.6 208.7 L217.9 200.6 L227.1 192.5 L236.4 184.4 L245.7 176.3 L258.1 168.2 L270.5 160.1 L282.9 152.0 L295.2 143.9 L307.6 135.8 L320.0 127.7 L332.4 119.6 L344.8 111.5 L357.1 103.4 L369.5 95.3 L381.9 87.2 L394.3 79.1 L403.0 74.1 L411.6 69.2 L420.3 64.3 L429.0 59.4 L437.6 54.4 L446.3 49.5 L455.0 44.6 L463.6 39.7 L472.3 34.8 L481.0 29.8 L489.6 24.9 L498.3 20.0 L580.0 134.6 L563.0 141.0 L546.0 147.4 L528.9 153.7 L511.9 160.1 L494.9 166.5 L477.9 172.8 L460.8 179.2 L443.8 185.6 L426.8 191.9 L409.8 198.3 L392.7 204.7 L375.7 211.1 L364.3 216.8 L352.8 222.6 L341.4 228.4 L329.9 234.2 L318.5 240.0 L307.0 245.8 L295.5 251.6 L284.1 257.4 L272.6 263.2 L261.2 268.9 L249.7 274.7 L238.3 280.5 L232.4 282.8 L226.5 285.2 L220.6 287.5 L214.8 289.8 L208.9 292.1 L203.0 294.4 L197.1 296.7 L191.2 299.1 L185.4 301.4 L179.5 303.7 L173.6 306.0 L167.7 308.3 L163.7 309.5 L159.7 310.6 L155.6 311.8 L151.6 312.9 L147.6 314.1 L143.6 315.3 L139.5 316.4 L135.5 317.6 L131.5 318.7 L127.5 319.9 L123.5 321.1 L119.4 322.2 L115.1 324.2 L110.8 326.3 L106.4 328.3 L102.1 330.3 L97.8 332.3 L93.4 334.4 L89.1 336.4 L84.8 338.4 L80.4 340.4 L76.1 342.5 L71.8 344.5 L67.4 346.5 Z" fill="#e4ecf5" stroke="none"/>
+<path d="M63.7 339.6 L65.9 337.6 L68.0 335.5 L70.2 333.5 L72.4 331.5 L74.5 329.4 L76.7 327.4 L78.9 325.4 L81.0 323.4 L83.2 321.3 L85.4 319.3 L87.5 317.3 L89.7 315.3 L93.4 311.8 L97.1 308.3 L100.9 304.8 L104.6 301.4 L108.3 297.9 L112.0 294.4 L115.7 290.9 L119.4 287.5 L123.1 284.0 L126.9 280.5 L130.6 277.1 L134.3 273.6 L143.6 265.5 L152.9 257.4 L162.1 249.3 L171.4 241.2 L180.7 233.1 L190.0 224.9 L199.3 216.8 L208.6 208.7 L217.9 200.6 L227.1 192.5 L236.4 184.4 L245.7 176.3 L258.1 168.2 L270.5 160.1 L282.9 152.0 L295.2 143.9 L307.6 135.8 L320.0 127.7 L332.4 119.6 L344.8 111.5 L357.1 103.4 L369.5 95.3 L381.9 87.2 L394.3 79.1 L403.0 74.1 L411.6 69.2 L420.3 64.3 L429.0 59.4 L437.6 54.4 L446.3 49.5 L455.0 44.6 L463.6 39.7 L472.3 34.8 L481.0 29.8 L489.6 24.9 L498.3 20.0" fill="none" stroke="#2D5A8A" stroke-width="1.2" stroke-dasharray="4 3"/>
+<path d="M67.4 346.5 L71.8 344.5 L76.1 342.5 L80.4 340.4 L84.8 338.4 L89.1 336.4 L93.4 334.4 L97.8 332.3 L102.1 330.3 L106.4 328.3 L110.8 326.3 L115.1 324.2 L119.4 322.2 L123.5 321.1 L127.5 319.9 L131.5 318.7 L135.5 317.6 L139.5 316.4 L143.6 315.3 L147.6 314.1 L151.6 312.9 L155.6 311.8 L159.7 310.6 L163.7 309.5 L167.7 308.3 L173.6 306.0 L179.5 303.7 L185.4 301.4 L191.2 299.1 L197.1 296.7 L203.0 294.4 L208.9 292.1 L214.8 289.8 L220.6 287.5 L226.5 285.2 L232.4 282.8 L238.3 280.5 L249.7 274.7 L261.2 268.9 L272.6 263.2 L284.1 257.4 L295.5 251.6 L307.0 245.8 L318.5 240.0 L329.9 234.2 L341.4 228.4 L352.8 222.6 L364.3 216.8 L375.7 211.1 L392.7 204.7 L409.8 198.3 L426.8 191.9 L443.8 185.6 L460.8 179.2 L477.9 172.8 L494.9 166.5 L511.9 160.1 L528.9 153.7 L546.0 147.4 L563.0 141.0 L580.0 134.6" fill="none" stroke="#2D5A8A" stroke-width="1.2" stroke-dasharray="4 3"/>
+<path d="M67.5 343.1 L73.2 338.1 L79.0 333.1 L84.9 328.1 L90.8 323.3 L96.8 318.4 L102.8 313.6 L108.9 308.9 L115.0 304.2 L121.2 299.5 L127.3 294.9 L133.6 290.3 L139.8 285.7 L146.1 281.2 L152.4 276.7 L158.8 272.2 L165.2 267.7 L171.6 263.3 L178.0 258.9 L184.5 254.6 L191.0 250.2 L197.5 245.9 L204.1 241.6 L210.7 237.3 L217.3 233.1 L223.9 228.9 L230.5 224.7 L237.2 220.5 L243.9 216.3 L250.6 212.2 L257.4 208.1 L264.1 204.0 L270.9 199.9 L277.7 195.8 L284.5 191.8 L291.4 187.8 L298.2 183.7 L305.1 179.8 L312.0 175.8 L318.9 171.8 L325.9 167.9 L332.8 164.0 L339.8 160.1 L346.8 156.2 L353.8 152.3 L360.8 148.5 L367.8 144.6 L374.9 140.8 L382.0 137.0 L389.1 133.2 L396.2 129.4 L403.3 125.7 L410.4 121.9 L417.6 118.2 L424.7 114.5 L431.9 110.8 L439.1 107.1 L446.3 103.4 L453.5 99.7 L460.8 96.1 L468.0 92.4 L475.3 88.8 L482.6 85.2 L489.8 81.6 L497.1 78.0 L504.5 74.4 L511.8 70.8 L519.1 67.3 L526.5 63.8 L533.9 60.2 L541.2 56.7 L548.6 53.2 L556.0 49.7 L563.5 46.2 L570.9 42.7 L578.3 39.3" fill="none" stroke="#141413" stroke-width="3"/>
+<line x1="89.7" y1="20.0" x2="89.7" y2="350.0" stroke="#8a8981" stroke-width="0.8"/>
+<text x="89.7" y="366.0" text-anchor="middle" style="font-size:12px" fill="#66655f">8</text>
+<line x1="134.3" y1="20.0" x2="134.3" y2="350.0" stroke="#8a8981" stroke-width="0.8"/>
+<text x="134.3" y="366.0" text-anchor="middle" style="font-size:12px" fill="#66655f">20</text>
+<line x1="164.0" y1="20.0" x2="164.0" y2="350.0" stroke="#8a8981" stroke-width="0.8"/>
+<text x="164.0" y="366.0" text-anchor="middle" style="font-size:12px" fill="#66655f">28</text>
+<line x1="245.7" y1="20.0" x2="245.7" y2="350.0" stroke="#8a8981" stroke-width="0.8"/>
+<text x="245.7" y="366.0" text-anchor="middle" style="font-size:12px" fill="#66655f">50</text>
+<line x1="364.6" y1="20.0" x2="364.6" y2="350.0" stroke="#8a8981" stroke-width="0.8"/>
+<text x="364.6" y="366.0" text-anchor="middle" style="font-size:12px" fill="#66655f">82</text>
+<line x1="528.0" y1="20.0" x2="528.0" y2="350.0" stroke="#8a8981" stroke-width="0.8"/>
+<text x="528.0" y="366.0" text-anchor="middle" style="font-size:12px" fill="#66655f">126</text>
+<line x1="60.0" y1="322.2" x2="580.0" y2="322.2" stroke="#8a8981" stroke-width="0.8"/>
+<text x="52.0" y="326.2" text-anchor="end" style="font-size:12px" fill="#66655f">8</text>
+<line x1="60.0" y1="280.5" x2="580.0" y2="280.5" stroke="#8a8981" stroke-width="0.8"/>
+<text x="52.0" y="284.5" text-anchor="end" style="font-size:12px" fill="#66655f">20</text>
+<line x1="60.0" y1="252.7" x2="580.0" y2="252.7" stroke="#8a8981" stroke-width="0.8"/>
+<text x="52.0" y="256.7" text-anchor="end" style="font-size:12px" fill="#66655f">28</text>
+<line x1="60.0" y1="176.3" x2="580.0" y2="176.3" stroke="#8a8981" stroke-width="0.8"/>
+<text x="52.0" y="180.3" text-anchor="end" style="font-size:12px" fill="#66655f">50</text>
+<line x1="60.0" y1="65.2" x2="580.0" y2="65.2" stroke="#8a8981" stroke-width="0.8"/>
+<text x="52.0" y="69.2" text-anchor="end" style="font-size:12px" fill="#66655f">82</text>
+<rect x="60.0" y="20.0" width="520" height="330" fill="none" stroke="#4d4c48"/>
+<text x="320.0" y="384.0" text-anchor="middle" style="font-size:15px" fill="#141413">neutrons N</text>
+<text x="24.0" y="186.7" text-anchor="middle" style="font-size:15px" fill="#141413" transform="rotate(-90 24.0 186.7)">protons Z</text>
+<circle cx="134.3" cy="308.3" r="6" fill="#b53333"/>
+<line x1="134.3" y1="308.3" x2="199.1" y2="54.2" stroke="#b53333" stroke-width="0.9" stroke-opacity="0.7"/>
+<text x="71.1" y="58.2" text-anchor="start" style="font-size:14px" fill="#b53333"><tspan baseline-shift="super" style="font-size:10px">32</tspan>Mg: N = 20 gone</text>
+<circle cx="164.0" cy="301.4" r="6" fill="#b53333"/>
+<line x1="164.0" y1="301.4" x2="199.1" y2="82.0" stroke="#b53333" stroke-width="0.9" stroke-opacity="0.7"/>
+<text x="71.1" y="86.0" text-anchor="start" style="font-size:14px" fill="#b53333"><tspan baseline-shift="super" style="font-size:10px">42</tspan>Si: N = 28 gone</text>
+<circle cx="186.3" cy="280.5" r="6" fill="#b53333"/>
+<line x1="186.3" y1="280.5" x2="199.1" y2="109.8" stroke="#b53333" stroke-width="0.9" stroke-opacity="0.7"/>
+<text x="71.1" y="113.8" text-anchor="start" style="font-size:14px" fill="#b53333"><tspan baseline-shift="super" style="font-size:10px">54</tspan>Ca: new N = 34</text>
+<path d="M245.7 249.3 L251.7 245.8 L257.6 242.3 L263.5 238.8 L269.5 235.4 L275.4 231.9 L281.4 228.4 L287.3 224.9 L293.3 221.5 L299.2 218.0 L305.1 214.5 L311.1 211.4 L317.0 208.3 L323.0 205.1 L328.9 202.0 L334.9 198.9 L340.8 195.8 L346.7 192.6 L352.7 189.5 L358.6 186.4 L364.6 183.3 L372.7 179.4 L380.9 175.6 L389.1 171.8 L397.3 168.0 L405.4 164.2 L413.6 160.3 L421.8 156.5 L429.9 152.7 L438.1 148.9 L446.3 145.1 L454.5 141.6 L462.6 138.1 L470.8 134.6 L479.0 131.2 L487.1 127.7 L495.3 124.2 L503.5 120.7 L511.7 117.3 L519.8 113.8 L528.0 110.3" fill="none" stroke="#4a6b3a" stroke-width="5" stroke-opacity="0.55" stroke-linecap="round"/>
+<text x="275.4" y="280.5" style="font-size:14px" fill="#4a6b3a">r-process path</text>
+<text x="505.7" y="197.2" text-anchor="middle" style="font-size:13px" fill="#2D5A8A">neutron drip line</text>
+</svg>
 
-<div class="fig-caption">
-3558 ground states, NUBASE2020 (Kondev et al., Chin. Phys. C 45, 030001, 2021). Height: energy above the most bound isobar.
 </div>
-
-</div>
-<div class="col-span-2 pt-1">
+<div class="col-span-2 pt-2">
 
 <div class="box-idea">
-<b>Spectra show where shells break.</b>
-<div class="mt-1 text-sm">Levels, spins and masses: N = 20 and 28 dissolve, N = 32 and 34 appear far from stability.</div>
+<b>The shell model is how we understand nuclei.</b> How independent the nucleons really are is itself a question.
 </div>
 
-<div class="box-gap mt-2">
-<b>They do not show the orbitals.</b>
-<div class="mt-1 text-sm">An energy or a spin belongs to the whole nucleus, not to the orbital a nucleon sits in, and not to how pure that configuration is.</div>
+<div class="box-gap mt-4">
+<b>Far from stability it is being rewritten.</b> Magic numbers vanish or appear, a direct test of the nuclear force.
 </div>
 
-<div class="box-evidence mt-2">
-<b>Take one nucleon out.</b>
-<div class="mt-1 text-sm">How often the residue b is left in a given state measures how much of the nucleus is b plus one nucleon in an orbital: the spectroscopic factor.</div>
+<div class="box-evidence mt-4">
+<b>It matters beyond nuclei.</b> The r-process builds heavy elements through these neutron-rich nuclei.
 </div>
 
 </div>
-</div>
-
-<div class="takeaway mt-1">
-To see an orbital, <b>remove a nucleon from it</b>.
 </div>
 
 ---
 
 # Knockout: a probe of single-particle structure
 
-<ExperimentScene :height="300" />
+<svg viewBox="0 0 900 250" width="100%" style="font-family: Newsreader, Georgia, serif;">
+  <defs>
+    <marker id="bgA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#4d4c48"/></marker>
+    <radialGradient id="bgP" cx="35%" cy="35%" r="70%"><stop offset="0" stop-color="#e98a82"/><stop offset="1" stop-color="#a8362f"/></radialGradient>
+    <radialGradient id="bgN" cx="35%" cy="35%" r="70%"><stop offset="0" stop-color="#6f9cc9"/><stop offset="1" stop-color="#244b72"/></radialGradient>
+  </defs>
+  <!-- beam -->
+  <text x="20" y="92" style="font-size:16px" fill="#4d4c48">rare-isotope beam</text>
+  <text x="20" y="112" style="font-size:13px" fill="#66655f">80 MeV/nucleon to 1 GeV/nucleon</text>
+  <g transform="translate(120,150)">
+    <circle cx="-9" cy="-6" r="9" fill="url(#bgP)"/><circle cx="7" cy="-8" r="9" fill="url(#bgN)"/>
+    <circle cx="0" cy="7" r="9" fill="url(#bgN)"/><circle cx="-14" cy="9" r="9" fill="url(#bgP)"/>
+    <circle cx="14" cy="8" r="9" fill="url(#bgP)"/><circle cx="0" cy="-2" r="9" fill="url(#bgN)"/>
+  </g>
+  <line x1="150" y1="150" x2="300" y2="150" stroke="#4d4c48" stroke-width="2.4" marker-end="url(#bgA)"/>
+  <!-- target and gamma array -->
+  <rect x="318" y="112" width="10" height="76" fill="#cfc9b8" stroke="#4d4c48"/>
+  <text x="323" y="104" text-anchor="middle" style="font-size:14px" fill="#4d4c48"><tspan baseline-shift="super" style="font-size:10px">9</tspan>Be target</text>
+  <path d="M288 85 A 60 60 0 0 1 358 85" fill="none" stroke="#4a6b3a" stroke-width="10" stroke-linecap="round"/>
+  <path d="M288 215 A 60 60 0 0 0 358 215" fill="none" stroke="#4a6b3a" stroke-width="10" stroke-linecap="round"/>
+  <text x="323" y="242" text-anchor="middle" style="font-size:13px" fill="#4a6b3a">&#947;-ray array</text>
+  <!-- residue to spectrograph -->
+  <line x1="332" y1="150" x2="560" y2="150" stroke="#4d4c48" stroke-width="2.4" marker-end="url(#bgA)"/>
+  <text x="446" y="140" text-anchor="middle" style="font-size:15px" fill="#141413">residue b, at beam velocity</text>
+  <line x1="332" y1="150" x2="420" y2="70" stroke="#1B365D" stroke-width="1.8" stroke-dasharray="5 4"/>
+  <text x="426" y="66" style="font-size:14px" fill="#1B365D">removed nucleon x (not detected)</text>
+  <path d="M560 150 Q 690 150 760 70" fill="none" stroke="#d9d6ca" stroke-width="46" stroke-linecap="butt"/>
+  <path d="M560 150 Q 690 150 760 70" fill="none" stroke="#4d4c48" stroke-width="2.4" marker-end="url(#bgA)"/>
+  <rect x="752" y="30" width="80" height="26" rx="3" fill="#1B365D" transform="rotate(-50 792 43)"/>
+  <text x="660" y="212" text-anchor="middle" style="font-size:15px" fill="#141413">spectrograph: identifies b, measures p<tspan baseline-shift="sub" style="font-size:10px">&#8741;</tspan></text>
+</svg>
 
 <div class="grid grid-cols-3 gap-6 mt-2">
 <div class="kami-card">
@@ -384,8 +445,8 @@ decides how much of the trend this effect carries.
 <img src="./figures/rs-return.png" class="kami-img" style="height: 20rem;" />
 
 <div class="takeaway mt-4">
-With the return: <b>+24% to +80%</b> of the slope (24Si), +66% to +78% (40Si); one absorption over-corrects
-40Si and reverses the slope. The direction comes from the framework; the size rests on the x-b absorption and on the return.
+From about zero without the return to <b>+24% to +80%</b> of the slope with it. The direction comes from the
+framework; the size rests on the x-b absorption and on the return.
 </div>
 
 ---
@@ -397,19 +458,19 @@ With the return: <b>+24% to +80%</b> of the slope (24Si), +66% to +78% (40Si); o
 <KnockoutScene mode="nonspectator" :height="240" />
 <div class="text-center mt-2"><b style="color: var(--ink-blue);">A.</b> b disturbed <b>inside the composite</b></div>
 <div class="text-center text-2xl mt-2" style="color: var(--ink-blue);">+9% to +74%</div>
-<div class="text-center text-sm" style="color: var(--stone);">picture of Gomez-Ramos, Gomez-Camacho, Moro; computed here</div>
+<div class="text-center text-sm" style="color: var(--stone);">Gomez-Ramos, Gomez-Camacho, Moro</div>
 </div>
 <div>
 <KnockoutScene mode="kick" :height="240" />
 <div class="text-center mt-2"><b style="color: var(--color-gap);">B.</b> x <b>kicked</b>, then crosses b</div>
 <div class="text-center text-2xl mt-2" style="color: var(--color-gap);">&minus;17% to +5%</div>
-<div class="text-center text-sm" style="color: var(--stone);">picture of Bertulani; computed here</div>
+<div class="text-center text-sm" style="color: var(--stone);">Bertulani</div>
 </div>
 </div>
 
 <div class="takeaway mt-5">
-Same operators and potentials, two physical pictures, 40Si without the return. The disagreement is
-<b>which picture</b>, not which numbers; the framework derives picture A.
+Same operators, two physical pictures. The disagreement is <b>which picture</b>, not which numbers;
+the framework derives picture A.
 </div>
 
 ---
@@ -450,7 +511,7 @@ Same operators and potentials, two physical pictures, 40Si without the return. T
 </div>
 
 <div class="box-gap mt-5">
-<b>3.</b> How much of the trend it explains is set by the <b>x-b absorption and the compound-nucleus return</b>: from zero to all of it, and past it for one absorption.
+<b>3.</b> How much of the trend it explains is set by the <b>x-b absorption and the compound-nucleus return</b>: from zero to about 80%.
 </div>
 
 </div>

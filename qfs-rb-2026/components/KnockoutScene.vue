@@ -6,9 +6,10 @@
 //       "nonspectator" x had polarised b inside a; its sudden removal leaves b out of its ground state,
 //                      b rings and may emit a nucleon
 //       "kick"         picture B: the struck x is sent across b afterwards
+import { useIsSlideActive } from '@slidev/client'
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 import * as THREE from 'three'
-import { COL, makeNucleus, makeRenderer, studioLights, glow } from './nucleus.js'
+import { COL, makeNucleus, makeRenderer, studioLights, glow, releaseRenderer } from './nucleus.js'
 
 const props = defineProps({
   mode: { type: String, default: 'spectator' },
@@ -17,6 +18,8 @@ const props = defineProps({
   bLabel: { type: String, default: 'b' },
 })
 const host = ref(null), lb = ref(null), lx = ref(null), lt = ref(null), note = ref('')
+const active = useIsSlideActive()
+let drawn = false
 let renderer, raf, ro
 
 onMounted(() => {
@@ -113,13 +116,14 @@ onMounted(() => {
       leaver.position.set(leaver.userData.home.x + 0.2 * d, leaver.userData.home.y + 0.9 * d, leaver.userData.home.z + 0.3 * d)
     } else leaver.position.copy(leaver.userData.home)
     place(lb, b, 1.9); place(lx, x, 0.95, x.visible && x.position.y < 6); place(lt, target, -2.1)
-    renderer.render(scene, cam); raf = requestAnimationFrame(loop)
+    if (active.value || !drawn) { renderer.render(scene, cam); drawn = true }   // off-slide: keep one frame, stop drawing
+    raf = requestAnimationFrame(loop)
   }
   loop()
   ro = new ResizeObserver(() => { const w = el.clientWidth; renderer.setSize(w, props.height); cam.aspect = w / props.height; cam.updateProjectionMatrix() })
   ro.observe(el)
 })
-onBeforeUnmount(() => { cancelAnimationFrame(raf); ro && ro.disconnect(); renderer && renderer.dispose() })
+onBeforeUnmount(() => { cancelAnimationFrame(raf); ro && ro.disconnect(); releaseRenderer(renderer) })
 </script>
 
 <template>

@@ -66,3 +66,10 @@ export function glow(color, size, opacity = 0.5) {
   const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c), color, transparent: true, opacity, depthWrite: false }))
   sp.scale.set(size, size, 1); return sp
 }
+
+// release a renderer for real: dispose() alone keeps the WebGL context alive, and Chrome drops the
+// oldest context once about 16 are open (hot reloads and the presenter view multiply them)
+export function releaseRenderer(r) {
+  if (!r) return
+  r.dispose(); r.forceContextLoss(); r.domElement?.remove()
+}

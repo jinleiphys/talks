@@ -1,12 +1,15 @@
 <script setup>
 // Where x sits relative to b: density clouds of a deeply bound and a weakly bound orbital around the
 // residue b, sampled from schematic radial densities, with the region where b absorbs shaded.
+import { useIsSlideActive } from '@slidev/client'
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 import * as THREE from 'three'
-import { makeNucleus, makeRenderer, studioLights } from './nucleus.js'
+import { makeNucleus, makeRenderer, studioLights, releaseRenderer } from './nucleus.js'
 
 const props = defineProps({ height: { type: Number, default: 300 } })
 const host = ref(null)
+const active = useIsSlideActive()
+let drawn = false
 let renderer, raf, ro
 
 function sampleRadius(kind, rnd) {
@@ -50,13 +53,14 @@ onMounted(() => {
   const loop = () => {
     const t = clock.getElapsedTime()
     groups.forEach(g => { g.rotation.y = 0.25 * t; g.rotation.x = 0.18 })
-    renderer.render(scene, cam); raf = requestAnimationFrame(loop)
+    if (active.value || !drawn) { renderer.render(scene, cam); drawn = true }   // off-slide: keep one frame, stop drawing
+    raf = requestAnimationFrame(loop)
   }
   loop()
   ro = new ResizeObserver(() => { const w = el.clientWidth; renderer.setSize(w, props.height); cam.aspect = w / props.height; cam.updateProjectionMatrix() })
   ro.observe(el)
 })
-onBeforeUnmount(() => { cancelAnimationFrame(raf); ro && ro.disconnect(); renderer && renderer.dispose() })
+onBeforeUnmount(() => { cancelAnimationFrame(raf); ro && ro.disconnect(); releaseRenderer(renderer) })
 </script>
 
 <template>
