@@ -245,51 +245,17 @@ lets the stripped flux count as surviving, whatever state b is in.
 <div class="col-span-7 elim">
 
 <div class="elim-step"><span class="ui-label">1 &nbsp;target excitation out</span>
-<div class="elim-row">
-<svg viewBox="0 0 190 96" class="tdiag" aria-label="target excitation">
-  <text x="4" y="20" class="tl tx">x</text><text x="4" y="50" class="tl tb">b</text><text x="4" y="82" class="tl ta">A</text>
-  <line x1="18" y1="16" x2="186" y2="16" class="lx"/>
-  <line x1="18" y1="46" x2="186" y2="46" class="lb"/>
-  <line x1="18" y1="78" x2="58" y2="78" class="la"/><line x1="142" y1="78" x2="186" y2="78" class="la"/>
-  <line x1="58" y1="76" x2="142" y2="76" class="lex"/><line x1="58" y1="80" x2="142" y2="80" class="lex"/>
-  <text x="100" y="94" class="tl tex">A*</text>
-  <line x1="58" y1="16" x2="58" y2="78" class="vtx"/><circle cx="58" cy="16" r="2.6" class="dot"/><circle cx="58" cy="78" r="2.6" class="dot"/>
-  <line x1="100" y1="16" x2="100" y2="46" class="cpl"/><text x="104" y="33" class="tl tsm">V<tspan baseline-shift="sub" style="font-size:7px">bx</tspan></text>
-  <line x1="142" y1="46" x2="142" y2="78" class="vtx"/><circle cx="142" cy="46" r="2.6" class="dot"/><circle cx="142" cy="78" r="2.6" class="dot"/>
-  <text x="34" y="64" class="tl tsm">&#916;v<tspan baseline-shift="sub" style="font-size:7px">xA</tspan></text>
-  <text x="146" y="64" class="tl tsm">&#916;v<tspan baseline-shift="sub" style="font-size:7px">bA</tspan></text>
-</svg>
-<div class="elim-body">
 
 $U^{(\rm nonadd)} = \langle\phi_A|\,\Delta V\,Q_A\,G_A\,Q_A\,\Delta V\,|\phi_A\rangle$
 
-<div class="elim-note">x excites the target; while A* propagates, x and b still interact; b de-excites it. The cross term (x in, b out) is three-body. G<sub>A</sub> = (E &minus; Q<sub>A</sub>HQ<sub>A</sub>)<sup>&minus;1</sup>.</div>
-</div>
-</div>
+<div class="elim-note">&Delta;V = &Delta;v<sub>bA</sub> + &Delta;v<sub>xA</sub>, G<sub>A</sub> = (E &minus; Q<sub>A</sub>HQ<sub>A</sub>)<sup>&minus;1</sup>: the target excited and de-excited by the fragments; the cross terms (one in, the other out) are three-body.</div>
 </div>
 
 <div class="elim-step"><span class="ui-label">2 &nbsp;excited b out</span>
-<div class="elim-row">
-<svg viewBox="0 0 190 96" class="tdiag" aria-label="core excitation">
-  <text x="4" y="20" class="tl tx">x</text><text x="4" y="50" class="tl tb">b</text><text x="4" y="82" class="tl ta">A</text>
-  <line x1="18" y1="16" x2="186" y2="16" class="lx"/>
-  <line x1="18" y1="46" x2="62" y2="46" class="lb"/><line x1="138" y1="46" x2="186" y2="46" class="lb"/>
-  <line x1="62" y1="44" x2="138" y2="44" class="lex"/><line x1="62" y1="48" x2="138" y2="48" class="lex"/>
-  <text x="100" y="62" class="tl tex">b*</text>
-  <line x1="18" y1="78" x2="186" y2="78" class="la"/>
-  <line x1="62" y1="16" x2="62" y2="46" class="vtx"/><circle cx="62" cy="16" r="2.6" class="dot"/><circle cx="62" cy="46" r="2.6" class="dot"/>
-  <line x1="138" y1="16" x2="138" y2="46" class="vtx"/><circle cx="138" cy="16" r="2.6" class="dot"/><circle cx="138" cy="46" r="2.6" class="dot"/>
-  <text x="38" y="34" class="tl tsm">V<tspan baseline-shift="sub" style="font-size:7px">bx</tspan></text>
-  <text x="142" y="34" class="tl tsm">V<tspan baseline-shift="sub" style="font-size:7px">bx</tspan></text>
-  <text x="100" y="92" class="tl tsm">target stays in its ground state</text>
-</svg>
-<div class="elim-body">
 
 $U^{(\rm pol)} = P_b\,H^{(A)} Q_b\,\dfrac{1}{E - Q_bH^{(A)}Q_b}\,Q_b H^{(A)} P_b$
 
-<div class="elim-note">the x-b coupling lifts b to b* and back (structure), or breaks it (lost in diffraction). H<sup>(A)</sup> = H<sub>3</sub><sup>(0)</sup> + U<sup>(nonadd)</sup>.</div>
-</div>
-</div>
+<div class="elim-note">H<sup>(A)</sup> = H<sub>3</sub><sup>(0)</sup> + U<sup>(nonadd)</sup>: b lifted out of its bound state and back, with the target in its ground state.</div>
 </div>
 
 <div class="elim-result">
@@ -304,6 +270,36 @@ $H_{\rm eff} = H_3^{(0)} + U^{(\rm nonadd)} + U^{(\rm pol)}$
 
 <div style="margin-top: 1.2rem;"><div class="takeaway">
 Standard practice keeps H<sub>3</sub><sup>(0)</sup> and deletes both. That deletion <b>is</b> the spectator assumption.
+</div></div>
+
+
+---
+
+# What H<sub>3</sub><sup>(0)</sup> leaves out
+
+<div class="grid grid-cols-2 gap-8 mt-1">
+<div>
+<div class="ui-label mb-1">1 &nbsp;target excitation &nbsp;&rarr; U<sup>(nonadd)</sup></div>
+<ElimScene mode="target" :height="205" />
+<div class="box-gap mt-2 text-sm">
+<b>Why not in H<sub>3</sub><sup>(0)</sup>:</b> U<sub>xA</sub> is fitted to a <b>free</b> x on the target: only x de-excites
+the target, and no b is coupled to x while A* lives. Excited by x, de-excited by b needs both fragments:
+no potential in one coordinate holds it.
+</div>
+</div>
+<div>
+<div class="ui-label mb-1">2 &nbsp;excited b &nbsp;&rarr; U<sup>(pol)</sup></div>
+<ElimScene mode="core" :height="205" />
+<div class="box-gap mt-2 text-sm">
+<b>Why not in H<sub>3</sub><sup>(0)</sup>:</b> U<sub>bA</sub> is fitted to a <b>free</b> b, so it knows b excited by the
+target, not by x. V<sub>bx</sub> in H<sub>3</sub><sup>(0)</sup> acts on b's ground state only: b is frozen, and every b
+that comes out is counted as surviving.
+</div>
+</div>
+</div>
+
+<div style="margin-top: 1.0rem;"><div class="takeaway">
+U<sub>bA</sub> and U<sub>xA</sub> each know one fragment. What needs <b>both at once</b> is what H<sub>3</sub><sup>(0)</sup> drops.
 </div></div>
 
 ---
