@@ -43,8 +43,15 @@ onMounted(async () => {
   key.shadow.mapSize.set(2048, 2048); Object.assign(key.shadow.camera, { left: -12, right: 12, top: 8, bottom: -8, near: 1, far: 40 })
   key.shadow.bias = -0.0004; key.shadow.normalBias = 0.02; key.shadow.radius = 6; scene.add(key)
 
-  const cam = new THREE.PerspectiveCamera(28, W / H, 0.1, 200)
+  const cam = new THREE.PerspectiveCamera(28, W > 0 ? W / H : 16 / 9, 0.1, 200)
   cam.position.set(2.3, 3.8, 12.2); cam.lookAt(2.2, 0.85, 0)
+  // Registered before anything that can throw. A slide pre-mounted while hidden (Safari, reached by paging)
+  // has clientWidth 0 here; the observer fixes the size, the aspect and the glass chips once it is shown.
+  ro = new ResizeObserver(() => {
+    const w = el.clientWidth; if (w === 0) return
+    renderer.setSize(w, props.height); cam.aspect = w / props.height; cam.updateProjectionMatrix(); installGlass()
+  })
+  ro.observe(el)
 
   const phys = (color, o = {}) => new THREE.MeshPhysicalMaterial({ color, roughness: 0.4, metalness: 0.0, ...o })
   const M = {
@@ -280,19 +287,23 @@ onMounted(async () => {
   }
   loop()
 
-  // liquid-glass chips: one displacement map per label, generated at its rendered size
   await nextTick()
-  Object.entries(L).forEach(([k, r]) => {
-    const e = r.value; if (!e) return
-    const { width, height } = e.getBoundingClientRect()
-    const id = `lg-${uid}-${k}`
-    installGlassFilter({ id, width, height, radius: Math.min(14, height / 2), bevel: 8, scale: 8 })
-    e.style.setProperty('--glass-url', `url(#${id})`)
-  })
-
-  ro = new ResizeObserver(() => { const w = el.clientWidth; renderer.setSize(w, props.height); cam.aspect = w / props.height; cam.updateProjectionMatrix() })
-  ro.observe(el)
+  installGlass()
 })
+// liquid-glass chips: one displacement map per label, generated at its rendered size. Skipped while the label has
+// no size (hidden slide) and retried from the resize observer; a failure on one chip leaves it plain blur, no more.
+const glassDone = new Set()
+function installGlass() {
+  Object.entries(L).forEach(([k, r]) => {
+    const e = r.value; if (!e || glassDone.has(k)) return
+    const { width, height } = e.getBoundingClientRect(); if (width < 1 || height < 1) return
+    const id = `lg-${uid}-${k}`
+    try {
+      installGlassFilter({ id, width, height, radius: Math.min(14, height / 2), bevel: 8, scale: 8 })
+      e.style.setProperty('--glass-url', `url(#${id})`); glassDone.add(k)
+    } catch (err) { console.warn('glass chip', k, err) }
+  })
+}
 onBeforeUnmount(() => {
   cancelAnimationFrame(raf); ro && ro.disconnect(); pmrem && pmrem.dispose(); releaseRenderer(renderer)
   Object.keys(L).forEach((k) => document.getElementById(`lg-${uid}-${k}`)?.closest('svg')?.remove())

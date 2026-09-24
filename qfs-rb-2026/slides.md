@@ -228,21 +228,27 @@ H<sub>eff</sub> = H<sub>3</sub><sup>(0)</sup>
 </div>
 
 <div class="text-center mt-3" style="color: var(--stone);">
-exact projection onto what is measured: the target excited, the residue bound
+exact projection: target in its ground state, residue bound; stripping leaves through target excitation
 </div>
 
-<div class="grid grid-cols-2 gap-8 mt-10">
+<div class="grid grid-cols-2 gap-8 mt-8">
 <div class="kami-card">
 <span class="ui-label">U<sup>(nonadd)</sup></span><br>
-what the target does to the <b>pair</b> beyond what it does to each separately
+eliminates <b>target excitation</b>. Inside it, after x has excited the target, the x-b coupling
+still acts: this is where b is disturbed <b>in stripping</b>.
 </div>
 <div class="kami-card">
 <span class="ui-label">U<sup>(pol)</sup></span><br>
-what the pair does to <b>itself</b> once b may leave its ground state
+eliminates <b>excited or broken b</b> with the target in its ground state: the projectile's own
+structure, and b disturbed <b>in diffraction</b>.
 </div>
 </div>
 
-<div class="takeaway mt-8">
+<div class="text-center mt-5" style="color: var(--stone);">
+Neither operator's absorption is the measured yield: the stripped flux splits afterwards into b bound and b lost.
+</div>
+
+<div class="takeaway mt-6">
 Standard practice keeps H<sub>3</sub><sup>(0)</sup> and deletes both. That deletion <b>is</b> the spectator assumption.
 </div>
 
@@ -322,6 +328,44 @@ Six out of six, over three independent absorptions including a microscopic one. 
 
 ---
 
+# Diffraction: b is lost there too, but less
+
+<div class="grid grid-cols-5 gap-8 mt-6">
+<div class="col-span-3">
+
+| channel | f, stripping | f, diffraction |
+|---|---|---|
+| <sup>40</sup>Si deep (&minus;p) | 0.23 to 0.33 | 0.43 to 0.49 |
+| <sup>40</sup>Si weak (&minus;n) | 0.58 to 0.68 | 0.74 to 0.77 |
+| <sup>24</sup>Si deep (&minus;n) | 0.32 to 0.46 | 0.52 to 0.58 |
+| <sup>24</sup>Si weak (&minus;p) | 0.56 to 0.65 | 0.75 to 0.76 |
+
+<div class="fig-caption">MR07a, MR07b and WLH absorptions; no return.</div>
+
+</div>
+<div class="col-span-2 pt-2">
+
+<div class="box-idea">
+Same x-b coupling, now with the target left in its ground state: it enters through U<sup>(pol)</sup>.
+</div>
+
+<div class="box-evidence mt-4">
+Counting stripping alone loses <b>half</b> of the effect or more.
+</div>
+
+<div class="box-gap mt-4">
+Scaling diffraction like stripping, as in the 2023 calculation, overstates the flattening by <b>15 to 20%</b>.
+</div>
+
+</div>
+</div>
+
+<div class="takeaway mt-6">
+Diffraction included, no return: <b>+9% to +61%</b> of the slope in <sup>40</sup>Si (WLH +33%).
+</div>
+
+---
+
 # The halo limit: b becomes a spectator again
 
 <div class="grid grid-cols-5 gap-7 mt-2">
@@ -384,8 +428,8 @@ decides how much of the trend this effect carries.
 <img src="./figures/rs-return.png" class="kami-img" style="height: 20rem;" />
 
 <div class="takeaway mt-4">
-With the return: <b>+24% to +80%</b> of the slope (24Si), +66% to +78% (40Si); one absorption over-corrects
-40Si and reverses the slope. The direction comes from the framework; the size rests on the x-b absorption and on the return.
+Shown for MR07a. Over both MR07 sets: <b>+20% to +66%</b> in <sup>24</sup>Si; MR07b over-corrects <sup>40</sup>Si (+105% to +114%).
+The direction comes from the framework; the size rests on the x-b absorption and the return.
 </div>
 
 ---
@@ -408,8 +452,7 @@ With the return: <b>+24% to +80%</b> of the slope (24Si), +66% to +78% (40Si); o
 </div>
 
 <div class="takeaway mt-5">
-Same operators and potentials, two physical pictures, 40Si without the return. The disagreement is
-<b>which picture</b>, not which numbers; the framework derives picture A.
+Same operators, potentials and bookkeeping (<sup>40</sup>Si, no return). They differ in <b>which picture</b>, not which numbers; the framework derives A.
 </div>
 
 ---
@@ -431,7 +474,7 @@ Same operators and potentials, two physical pictures, 40Si without the return. T
 </div>
 <div class="kami-card">
 <span class="tag">4</span> <b class="ml-2"><sup>12</sup>C, the third pair</b>
-<div class="mt-2 text-sm">and which operator, U<sup>(nonadd)</sup> or U<sup>(pol)</sup>, carries it.</div>
+<div class="mt-2 text-sm">Near &Delta;S = 0, where the two channels meet.</div>
 </div>
 </div>
 

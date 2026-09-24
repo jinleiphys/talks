@@ -5,7 +5,8 @@ QFS-RB 2026, "R_s with the compound-nucleus return".
 Claim: under M1 the correction tilts the Delta S trend of both pairs toward flat once the
 compound-nucleus return is included; without it 24Si barely moves.
 
-Data: threebodyreaction calc/plan_d/D3_results.md, sections D3.4 and D3.5, MR07a only.
+Data: threebodyreaction calc/plan_d/D3_results.md, f_dif section (2026-09-24), MR07a only: channel factors
+f = eta f_str + (1 - eta) f_dif with diffraction computed, not scaled like stripping (GR23's M5).
 Line, band: Tostevin and Gade, PRC 103, 054610 (2021), Eq. (2) and the half-width 0.1 scatter.
 Points: tg2021_points.dat (vector-operator extraction, validated; no error bars).
 Chords: R_s/f at the pair's two channels, anchored at Delta S = 0 because only the tilt is the claim.
@@ -15,9 +16,9 @@ import matplotlib.pyplot as plt
 from kami_style import *
 
 R0, M0, HALF = 0.61, -0.016, 0.10
-SYS = {r"$^{40}$Si": dict(ds=18.38, fd=0.3062, fw={"no return": 0.5770, "PACE": 0.7777, "GEMINI": 0.7338},
+SYS = {r"$^{40}$Si": dict(ds=18.38, fd=0.3366, fw={"no return": 0.6146, "PACE": 0.7898, "GEMINI": 0.7519},
                             lab=(r"$-n$", r"$-p$")),
-       r"$^{24}$Si": dict(ds=17.984, fd=0.3594, fw={"no return": 0.6063, "PACE": 0.8089, "GEMINI": 0.6731},
+       r"$^{24}$Si": dict(ds=17.984, fd=0.3918, fw={"no return": 0.6390, "PACE": 0.8162, "GEMINI": 0.7001},
                             lab=(r"$-p$", r"$-n$"))}
 STY = {"no return": (STONE, (0, (5, 3))), "PACE": (INK_BLUE, "-"), "GEMINI": (MOSS, "-")}
 P = np.genfromtxt("tg2021_points.dat", dtype=None, encoding="utf-8", names=["ds", "rs", "marker", "series"])
