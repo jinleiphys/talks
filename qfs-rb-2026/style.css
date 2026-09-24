@@ -446,3 +446,14 @@
 
 /* Chrome, and only chrome, may use the faint tone. */
 .slide-page-number { color: var(--stone-faint) !important; }
+
+
+/* ====================================================================
+   Equation chain (slide "What the reaction model assumes")
+   ==================================================================== */
+.eqchain .eqrow { display: flex; align-items: baseline; gap: 0.9rem; font-size: 1.0rem; }
+.eqchain .eqrow p { margin: 0; }
+.eqchain .eqrow .ui-label { min-width: 6.4rem; }
+.eqchain .eqnote { margin: -0.1rem 0 0 7.3rem; font-size: 0.8rem; color: var(--stone); }
+.eqchain .eqarrow { margin: 0.3rem 0 0.3rem 7.3rem; font-size: 0.82rem; color: var(--stone); }
+.eqchain .eqask { color: var(--color-gap); font-weight: 600; }

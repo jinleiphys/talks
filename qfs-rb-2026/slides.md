@@ -157,16 +157,56 @@ the value electron knockout (e,e'p) finds for the same nuclei. For stable nuclei
 
 # What the reaction model assumes
 
-<KnockoutScene mode="spectator" :height="330" />
+<div class="grid grid-cols-12 gap-6 mt-1">
+<div class="col-span-7 eqchain">
 
-<div class="grid grid-cols-3 gap-6 mt-4 text-center">
-<div><b style="color: var(--ink-blue);">x</b> is knocked out in a sudden collision</div>
-<div><b>b</b> rides through untouched</div>
-<div>b is counted as surviving, <b>whatever state it is in</b></div>
+<div class="eqrow"><span class="ui-label">many-body</span>
+
+$H = T_R + T_r + H_A + H_a + V_{bA} + V_{xA}$
+
+</div>
+<div class="eqnote">every nucleon; H<sub>a</sub> = H<sub>b</sub> + V<sub>bx</sub> keeps the internal states of b</div>
+<div class="eqarrow">&darr;&ensp;exact projection: target in its ground state, b bound</div>
+
+<div class="eqrow"><span class="ui-label">three-body</span>
+
+$H_{\rm eff} = PHP + PHQ\,(E - QHQ)^{-1}\,QHP$
+
+</div>
+<div class="eqarrow eqask">&darr;&ensp;?&ensp;assumed: U<sub>bA</sub>, U<sub>xA</sub> fitted separately, nothing else</div>
+
+<div class="eqrow"><span class="ui-label">model</span>
+
+$H_3^{(0)} = T_R + T_r + V_{bx} + U_{bA} + U_{xA}$
+
+</div>
+<div class="eqarrow">&darr;&ensp;eikonal, sudden: straight lines, b a spectator</div>
+
+<div class="eqrow"><span class="ui-label">eikonal</span>
+
+$\sigma_{\rm str} = \int d^2b\,\langle\phi|\,|S_b|^2(1-|S_x|^2)\,|\phi\rangle$
+
+</div>
+<div class="eqrow"><span class="ui-label"></span>
+
+$\sigma_{\rm th} = \sum C^2S\,\sigma_{sp}$
+
+</div>
+
+</div>
+<div class="col-span-5">
+
+<KnockoutScene mode="spectator" :height="230" />
+
+<div class="box-gap mt-3">
+Every &sigma;<sub>sp</sub> behind the systematics takes <b>H<sub>eff</sub> = H<sub>3</sub><sup>(0)</sup></b>. Does it hold?
+</div>
+
+</div>
 </div>
 
 <div class="takeaway mt-4">
-Every &sigma;<sub>sp</sub> behind that plot treats the residue b as a <b>spectator</b>.
+This work: what the optical reduction leaves out of H<sub>eff</sub>, and how much of the trend it carries.
 </div>
 
 ---
