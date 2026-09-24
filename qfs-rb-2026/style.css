@@ -473,7 +473,21 @@
 .sector-grid .sg-meas { background: var(--color-evidence-bg); border-left: 3px solid var(--color-evidence); }
 .sector-grid .sg-lost { background: var(--color-gap-bg); border-left: 3px solid var(--color-gap); }
 .elim { display: flex; flex-direction: column; gap: 1.0rem; }
-.elim .elim-step p, .elim .elim-result p { margin: 0.25rem 0 0; font-size: 1.0rem; white-space: nowrap; }
+.elim .elim-step p, .elim .elim-result p { margin: 0.25rem 0 0; font-size: 0.94rem; white-space: nowrap; }
 .elim .elim-note { font-size: 0.8rem; color: var(--stone); line-height: 1.4; margin-top: 0.2rem; }
 .elim .elim-result { border-top: 1px solid var(--border-warm); padding-top: 0.5rem; }
 .elim .elim-result p { font-size: 1.2rem; color: var(--ink-blue); }
+
+/* time-ordered diagrams on the H_eff slide: time runs left to right; x top, b middle, target bottom */
+.elim .elim-row { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.2rem; }
+.elim .elim-body { flex: 1; min-width: 0; }
+.tdiag { width: 9.2rem; flex: none; overflow: visible; }
+.tdiag .tl { font-family: Newsreader, Georgia, serif; font-size: 12px; }
+.tdiag .tsm { font-size: 9px; fill: #66655f; }
+.tdiag .tx { fill: #b07d10; } .tdiag .tb { fill: #1B365D; } .tdiag .ta { fill: #4d4c48; } .tdiag .tex { fill: #b53333; font-size: 10px; text-anchor: middle; }
+.tdiag text.tsm[x="100"] { text-anchor: middle; }
+.tdiag .lx { stroke: #d9a21b; stroke-width: 2; } .tdiag .lb { stroke: #1B365D; stroke-width: 2.4; } .tdiag .la { stroke: #4d4c48; stroke-width: 2.4; }
+.tdiag .lex { stroke: #b53333; stroke-width: 1.6; }
+.tdiag .vtx { stroke: #4d4c48; stroke-width: 1.1; stroke-dasharray: 3 2; }
+.tdiag .cpl { stroke: #1B365D; stroke-width: 1.1; stroke-dasharray: 1.5 2; }
+.tdiag .dot { fill: #4d4c48; }
