@@ -54,7 +54,7 @@ NSFC 12475132 and 12535009 &nbsp;&middot;&nbsp; Fundamental Research Funds for t
 
 <div class="box-idea">
 <b>Spectra show where shells break.</b>
-<div class="mt-1 text-sm">Levels, spins and masses: N = 20 and 28 dissolve, N = 32 and 34 appear far from stability.</div>
+<div class="mt-1 text-sm">Levels, spins and masses: N&nbsp;=&nbsp;20 and 28 dissolve, N&nbsp;=&nbsp;32 and 34 appear far from stability. Knockout from <sup>36,38,40</sup>Si follows N&nbsp;=&nbsp;28 as it breaks.</div>
 </div>
 
 <div class="box-gap mt-2">
@@ -101,53 +101,6 @@ residue momentum p<sub>&#8741;</sub> &rarr; <b>orbital angular momentum</b> l
 
 ---
 
-# What it has taught us, and the number it is judged by
-
-<div class="grid grid-cols-2 gap-10 mt-6">
-<div>
-
-<div class="box-evidence">
-<b>Shell evolution, measured</b>
-<div class="mt-2 text-sm">
-Spectroscopic factors and orbital l for nuclei at a few ions per second, for example the breakdown of
-the N = 28 shell closure in knockout from <sup>36,38,40</sup>Si.
-</div>
-</div>
-
-<div class="box-evidence mt-5">
-<b>Halos and weakly bound systems</b>
-<div class="mt-2 text-sm">
-Where knockout started: the valence nucleon of a halo is removed with a narrow momentum distribution and
-a large cross section.
-</div>
-</div>
-
-</div>
-<div>
-
-<div class="box-idea">
-<b>Occupancies, with a benchmark</b>
-<div class="mt-2 text-sm">
-Measured over calculated, R<sub>s</sub> = &sigma;<sub>exp</sub> / &sigma;<sub>th</sub>. For stable nuclei
-electron scattering, (e,e'p), finds valence strength at about 60 to 70% of the independent-particle value:
-the correlations a truncated model leaves out. Knockout on <sup>12</sup>C and <sup>16</sup>O gives the same R<sub>s</sub>.
-</div>
-</div>
-
-<div class="box-gap mt-5">
-<b>So far so good.</b> Then the same method was pushed to very asymmetric nuclei.
-</div>
-
-</div>
-</div>
-
-<div class="text-xs mt-6" style="color: var(--stone);">
-Hansen and Tostevin, Annu. Rev. Nucl. Part. Sci. 53, 221 (2003); Brown et al., PRC 65, 061601 (2002); Gade et al., PRC 77, 044306 (2008);
-Aumann et al., Prog. Part. Nucl. Phys. 118, 103847 (2021).
-</div>
-
----
-
 # Deeply bound nucleons look twice as quenched
 
 <div class="grid grid-cols-5 gap-7 mt-1">
@@ -156,16 +109,21 @@ Aumann et al., Prog. Part. Nucl. Phys. 118, 103847 (2021).
 <img src="./figures/rs-systematics-trend.png" class="kami-img" style="height: 21rem;" />
 
 <div class="fig-caption">
-Tostevin and Gade, Phys. Rev. C 103, 054610 (2021). R<sub>s</sub> = &sigma;<sub>exp</sub> / &sigma;<sub>th</sub>.
+Tostevin and Gade, Phys. Rev. C 103, 054610 (2021). R<sub>s</sub> = &sigma;<sub>exp</sub> / &sigma;<sub>th</sub>. Benchmark: Brown et al., PRC 65, 061601 (2002); Aumann et al., PPNP 118, 103847 (2021).
 </div>
 
 </div>
-<div class="col-span-2 pt-8">
+<div class="col-span-2 pt-2">
 
-<div class="text-2xl" style="color: var(--ink-blue);">R<sub>s</sub> = 0.61 &minus; 0.016 &Delta;S</div>
+<div class="box-evidence">
+<b>The benchmark.</b> For stable nuclei, (e,e'p) finds valence strength at 0.6 to 0.7 of the independent-particle
+value, and knockout on <sup>12</sup>C and <sup>16</sup>O gives the same R<sub>s</sub>.
+</div>
 
-<div class="mt-6">
-Remove a weakly bound nucleon: R<sub>s</sub> &asymp; 0.9.<br>
+<div class="text-2xl mt-5" style="color: var(--ink-blue);">R<sub>s</sub> = 0.61 &minus; 0.016 &Delta;S</div>
+
+<div class="mt-4">
+Far from stability, remove a weakly bound nucleon: R<sub>s</sub> &asymp; 0.9.<br>
 Remove a deeply bound one: R<sub>s</sub> &asymp; 0.3.
 </div>
 
