@@ -160,19 +160,23 @@ the value electron knockout (e,e'p) finds for the same nuclei. For stable nuclei
 <div class="grid grid-cols-12 gap-6 mt-1">
 <div class="col-span-7 eqchain">
 
+<div class="eqgroup">
 <div class="eqrow"><span class="ui-label">many-body</span>
 
 $H = T_R + T_r + H_A + H_a + V_{bA} + V_{xA}$
 
 </div>
 <div class="eqnote">every nucleon; H<sub>a</sub> = H<sub>b</sub> + V<sub>bx</sub> keeps the internal states of b</div>
+</div>
+
 <div class="eqarrow">&darr;&ensp;exact projection: target in its ground state, b bound</div>
 
 <div class="eqrow"><span class="ui-label">three-body</span>
 
-$H_{\rm eff} = PHP + PHQ\,(E - QHQ)^{-1}\,QHP$
+$H_{\rm eff} = PHP + PHQ\,\dfrac{1}{E - QHQ}\,QHP$
 
 </div>
+
 <div class="eqarrow eqask">&darr;&ensp;?&ensp;assumed: U<sub>bA</sub>, U<sub>xA</sub> fitted separately, nothing else</div>
 
 <div class="eqrow"><span class="ui-label">model</span>
@@ -180,8 +184,10 @@ $H_{\rm eff} = PHP + PHQ\,(E - QHQ)^{-1}\,QHP$
 $H_3^{(0)} = T_R + T_r + V_{bx} + U_{bA} + U_{xA}$
 
 </div>
+
 <div class="eqarrow">&darr;&ensp;eikonal, sudden: straight lines, b a spectator</div>
 
+<div class="eqgroup">
 <div class="eqrow"><span class="ui-label">eikonal</span>
 
 $\sigma_{\rm str} = \int d^2b\,\langle\phi|\,|S_b|^2(1-|S_x|^2)\,|\phi\rangle$
@@ -191,6 +197,7 @@ $\sigma_{\rm str} = \int d^2b\,\langle\phi|\,|S_b|^2(1-|S_x|^2)\,|\phi\rangle$
 
 $\sigma_{\rm th} = \sum C^2S\,\sigma_{sp}$
 
+</div>
 </div>
 
 </div>
@@ -205,9 +212,9 @@ Every &sigma;<sub>sp</sub> behind the systematics takes <b>H<sub>eff</sub> = H<s
 </div>
 </div>
 
-<div class="takeaway mt-4">
+<div style="margin-top: 1.6rem;"><div class="takeaway">
 This work: what the optical reduction leaves out of H<sub>eff</sub>, and how much of the trend it carries.
-</div>
+</div></div>
 
 ---
 

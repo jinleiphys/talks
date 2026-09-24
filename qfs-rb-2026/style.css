@@ -449,11 +449,13 @@
 
 
 /* ====================================================================
-   Equation chain (slide "What the reaction model assumes")
+   Equation chain (slide "What the reaction model assumes"): spread over the column height
    ==================================================================== */
-.eqchain .eqrow { display: flex; align-items: baseline; gap: 0.9rem; font-size: 1.0rem; }
-.eqchain .eqrow p { margin: 0; }
-.eqchain .eqrow .ui-label { min-width: 6.4rem; }
-.eqchain .eqnote { margin: -0.1rem 0 0 7.3rem; font-size: 0.8rem; color: var(--stone); }
-.eqchain .eqarrow { margin: 0.3rem 0 0.3rem 7.3rem; font-size: 0.82rem; color: var(--stone); }
+.eqchain { display: flex; flex-direction: column; gap: 0.95rem; padding-top: 0.2rem; }
+.eqchain .eqrow { display: flex; align-items: baseline; gap: 1.1rem; font-size: 1.14rem; }
+.eqchain .eqrow p { margin: 0; white-space: nowrap; }
+.eqchain .eqrow .ui-label { min-width: 6.6rem; }
+.eqchain .eqnote { margin: 0.15rem 0 0 7.7rem; font-size: 0.8rem; color: var(--stone); }
+.eqchain .eqarrow { margin: 0 0 0 7.7rem; font-size: 0.84rem; color: var(--stone); }
 .eqchain .eqask { color: var(--color-gap); font-weight: 600; }
+.eqchain .eqgroup { display: flex; flex-direction: column; gap: 0.35rem; }
