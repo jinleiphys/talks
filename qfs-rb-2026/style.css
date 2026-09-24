@@ -459,3 +459,21 @@
 .eqchain .eqarrow { margin: 0 0 0 7.7rem; font-size: 0.84rem; color: var(--stone); }
 .eqchain .eqask { color: var(--color-gap); font-weight: 600; }
 .eqchain .eqgroup { display: flex; flex-direction: column; gap: 0.35rem; }
+
+
+/* ====================================================================
+   "What H_eff is": sector grid and elimination steps
+   ==================================================================== */
+.sector-grid { display: grid; grid-template-columns: 5.2rem 1fr 1fr; gap: 0.35rem; font-size: 0.86rem; }
+.sector-grid .sg-head { font-size: 0.74rem; color: var(--stone); text-align: center; letter-spacing: 0.02em; padding-bottom: 0.15rem; }
+.sector-grid .sg-side { font-size: 0.74rem; color: var(--stone); display: flex; align-items: center; line-height: 1.3; }
+.sector-grid .sg-cell { border: 1px solid var(--border-warm); border-radius: 4px; padding: 0.55rem 0.6rem; min-height: 4.6rem; line-height: 1.35; background: #faf9f5; }
+.sector-grid .sg-cell span { font-size: 0.76rem; color: var(--stone); }
+.sector-grid .sg-p { background: var(--color-idea-bg); border-left: 3px solid var(--color-idea); }
+.sector-grid .sg-meas { background: var(--color-evidence-bg); border-left: 3px solid var(--color-evidence); }
+.sector-grid .sg-lost { background: var(--color-gap-bg); border-left: 3px solid var(--color-gap); }
+.elim { display: flex; flex-direction: column; gap: 1.0rem; }
+.elim .elim-step p, .elim .elim-result p { margin: 0.25rem 0 0; font-size: 1.0rem; white-space: nowrap; }
+.elim .elim-note { font-size: 0.8rem; color: var(--stone); line-height: 1.4; margin-top: 0.2rem; }
+.elim .elim-result { border-top: 1px solid var(--border-warm); padding-top: 0.5rem; }
+.elim .elim-result p { font-size: 1.2rem; color: var(--ink-blue); }

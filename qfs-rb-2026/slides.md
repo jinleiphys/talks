@@ -216,6 +216,62 @@ Every &sigma;<sub>sp</sub> behind the systematics takes <b>H<sub>eff</sub> = H<s
 This work: what the optical reduction leaves out of H<sub>eff</sub>, and how much of the trend it carries.
 </div></div>
 
+
+---
+
+# What H<sub>eff</sub> is: two eliminations
+
+<div class="grid grid-cols-12 gap-6 mt-1">
+<div class="col-span-5">
+
+<div class="sector-grid">
+<div></div>
+<div class="sg-head">b bound &nbsp;P<sub>b</sub></div>
+<div class="sg-head">b excited or broken &nbsp;Q<sub>b</sub></div>
+<div class="sg-side"><div>target g.s.<br>P<sub>A</sub></div></div>
+<div class="sg-cell sg-p"><b>P</b>: the model space<br><span>elastic, diffraction</span></div>
+<div class="sg-cell">core excited<br><span>&rarr; U<sup>(pol)</sup></span></div>
+<div class="sg-side"><div>target excited<br>Q<sub>A</sub></div></div>
+<div class="sg-cell sg-meas">stripping, <b>b survives</b><br><span>what is measured</span></div>
+<div class="sg-cell sg-lost">stripping, <b>b lost</b><br><span>&rarr; inside G<sub>A</sub> of U<sup>(nonadd)</sup></span></div>
+</div>
+
+<div class="text-sm mt-3" style="color: var(--stone); line-height: 1.5;">
+P = P<sub>A</sub>P<sub>b</sub>; the other three sectors are eliminated exactly. The spectator model keeps P and
+lets the stripped flux count as surviving, whatever state b is in.
+</div>
+
+</div>
+<div class="col-span-7 elim">
+
+<div class="elim-step"><span class="ui-label">1 &nbsp;target excitation out</span>
+
+$U^{(\rm nonadd)} = \langle\phi_A|\,\Delta V\,Q_A\,G_A\,Q_A\,\Delta V\,|\phi_A\rangle$
+
+<div class="elim-note">&Delta;V = &Delta;v<sub>bA</sub> + &Delta;v<sub>xA</sub>, G<sub>A</sub> = (E &minus; Q<sub>A</sub>HQ<sub>A</sub>)<sup>&minus;1</sup>. Cross terms (b excites the target, x de-excites it) are irreducibly three-body; and G<sub>A</sub> still carries the x-b coupling, which can change the state of b.</div>
+</div>
+
+<div class="elim-step"><span class="ui-label">2 &nbsp;excited b out</span>
+
+$U^{(\rm pol)} = P_b\,H^{(A)} Q_b\,\dfrac{1}{E - Q_bH^{(A)}Q_b}\,Q_b H^{(A)} P_b$
+
+<div class="elim-note">H<sup>(A)</sup> = H<sub>3</sub><sup>(0)</sup> + U<sup>(nonadd)</sup>. Excursions of b out of its bound state with the target in its ground state: the projectile's own structure, and b disturbed in diffraction.</div>
+</div>
+
+<div class="elim-result">
+
+$H_{\rm eff} = H_3^{(0)} + U^{(\rm nonadd)} + U^{(\rm pol)}$
+
+<div class="elim-note">exact for the cluster Hamiltonian; no single term's absorption is the measured yield</div>
+</div>
+
+</div>
+</div>
+
+<div style="margin-top: 1.2rem;"><div class="takeaway">
+Standard practice keeps H<sub>3</sub><sup>(0)</sup> and deletes both. That deletion <b>is</b> the spectator assumption.
+</div></div>
+
 ---
 
 # But b sits inside a composite
@@ -239,41 +295,6 @@ knocked out, b can come out <b>excited or broken</b>.
 <div class="box-gap">
 The formula sums over <b>all</b> states of b. The experiment only sees b <b>bound</b>.
 </div>
-</div>
-
----
-
-# The exact statement
-
-<div class="mt-10 text-center text-3xl" style="color: var(--ink-blue);">
-H<sub>eff</sub> = H<sub>3</sub><sup>(0)</sup>
-&nbsp;+&nbsp; <span class="eq-highlight">U<sup>(nonadd)</sup></span>
-&nbsp;+&nbsp; <span class="eq-highlight">U<sup>(pol)</sup></span>
-</div>
-
-<div class="text-center mt-3" style="color: var(--stone);">
-exact projection: target in its ground state, residue bound; stripping leaves through target excitation
-</div>
-
-<div class="grid grid-cols-2 gap-8 mt-8">
-<div class="kami-card">
-<span class="ui-label">U<sup>(nonadd)</sup></span><br>
-eliminates <b>target excitation</b>. Inside it, after x has excited the target, the x-b coupling
-still acts: this is where b is disturbed <b>in stripping</b>.
-</div>
-<div class="kami-card">
-<span class="ui-label">U<sup>(pol)</sup></span><br>
-eliminates <b>excited or broken b</b> with the target in its ground state: the projectile's own
-structure, and b disturbed <b>in diffraction</b>.
-</div>
-</div>
-
-<div class="text-center mt-5" style="color: var(--stone);">
-Neither operator's absorption is the measured yield: the stripped flux splits afterwards into b bound and b lost.
-</div>
-
-<div class="takeaway mt-6">
-Standard practice keeps H<sub>3</sub><sup>(0)</sup> and deletes both. That deletion <b>is</b> the spectator assumption.
 </div>
 
 ---
