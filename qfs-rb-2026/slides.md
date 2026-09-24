@@ -131,10 +131,11 @@ the value electron knockout (e,e'p) finds for the same nuclei. For stable nuclei
 </div>
 
 <div class="text-2xl mt-5" style="color: var(--ink-blue);">R<sub>s</sub> = 0.61 &minus; 0.016 &Delta;S</div>
+<div class="text-sm" style="color: var(--stone);">intercept 0.61 at &Delta;S = 0; slope &minus;0.016 MeV<sup>&minus;1</sup></div>
 
-<div class="mt-4">
-Far from stability, remove a weakly bound nucleon: R<sub>s</sub> &asymp; 0.9.<br>
-Remove a deeply bound one: R<sub>s</sub> &asymp; 0.3.
+<div class="mt-3">
+Weakly bound, &Delta;S = &minus;18 MeV: R<sub>s</sub> &asymp; 0.9.<br>
+Deeply bound, &Delta;S = +18 MeV: R<sub>s</sub> &asymp; 0.3.
 </div>
 
 <div class="takeaway mt-8">
