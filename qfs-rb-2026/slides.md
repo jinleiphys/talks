@@ -40,31 +40,40 @@ NSFC 12475132 and 12535009 &nbsp;&middot;&nbsp; Fundamental Research Funds for t
 
 # Why single-particle structure?
 
-<div class="grid grid-cols-5 gap-6 mt-1">
-<div class="col-span-3">
+<div class="grid grid-cols-12 gap-6 mt-1">
+<div class="col-span-7">
 
 <iframe src="./nuclides/nuclides.html?embed" class="kami-img" style="width: 100%; height: 23rem; border: 0; border-radius: 6px;" loading="eager"></iframe>
 
 <div class="fig-caption">
-3558 ground states, NUBASE2020 (Kondev et al., Chin. Phys. C 45, 030001, 2021). Height: energy above the most bound isobar.
+NUBASE2020: Kondev et al., Chin. Phys. C 45, 030001 (2021).
 </div>
 
 </div>
-<div class="col-span-2 pt-1">
+<div class="col-span-5 pt-1">
 
-<div class="box-idea">
+<div class="box-idea flex items-center gap-3" style="padding: 0.55rem 0.9rem 0.55rem 1.1rem;">
+<div class="flex-1">
 <b>Spectra show where shells break.</b>
-<div class="mt-1 text-sm">Levels, spins and masses: N&nbsp;=&nbsp;20 and 28 dissolve, N&nbsp;=&nbsp;32 and 34 appear far from stability. Knockout from <sup>36,38,40</sup>Si follows N&nbsp;=&nbsp;28 as it breaks.</div>
+<div class="mt-1 text-sm">N&nbsp;=&nbsp;20 and 28 dissolve, N&nbsp;=&nbsp;32 and 34 appear far from stability; knockout follows N&nbsp;=&nbsp;28 through <sup>36,38,40</sup>Si.</div>
+</div>
+<MiniIcon :size="72" mode="shells" />
 </div>
 
-<div class="box-gap mt-2">
+<div class="box-gap mt-2 flex items-center gap-3" style="padding: 0.55rem 0.9rem 0.55rem 1.1rem;">
+<div class="flex-1">
 <b>They do not show the orbitals.</b>
-<div class="mt-1 text-sm">An energy or a spin belongs to the whole nucleus, not to the orbital a nucleon sits in, and not to how pure that configuration is.</div>
+<div class="mt-1 text-sm">An energy or a spin belongs to the whole nucleus, not to the orbital a nucleon sits in.</div>
+</div>
+<MiniIcon :size="72" mode="hidden" />
 </div>
 
-<div class="box-evidence mt-2">
+<div class="box-evidence mt-2 flex items-center gap-3" style="padding: 0.55rem 0.9rem 0.55rem 1.1rem;">
+<div class="flex-1">
 <b>Take one nucleon out.</b>
-<div class="mt-1 text-sm">How often the residue b is left in a given state measures how much of the nucleus is b plus one nucleon in an orbital: the spectroscopic factor.</div>
+<div class="mt-1 text-sm">How often b is left in a given state measures how much of the nucleus is b plus one nucleon in an orbital.</div>
+</div>
+<MiniIcon :size="72" mode="remove" />
 </div>
 
 </div>

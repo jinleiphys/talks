@@ -42,9 +42,10 @@ export function makeNucleus(Z, N, r = 0.5, seed = 3) {
 }
 
 // renderer with the settings of the three.js core skill (ACES, sRGB, capped pixel ratio, soft shadows)
-export function makeRenderer(el, W, H) {
-  const r = new THREE.WebGLRenderer({ antialias: true })
-  r.setPixelRatio(Math.min(window.devicePixelRatio, 2)); r.setSize(W, H); r.setClearColor(COL.paper)
+export function makeRenderer(el, W, H, { alpha = false } = {}) {
+  const r = new THREE.WebGLRenderer({ antialias: true, alpha })
+  r.setPixelRatio(Math.min(window.devicePixelRatio, 2)); r.setSize(W, H)
+  alpha ? r.setClearColor(0x000000, 0) : r.setClearColor(COL.paper)   // alpha: the box behind shows through
   r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 1.1
   r.outputColorSpace = THREE.SRGBColorSpace
   el.appendChild(r.domElement)
