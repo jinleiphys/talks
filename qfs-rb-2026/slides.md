@@ -121,6 +121,10 @@ residue momentum p<sub>&#8741;</sub> &rarr; <b>orbital angular momentum</b> l
 Tostevin and Gade, Phys. Rev. C 103, 054610 (2021). R<sub>s</sub> = &sigma;<sub>exp</sub> / &sigma;<sub>th</sub>. Benchmark: Brown et al., PRC 65, 061601 (2002); Aumann et al., PPNP 118, 103847 (2021).
 </div>
 
+<div class="takeaway mt-4">
+Is this <b>structure</b>, or is it the <b>reaction model</b>?
+</div>
+
 </div>
 <div class="col-span-2 pt-2">
 
@@ -133,14 +137,18 @@ the value electron knockout (e,e'p) finds for the same nuclei. For stable nuclei
 <div class="text-2xl mt-5" style="color: var(--ink-blue);">R<sub>s</sub> = 0.61 &minus; 0.016 &Delta;S</div>
 <div class="text-sm" style="color: var(--stone);">intercept 0.61 at &Delta;S = 0; slope &minus;0.016 MeV<sup>&minus;1</sup></div>
 
-<div class="mt-3">
-Weakly bound, &Delta;S = &minus;18 MeV: R<sub>s</sub> &asymp; 0.9.<br>
-Deeply bound, &Delta;S = +18 MeV: R<sub>s</sub> &asymp; 0.3.
+<div class="grid grid-cols-2 gap-2 mt-2 text-center">
+<div class="flex flex-col items-center">
+<MiniIcon mode="weak" :size="72" />
+<div class="text-sm" style="white-space: nowrap;">weak, &Delta;S = &minus;18 MeV<br><b>R<sub>s</sub> &asymp; 0.9</b></div>
+</div>
+<div class="flex flex-col items-center">
+<MiniIcon mode="deep" :size="72" />
+<div class="text-sm" style="white-space: nowrap;">deep, &Delta;S = +18 MeV<br><b>R<sub>s</sub> &asymp; 0.3</b></div>
+</div>
 </div>
 
-<div class="takeaway mt-8">
-Is this <b>structure</b>, or is it the <b>reaction model</b>?
-</div>
+
 
 </div>
 </div>

@@ -3,6 +3,8 @@
 //   shells  a level stack whose shell gap narrows and reopens: a magic number dissolving far from stability
 //   hidden  a nucleus inside a frosted shell; the valence orbital only glimmers through: spectra see the whole
 //   remove  one nucleon (x, gold) leaves the residue b and b stays: what knockout measures
+//   weak    x on a wide orbit, mostly outside b (small separation energy)
+//   deep    x on a tight orbit inside b's surface (large separation energy)
 // Fixed pixel size (no clientWidth), so a slide mounted while hidden renders correctly when shown.
 import { useIsSlideActive } from '@slidev/client'
 import { onMounted, onBeforeUnmount, ref } from 'vue'
@@ -66,13 +68,34 @@ function buildRemove(scene) {
   }
 }
 
+function buildOrbit(scene, deep) {
+  const b = makeNucleus(8, 8, 0.36, deep ? 5 : 9); scene.add(b)
+  const x = new THREE.Mesh(new THREE.SphereGeometry(0.32, 24, 16), new THREE.MeshPhysicalMaterial({ color: COL.x, roughness: 0.3, clearcoat: 0.6 }))
+  const xg = glow(COL.x, deep ? 1.3 : 1.2, deep ? 0.8 : 0.7); xg.material.depthTest = false; x.add(xg); scene.add(x)
+  // the orbit as a faint ring of dots
+  const R = deep ? 0.9 : 1.9, dm = new THREE.MeshBasicMaterial({ color: COL.x, transparent: true, opacity: 0.7, depthTest: !deep })
+  const ring = new THREE.Group(); ring.rotation.x = 1.15
+  for (let i = 0; i < 40; i++) {
+    const d = new THREE.Mesh(new THREE.SphereGeometry(0.04, 8, 6), dm)
+    d.position.set(R * Math.cos(2 * Math.PI * i / 40), 0, R * Math.sin(2 * Math.PI * i / 40)); ring.add(d)
+  }
+  scene.add(ring)
+  const v = new THREE.Vector3()
+  return (t) => {
+    const a = (deep ? 1.1 : 0.55) * t
+    v.set(R * Math.cos(a), 0, R * Math.sin(a)).applyEuler(ring.rotation); x.position.copy(v)
+    b.rotation.y = 0.2 * t
+  }
+}
+
 onMounted(() => {
   const S = props.size
   renderer = makeRenderer(host.value, S, S, { alpha: true })
   const scene = new THREE.Scene(); studioLights(scene)
   const cam = new THREE.PerspectiveCamera(30, 1, 0.1, 50)
-  cam.position.set(0, 0.4, { shells: 8.5, hidden: 7.6, remove: 8.2 }[props.mode]); cam.lookAt(props.mode === 'remove' ? 0.7 : 0, props.mode === 'remove' ? 0.5 : 0, 0)
-  const step = { shells: buildShells, hidden: buildHidden, remove: buildRemove }[props.mode](scene)
+  cam.position.set(0, 0.4, { shells: 8.5, hidden: 7.6, remove: 8.2, weak: 10.0, deep: 10.0 }[props.mode]); cam.lookAt(props.mode === 'remove' ? 0.7 : 0, props.mode === 'remove' ? 0.5 : 0, 0)
+  const step = { shells: buildShells, hidden: buildHidden, remove: buildRemove,
+                  weak: (sc) => buildOrbit(sc, false), deep: (sc) => buildOrbit(sc, true) }[props.mode](scene)
   const clock = new THREE.Clock()
   const loop = () => {
     step(clock.getElapsedTime())
