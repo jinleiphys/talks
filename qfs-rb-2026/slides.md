@@ -91,7 +91,7 @@ residue momentum p<sub>&#8741;</sub> &rarr; <b>orbital angular momentum</b> l
 </div>
 <div class="kami-card">
 <span class="ui-label">which final state</span><br>
-&gamma; rays in coincidence &rarr; <b>state of b</b>
+&gamma; at the target &times; b at the focal plane &rarr; <b>state of b</b>
 </div>
 </div>
 
