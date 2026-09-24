@@ -299,33 +299,9 @@ that comes out is counted as surviving.
 </div>
 
 <div style="margin-top: 1.0rem;"><div class="takeaway">
-U<sub>bA</sub> and U<sub>xA</sub> each know one fragment. What needs <b>both at once</b> is what H<sub>3</sub><sup>(0)</sup> drops.
+U<sub>bA</sub> and U<sub>xA</sub> each know one fragment: what needs <b>both at once</b> is dropped, and b is counted in
+every state while the experiment counts <b>b bound</b>.
 </div></div>
-
----
-
-# But b sits inside a composite
-
-<div class="grid grid-cols-2 gap-6 mt-1">
-<div>
-<KnockoutScene mode="spectator" :height="250" />
-<div class="text-center mt-2">what the formula assumes: <b>b a spectator</b></div>
-</div>
-<div>
-<KnockoutScene mode="nonspectator" :height="250" />
-<div class="text-center mt-2">what happens in a composite: <b>b coupled to x</b></div>
-</div>
-</div>
-
-<div class="grid grid-cols-2 gap-8 mt-5">
-<div class="box-idea">
-While x is still in the projectile, the x-b coupling acts on b's internal state. When x is
-knocked out, b can come out <b>excited or broken</b>.
-</div>
-<div class="box-gap">
-The formula sums over <b>all</b> states of b. The experiment only sees b <b>bound</b>.
-</div>
-</div>
 
 ---
 
