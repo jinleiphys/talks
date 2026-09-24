@@ -125,8 +125,9 @@ Tostevin and Gade, Phys. Rev. C 103, 054610 (2021). R<sub>s</sub> = &sigma;<sub>
 <div class="col-span-2 pt-2">
 
 <div class="box-evidence">
-<b>The benchmark.</b> For stable nuclei, (e,e'p) finds valence strength at 0.6 to 0.7 of the independent-particle
-value, and knockout on <sup>12</sup>C and <sup>16</sup>O gives the same R<sub>s</sub>.
+<b>The benchmark.</b> On stable <sup>12</sup>C and <sup>16</sup>O, nucleon knockout gives R<sub>s</sub> = 0.5 to 0.7,
+the value electron knockout (e,e'p) finds for the same nuclei. For stable nuclei every probe agrees:
+30 to 40% of the shell-model strength is missing.
 </div>
 
 <div class="text-2xl mt-5" style="color: var(--ink-blue);">R<sub>s</sub> = 0.61 &minus; 0.016 &Delta;S</div>
