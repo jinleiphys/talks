@@ -400,7 +400,7 @@ $U_R^{(D)} = RHD\,\dfrac{1}{E - DHD}\,DHR$
 $-\mathrm{Im}\,U_{xx} = \text{flux in } R + \langle\psi_R|W_R^{(bA)} + W_R^{(bx)}|\psi_R\rangle$
 
 </div>
-<div class="eqm-say"><span class="eqm-step">count</span> All stripping = <b style="color: var(--color-evidence);">b bound</b> (measured) + <b style="color: var(--color-gap);">b lost</b>: broken by the target (in |S<sub>b</sub>|<sup>2</sup>) or by the <b>N-b coupling</b> (new).</div>
+<div class="eqm-say"><span class="eqm-step">count</span> All stripping = <b style="color: var(--color-evidence);">b bound</b> (measured) + <b style="color: var(--color-gap);">b lost</b>: broken by the target (standard, the same in &sigma;<sub>surv</sub> and &sigma;<sub>sp</sub>) or by the <b>N-b coupling</b> (new).</div>
 </div>
 
 </div>
