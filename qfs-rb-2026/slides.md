@@ -152,11 +152,6 @@ Aumann et al., PPNP 118, 103847 (2021), Fig. 56(a) to (c).
 Is this <b>structure</b>, or is it the <b>reaction model</b>?
 </div>
 
-<!--
-Grey band: not defined in the caption or text of Fig. 56. It spans about 0.45 to 0.72, roughly the range of the
-(e,e'p) points in panel (a). Fig. 29 of the same review uses a grey band for the mean +- 2 sigma of (e,e'p) data,
-but at 0.40 to 0.68, so it is not the same band. Do not assign it a meaning on stage.
--->
 
 ---
 
@@ -263,14 +258,6 @@ $H = H_3^{(0)} + \;?$
 
 </div>
 
-<!--
-Expected objection: "an optical potential already projects out target excitations; why again?"
-Answer: U_xA does it for x alone. With two fragments on one target, projecting onto the target ground state gives
-<phi_A| dV Q_A G_A Q_A dV |phi_A> with dV = dv_bA + dv_xA. The diagonal pieces resemble U_bA and U_xA (only
-resemble: G_A still contains the other fragment's motion, so the energy at which each fragment meets the target is
-shifted, Austern-Richards 1968). The cross pieces, x excites the target and b de-excites it, are in neither
-potential: that is the induced three-body term, established for d + A (Johnson-Timofeyuk 2014, Dinmore 2019).
--->
 
 <div style="margin-top: 0.9rem;"><div class="takeaway">
 Knockout is the <b>x = N</b> limit: only b&rsquo;s internal states are projected out, yet the fitted U<sub>bA</sub>, U<sub>xA</sub> keep none of it.
@@ -409,18 +396,7 @@ $-\mathrm{Im}\,U_{xx} = \text{flux in } R + \langle\psi_R|W_R^{(bA)} + W_R^{(bx)
 The spectator model freezes b (V<sub>bx</sub> &rarr; P<sub>b</sub>V<sub>bx</sub>P<sub>b</sub>): W<sub>R</sub><sup>(bx)</sup> = 0 and every b is counted. <b>W<sub>R</sub><sup>(bx)</sup></b> is the one new term.
 </div></div>
 
-<!--
-Reference choice (author, 2026-09-25): Hartree U^H, as in the paper's Eq. (condition). U^H is real, so H_3^(0) alone
-gives |S_b| = |S_x| = 1; all target-excitation absorption sits in U^(nonadd). The S_b, S_x used in practice (Glauber
-with complex NN amplitudes, or a fitted optical potential) correspond to U^H + the free-fragment U_bb, U_xx.
--->
 
-<!--
-Source: calc/plan_d/P1b_derivation.md secs. 0 and 1 (Codex-audited, adopted 2026-09-24): Eqs. (1.1)-(1.4).
-Eq. (1.3): -Im <U_xx> = eps||psi_R||^2 (open-channel flux in R) + <psi_R|W_R|psi_R>, W_R = pi RHD delta(E-DHD) DHR >= 0.
-The eps-term also contains x re-bound to b (not one-nucleon removal); empty without a real b-x well (D3.2).
-Not in our numbers: the bA-xA cross term of U^(nonadd) (the induced three-body force of slide 6).
--->
 
 ---
 
@@ -454,12 +430,6 @@ Not in our numbers: the bA-xA cross term of U^(nonadd) (the induced three-body f
 The direct sequence, strip first and then break b, never passes through C: it is in U<sup>(nonadd)</sup>, not U<sup>(pol)</sup>.
 </div></div>
 
-<!--
-Source: P1b_derivation.md secs. 1.1-1.4 (adopted 2026-09-24). The direct sequence P -> R -> D never passes through
-C = P_A Q_b, so it is not in U^(pol) (1.3). Names depend on elimination order; the physics does not (1.4).
-W_R^(bA,bA) sits in |S_b|^2 under the eikonal step, identically in numerator and denominator (1.4 bullet).
-Core-first stripping amplitude: dropped under (S) in baseline and correction alike (1.3 item 2).
--->
 
 ---
 
@@ -510,12 +480,6 @@ Set &rho;<sub>surv</sub> = 1 and the spectator formula comes back <b>identically
 H<sub>eff</sub> fixes <b>what</b> to compute; it is evaluated with Eq. (7) of Gomez-Ramos <i>et al.</i> 2023.
 </div></div>
 
-<!--
-Energy: <T> = 21.4 (proton 0d5/2) / 28.4 MeV (neutron 0f7/2), calc/plan_d/D3_derivation.md sec. 8.1 table.
-Prescription level: Austern et al., Phys. Rep. 154, 125 (1987), Eq. 2.6. W sets: MR07a, MR07b, WLH (PRL 127, 182502).
-Do not say "reproduces GR23": their W is a refit (devlog 14b); only the construction is shared (14a).
-Schematic formula: the survival factor sits inside the b-x final-state density; the exact form is D1 (F) under M1.
--->
 
 ---
 
@@ -778,4 +742,101 @@ class: text-center
 
 <div class="mt-8 text-lg" style="color: var(--stone);">
 Jin Lei &nbsp;&middot;&nbsp; Tongji University &nbsp;&middot;&nbsp; jinl@tongji.edu.cn
+</div>
+
+
+---
+backup: true
+---
+
+
+---
+
+# Backup: isn't this already in the optical potential?
+
+<div class="grid grid-cols-2 gap-8 mt-6">
+<div>
+
+$U^{(\rm nonadd)} = \langle\phi_A|\,\Delta V\,Q_A\,G_A\,Q_A\,\Delta V\,|\phi_A\rangle$
+
+$\Delta V = \Delta v_{bA} + \Delta v_{xA}$
+
+<div class="box-idea mt-4">
+U<sub>xA</sub> projects out the target excitations of <b>x alone</b>. With two fragments on one target, the projection gives the four terms above.
+</div>
+
+</div>
+<div>
+
+<div class="kami-card"><b>Diagonal terms</b> (x in, x out; b in, b out) only <b>resemble</b> U<sub>xA</sub>, U<sub>bA</sub>: G<sub>A</sub> still contains the other fragment, so each fragment meets the target at a shifted energy (Austern and Richards, Ann. Phys. 49, 309 (1968)).</div>
+
+<div class="kami-card mt-4"><b>Cross terms</b> (x in, b out and the reverse) are in <b>neither</b> potential: the induced three-body force, established for d + A (Johnson and Timofeyuk, PRC 89, 024605 (2014); Dinmore <i>et al.</i>, PRC 99, 064612 (2019)).</div>
+
+</div>
+</div>
+
+---
+
+# Backup: where do S<sub>b</sub> and S<sub>x</sub> come from?
+
+<div class="grid grid-cols-2 gap-8 mt-6">
+<div>
+
+$$\langle\phi_\xi|\langle\phi_A|\,V_{\xi A}\,|\phi_A\rangle|\phi_\xi\rangle = U^{\rm H}_{\xi A}$$
+
+<div class="box-idea">
+<b>Reference potential:</b> Hartree folding over the target and fragment ground states.
+Real and absorption-free: &Delta;v carries <b>all</b> coupling to target excitation.
+</div>
+
+<div class="mt-4">With U<sup>H</sup> alone, |S<sub>b</sub>| = |S<sub>x</sub>| = 1. All target-excitation absorption sits in U<sup>(nonadd)</sup>.</div>
+
+</div>
+<div>
+
+<div class="kami-card"><b>In practice</b> S<sub>b</sub>, S<sub>x</sub> come from Glauber with complex NN amplitudes, or from a fitted optical potential: U<sup>H</sup> plus the <b>free-fragment</b> U<sub>bb</sub>, U<sub>xx</sub>.</div>
+
+<div class="kami-card mt-4"><b>b broken by the target</b> after stripping (W<sub>R</sub><sup>(bA)</sup>) sits in the same factor under the eikonal step, identically in &sigma;<sub>surv</sub> and &sigma;<sub>sp</sub>.</div>
+
+<div class="kami-card mt-4"><b>Order of elimination:</b> names move (U<sup>(nonadd)</sup> or U<sup>(pol)</sup>), the physics does not.</div>
+
+</div>
+</div>
+
+---
+
+# Backup: what exactly is in the numbers
+
+<div class="grid grid-cols-2 gap-8 mt-4">
+<div>
+
+<div class="kami-card"><b>Energy of the N-b coupling:</b> N&rsquo;s own motion inside the projectile, &lang;T&rang; = 21.4 MeV (0d<sub>5/2</sub> proton), 28.4 MeV (0f<sub>7/2</sub> neutron), <sup>40</sup>Si. Standard three-body prescription, as U<sub>pA</sub> at E<sub>d</sub>/2 in CDCC (Austern <i>et al.</i>, Phys. Rep. 154, 125 (1987)).</div>
+
+<div class="kami-card mt-4"><b>W<sub>bx</sub>:</b> Morillon and Romain MR07a, MR07b (dispersive), Whitehead, Lim and Holt, PRL 127, 182502 (2021) (microscopic). Used as published; their spread is the uncertainty.</div>
+
+</div>
+<div>
+
+<div class="kami-card"><b>Relation to Gomez-Ramos <i>et al.</i>, PLB 847 (2023):</b> the same construction, their Eq. (7). Their W is refitted to a compound-nucleus-corrected reaction cross section; ours is not. Their published reduction: 62 to 69% with the return, 23% without. Not a reproduction.</div>
+
+<div class="kami-card mt-4"><b>Not in the numbers:</b> core-first stripping (dropped by the sudden target in &sigma;<sub>surv</sub> and &sigma;<sub>sp</sub> alike); N re-bound to b (empty without a real b-x well).</div>
+
+</div>
+</div>
+
+---
+
+# Backup: the grey band in Aumann <i>et al.</i> Fig. 56
+
+<div class="mt-8 text-lg">
+
+<div class="box-gap">
+Not defined in the caption or text of Fig. 56. It spans about 0.45 to 0.72, roughly the range of the (e,e'p) points in panel (a).
+</div>
+
+<div class="kami-card mt-6">
+Fig. 29 of the same review uses a grey band for the mean &plusmn; 2&sigma; of (e,e'p) data, but at 0.40 to 0.68: a different band.
+Aumann <i>et al.</i>, Prog. Part. Nucl. Phys. 118, 103847 (2021).
+</div>
+
 </div>

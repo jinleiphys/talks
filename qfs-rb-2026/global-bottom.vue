@@ -1,6 +1,19 @@
+<script setup>
+// Page number over the main talk only: the talk ends at "Thank you", the slide before the first `backup: true`
+// slide (a blank separator). Backup slides and the separator show no number.
+import { computed } from 'vue'
+import { useNav } from '@slidev/client'
+const nav = useNav()
+const firstBackup = computed(() => {
+  const i = nav.slides.value.findIndex(r => r.meta?.slide?.frontmatter?.backup)
+  return i < 0 ? nav.total.value + 1 : i + 1          // 1-based page number of the separator
+})
+const mainTotal = computed(() => firstBackup.value - 2)   // pages before "Thank you"
+</script>
+
 <template>
-  <footer v-if="$nav.currentPage < $nav.total" class="slide-page-number">
-    {{ $nav.currentPage }} / {{ $nav.total - 1 }}
+  <footer v-if="nav.currentPage.value <= mainTotal" class="slide-page-number">
+    {{ nav.currentPage.value }} / {{ mainTotal }}
   </footer>
 </template>
 
