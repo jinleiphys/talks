@@ -136,7 +136,7 @@ Heavy-ion knockout. Tostevin and Gade, PRC 103, 054610 (2021). R<sub>s</sub> = &
 <div class="col-span-5">
 
 <div class="ui-label">the other probes</div>
-<img src="./figures/aumann2021-fig56abc.png" class="kami-img mt-1" style="height: 12.5rem;" />
+<img src="./figures/aumann2021-fig56abc.svg" class="kami-img mt-1" style="height: 14rem; background: #fff;" />
 <div class="fig-caption">
 Aumann et al., PPNP 118, 103847 (2021), Fig. 56(a) to (c).
 </div>
