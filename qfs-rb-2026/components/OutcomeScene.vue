@@ -68,7 +68,7 @@ onBeforeUnmount(() => { cancelAnimationFrame(raf); canvas?.remove() })
     <div ref="host"></div>
     <div class="oc-lab oc-t" :style="{ opacity: labX }">x absorbed by A</div>
     <div class="oc-lab oc-up" :style="{ opacity: labOn }">bound: <b>measured</b></div>
-    <div class="oc-lab oc-dn" :style="{ opacity: labOn }">broken: <b>counted too</b></div>
+    <div class="oc-lab oc-dn" :style="{ opacity: labOn }">broken (&minus;2N): <b>counted too</b></div>
   </div>
 </template>
 

@@ -600,6 +600,12 @@ Same operators, potentials and bookkeeping (<sup>40</sup>Si, no return). They di
 </div>
 </div>
 
+<div class="box-evidence mt-5">
+<b>A direct test.</b> b broken by the x-b coupling leaves b &minus; 1: it feeds the <b>&minus;2N channel</b> of the same beam.
+The &minus;2N yield beyond the target breaking b directly is the flux the spectator formula counts as survival.
+<span class="text-xs" style="color: var(--stone);">First attempt, <sup>14</sup>O(&minus;n): upper limit only. Sun et al., PRC 93, 044607 (2016).</span>
+</div>
+
 ---
 
 # Summary
