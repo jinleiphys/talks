@@ -346,6 +346,62 @@ Standard practice keeps H<sub>3</sub><sup>(0)</sup> and deletes both. That delet
 
 ---
 
+# From H<sub>eff</sub> to a number
+
+<div class="grid grid-cols-12 gap-6 mt-2">
+<div class="col-span-7">
+
+<div class="text-sm" style="color: var(--stone);">what everyone computes: b a spectator</div>
+<div class="mt-1 text-center" style="font-size: 1.3rem;">
+&sigma;<sub>sp</sub> = &int;d<sup>2</sup>b &nbsp;&lang;&phi;| &nbsp;|S<sub>b</sub>|<sup>2</sup> (1 &minus; |S<sub>x</sub>|<sup>2</sup>) &nbsp;|&phi;&rang;
+</div>
+
+<div class="text-sm mt-5" style="color: var(--ink-blue);">what H<sub>eff</sub> gives for knockout (x = N)</div>
+<div class="mt-1 text-center" style="font-size: 1.3rem; color: var(--ink-blue);">
+&sigma;<sub>surv</sub> = &int;d<sup>2</sup>b &nbsp;&lang;&phi;| &nbsp;|S<sub>b</sub>|<sup>2</sup> (1 &minus; |S<sub>x</sub>|<sup>2</sup>) &nbsp;<b>&rho;<sub>surv</sub></b> &nbsp;|&phi;&rang;
+</div>
+
+<div class="box-idea mt-5">
+<b>&rho;<sub>surv</sub></b>: the b-x relative motion is carried by V<sub>bx</sub> &minus; iW<sub>bx</sub>, not frozen; the flux W<sub>bx</sub> removes is <b>b lost</b>.
+Set &rho;<sub>surv</sub> = 1 and the spectator formula comes back <b>identically</b>.
+</div>
+
+<div class="text-center text-xl mt-4" style="color: var(--ink-blue);">f = &sigma;<sub>surv</sub> / &sigma;<sub>sp</sub></div>
+
+</div>
+<div class="col-span-5 flex flex-col gap-3">
+
+<div class="kami-card" style="padding: 0.7rem 1rem;">
+<span class="tag">1</span> <b class="ml-1">Target side unchanged</b>
+<div class="text-sm mt-1">The same S<sub>b</sub>, S<sub>x</sub> in &sigma;<sub>surv</sub> and &sigma;<sub>sp</sub>: f isolates b.</div>
+</div>
+
+<div class="kami-card" style="padding: 0.7rem 1rem;">
+<span class="tag">2</span> <b class="ml-1">x-b coupling at a stated energy</b>
+<div class="text-sm mt-1">x&rsquo;s own motion inside the projectile: &lang;T&rang; = 21 MeV (p), 28 MeV (n) in <sup>40</sup>Si. Standard three-body practice, as U<sub>pA</sub> at E<sub>d</sub>/2 in CDCC.</div>
+</div>
+
+<div class="kami-card" style="padding: 0.7rem 1rem;">
+<span class="tag">3</span> <b class="ml-1">W<sub>bx</sub> from published potentials</b>
+<div class="text-sm mt-1">Two dispersive fits (Morillon, Romain) and one microscopic (Whitehead, Lim, Holt). Nothing fitted to knockout; their spread is the uncertainty.</div>
+</div>
+
+</div>
+</div>
+
+<div style="margin-top: 1.0rem;"><div class="takeaway">
+The construction of Eq. (7) of Gomez-Ramos <i>et al.</i> 2023, read here as <b>b&rsquo;s own dynamics inside the composite</b>.
+</div></div>
+
+<!--
+Energy: <T> = 21.4 (proton 0d5/2) / 28.4 MeV (neutron 0f7/2), calc/plan_d/D3_derivation.md sec. 8.1 table.
+Prescription level: Austern et al., Phys. Rep. 154, 125 (1987), Eq. 2.6. W sets: MR07a, MR07b, WLH (PRL 127, 182502).
+Do not say "reproduces GR23": their W is a refit (devlog 14b); only the construction is shared (14a).
+Schematic formula: the survival factor sits inside the b-x final-state density; the exact form is D1 (F) under M1.
+-->
+
+---
+
 # What decides how much b is disturbed: where x sits
 
 <OrbitalCloud :height="300" />
