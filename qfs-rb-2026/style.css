@@ -509,3 +509,5 @@
 .eqm-say { font-size: 0.9rem; line-height: 1.35; }
 .eqm-step { display: inline-block; min-width: 3.6rem; font-family: Inter, sans-serif; font-size: 0.66rem; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--ink-blue); margin-right: 0.3rem; }
+.sg-key { font-size: 1.05em; margin-bottom: 0.2rem; white-space: nowrap; }
+.sg-key b { font-size: 1.15em; margin-right: 0.1rem; }

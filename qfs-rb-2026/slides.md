@@ -288,11 +288,11 @@ Knockout is the <b>x = N</b> limit: only b&rsquo;s internal states are projected
 <div class="sg-head">b bound &nbsp;P<sub>b</sub></div>
 <div class="sg-head">b excited or broken &nbsp;Q<sub>b</sub></div>
 <div class="sg-side"><div>target g.s.<br>P<sub>A</sub></div></div>
-<div class="sg-cell sg-p"><b>P</b>: the model space<br><span>elastic, diffraction</span></div>
-<div class="sg-cell"><b>C</b>: core excited<br><span>&rarr; U<sup>(pol)</sup></span></div>
+<div class="sg-cell sg-p"><div class="sg-key"><b>P</b> = P<sub>A</sub>P<sub>b</sub></div>model space<br><span>elastic, diffraction</span></div>
+<div class="sg-cell"><div class="sg-key"><b>C</b> = P<sub>A</sub>Q<sub>b</sub></div>b excited<br><span>&rarr; U<sup>(pol)</sup></span></div>
 <div class="sg-side"><div>target excited<br>Q<sub>A</sub></div></div>
-<div class="sg-cell sg-meas"><b>R</b>: stripping, <b>b survives</b><br><span>what is measured</span></div>
-<div class="sg-cell sg-lost"><b>D</b>: stripping, <b>b lost</b><br><span>&rarr; in G<sub>A</sub> of U<sup>(nonadd)</sup></span></div>
+<div class="sg-cell sg-meas"><div class="sg-key"><b>R</b> = Q<sub>A</sub>P<sub>b</sub></div><b>b bound</b><br><span>measured</span></div>
+<div class="sg-cell sg-lost"><div class="sg-key"><b>D</b> = Q<sub>A</sub>Q<sub>b</sub></div><b>b lost</b><br><span>&rarr; G<sub>A</sub> of U<sup>(nonadd)</sup></span></div>
 </div>
 
 <div class="text-sm mt-3" style="color: var(--stone); line-height: 1.5;">
@@ -361,25 +361,25 @@ $U^{(\rm nonadd)} = \langle\phi_A|\,\Delta V\,Q_A\,G_A\,Q_A\,\Delta V\,|\phi_A\r
 <div class="eqm-row">
 <div class="eqm-eq">
 
-$U_{xx}:\ \ \Delta V \to \Delta v_{xA}\ \text{on both sides}$
+$U^{(\rm nonadd)} = U_{xx} + U_{bb} + U_{xb} + U_{bx}$
 
 </div>
-<div class="eqm-say"><span class="eqm-step">pick</span> N excites the target and de-excites it: <b>stripping</b>. (&Delta;v<sub>bA</sub> twice = standard |S<sub>b</sub>|<sup>2</sup>; one of each = the cross term, slide 6.)</div>
-</div>
-
-<div class="eqm-row">
-<div class="eqm-eq">
-
-$Q_A = \underbrace{Q_AP_b}_{R} + \underbrace{Q_AQ_b}_{D}$
-
-</div>
-<div class="eqm-say"><span class="eqm-step">split</span> The target-excited space, sorted by b: <b>R</b> (b bound) and <b>D</b> (b excited or broken), the lower row of the table on the previous slide. &Delta;v<sub>xA</sub> does not touch b, so N enters through R.</div>
+<div class="eqm-say"><span class="eqm-step">expand</span> Insert &Delta;V; U<sub>ij</sub> has &Delta;v<sub>iA</sub> on the left, &Delta;v<sub>jA</sub> on the right. <b>U<sub>xx</sub></b>: N excites and de-excites the target, <b>stripping</b>. U<sub>bb</sub>: standard |S<sub>b</sub>|<sup>2</sup>. U<sub>xb</sub>, U<sub>bx</sub>: the cross terms, slide 6.</div>
 </div>
 
 <div class="eqm-row">
 <div class="eqm-eq">
 
-$G_R = [G_A]_{RR} = \big(E - RHR - U_R^{(D)}\big)^{-1}$
+$U_{xx} = P\,\Delta v_{xA}\,R\,[G_A]_{RR}\,R\,\Delta v_{xA}\,P$
+
+</div>
+<div class="eqm-say"><span class="eqm-step">split</span> Q<sub>A</sub> = R + D, the target-excited row of the table. &Delta;v<sub>xA</sub> does not touch b, so N enters and leaves through R.</div>
+</div>
+
+<div class="eqm-row">
+<div class="eqm-eq">
+
+$[G_A]_{RR} = \big(E - RHR - U_R^{(D)}\big)^{-1}$
 
 </div>
 <div class="eqm-say"><span class="eqm-step">fold</span> G<sub>A</sub> still contains D. Folding D back into R is the same Feshbach step, one level down: <b>b is not frozen</b> while the target is excited.</div>
