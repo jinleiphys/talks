@@ -130,8 +130,7 @@ Is this <b>structure</b>, or is it the <b>reaction model</b>?
 
 <div class="box-evidence">
 <b>The benchmark.</b> On stable <sup>12</sup>C and <sup>16</sup>O, nucleon knockout gives R<sub>s</sub> = 0.5 to 0.7,
-the value electron knockout (e,e'p) finds for the same nuclei. For stable nuclei every probe agrees:
-30 to 40% of the shell-model strength is missing.
+the value electron knockout (e,e'p) finds for the same nuclei.
 </div>
 
 <div class="text-2xl mt-5" style="color: var(--ink-blue);">R<sub>s</sub> = 0.61 &minus; 0.016 &Delta;S</div>
@@ -150,6 +149,25 @@ the value electron knockout (e,e'p) finds for the same nuclei. For stable nuclei
 
 
 
+</div>
+</div>
+
+---
+
+# Only one probe sees the trend
+
+<img src="./figures/aumann2021-fig56.png" class="kami-img mx-auto" style="height: 17.5rem;" />
+
+<div class="fig-caption">
+(a) (e,e'p), (b) transfer, (c) quasifree (p,2p), (p,pn), (d) heavy-ion knockout. Aumann et al., Prog. Part. Nucl. Phys. 118, 103847 (2021), Fig. 56.
+</div>
+
+<div class="grid grid-cols-2 gap-6 mt-2">
+<div class="box-evidence text-base">
+For &minus;12 &lesssim; &Delta;S &lesssim; 12 MeV every probe finds <b>40 to 70%</b> of the shell-model strength, within about 25%.
+</div>
+<div class="box-gap text-base">
+Only Be- and C-induced removal falls with &Delta;S. That systematics has been analysed with <b>one reaction model</b>.
 </div>
 </div>
 
