@@ -8,6 +8,8 @@
 //   nnp     three nucleons, pair links always on; a central glow pulses: the three-nucleon force
 //   dA      n + p above a target; the target lights up (A*) and n, p couple through it: induced V_3B
 //   bxA     b + x above a target (x a small cluster with the gold x glow); the target lights up and so does b (b*)
+//   elimA   knockout (x = N, gold): x excites the target (A*), b de-excites it: the cross term of U^(nonadd)
+//   elimB   knockout (x = N, gold): target stays in its ground state; the x-b coupling lifts b to b* and back: U^(pol)
 // Fixed pixel size (no clientWidth), so a slide mounted while hidden renders correctly when shown.
 import { useIsSlideActive } from '@slidev/client'
 import { onMounted, onBeforeUnmount, ref } from 'vue'
@@ -157,15 +159,53 @@ function buildTargetPair(scene, composite) {
   }
 }
 
+function buildElim(scene, which) {
+  const A = makeNucleus(6, 6, 0.3, 11); A.position.set(0, -1.15, 0); scene.add(A)
+  const Ag = glow(0xe9674f, 3.0, 0); Ag.position.copy(A.position); scene.add(Ag)
+  const b = makeNucleus(5, 4, 0.26, 5), bHome = new THREE.Vector3(-0.7, 1.0, 0); b.position.copy(bHome); scene.add(b)
+  const x = new THREE.Mesh(new THREE.SphereGeometry(0.27, 24, 16), new THREE.MeshPhysicalMaterial({ color: COL.x, roughness: 0.3, clearcoat: 0.6 }))
+  const xHome = new THREE.Vector3(0.75, 1.05, 0); x.position.copy(xHome); scene.add(x)
+  const xg = glow(COL.x, 1.0, 0.7); xg.material.depthTest = false; x.add(xg)
+  const bg = glow(0xe9674f, 2.2, 0); bg.material.depthTest = false; scene.add(bg)
+  const pair = linkDots(scene, 5, 0x6f86a0, 0.26), bond = linkDots(scene, 5, 0xf2c14e, 0.3)
+  const down = linkDots(scene, 5, 0xf2c14e, 0.28), up = linkDots(scene, 5, 0xf2c14e, 0.28)
+  const top = new THREE.Vector3()
+  return (t) => {
+    const u = t % 5
+    b.position.copy(bHome).add(new THREE.Vector3(0, 0.05 * Math.sin(1.3 * t), 0))
+    x.position.copy(xHome).add(new THREE.Vector3(0, 0.05 * Math.sin(1.3 * t + 1.5), 0))
+    top.copy(A.position).add(new THREE.Vector3(0, 0.75, 0))
+    let a = 0, d = 0, r = 0, k = 0, bx = 0
+    if (which === 'A') {
+      a = ss(0.8, 1.3, u) * (1 - ss(3.4, 3.9, u))       // A* alive
+      d = ss(0.6, 1.1, u) * (1 - ss(1.9, 2.3, u))       // x excites A
+      r = ss(1.9, 2.4, u) * (1 - ss(3.2, 3.7, u))       // b de-excites A
+    } else {
+      k = ss(0.6, 1.1, u) * (1 - ss(3.6, 4.1, u))       // x-b coupling on
+      bx = ss(1.1, 1.7, u) * (1 - ss(3.0, 3.6, u))      // b lifted to b* and back
+    }
+    setLink(pair, b.position, x.position, 0.55 * (1 - k), t)
+    setLink(bond, x.position, b.position, 0.95 * k, t)
+    setLink(down, x.position, top, 0.95 * d, t)
+    setLink(up, top, b.position, 0.95 * r, t, 1)
+    Ag.material.opacity = 0.7 * a
+    const q = 0.06 * a * Math.sin(15 * t); A.scale.set(1 + q, 1 - q, 1)
+    bg.position.copy(b.position); bg.material.opacity = 0.75 * bx
+    b.scale.setScalar(1 + 0.16 * bx + 0.04 * bx * Math.sin(14 * t))
+    A.rotation.y = 0.15 * t
+  }
+}
+
 onMounted(() => {
   const S = props.size
   renderer = makeRenderer(host.value, S, S, { alpha: true })
   const scene = new THREE.Scene(); studioLights(scene)
   const cam = new THREE.PerspectiveCamera(30, 1, 0.1, 50)
-  cam.position.set(0, 0.4, { shells: 8.5, hidden: 7.6, remove: 8.2, weak: 10.0, deep: 10.0, nnp: 8.0, dA: 9.0, bxA: 9.0 }[props.mode]); cam.lookAt(props.mode === 'remove' ? 0.7 : 0, props.mode === 'remove' ? 0.5 : 0, 0)
+  cam.position.set(0, 0.4, { shells: 8.5, hidden: 7.6, remove: 8.2, weak: 10.0, deep: 10.0, nnp: 8.0, dA: 9.0, bxA: 9.0, elimA: 9.0, elimB: 9.0 }[props.mode]); cam.lookAt(props.mode === 'remove' ? 0.7 : 0, props.mode === 'remove' ? 0.5 : 0, 0)
   const step = { shells: buildShells, hidden: buildHidden, remove: buildRemove,
                   weak: (sc) => buildOrbit(sc, false), deep: (sc) => buildOrbit(sc, true),
-                  nnp: buildNNP, dA: (sc) => buildTargetPair(sc, false), bxA: (sc) => buildTargetPair(sc, true) }[props.mode](scene)
+                  nnp: buildNNP, dA: (sc) => buildTargetPair(sc, false), bxA: (sc) => buildTargetPair(sc, true),
+                  elimA: (sc) => buildElim(sc, 'A'), elimB: (sc) => buildElim(sc, 'B') }[props.mode](scene)
   const clock = new THREE.Clock()
   const loop = () => {
     step(clock.getElapsedTime())

@@ -273,7 +273,7 @@ potential: that is the induced three-body term, established for d + A (Johnson-T
 -->
 
 <div style="margin-top: 0.9rem;"><div class="takeaway">
-Knockout on b + x uses H<sub>3</sub><sup>(0)</sup> with fitted U<sub>bA</sub>, U<sub>xA</sub> and nothing else. The d + A case says the missing term is not small.
+Knockout is the <b>x = N</b> limit: only b&rsquo;s internal states are projected out, yet the fitted U<sub>bA</sub>, U<sub>xA</sub> keep none of it.
 </div></div>
 
 ---
@@ -304,17 +304,27 @@ lets the stripped flux count as surviving, whatever state b is in.
 <div class="col-span-7 elim">
 
 <div class="elim-step"><span class="ui-label">1 &nbsp;target excitation out</span>
+<div class="elim-row">
+<MiniIcon mode="elimA" :size="96" />
+<div class="elim-body">
 
 $U^{(\rm nonadd)} = \langle\phi_A|\,\Delta V\,Q_A\,G_A\,Q_A\,\Delta V\,|\phi_A\rangle$
 
-<div class="elim-note">&Delta;V = &Delta;v<sub>bA</sub> + &Delta;v<sub>xA</sub>, G<sub>A</sub> = (E &minus; Q<sub>A</sub>HQ<sub>A</sub>)<sup>&minus;1</sup>: the target excited and de-excited by the fragments; the cross terms (one in, the other out) are three-body.</div>
+<div class="elim-note">&Delta;V = &Delta;v<sub>bA</sub> + &Delta;v<sub>xA</sub>, G<sub>A</sub> = (E &minus; Q<sub>A</sub>HQ<sub>A</sub>)<sup>&minus;1</sup>. Picture: <b>x excites</b> the target, <b>b de-excites</b> it, the cross term no U<sub>xA</sub> or U<sub>bA</sub> holds.</div>
+</div>
+</div>
 </div>
 
 <div class="elim-step"><span class="ui-label">2 &nbsp;excited b out</span>
+<div class="elim-row">
+<MiniIcon mode="elimB" :size="96" />
+<div class="elim-body">
 
 $U^{(\rm pol)} = P_b\,H^{(A)} Q_b\,\dfrac{1}{E - Q_bH^{(A)}Q_b}\,Q_b H^{(A)} P_b$
 
-<div class="elim-note">H<sup>(A)</sup> = H<sub>3</sub><sup>(0)</sup> + U<sup>(nonadd)</sup>: b lifted out of its bound state and back, with the target in its ground state.</div>
+<div class="elim-note">H<sup>(A)</sup> = H<sub>3</sub><sup>(0)</sup> + U<sup>(nonadd)</sup>. Picture: target in its ground state, the <b>x-b coupling</b> lifts b to b* and back.</div>
+</div>
+</div>
 </div>
 
 <div class="elim-result">
