@@ -346,7 +346,64 @@ Standard practice keeps H<sub>3</sub><sup>(0)</sup> and deletes both. That delet
 
 ---
 
-# From H<sub>eff</sub> to a number
+# Where the measured yield sits in H<sub>eff</sub>
+
+<div class="grid grid-cols-12 gap-6 mt-1">
+<div class="col-span-8 elim">
+
+<div class="elim-step"><span class="ui-label">1 &nbsp;stripping: the x-target term of U<sup>(nonadd)</sup></span>
+
+$U_{xx} = P\,\Delta v_{xA}\,R\;G_R\;R\,\Delta v_{xA}\,P,\qquad R = Q_A P_b$
+
+<div class="elim-note">&Delta;v<sub>xA</sub> does not touch b: stripping x lands in R, target excited and b still bound.</div>
+</div>
+
+<div class="elim-step"><span class="ui-label">2 &nbsp;inside G<sub>A</sub>, b can still leave</span>
+
+$G_R = \big(E - RHR - U_R^{(D)}\big)^{-1},\qquad U_R^{(D)} = RHD\,\dfrac{1}{E - DHD}\,DHR$
+
+<div class="elim-note">D = Q<sub>A</sub>Q<sub>b</sub>: target excited, b lost. Exact block inversion at the cluster level: no spectator expansion, no sudden approximation.</div>
+</div>
+
+<div class="elim-step"><span class="ui-label">3 &nbsp;the stripped flux splits</span>
+
+$-\mathrm{Im}\,U_{xx} = \underbrace{\text{flux kept in } R}_{\text{b bound: measured}} \;+\; \underbrace{\langle\psi_R|\,W_R\,|\psi_R\rangle}_{\text{into } D\text{: b lost}},\qquad W_R = W_R^{(bA)} + W_R^{(bx)}$
+
+<div class="elim-note">W<sub>R</sub><sup>(bA)</sup>: the target breaks b, already inside |S<sub>b</sub>|<sup>2</sup>. W<sub>R</sub><sup>(bx)</sup>: V<sub>bx</sub> changes b&rsquo;s state.</div>
+</div>
+
+</div>
+<div class="col-span-4 pt-2">
+
+<div class="box-gap">
+<b>Spectator model:</b> V<sub>bx</sub> &rarr; P<sub>b</sub>V<sub>bx</sub>P<sub>b</sub>, so W<sub>R</sub><sup>(bx)</sup> = 0, and closure counts R and D alike.
+</div>
+
+<div class="box-evidence mt-4">
+<b>Experiment</b> counts R only: b bound. The green cell of the table, not the red one.
+</div>
+
+<div class="box-idea mt-4 text-sm">
+Core-first stripping and diffraction sit in U<sup>(pol)</sup>; diffraction is computed separately.
+</div>
+
+</div>
+</div>
+
+<div style="margin-top: 0.8rem;"><div class="takeaway">
+One new term to compute: <b>W<sub>R</sub><sup>(bx)</sup></b>, the x-b coupling moving stripped flux out of bound b.
+</div></div>
+
+<!--
+Source: calc/plan_d/P1b_derivation.md secs. 0 and 1 (Codex-audited, adopted 2026-09-24): Eqs. (1.1)-(1.4).
+Eq. (1.3): -Im <U_xx> = eps||psi_R||^2 (open-channel flux in R) + <psi_R|W_R|psi_R>, W_R = pi RHD delta(E-DHD) DHR >= 0.
+The eps-term also contains x re-bound to b (not one-nucleon removal); empty without a real b-x well (D3.2).
+Not in our numbers: the bA-xA cross term of U^(nonadd) (the induced three-body force of slide 6).
+-->
+
+---
+
+# Computing W<sub>R</sub><sup>(bx)</sup>: one new ingredient
 
 <div class="grid grid-cols-12 gap-6 mt-2">
 <div class="col-span-7">
@@ -356,13 +413,13 @@ Standard practice keeps H<sub>3</sub><sup>(0)</sup> and deletes both. That delet
 &sigma;<sub>sp</sub> = &int;d<sup>2</sup>b &nbsp;&lang;&phi;| &nbsp;|S<sub>b</sub>|<sup>2</sup> (1 &minus; |S<sub>x</sub>|<sup>2</sup>) &nbsp;|&phi;&rang;
 </div>
 
-<div class="text-sm mt-5" style="color: var(--ink-blue);">what H<sub>eff</sub> gives for knockout (x = N)</div>
+<div class="text-sm mt-5" style="color: var(--ink-blue);">with W<sub>R</sub><sup>(bx)</sup> kept (sudden, eikonal target, x = N)</div>
 <div class="mt-1 text-center" style="font-size: 1.3rem; color: var(--ink-blue);">
 &sigma;<sub>surv</sub> = &int;d<sup>2</sup>b &nbsp;&lang;&phi;| &nbsp;|S<sub>b</sub>|<sup>2</sup> (1 &minus; |S<sub>x</sub>|<sup>2</sup>) &nbsp;<b>&rho;<sub>surv</sub></b> &nbsp;|&phi;&rang;
 </div>
 
 <div class="box-idea mt-5">
-<b>&rho;<sub>surv</sub></b>: the b-x relative motion is carried by V<sub>bx</sub> &minus; iW<sub>bx</sub>, not frozen; the flux W<sub>bx</sub> removes is <b>b lost</b>.
+<b>&rho;<sub>surv</sub></b>: W<sub>R</sub><sup>(bx)</sup> acts on the b-x relative motion as V<sub>bx</sub> &minus; iW<sub>bx</sub>, not frozen; the flux W<sub>bx</sub> removes is <b>b lost</b>.
 Set &rho;<sub>surv</sub> = 1 and the spectator formula comes back <b>identically</b>.
 </div>
 
@@ -390,7 +447,7 @@ Set &rho;<sub>surv</sub> = 1 and the spectator formula comes back <b>identically
 </div>
 
 <div style="margin-top: 1.0rem;"><div class="takeaway">
-The construction of Eq. (7) of Gomez-Ramos <i>et al.</i> 2023, read here as <b>b&rsquo;s own dynamics inside the composite</b>.
+H<sub>eff</sub> fixes <b>what</b> to compute; it is evaluated with Eq. (7) of Gomez-Ramos <i>et al.</i> 2023.
 </div></div>
 
 <!--
