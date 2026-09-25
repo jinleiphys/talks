@@ -332,7 +332,7 @@ Standard practice keeps H<sub>3</sub><sup>(0)</sup> and deletes both. That delet
 
 ---
 
-# What happens to b during stripping
+# Who excites the target, and who de-excites it
 
 <div class="eqmeaning mt-1">
 
@@ -342,7 +342,7 @@ Standard practice keeps H<sub>3</sub><sup>(0)</sup> and deletes both. That delet
 $U^{(\rm nonadd)} = \langle\phi_A|\,\Delta V\,Q_A\,G_A\,Q_A\,\Delta V\,|\phi_A\rangle$
 
 </div>
-<div class="eqm-say"><span class="eqm-step">start</span> The term of H<sub>eff</sub> from the previous slide. Reference: U<sup>H</sup>, folding over the target and b ground states, absorption-free. &Delta;v<sub>iA</sub> = V<sub>iA</sub> &minus; U<sup>H</sup><sub>iA</sub> carries <b>all</b> coupling to target excitation.</div>
+<div class="eqm-say"><span class="eqm-step">start</span> From the previous slide. &Delta;v<sub>iA</sub> = V<sub>iA</sub> &minus; U<sup>H</sup><sub>iA</sub>, U<sup>H</sup> the ground-state folding: &Delta;v carries <b>all</b> target excitation.</div>
 </div>
 
 <div class="eqm-row">
@@ -354,13 +354,37 @@ $U^{(\rm nonadd)} = \underbrace{U_{xx}}_{\text{N in, N out}} + \underbrace{U_{bb
 <div class="eqm-say"><span class="eqm-step">expand</span> U<sub>xx</sub>: N excites the target, N de-excites it. U<sub>bb</sub>: b excites, b de-excites. U<sub>xb</sub>, U<sub>bx</sub>: one excites, the other de-excites, the <b>three-body force</b>.</div>
 </div>
 
+
+</div>
+
+<div class="grid grid-cols-3 gap-4 mt-3 text-center">
+<div class="flex flex-col items-center"><MiniIcon mode="uxx" :size="200" /><div class="text-sm mt-1">U<sub>xx</sub>: N in, N out</div></div>
+<div class="flex flex-col items-center"><MiniIcon mode="ubb" :size="200" /><div class="text-sm mt-1">U<sub>bb</sub>: b in, b out</div></div>
+<div class="flex flex-col items-center"><MiniIcon mode="elimA" :size="200" /><div class="text-sm mt-1">U<sub>bx</sub>: N in, b out (three-body)</div></div>
+</div>
+
+---
+
+# Inside stripping, b is not frozen
+
+<div class="eqmeaning mt-1">
+
+<div class="eqm-row">
+<div class="eqm-eq">
+
+$Q_A = \underbrace{Q_A P_b}_{R} + \underbrace{Q_A Q_b}_{D}$
+
+</div>
+<div class="eqm-say"><span class="eqm-step">split</span> Target excited, sorted by b. <b>R</b>: b still bound. <b>D</b>: b excited or broken. (The lower row of the table.)</div>
+</div>
+
 <div class="eqm-row">
 <div class="eqm-eq">
 
 $U_{xx} = P\,\Delta v_{xA}\,R\,[G_A]_{RR}\,R\,\Delta v_{xA}\,P$
 
 </div>
-<div class="eqm-say"><span class="eqm-step">split</span> Q<sub>A</sub> = R + D, the target-excited row of the table. &Delta;v<sub>xA</sub> does not touch b, so N enters and leaves through R.</div>
+<div class="eqm-say"><span class="eqm-step">strip</span> &Delta;v<sub>xA</sub> does not touch b, so N enters and leaves through R.</div>
 </div>
 
 <div class="eqm-row">
@@ -369,7 +393,7 @@ $U_{xx} = P\,\Delta v_{xA}\,R\,[G_A]_{RR}\,R\,\Delta v_{xA}\,P$
 $[G_A]_{RR} = \big(E - RHR - U_R^{(D)}\big)^{-1}$
 
 </div>
-<div class="eqm-say"><span class="eqm-step">fold</span> G<sub>A</sub> still contains D. Folding D back into R is the same Feshbach step, one level down: <b>b is not frozen</b> while the target is excited.</div>
+<div class="eqm-say"><span class="eqm-step">fold</span> Fold D back into R, the same Feshbach step one level down: <b>b is not frozen.</b></div>
 </div>
 
 <div class="eqm-row">
@@ -378,7 +402,7 @@ $[G_A]_{RR} = \big(E - RHR - U_R^{(D)}\big)^{-1}$
 $U_R^{(D)} = RHD\,\dfrac{1}{E - DHD}\,DHR$
 
 </div>
-<div class="eqm-say"><span class="eqm-step">meaning</span> b leaves its bound state into D and comes back. Exact at the cluster level.</div>
+<div class="eqm-say"><span class="eqm-step">meaning</span> b goes from R into D and back, with the target still excited.</div>
 </div>
 
 <div class="eqm-row">
@@ -387,16 +411,17 @@ $U_R^{(D)} = RHD\,\dfrac{1}{E - DHD}\,DHR$
 $-\mathrm{Im}\,U_{xx} = \text{flux in } R + \langle\psi_R|W_R^{(bA)} + W_R^{(bx)}|\psi_R\rangle$
 
 </div>
-<div class="eqm-say"><span class="eqm-step">count</span> All stripping = <b style="color: var(--color-evidence);">b bound</b> (measured) + <b style="color: var(--color-gap);">b lost</b>: broken by the target (standard, the same in &sigma;<sub>surv</sub> and &sigma;<sub>sp</sub>) or by the <b>N-b coupling</b> (new).</div>
+<div class="eqm-say"><span class="eqm-step">count</span> All stripping = <b style="color: var(--color-evidence);">b bound</b> (measured) + <b style="color: var(--color-gap);">b lost</b>: broken by the target (standard) or by the <b>N-b coupling</b> (new).</div>
 </div>
 
 </div>
 
-<div style="margin-top: 0.7rem;"><div class="takeaway">
+<div class="flex items-center gap-6 mt-2">
+<OutcomeScene :width="420" :height="150" :caption="false" story />
+<div class="takeaway flex-1">
 The spectator model freezes b (V<sub>bx</sub> &rarr; P<sub>b</sub>V<sub>bx</sub>P<sub>b</sub>): W<sub>R</sub><sup>(bx)</sup> = 0 and every b is counted. <b>W<sub>R</sub><sup>(bx)</sup></b> is the one new term.
-</div></div>
-
-
+</div>
+</div>
 
 ---
 

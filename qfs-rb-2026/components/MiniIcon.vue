@@ -132,6 +132,10 @@ function buildNNP(scene) {
 //   ['idle', dur, caption] | ['move', from, to, dur, caption, excite] | ['hold', dur, caption]
 // bodies: 'A' target, 'L' left fragment (n or b), 'R' right fragment (p or x). excite: the receiver lights up.
 const SEQ = {
+  uxx:   [['idle', 1.1, ''], ['move', 'R', 'A', 1.8, 'N excites A', true], ['hold', 1.8, 'A*'],
+          ['move', 'A', 'R', 1.8, 'N de-excites A', false], ['hold', 1.6, 'A back to g.s.'], ['idle', 0.9, '']],
+  ubb:   [['idle', 1.1, ''], ['move', 'L', 'A', 1.8, 'b excites A', true], ['hold', 1.8, 'A*'],
+          ['move', 'A', 'L', 1.8, 'b de-excites A', false], ['hold', 1.6, 'A back to g.s.'], ['idle', 0.9, '']],
   dA:    [['idle', 1.1, ''], ['move', 'R', 'A', 1.8, 'p excites A', true], ['hold', 1.8, 'A*'],
           ['move', 'A', 'L', 1.8, 'n de-excites A', false], ['hold', 1.6, 'A back to g.s.'], ['idle', 0.9, '']],
   elimA: [['idle', 1.1, ''], ['move', 'R', 'A', 1.8, 'x excites A', true], ['hold', 1.8, 'A*'],
@@ -206,11 +210,12 @@ onMounted(() => {
   canvas.style.width = S + 'px'; canvas.style.height = S + 'px'; host.value.appendChild(canvas)
   const scene = new THREE.Scene(); studioLights(scene)
   const cam = new THREE.PerspectiveCamera(30, 1, 0.1, 50)
-  cam.position.set(0, 0.4, { shells: 8.5, hidden: 7.6, remove: 8.2, weak: 10.0, deep: 10.0, nnp: 8.0, dA: 9.0, bxA: 9.0, elimA: 9.0, elimB: 9.0 }[props.mode]); cam.lookAt(props.mode === 'remove' ? 0.7 : 0, props.mode === 'remove' ? 0.5 : 0, 0)
+  cam.position.set(0, 0.4, { shells: 8.5, hidden: 7.6, remove: 8.2, weak: 10.0, deep: 10.0, nnp: 8.0, dA: 9.0, bxA: 9.0, elimA: 9.0, elimB: 9.0, uxx: 9.0, ubb: 9.0 }[props.mode]); cam.lookAt(props.mode === 'remove' ? 0.7 : 0, props.mode === 'remove' ? 0.5 : 0, 0)
   const step = { shells: buildShells, hidden: buildHidden, remove: buildRemove,
                   weak: (sc) => buildOrbit(sc, false), deep: (sc) => buildOrbit(sc, true),
                   nnp: buildNNP, dA: (sc) => buildSequence(sc, 'dA', cap), bxA: (sc) => buildSequence(sc, 'bxA', cap),
-                  elimA: (sc) => buildSequence(sc, 'elimA', cap), elimB: (sc) => buildSequence(sc, 'elimB', cap) }[props.mode](scene)
+                  elimA: (sc) => buildSequence(sc, 'elimA', cap), elimB: (sc) => buildSequence(sc, 'elimB', cap),
+                  uxx: (sc) => buildSequence(sc, 'uxx', cap), ubb: (sc) => buildSequence(sc, 'ubb', cap) }[props.mode](scene)
   const clock = new THREE.Clock()
   const loop = () => {
     step(clock.getElapsedTime())
@@ -225,7 +230,7 @@ onBeforeUnmount(() => { cancelAnimationFrame(raf); canvas?.remove() })
 <template>
   <div class="mini-wrap" :style="{ width: size + 'px' }">
     <div ref="host" class="mini-icon" :style="{ width: size + 'px', height: size + 'px' }"></div>
-    <div v-if="['dA', 'bxA', 'elimA', 'elimB'].includes(mode)" class="mini-cap">{{ cap || '\u00a0' }}</div>
+    <div v-if="['dA', 'bxA', 'elimA', 'elimB', 'uxx', 'ubb'].includes(mode)" class="mini-cap">{{ cap || '\u00a0' }}</div>
   </div>
 </template>
 

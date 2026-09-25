@@ -502,7 +502,7 @@
 
 /* equation + meaning rows (slide "What happens to b during stripping") */
 .eqmeaning { display: flex; flex-direction: column; gap: 0.35rem; }
-.eqm-row { display: grid; grid-template-columns: 27rem 1fr; gap: 0.9rem; align-items: center;
+.eqm-row { display: grid; grid-template-columns: 30rem 1fr; gap: 0.9rem; align-items: center;
   border-bottom: 1px solid var(--border-cream); padding-bottom: 0.3rem; }
 .eqm-row .katex-display { margin: 0; text-align: left; font-size: 0.8em; white-space: nowrap; }
 .eqm-eq p { margin: 0; }
