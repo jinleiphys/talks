@@ -34,7 +34,7 @@ onMounted(() => {
 
   const T = 9.0, clock = new THREE.Clock()
   const start = new THREE.Vector3(-9.0, 0.7, 0), meet = new THREE.Vector3(-3.0, 0.7, 0)
-  const upEnd = new THREE.Vector3(1.3, 1.9, 0), dnEnd = new THREE.Vector3(1.3, -1.6, 0)
+  const upEnd = new THREE.Vector3(1.3, 1.9, 0), dnEnd = new THREE.Vector3(1.3, -1.3, 0)
   const loop = () => {
     const t = clock.getElapsedTime() % T
     const fin = ss(0, 2.0, t)                                    // b + x fly in
@@ -51,7 +51,7 @@ onMounted(() => {
     bUp.position.copy(meet).lerp(upEnd, sp); bDn.position.copy(meet).lerp(dnEnd, sp)
     setOp(bUp, show * fade); gUp.position.copy(bUp.position); gUp.material.opacity = 0.55 * ss(4.4, 5.0, t) * fade
     const br = ss(4.3, 5.4, t)                                   // the lower copy breaks apart
-    dnKids.forEach(({ m, dir }) => m.position.copy(m.userData.home).addScaledVector(dir, 1.3 * br))
+    dnKids.forEach(({ m, dir }) => m.position.copy(m.userData.home).addScaledVector(dir, 0.95 * br))
     setOp(bDn, show * fade); gDn.position.copy(bDn.position); gDn.material.opacity = 0.5 * ss(4.4, 5.0, t) * fade
     labOn.value = ss(4.8, 5.4, t) * fade; labX.value = ss(2.4, 2.9, t) * (1 - ss(6.5, 7.3, t))
     b.rotation.y = bUp.rotation.y = 0.3 * t; A.rotation.y = 0.15 * t
@@ -68,7 +68,7 @@ onBeforeUnmount(() => { cancelAnimationFrame(raf); canvas?.remove() })
     <div ref="host"></div>
     <div class="oc-lab oc-t" :style="{ opacity: labX }">x absorbed by A</div>
     <div class="oc-lab oc-up" :style="{ opacity: labOn }">bound: <b>measured</b></div>
-    <div class="oc-lab oc-dn" :style="{ opacity: labOn }">broken (&minus;2N): <b>counted too</b></div>
+    <div class="oc-lab oc-dn" :style="{ opacity: labOn }">broken (&minus;2N, &hellip;):<br><b>counted too</b></div>
   </div>
 </template>
 
@@ -77,5 +77,5 @@ onBeforeUnmount(() => { cancelAnimationFrame(raf); canvas?.remove() })
 .oc-lab { position: absolute; font-family: Newsreader, Georgia, serif; font-size: 0.82rem; white-space: nowrap; pointer-events: none; }
 .oc-t { left: 0; bottom: 12%; color: #b53333; }
 .oc-up { left: 66%; top: 16%; color: #4a6b3a; }
-.oc-dn { left: 66%; bottom: 16%; color: #b53333; }
+.oc-dn { left: 66%; bottom: 8%; color: #b53333; line-height: 1.15; }
 </style>

@@ -601,9 +601,9 @@ Same operators, potentials and bookkeeping (<sup>40</sup>Si, no return). They di
 </div>
 
 <div class="box-evidence mt-5">
-<b>A direct test.</b> b broken by the x-b coupling leaves b &minus; 1: it feeds the <b>&minus;2N channel</b> of the same beam.
-The &minus;2N yield beyond the target breaking b directly is the flux the spectator formula counts as survival.
-<span class="text-xs" style="color: var(--stone);">First attempt, <sup>14</sup>O(&minus;n): upper limit only. Sun et al., PRC 93, 044607 (2016).</span>
+<b>A direct test.</b> b broken by the x-b coupling leaves b &minus; 1, b &minus; 2, &hellip;: it feeds <b>multi-nucleon removal</b> of the same beam.
+The yield beyond the target breaking b directly is the flux the spectator formula counts as survival.
+<span class="text-xs" style="color: var(--stone);">First attempt: <sup>14</sup>O on C, 60 MeV/nucleon, <sup>13</sup>O* &rarr; p + <sup>12</sup>N and 2p + <sup>11</sup>C below 7.5 MeV: &lt; 4.6(20) mb, against 16.8 mb for &minus;1n. Higher <sup>13</sup>O* not measured. Sun et al., PRC 93, 044607 (2016).</span>
 </div>
 
 ---
