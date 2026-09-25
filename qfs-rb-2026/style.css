@@ -499,3 +499,11 @@
 .tb-what { font-size: 0.95rem; line-height: 1.4; }
 .tb-sys .ui-label { white-space: nowrap; }
 .tb-ref { display: block; font-size: 0.72rem; color: var(--stone); margin-top: 0.15rem; }
+
+/* equation + meaning rows (slide "What happens to b during stripping") */
+.eqmeaning { display: flex; flex-direction: column; gap: 0.35rem; }
+.eqm-row { display: grid; grid-template-columns: 24rem 1fr; gap: 0.9rem; align-items: center;
+  border-bottom: 1px solid var(--border-cream); padding-bottom: 0.3rem; }
+.eqm-row .katex-display { margin: 0; text-align: left; font-size: 0.8em; white-space: nowrap; }
+.eqm-eq p { margin: 0; }
+.eqm-say { font-size: 0.9rem; line-height: 1.35; }

@@ -9,7 +9,7 @@ import { onMounted, onBeforeUnmount, ref } from 'vue'
 import * as THREE from 'three'
 import { COL, makeNucleus, studioLights, glow, sharedRender } from './nucleus.js'
 
-const props = defineProps({ width: { type: Number, default: 400 }, height: { type: Number, default: 150 }, story: { type: Boolean, default: false } })
+const props = defineProps({ width: { type: Number, default: 400 }, height: { type: Number, default: 150 }, story: { type: Boolean, default: false }, caption: { type: Boolean, default: true } })
 const host = ref(null), labOn = ref(0), labX = ref(0), stage = ref('')
 const active = useIsSlideActive()
 let canvas, raf, drawn = false
@@ -80,10 +80,10 @@ onBeforeUnmount(() => { cancelAnimationFrame(raf); canvas?.remove() })
 <template>
   <div class="oc-wrap" :style="{ width: width + 'px', height: height + 'px' }">
     <div ref="host"></div>
-    <div class="oc-lab oc-t" :style="{ opacity: labX }">{{ story ? 'N absorbed by the target' : 'x absorbed by A' }}</div>
+    <div v-if="caption" class="oc-lab oc-t" :style="{ opacity: labX }">{{ story ? 'N absorbed by the target' : 'x absorbed by A' }}</div>
     <div class="oc-lab oc-up" :style="{ opacity: labOn }">bound: <b>measured</b></div>
     <div class="oc-lab oc-dn" :style="{ opacity: labOn }">broken (&minus;2N, &hellip;):<br><b>counted too</b></div>
-    <div v-if="story" class="oc-stage">{{ stage || '\u00a0' }}</div>
+    <div v-if="story && caption" class="oc-stage">{{ stage || '\u00a0' }}</div>
   </div>
 </template>
 

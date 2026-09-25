@@ -348,38 +348,114 @@ Standard practice keeps H<sub>3</sub><sup>(0)</sup> and deletes both. That delet
 
 # What happens to b during stripping
 
-<div class="flex justify-center mt-1">
-<OutcomeScene :width="760" :height="215" story />
+<div class="grid grid-cols-12 gap-5 mt-1">
+<div class="col-span-9 eqmeaning">
+
+<div class="eqm-row">
+<div class="eqm-eq">
+
+$U_{xx} = P\,\Delta v_{xA}\,R\;G_R\;R\,\Delta v_{xA}\,P$
+
+</div>
+<div class="eqm-say">The nucleon N excites the target and the flux returns: <b>stripping</b>. In between, R = Q<sub>A</sub>P<sub>b</sub>: target excited, b still bound.</div>
 </div>
 
-<div class="grid grid-cols-3 gap-5" style="margin-top: 2.6rem;">
-<div class="kami-card" style="padding: 0.7rem 1rem;">
-<span class="tag">1</span> <b class="ml-1">The nucleon N is stripped</b>
-<div class="text-sm mt-1">N excites the target. At this moment the residue b is still bound.</div>
+<div class="eqm-row">
+<div class="eqm-eq">
+
+$G_R = \big(E - RHR - U_R^{(D)}\big)^{-1}$
+
 </div>
-<div class="kami-card" style="padding: 0.7rem 1rem;">
-<span class="tag">2</span> <b class="ml-1">N is still coupled to b</b>
-<div class="text-sm mt-1">That coupling can change b&rsquo;s internal state: b is excited or broken.</div>
+<div class="eqm-say">While the target is excited, the system keeps evolving, and <b>b is not frozen</b>.</div>
 </div>
-<div class="kami-card" style="padding: 0.7rem 1rem;">
-<span class="tag">3</span> <b class="ml-1">Who counts what</b>
-<div class="text-sm mt-1">The standard calculation freezes b and counts <b>every</b> b. Experiment counts <b>bound</b> b.</div>
+
+<div class="eqm-row">
+<div class="eqm-eq">
+
+$U_R^{(D)} = RHD\,\dfrac{1}{E - DHD}\,DHR$
+
+</div>
+<div class="eqm-say">b can leave its bound state into D = Q<sub>A</sub>Q<sub>b</sub> (target excited, <b>b excited or broken</b>) and come back.</div>
+</div>
+
+<div class="eqm-row">
+<div class="eqm-eq">
+
+$-\mathrm{Im}\,U_{xx} = \text{flux in } R + \langle\psi_R|W_R|\psi_R\rangle$
+
+</div>
+<div class="eqm-say">All stripping = events with <b style="color: var(--color-evidence);">b bound</b> (measured) + events with <b style="color: var(--color-gap);">b lost</b>.</div>
+</div>
+
+<div class="eqm-row">
+<div class="eqm-eq">
+
+$W_R = W_R^{(bA)} + W_R^{(bx)}$
+
+</div>
+<div class="eqm-say">b is lost because the <b>target</b> breaks it (inside |S<sub>b</sub>|<sup>2</sup>, standard), or because the <b>N-b coupling</b> changes it: <b>new</b>, zero if b is frozen.</div>
+</div>
+
+</div>
+<div class="col-span-3 flex flex-col items-center">
+
+<OutcomeScene :width="250" :height="150" :caption="false" story />
+
+<div class="box-gap text-sm" style="margin-top: 1rem;">
+<b>Spectator model:</b> b frozen, W<sub>R</sub><sup>(bx)</sup> = 0, and every b is counted. Experiment counts <b>bound</b> b.
+</div>
+
 </div>
 </div>
 
-<div style="margin-top: 1.0rem;"><div class="takeaway">
-One new term to compute: the <b>N-b coupling during stripping</b>. It is exactly what freezing b removes.
+<div style="margin-top: 0.6rem;"><div class="takeaway">
+One new term to compute: <b>W<sub>R</sub><sup>(bx)</sup></b>, the N-b coupling taking stripped flux out of bound b.
 </div></div>
-
-<div class="text-xs mt-2" style="color: var(--stone);">
-In H<sub>eff</sub> (x = N): stripping is the x-target term of U<sup>(nonadd)</sup>; the new term is W<sub>R</sub><sup>(bx)</sup> inside its G<sub>A</sub>.
-</div>
 
 <!--
 Source: calc/plan_d/P1b_derivation.md secs. 0 and 1 (Codex-audited, adopted 2026-09-24): Eqs. (1.1)-(1.4).
 Eq. (1.3): -Im <U_xx> = eps||psi_R||^2 (open-channel flux in R) + <psi_R|W_R|psi_R>, W_R = pi RHD delta(E-DHD) DHR >= 0.
 The eps-term also contains x re-bound to b (not one-nucleon removal); empty without a real b-x well (D3.2).
 Not in our numbers: the bA-xA cross term of U^(nonadd) (the induced three-body force of slide 6).
+-->
+
+---
+
+# Where "b excited or broken" sits in H<sub>eff</sub>
+
+<div class="text-center text-lg mt-1" style="color: var(--stone);">It depends on what the <b>target</b> is doing at that moment.</div>
+
+<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="kami-card-accent">
+<div class="ui-label">target excited (after stripping)</div>
+<div class="mt-2">b broken there is the sector D = Q<sub>A</sub>Q<sub>b</sub>. Eliminating the target first, it is integrated out <b>inside G<sub>A</sub> of U<sup>(nonadd)</sup></b>, together with Q<sub>A</sub>.</div>
+<div class="mt-3"><b style="color: var(--color-evidence);">Computed:</b> W<sub>R</sub><sup>(bx)</sup> in the N-target term.</div>
+</div>
+<div class="kami-card-accent">
+<div class="ui-label">target in its ground state</div>
+<div class="mt-2">b excited there is the sector C = P<sub>A</sub>Q<sub>b</sub>: this is <b>U<sup>(pol)</sup></b>. It holds three things:</div>
+<div class="mt-2 text-sm">
+<b>a.</b> b broken in diffraction: <b style="color: var(--color-evidence);">computed</b>, f<sub>dif</sub>.<br>
+<b>b.</b> core-first stripping (b excited, then the target): dropped by the sudden target, in both &sigma;<sub>surv</sub> and &sigma;<sub>sp</sub>.<br>
+<b>c.</b> b* admixed in the projectile: a normalization, not a yield.
+</div>
+</div>
+</div>
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-sm">
+<div class="kami-card" style="padding: 0.6rem 1rem;"><b>U<sup>(nonadd)</sup>, b-target:</b> the target distorts or breaks b. Standard |S<sub>b</sub>|<sup>2</sup>, the same in &sigma;<sub>surv</sub> and &sigma;<sub>sp</sub>.</div>
+<div class="kami-card" style="padding: 0.6rem 1rem;"><b>U<sup>(nonadd)</sup>, cross:</b> N excites the target, b de-excites it. The induced three-body force: <b style="color: var(--color-gap);">not yet computed</b>.</div>
+</div>
+
+<div style="margin-top: 1.0rem;"><div class="takeaway">
+The direct sequence, strip first and then break b, never passes through C: it is in U<sup>(nonadd)</sup>, not U<sup>(pol)</sup>.
+</div></div>
+
+<!--
+Source: P1b_derivation.md secs. 1.1-1.4 (adopted 2026-09-24). The direct sequence P -> R -> D never passes through
+C = P_A Q_b, so it is not in U^(pol) (1.3). Names depend on elimination order; the physics does not (1.4).
+W_R^(bA,bA) sits in |S_b|^2 under the eikonal step, identically in numerator and denominator (1.4 bullet).
+Core-first stripping amplitude: dropped under (S) in baseline and correction alike (1.3 item 2).
 -->
 
 ---
