@@ -110,32 +110,46 @@ residue momentum p<sub>&#8741;</sub> &rarr; <b>orbital angular momentum</b> l
 
 ---
 
-# Only one probe sees the &Delta;S trend
+# Deeply bound nucleons look twice as quenched
 
-<img src="./figures/aumann2021-fig56.png" class="kami-img mx-auto" style="height: 16rem;" />
+<div class="grid grid-cols-12 gap-5 mt-1">
+<div class="col-span-7">
+
+<img src="./figures/rs-systematics-trend.png" class="kami-img" style="height: 19rem;" />
 
 <div class="fig-caption">
-R<sub>s</sub> = &sigma;<sub>exp</sub> / &sigma;<sub>th</sub>. Aumann et al., PPNP 118, 103847 (2021), Fig. 56; linear fit: Tostevin and Gade, PRC 103, 054610 (2021).
+Heavy-ion knockout. Tostevin and Gade, PRC 103, 054610 (2021). R<sub>s</sub> = &sigma;<sub>exp</sub> / &sigma;<sub>th</sub>.
 </div>
 
-<div class="grid grid-cols-12 gap-5 mt-2 items-center">
-<div class="col-span-5 flex items-center gap-3">
-<div>
-<div class="text-xl" style="color: var(--ink-blue); white-space: nowrap;">R<sub>s</sub> = 0.61 &minus; 0.016 &Delta;S</div>
-<div class="text-xs" style="color: var(--stone);">heavy-ion knockout, panel (d)</div>
+<div class="flex items-center justify-center gap-8 mt-1">
+<div class="flex items-center gap-1">
+<MiniIcon mode="weak" :size="44" />
+<div class="text-sm" style="white-space: nowrap;">weak, &Delta;S = &minus;18: <b>R<sub>s</sub> &asymp; 0.9</b></div>
 </div>
-<div class="flex flex-col items-center">
-<MiniIcon mode="weak" :size="52" />
-<div class="text-xs" style="white-space: nowrap;">&Delta;S = &minus;18: <b>0.9</b></div>
-</div>
-<div class="flex flex-col items-center">
-<MiniIcon mode="deep" :size="52" />
-<div class="text-xs" style="white-space: nowrap;">&Delta;S = +18: <b>0.3</b></div>
+<div class="flex items-center gap-1">
+<MiniIcon mode="deep" :size="44" />
+<div class="text-sm" style="white-space: nowrap;">deep, &Delta;S = +18: <b>R<sub>s</sub> &asymp; 0.3</b></div>
 </div>
 </div>
-<div class="col-span-7 box-gap text-base">
-(e,e'p), transfer, (p,2p): flat at 40 to 70%. Only Be- and C-induced removal falls, analysed with <b>one reaction model</b>. Structure, or reaction model?
+
 </div>
+<div class="col-span-5">
+
+<div class="ui-label">the other probes</div>
+<img src="./figures/aumann2021-fig56abc.png" class="kami-img mt-1" style="height: 12.5rem;" />
+<div class="fig-caption">
+Aumann et al., PPNP 118, 103847 (2021), Fig. 56(a) to (c).
+</div>
+
+<div class="box-gap text-base mt-2">
+(e,e'p), transfer, (p,2p): <b>flat</b> at 40 to 70%. Only knockout on Be and C falls, analysed with <b>one reaction model</b>.
+</div>
+
+</div>
+</div>
+
+<div class="takeaway mt-2">
+Is this <b>structure</b>, or is it the <b>reaction model</b>?
 </div>
 
 <!--
