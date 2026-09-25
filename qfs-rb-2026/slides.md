@@ -229,33 +229,36 @@ This work: what the optical reduction leaves out of H<sub>eff</sub>, and how muc
 <div class="tb-ladder mt-4">
 
 <div class="kami-card tb-row">
+<MiniIcon mode="nnp" :size="104" />
 <div class="tb-sys"><span class="ui-label">three nucleons</span><br><b>n + n + p</b></div>
 <div class="tb-ham">
 
 $H = T + \sum V_{NN} + V_{3N}$
 
 </div>
-<div class="tb-what">V<sub>3N</sub>: &Delta; and pion excitations of the nucleons projected out <span class="tb-ref">Fujita, Miyazawa 1957</span></div>
+<div class="tb-what">V<sub>3N</sub>: &Delta; and pion excitations projected out <span class="tb-ref">Fujita, Miyazawa 1957</span></div>
 </div>
 
 <div class="kami-card tb-row">
+<MiniIcon mode="dA" :size="104" />
 <div class="tb-sys"><span class="ui-label">deuteron + target</span><br><b>n + p + A</b></div>
 <div class="tb-ham">
 
 $H = T + V_{np} + U_{nA} + U_{pA} + V_{3B}$
 
 </div>
-<div class="tb-what">V<sub>3B</sub>: <b>target excitations</b> projected out; n and p couple through the excited target. <sup>40</sup>Ca(d,p): &minus;20 to &minus;40% <span class="tb-ref">Austern, Richards 1968; Polyzou, Redish 1979; Johnson, Timofeyuk 2014; Dinmore et al. 2019</span></div>
+<div class="tb-what">V<sub>3B</sub>: <b>target excitations</b> projected out. <sup>40</sup>Ca(d,p): &minus;20 to &minus;40% <span class="tb-ref">Austern, Richards 1968; Polyzou, Redish 1979; Johnson, Timofeyuk 2014; Dinmore et al. 2019</span></div>
 </div>
 
 <div class="kami-card-accent tb-row">
+<MiniIcon mode="bxA" :size="104" />
 <div class="tb-sys"><span class="ui-label">composite + target</span><br><b>b + x + A</b></div>
 <div class="tb-ham">
 
 $H = H_3^{(0)} + \;?$
 
 </div>
-<div class="tb-what">Target excitations <b>and</b> the internal states of b projected out. b is not elementary: a second elimination the deuteron does not have. <b>Not derived before this work.</b></div>
+<div class="tb-what">Target excitations <b>and</b> b&rsquo;s internal states projected out: a second elimination. <b>Not derived before this work.</b></div>
 </div>
 
 </div>
