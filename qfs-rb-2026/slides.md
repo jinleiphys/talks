@@ -483,6 +483,51 @@ H<sub>eff</sub> fixes <b>what</b> to compute; it is evaluated with Eq. (7) of Go
 
 ---
 
+# Gomez-Ramos <i>et al.</i> 2023: shared and different
+
+<div class="grid grid-cols-12 gap-6 mt-2">
+<div class="col-span-5">
+
+<div class="ui-label mb-2">shared</div>
+
+<div class="kami-card" style="padding: 0.7rem 1rem;">
+<b>The standard baseline.</b> S<sub>b</sub>, S<sub>N</sub> from Glauber, optical limit, complex NN amplitudes, Skyrme HF core densities: what every &sigma;<sub>sp</sub> in the systematics uses.
+</div>
+
+<div class="kami-card mt-3" style="padding: 0.7rem 1rem;">
+<b>The evaluation.</b> Their Eq. (7): the N-b absorption at N&rsquo;s energy inside the projectile, average impact parameter.
+</div>
+
+</div>
+<div class="col-span-7">
+
+<div class="ui-label mb-2">different here</div>
+
+<div class="kami-card-accent" style="padding: 0.6rem 1rem;">
+<span class="tag">1</span> <b class="ml-1">Where the term comes from.</b> <span class="text-sm">Derived from H<sub>eff</sub>: W<sub>R</sub><sup>(bx)</sup> in G<sub>A</sub> of U<sup>(nonadd)</sup>, and why freezing b removes it. There, a model.</span>
+</div>
+
+<div class="kami-card-accent mt-2" style="padding: 0.6rem 1rem;">
+<span class="tag">2</span> <b class="ml-1">W<sub>bx</sub> as published.</b> <span class="text-sm">MR07a, MR07b and a microscopic one (WLH); the spread is the uncertainty. There, the surface term refitted.</span>
+</div>
+
+<div class="kami-card-accent mt-2" style="padding: 0.6rem 1rem;">
+<span class="tag">3</span> <b class="ml-1">Diffraction computed.</b> <span class="text-sm">There, suppressed like stripping; computing it lowers the flattening by 15 to 20%.</span>
+</div>
+
+<div class="kami-card-accent mt-2" style="padding: 0.6rem 1rem;">
+<span class="tag">4</span> <b class="ml-1">Two tests.</b> <span class="text-sm"><sup>24</sup>Si, the opposite asymmetry, and the halo limit, where b must become a spectator again.</span>
+</div>
+
+</div>
+</div>
+
+<div style="margin-top: 1.0rem;"><div class="takeaway">
+Same baseline, same evaluation step. The framework tells <b>what</b> it computes; the inputs are not tuned.
+</div></div>
+
+---
+
 # What decides how much b is disturbed: where x sits
 
 <OrbitalCloud :height="300" />
@@ -817,7 +862,7 @@ Real and absorption-free: &Delta;v carries <b>all</b> coupling to target excitat
 </div>
 <div>
 
-<div class="kami-card"><b>Relation to Gomez-Ramos <i>et al.</i>, PLB 847 (2023):</b> the same construction, their Eq. (7). Their W is refitted to a compound-nucleus-corrected reaction cross section; ours is not. Their published reduction: 62 to 69% with the return, 23% without. Not a reproduction.</div>
+<div class="kami-card"><b>Gomez-Ramos <i>et al.</i> numbers:</b> 62 to 69% reduction of the slope with their compound-nucleus return, 23% without; a six-system fit, not our two-point metric. Not a reproduction.</div>
 
 <div class="kami-card mt-4"><b>Not in the numbers:</b> core-first stripping (dropped by the sudden target in &sigma;<sub>surv</sub> and &sigma;<sub>sp</sub> alike); N re-bound to b (empty without a real b-x well).</div>
 
