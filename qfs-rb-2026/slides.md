@@ -361,10 +361,10 @@ $U^{(\rm nonadd)} = \langle\phi_A|\,\Delta V\,Q_A\,G_A\,Q_A\,\Delta V\,|\phi_A\r
 <div class="eqm-row">
 <div class="eqm-eq">
 
-$U^{(\rm nonadd)} = \underbrace{U_{xx}}_{\text{stripping}} + \underbrace{U_{bb}}_{|S_b|^2} + \underbrace{U_{xb} + U_{bx}}_{\text{three-body}}$
+$U^{(\rm nonadd)} = \underbrace{U_{xx}}_{\text{N in, N out}} + \underbrace{U_{bb}}_{\text{b in, b out}} + \underbrace{U_{xb} + U_{bx}}_{\text{three-body force}}$
 
 </div>
-<div class="eqm-say"><span class="eqm-step">expand</span> Sorted by who excites the target and who de-excites it. U<sub>xx</sub>: N both, N&rsquo;s polarization; its absorption is <b>stripping</b>. U<sub>bb</sub>: b both, b&rsquo;s polarization; its absorption is |S<sub>b</sub>|<sup>2</sup>. U<sub>xb</sub>, U<sub>bx</sub>: one each, the <b>three-body force</b> of slide 6.</div>
+<div class="eqm-say"><span class="eqm-step">expand</span> U<sub>xx</sub>: N excites the target, N de-excites it. U<sub>bb</sub>: b excites, b de-excites. U<sub>xb</sub>, U<sub>bx</sub>: one excites, the other de-excites, the <b>three-body force</b>.</div>
 </div>
 
 <div class="eqm-row">
@@ -440,7 +440,7 @@ Not in our numbers: the bA-xA cross term of U^(nonadd) (the induced three-body f
 </div>
 
 <div class="grid grid-cols-2 gap-6 mt-4 text-sm">
-<div class="kami-card" style="padding: 0.6rem 1rem;"><b>U<sup>(nonadd)</sup>, U<sub>bb</sub>:</b> b excites and de-excites the target: b&rsquo;s polarization, |S<sub>b</sub>|<sup>2</sup>, the same in &sigma;<sub>surv</sub> and &sigma;<sub>sp</sub>.</div>
+<div class="kami-card" style="padding: 0.6rem 1rem;"><b>U<sup>(nonadd)</sup>, U<sub>bb</sub>:</b> b excites the target, b de-excites it. The same in &sigma;<sub>surv</sub> and &sigma;<sub>sp</sub>.</div>
 <div class="kami-card" style="padding: 0.6rem 1rem;"><b>U<sup>(nonadd)</sup>, U<sub>xb</sub> + U<sub>bx</sub>:</b> N excites the target, b de-excites it, or the reverse: the induced three-body force of slide 6.</div>
 </div>
 
