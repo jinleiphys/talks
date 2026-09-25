@@ -110,66 +110,39 @@ residue momentum p<sub>&#8741;</sub> &rarr; <b>orbital angular momentum</b> l
 
 ---
 
-# Deeply bound nucleons look twice as quenched
+# Only one probe sees the &Delta;S trend
 
-<div class="grid grid-cols-5 gap-7 mt-1">
-<div class="col-span-3">
-
-<img src="./figures/rs-systematics-trend.png" class="kami-img" style="height: 21rem;" />
+<img src="./figures/aumann2021-fig56.png" class="kami-img mx-auto" style="height: 16rem;" />
 
 <div class="fig-caption">
-Tostevin and Gade, Phys. Rev. C 103, 054610 (2021). R<sub>s</sub> = &sigma;<sub>exp</sub> / &sigma;<sub>th</sub>. Benchmark: Brown et al., PRC 65, 061601 (2002); Aumann et al., PPNP 118, 103847 (2021).
+R<sub>s</sub> = &sigma;<sub>exp</sub> / &sigma;<sub>th</sub>. Aumann et al., PPNP 118, 103847 (2021), Fig. 56; linear fit: Tostevin and Gade, PRC 103, 054610 (2021).
 </div>
 
-<div class="takeaway mt-4">
-Is this <b>structure</b>, or is it the <b>reaction model</b>?
-</div>
-
-</div>
-<div class="col-span-2 pt-2">
-
-<div class="box-evidence">
-<b>The benchmark.</b> On stable <sup>12</sup>C and <sup>16</sup>O, nucleon knockout gives R<sub>s</sub> = 0.5 to 0.7,
-the value electron knockout (e,e'p) finds for the same nuclei.
-</div>
-
-<div class="text-2xl mt-5" style="color: var(--ink-blue);">R<sub>s</sub> = 0.61 &minus; 0.016 &Delta;S</div>
-<div class="text-sm" style="color: var(--stone);">intercept 0.61 at &Delta;S = 0; slope &minus;0.016 MeV<sup>&minus;1</sup></div>
-
-<div class="grid grid-cols-2 gap-2 mt-2 text-center">
-<div class="flex flex-col items-center">
-<MiniIcon mode="weak" :size="72" />
-<div class="text-sm" style="white-space: nowrap;">weak, &Delta;S = &minus;18 MeV<br><b>R<sub>s</sub> &asymp; 0.9</b></div>
+<div class="grid grid-cols-12 gap-5 mt-2 items-center">
+<div class="col-span-5 flex items-center gap-3">
+<div>
+<div class="text-xl" style="color: var(--ink-blue); white-space: nowrap;">R<sub>s</sub> = 0.61 &minus; 0.016 &Delta;S</div>
+<div class="text-xs" style="color: var(--stone);">heavy-ion knockout, panel (d)</div>
 </div>
 <div class="flex flex-col items-center">
-<MiniIcon mode="deep" :size="72" />
-<div class="text-sm" style="white-space: nowrap;">deep, &Delta;S = +18 MeV<br><b>R<sub>s</sub> &asymp; 0.3</b></div>
+<MiniIcon mode="weak" :size="52" />
+<div class="text-xs" style="white-space: nowrap;">&Delta;S = &minus;18: <b>0.9</b></div>
+</div>
+<div class="flex flex-col items-center">
+<MiniIcon mode="deep" :size="52" />
+<div class="text-xs" style="white-space: nowrap;">&Delta;S = +18: <b>0.3</b></div>
+</div>
+</div>
+<div class="col-span-7 box-gap text-base">
+(e,e'p), transfer, (p,2p): flat at 40 to 70%. Only Be- and C-induced removal falls, analysed with <b>one reaction model</b>. Structure, or reaction model?
 </div>
 </div>
 
-
-
-</div>
-</div>
-
----
-
-# Only one probe sees the trend
-
-<img src="./figures/aumann2021-fig56.png" class="kami-img mx-auto" style="height: 17.5rem;" />
-
-<div class="fig-caption">
-(a) (e,e'p), (b) transfer, (c) quasifree (p,2p), (p,pn), (d) heavy-ion knockout. Aumann et al., Prog. Part. Nucl. Phys. 118, 103847 (2021), Fig. 56.
-</div>
-
-<div class="grid grid-cols-2 gap-6 mt-2">
-<div class="box-evidence text-base">
-For &minus;12 &lesssim; &Delta;S &lesssim; 12 MeV every probe finds <b>40 to 70%</b> of the shell-model strength, within about 25%.
-</div>
-<div class="box-gap text-base">
-Only Be- and C-induced removal falls with &Delta;S. That systematics has been analysed with <b>one reaction model</b>.
-</div>
-</div>
+<!--
+Grey band: not defined in the caption or text of Fig. 56. It spans about 0.45 to 0.72, roughly the range of the
+(e,e'p) points in panel (a). Fig. 29 of the same review uses a grey band for the mean +- 2 sigma of (e,e'p) data,
+but at 0.40 to 0.68, so it is not the same band. Do not assign it a meaning on stage.
+-->
 
 ---
 
