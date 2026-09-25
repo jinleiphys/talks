@@ -289,18 +289,17 @@ Knockout is the <b>x = N</b> limit: only b&rsquo;s internal states are projected
 <div class="sg-head">b excited or broken &nbsp;Q<sub>b</sub></div>
 <div class="sg-side"><div>target g.s.<br>P<sub>A</sub></div></div>
 <div class="sg-cell sg-p"><b>P</b>: the model space<br><span>elastic, diffraction</span></div>
-<div class="sg-cell">core excited<br><span>&rarr; U<sup>(pol)</sup></span></div>
+<div class="sg-cell"><b>C</b>: core excited<br><span>&rarr; U<sup>(pol)</sup></span></div>
 <div class="sg-side"><div>target excited<br>Q<sub>A</sub></div></div>
-<div class="sg-cell sg-meas">stripping, <b>b survives</b><br><span>what is measured</span></div>
-<div class="sg-cell sg-lost">stripping, <b>b lost</b><br><span>&rarr; inside G<sub>A</sub> of U<sup>(nonadd)</sup></span></div>
+<div class="sg-cell sg-meas"><b>R</b>: stripping, <b>b survives</b><br><span>what is measured</span></div>
+<div class="sg-cell sg-lost"><b>D</b>: stripping, <b>b lost</b><br><span>&rarr; in G<sub>A</sub> of U<sup>(nonadd)</sup></span></div>
 </div>
 
 <div class="text-sm mt-3" style="color: var(--stone); line-height: 1.5;">
-P = P<sub>A</sub>P<sub>b</sub>; the other three sectors are eliminated exactly. The spectator model counts
-<b>both</b> stripping cells:
+R, C, D are eliminated exactly. The spectator model counts <b>both</b> R and D:
 </div>
 
-<OutcomeScene :width="350" :height="125" class="mt-1" />
+<OutcomeScene :width="350" :height="110" />
 
 </div>
 <div class="col-span-7 elim">
@@ -348,25 +347,42 @@ Standard practice keeps H<sub>3</sub><sup>(0)</sup> and deletes both. That delet
 
 # What happens to b during stripping
 
-<div class="grid grid-cols-12 gap-5 mt-1">
-<div class="col-span-9 eqmeaning">
+<div class="eqmeaning mt-1">
 
 <div class="eqm-row">
 <div class="eqm-eq">
 
-$U_{xx} = P\,\Delta v_{xA}\,R\;G_R\;R\,\Delta v_{xA}\,P$
+$U^{(\rm nonadd)} = \langle\phi_A|\,\Delta V\,Q_A\,G_A\,Q_A\,\Delta V\,|\phi_A\rangle$
 
 </div>
-<div class="eqm-say">The nucleon N excites the target and the flux returns: <b>stripping</b>. In between, R = Q<sub>A</sub>P<sub>b</sub>: target excited, b still bound.</div>
+<div class="eqm-say"><span class="eqm-step">start</span> The term of H<sub>eff</sub> from the previous slide, &Delta;V = &Delta;v<sub>bA</sub> + &Delta;v<sub>xA</sub>: the fragments excite and de-excite the target.</div>
 </div>
 
 <div class="eqm-row">
 <div class="eqm-eq">
 
-$G_R = \big(E - RHR - U_R^{(D)}\big)^{-1}$
+$U_{xx}:\ \ \Delta V \to \Delta v_{xA}\ \text{on both sides}$
 
 </div>
-<div class="eqm-say">While the target is excited, the system keeps evolving, and <b>b is not frozen</b>.</div>
+<div class="eqm-say"><span class="eqm-step">pick</span> N excites the target and de-excites it: <b>stripping</b>. (&Delta;v<sub>bA</sub> twice = standard |S<sub>b</sub>|<sup>2</sup>; one of each = the cross term, slide 6.)</div>
+</div>
+
+<div class="eqm-row">
+<div class="eqm-eq">
+
+$Q_A = \underbrace{Q_AP_b}_{R} + \underbrace{Q_AQ_b}_{D}$
+
+</div>
+<div class="eqm-say"><span class="eqm-step">split</span> The target-excited space, sorted by b: <b>R</b> (b bound) and <b>D</b> (b excited or broken), the lower row of the table on the previous slide. &Delta;v<sub>xA</sub> does not touch b, so N enters through R.</div>
+</div>
+
+<div class="eqm-row">
+<div class="eqm-eq">
+
+$G_R = [G_A]_{RR} = \big(E - RHR - U_R^{(D)}\big)^{-1}$
+
+</div>
+<div class="eqm-say"><span class="eqm-step">fold</span> G<sub>A</sub> still contains D. Folding D back into R is the same Feshbach step, one level down: <b>b is not frozen</b> while the target is excited.</div>
 </div>
 
 <div class="eqm-row">
@@ -375,41 +391,22 @@ $G_R = \big(E - RHR - U_R^{(D)}\big)^{-1}$
 $U_R^{(D)} = RHD\,\dfrac{1}{E - DHD}\,DHR$
 
 </div>
-<div class="eqm-say">b can leave its bound state into D = Q<sub>A</sub>Q<sub>b</sub> (target excited, <b>b excited or broken</b>) and come back.</div>
+<div class="eqm-say"><span class="eqm-step">meaning</span> b leaves its bound state into D and comes back. Exact at the cluster level.</div>
 </div>
 
 <div class="eqm-row">
 <div class="eqm-eq">
 
-$-\mathrm{Im}\,U_{xx} = \text{flux in } R + \langle\psi_R|W_R|\psi_R\rangle$
+$-\mathrm{Im}\,U_{xx} = \text{flux in } R + \langle\psi_R|W_R^{(bA)} + W_R^{(bx)}|\psi_R\rangle$
 
 </div>
-<div class="eqm-say">All stripping = events with <b style="color: var(--color-evidence);">b bound</b> (measured) + events with <b style="color: var(--color-gap);">b lost</b>.</div>
-</div>
-
-<div class="eqm-row">
-<div class="eqm-eq">
-
-$W_R = W_R^{(bA)} + W_R^{(bx)}$
-
-</div>
-<div class="eqm-say">b is lost because the <b>target</b> breaks it (inside |S<sub>b</sub>|<sup>2</sup>, standard), or because the <b>N-b coupling</b> changes it: <b>new</b>, zero if b is frozen.</div>
+<div class="eqm-say"><span class="eqm-step">count</span> All stripping = <b style="color: var(--color-evidence);">b bound</b> (measured) + <b style="color: var(--color-gap);">b lost</b>: broken by the target (in |S<sub>b</sub>|<sup>2</sup>) or by the <b>N-b coupling</b> (new).</div>
 </div>
 
 </div>
-<div class="col-span-3 flex flex-col items-center">
 
-<OutcomeScene :width="250" :height="150" :caption="false" story />
-
-<div class="box-gap text-sm" style="margin-top: 1rem;">
-<b>Spectator model:</b> b frozen, W<sub>R</sub><sup>(bx)</sup> = 0, and every b is counted. Experiment counts <b>bound</b> b.
-</div>
-
-</div>
-</div>
-
-<div style="margin-top: 0.6rem;"><div class="takeaway">
-One new term to compute: <b>W<sub>R</sub><sup>(bx)</sup></b>, the N-b coupling taking stripped flux out of bound b.
+<div style="margin-top: 0.7rem;"><div class="takeaway">
+The spectator model freezes b (V<sub>bx</sub> &rarr; P<sub>b</sub>V<sub>bx</sub>P<sub>b</sub>): W<sub>R</sub><sup>(bx)</sup> = 0 and every b is counted. <b>W<sub>R</sub><sup>(bx)</sup></b> is the one new term.
 </div></div>
 
 <!--
