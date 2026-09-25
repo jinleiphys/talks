@@ -410,6 +410,12 @@ The spectator model freezes b (V<sub>bx</sub> &rarr; P<sub>b</sub>V<sub>bx</sub>
 </div></div>
 
 <!--
+Reference choice (author, 2026-09-25): Hartree U^H, as in the paper's Eq. (condition). U^H is real, so H_3^(0) alone
+gives |S_b| = |S_x| = 1; all target-excitation absorption sits in U^(nonadd). The S_b, S_x used in practice (Glauber
+with complex NN amplitudes, or a fitted optical potential) correspond to U^H + the free-fragment U_bb, U_xx.
+-->
+
+<!--
 Source: calc/plan_d/P1b_derivation.md secs. 0 and 1 (Codex-audited, adopted 2026-09-24): Eqs. (1.1)-(1.4).
 Eq. (1.3): -Im <U_xx> = eps||psi_R||^2 (open-channel flux in R) + <psi_R|W_R|psi_R>, W_R = pi RHD delta(E-DHD) DHR >= 0.
 The eps-term also contains x re-bound to b (not one-nucleon removal); empty without a real b-x well (D3.2).
