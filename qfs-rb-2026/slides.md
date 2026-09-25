@@ -110,7 +110,7 @@ residue momentum p<sub>&#8741;</sub> &rarr; <b>orbital angular momentum</b> l
 
 ---
 
-# Deeply bound nucleons look twice as quenched
+# Deep removal: R<sub>s</sub> falls from 0.9 to 0.3
 
 <div class="grid grid-cols-12 gap-5 mt-1">
 <div class="col-span-7">
@@ -458,13 +458,13 @@ The direct sequence, strip first and then break b, never passes through C: it is
 
 ---
 
-# What decides how much b is disturbed: where x sits
+# What decides how much b is disturbed
 
 <OrbitalCloud :height="300" />
 
 <div class="grid grid-cols-2 gap-8 mt-3 text-center">
-<div><b style="color: var(--color-gap);">deeply bound x</b>: lives inside b, strongly coupled to it</div>
-<div><b style="color: var(--ink-blue);">weakly bound x</b>: lives outside b, b nearly a spectator</div>
+<div><b style="color: var(--color-gap);">deeply bound x</b>: overlaps b, many channels open</div>
+<div><b style="color: var(--ink-blue);">weakly bound x</b>: mostly outside b, few channels open</div>
 </div>
 
 <div class="takeaway mt-5">
@@ -590,7 +590,7 @@ U<sub>xA</sub> projects out the target excitations of <b>x alone</b>. With two f
 </div>
 <div>
 
-<div class="kami-card"><b>Diagonal terms</b> (x in, x out; b in, b out) only <b>resemble</b> U<sub>xA</sub>, U<sub>bA</sub>: G<sub>A</sub> still contains the other fragment, so each fragment meets the target at a shifted energy (Austern and Richards, Ann. Phys. 49, 309 (1968)).</div>
+<div class="kami-card"><b>Diagonal terms</b> (x in, x out; b in, b out) only <b>resemble</b> U<sub>xA</sub>, U<sub>bA</sub>: G<sub>A</sub> still contains the other fragment; in the leading spectator expansion each fragment meets the target at a shifted energy (Austern and Richards, Ann. Phys. 49, 309 (1968)).</div>
 
 <div class="kami-card mt-4"><b>Cross terms</b> (x in, b out and the reverse) are in <b>neither</b> potential: the induced three-body force, established for d + A (Johnson and Timofeyuk, PRC 89, 024605 (2014); Dinmore <i>et al.</i>, PRC 99, 064612 (2019)).</div>
 
@@ -632,11 +632,11 @@ Real and absorption-free: &Delta;v carries <b>all</b> coupling to target excitat
 <div class="mt-8 text-lg">
 
 <div class="box-gap">
-Not defined in the caption or text of Fig. 56. It spans about 0.45 to 0.72, roughly the range of the (e,e'p) points in panel (a).
+Not defined in the caption or text of Fig. 56. It spans about 0.45 to 0.72 (read from the figure), roughly the range of the (e,e'p) points in panel (a).
 </div>
 
 <div class="kami-card mt-6">
-Fig. 29 of the same review uses a grey band for the mean &plusmn; 2&sigma; of (e,e'p) data, but at 0.40 to 0.68: a different band.
+Fig. 29 of the same review uses a grey band for the mean &plusmn; 2&sigma; of (e,e'p) data, but at about 0.40 to 0.68 (read from the figure): a different band.
 Aumann <i>et al.</i>, Prog. Part. Nucl. Phys. 118, 103847 (2021).
 </div>
 
