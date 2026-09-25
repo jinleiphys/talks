@@ -290,7 +290,7 @@ Knockout is the <b>x = N</b> limit: only b&rsquo;s internal states are projected
 <div class="sg-side"><div>target g.s.<br>P<sub>A</sub></div></div>
 <div class="sg-cell sg-p"><div class="sg-key"><b>P</b> = P<sub>A</sub>P<sub>b</sub></div>model space<br><span>elastic, diffraction</span></div>
 <div class="sg-cell"><div class="sg-key"><b>C</b> = P<sub>A</sub>Q<sub>b</sub></div>b excited<br><span>&rarr; U<sup>(pol)</sup></span></div>
-<div class="sg-side"><div>target excited<br>Q<sub>A</sub></div></div>
+<div class="sg-side"><div>target excited<br>Q<sub>A</sub><br><b style="color: var(--near-black);">stripping</b></div></div>
 <div class="sg-cell sg-meas"><div class="sg-key"><b>R</b> = Q<sub>A</sub>P<sub>b</sub></div><b>b bound</b><br><span>measured</span></div>
 <div class="sg-cell sg-lost"><div class="sg-key"><b>D</b> = Q<sub>A</sub>Q<sub>b</sub></div><b>b lost</b><br><span>&rarr; G<sub>A</sub> of U<sup>(nonadd)</sup></span></div>
 </div>
