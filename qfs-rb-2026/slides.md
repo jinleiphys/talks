@@ -346,53 +346,34 @@ Standard practice keeps H<sub>3</sub><sup>(0)</sup> and deletes both. That delet
 
 ---
 
-# Where the measured yield sits in H<sub>eff</sub>
+# What happens to b during stripping
 
-<div class="grid grid-cols-12 gap-6 mt-1">
-<div class="col-span-8 elim">
-
-<div class="elim-step"><span class="ui-label">1 &nbsp;stripping: the x-target term of U<sup>(nonadd)</sup></span>
-
-$U_{xx} = P\,\Delta v_{xA}\,R\;G_R\;R\,\Delta v_{xA}\,P,\qquad R = Q_A P_b$
-
-<div class="elim-note">&Delta;v<sub>xA</sub> does not touch b: stripping x lands in R, target excited and b still bound.</div>
+<div class="flex justify-center mt-1">
+<OutcomeScene :width="760" :height="215" story />
 </div>
 
-<div class="elim-step"><span class="ui-label">2 &nbsp;inside G<sub>A</sub>, b can still leave</span>
-
-$G_R = \big(E - RHR - U_R^{(D)}\big)^{-1},\qquad U_R^{(D)} = RHD\,\dfrac{1}{E - DHD}\,DHR$
-
-<div class="elim-note">D = Q<sub>A</sub>Q<sub>b</sub>: target excited, b lost. Exact block inversion at the cluster level: no spectator expansion, no sudden approximation.</div>
+<div class="grid grid-cols-3 gap-5" style="margin-top: 2.6rem;">
+<div class="kami-card" style="padding: 0.7rem 1rem;">
+<span class="tag">1</span> <b class="ml-1">The nucleon N is stripped</b>
+<div class="text-sm mt-1">N excites the target. At this moment the residue b is still bound.</div>
 </div>
-
-<div class="elim-step"><span class="ui-label">3 &nbsp;the stripped flux splits</span>
-
-$-\mathrm{Im}\,U_{xx} = \underbrace{\text{flux kept in } R}_{\text{b bound: measured}} \;+\; \underbrace{\langle\psi_R|\,W_R\,|\psi_R\rangle}_{\text{into } D\text{: b lost}},\qquad W_R = W_R^{(bA)} + W_R^{(bx)}$
-
-<div class="elim-note">W<sub>R</sub><sup>(bA)</sup>: the target breaks b, already inside |S<sub>b</sub>|<sup>2</sup>. W<sub>R</sub><sup>(bx)</sup>: V<sub>bx</sub> changes b&rsquo;s state.</div>
+<div class="kami-card" style="padding: 0.7rem 1rem;">
+<span class="tag">2</span> <b class="ml-1">N is still coupled to b</b>
+<div class="text-sm mt-1">That coupling can change b&rsquo;s internal state: b is excited or broken.</div>
 </div>
-
-</div>
-<div class="col-span-4 pt-2">
-
-<div class="box-gap">
-<b>Spectator model:</b> V<sub>bx</sub> &rarr; P<sub>b</sub>V<sub>bx</sub>P<sub>b</sub>, so W<sub>R</sub><sup>(bx)</sup> = 0, and closure counts R and D alike.
-</div>
-
-<div class="box-evidence mt-4">
-<b>Experiment</b> counts R only: b bound. The green cell of the table, not the red one.
-</div>
-
-<div class="box-idea mt-4 text-sm">
-Core-first stripping and diffraction sit in U<sup>(pol)</sup>; diffraction is computed separately.
-</div>
-
+<div class="kami-card" style="padding: 0.7rem 1rem;">
+<span class="tag">3</span> <b class="ml-1">Who counts what</b>
+<div class="text-sm mt-1">The standard calculation freezes b and counts <b>every</b> b. Experiment counts <b>bound</b> b.</div>
 </div>
 </div>
 
-<div style="margin-top: 0.8rem;"><div class="takeaway">
-One new term to compute: <b>W<sub>R</sub><sup>(bx)</sup></b>, the x-b coupling moving stripped flux out of bound b.
+<div style="margin-top: 1.0rem;"><div class="takeaway">
+One new term to compute: the <b>N-b coupling during stripping</b>. It is exactly what freezing b removes.
 </div></div>
+
+<div class="text-xs mt-2" style="color: var(--stone);">
+In H<sub>eff</sub> (x = N): stripping is the x-target term of U<sup>(nonadd)</sup>; the new term is W<sub>R</sub><sup>(bx)</sup> inside its G<sub>A</sub>.
+</div>
 
 <!--
 Source: calc/plan_d/P1b_derivation.md secs. 0 and 1 (Codex-audited, adopted 2026-09-24): Eqs. (1.1)-(1.4).
