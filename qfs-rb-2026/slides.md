@@ -483,48 +483,48 @@ H<sub>eff</sub> fixes <b>what</b> to compute; it is evaluated with Eq. (7) of Go
 
 ---
 
-# Gomez-Ramos <i>et al.</i> 2023: shared and different
+# Building on Gomez-Ramos <i>et al.</i> 2023
 
 <div class="grid grid-cols-12 gap-6 mt-2">
 <div class="col-span-5">
 
-<div class="ui-label mb-2">shared</div>
+<div class="ui-label mb-2">their construction, used here</div>
 
 <div class="kami-card" style="padding: 0.7rem 1rem;">
-<b>The standard baseline.</b> S<sub>b</sub>, S<sub>N</sub> from Glauber, optical limit, complex NN amplitudes, Skyrme HF core densities: what every &sigma;<sub>sp</sub> in the systematics uses.
+<b>The standard baseline.</b> S<sub>b</sub>, S<sub>N</sub> from Glauber, optical limit, complex NN amplitudes, Skyrme HF core densities.
 </div>
 
 <div class="kami-card mt-3" style="padding: 0.7rem 1rem;">
-<b>The evaluation.</b> Their Eq. (7): the N-b absorption at N&rsquo;s energy inside the projectile, average impact parameter.
+<b>The key step.</b> A complex, energy-dependent N-core interaction replaces closure; their Eq. (7) evaluates it.
+</div>
+
+<div class="kami-card mt-3" style="padding: 0.7rem 1rem;">
+<b>The compound-nucleus return</b> from PACE and GEMINI.
 </div>
 
 </div>
 <div class="col-span-7">
 
-<div class="ui-label mb-2">different here</div>
+<div class="ui-label mb-2">added here</div>
 
 <div class="kami-card-accent" style="padding: 0.6rem 1rem;">
-<span class="tag">1</span> <b class="ml-1">Where the term comes from.</b> <span class="text-sm">Derived from H<sub>eff</sub>: W<sub>R</sub><sup>(bx)</sup> in G<sub>A</sub> of U<sup>(nonadd)</sup>, and why freezing b removes it. There, a model.</span>
+<span class="tag">1</span> <b class="ml-1">Its place in H<sub>eff</sub>.</b> <span class="text-sm">The step is W<sub>R</sub><sup>(bx)</sup> in G<sub>A</sub> of U<sup>(nonadd)</sup>: the term that freezing b removes.</span>
 </div>
 
 <div class="kami-card-accent mt-2" style="padding: 0.6rem 1rem;">
-<span class="tag">2</span> <b class="ml-1">W<sub>bx</sub> as published.</b> <span class="text-sm">MR07a, MR07b and a microscopic one (WLH); the spread is the uncertainty. There, the surface term refitted.</span>
+<span class="tag">2</span> <b class="ml-1">Three absorptions.</b> <span class="text-sm">Two dispersive sets and a microscopic one; their spread as the uncertainty.</span>
 </div>
 
 <div class="kami-card-accent mt-2" style="padding: 0.6rem 1rem;">
-<span class="tag">3</span> <b class="ml-1">Diffraction computed.</b> <span class="text-sm">There, suppressed like stripping; computing it lowers the flattening by 15 to 20%.</span>
+<span class="tag">3</span> <b class="ml-1">Diffraction computed.</b> <span class="text-sm">Left beyond the scope there and taken to scale like stripping; computed, it lowers the flattening by 15 to 20%.</span>
 </div>
 
 <div class="kami-card-accent mt-2" style="padding: 0.6rem 1rem;">
-<span class="tag">4</span> <b class="ml-1">Two tests.</b> <span class="text-sm"><sup>24</sup>Si, the opposite asymmetry, and the halo limit, where b must become a spectator again.</span>
+<span class="tag">4</span> <b class="ml-1">The halo limit.</b> <span class="text-sm">As the binding goes to zero, b becomes a spectator again.</span>
 </div>
 
 </div>
 </div>
-
-<div style="margin-top: 1.0rem;"><div class="takeaway">
-Same baseline, same evaluation step. The framework tells <b>what</b> it computes; the inputs are not tuned.
-</div></div>
 
 ---
 
@@ -862,7 +862,7 @@ Real and absorption-free: &Delta;v carries <b>all</b> coupling to target excitat
 </div>
 <div>
 
-<div class="kami-card"><b>Gomez-Ramos <i>et al.</i> numbers:</b> 62 to 69% reduction of the slope with their compound-nucleus return, 23% without; a six-system fit, not our two-point metric. Not a reproduction.</div>
+<div class="kami-card"><b>Gomez-Ramos <i>et al.</i> numbers:</b> 62 to 69% reduction of the slope with their compound-nucleus return, 23% without; a six-system fit, not the two-point metric used here, so not directly comparable.</div>
 
 <div class="kami-card mt-4"><b>Not in the numbers:</b> core-first stripping (dropped by the sudden target in &sigma;<sub>surv</sub> and &sigma;<sub>sp</sub> alike); N re-bound to b (empty without a real b-x well).</div>
 
