@@ -226,7 +226,7 @@ This work: what the optical reduction leaves out of H<sub>eff</sub>, and how muc
 
 # Where three-body forces come from
 
-<div class="tb-ladder mt-4">
+<div class="tb-ladder mt-2">
 
 <div class="kami-card tb-row">
 <MiniIcon mode="nnp" :size="104" />
@@ -247,7 +247,7 @@ $H = T + \sum V_{NN} + V_{3N}$
 $H = T + V_{np} + U_{nA} + U_{pA} + V_{3B}$
 
 </div>
-<div class="tb-what">V<sub>3B</sub>: <b>target excitations</b> projected out. <sup>40</sup>Ca(d,p): &minus;20 to &minus;40% <span class="tb-ref">Austern, Richards 1968; Polyzou, Redish 1979; Johnson, Timofeyuk 2014; Dinmore et al. 2019</span></div>
+<div class="tb-what">U<sub>nA</sub>, U<sub>pA</sub>: the target excited by <b>one</b> nucleon. V<sub>3B</sub>: one excites it, <b>the other</b> de-excites it. <sup>40</sup>Ca(d,p): &minus;20 to &minus;40% <span class="tb-ref">Austern, Richards 1968; Polyzou, Redish 1979; Johnson, Timofeyuk 2014; Dinmore et al. 2019</span></div>
 </div>
 
 <div class="kami-card-accent tb-row">
@@ -258,12 +258,21 @@ $H = T + V_{np} + U_{nA} + U_{pA} + V_{3B}$
 $H = H_3^{(0)} + \;?$
 
 </div>
-<div class="tb-what">Target excitations <b>and</b> b&rsquo;s internal states projected out: a second elimination. <b>Not derived before this work.</b></div>
+<div class="tb-what">The same shared target excitation, <b>plus</b> the internal states of b and x: a second elimination. <b>Not derived before this work.</b></div>
 </div>
 
 </div>
 
-<div style="margin-top: 1.4rem;"><div class="takeaway">
+<!--
+Expected objection: "an optical potential already projects out target excitations; why again?"
+Answer: U_xA does it for x alone. With two fragments on one target, projecting onto the target ground state gives
+<phi_A| dV Q_A G_A Q_A dV |phi_A> with dV = dv_bA + dv_xA. The diagonal pieces resemble U_bA and U_xA (only
+resemble: G_A still contains the other fragment's motion, so the energy at which each fragment meets the target is
+shifted, Austern-Richards 1968). The cross pieces, x excites the target and b de-excites it, are in neither
+potential: that is the induced three-body term, established for d + A (Johnson-Timofeyuk 2014, Dinmore 2019).
+-->
+
+<div style="margin-top: 0.9rem;"><div class="takeaway">
 Knockout on b + x uses H<sub>3</sub><sup>(0)</sup> with fitted U<sub>bA</sub>, U<sub>xA</sub> and nothing else. The d + A case says the missing term is not small.
 </div></div>
 

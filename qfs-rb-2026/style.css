@@ -493,7 +493,7 @@
 .tdiag .dot { fill: #4d4c48; }
 
 /* three-body ladder slide */
-.tb-ladder { display: flex; flex-direction: column; gap: 0.7rem; }
+.tb-ladder { display: flex; flex-direction: column; gap: 0.5rem; }
 .tb-row { display: grid; grid-template-columns: 104px 9rem 19rem 1fr; gap: 1rem; align-items: center; padding: 0.3rem 1rem 0.3rem 0.6rem; }
 .tb-row .katex-display { margin: 0; text-align: left; font-size: 0.92em; }
 .tb-what { font-size: 0.95rem; line-height: 1.4; }
