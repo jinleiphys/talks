@@ -296,9 +296,11 @@ Knockout is the <b>x = N</b> limit: only b&rsquo;s internal states are projected
 </div>
 
 <div class="text-sm mt-3" style="color: var(--stone); line-height: 1.5;">
-P = P<sub>A</sub>P<sub>b</sub>; the other three sectors are eliminated exactly. The spectator model keeps P and
-lets the stripped flux count as surviving, whatever state b is in.
+P = P<sub>A</sub>P<sub>b</sub>; the other three sectors are eliminated exactly. The spectator model counts
+<b>both</b> stripping cells:
 </div>
+
+<OutcomeScene :width="350" :height="125" class="mt-1" />
 
 </div>
 <div class="col-span-7 elim">

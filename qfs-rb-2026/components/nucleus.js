@@ -78,7 +78,7 @@ export function releaseRenderer(r) {
 // One WebGL context shared by every small icon: each icon renders its scene here and copies the frame into its own
 // 2D canvas. Chrome drops the oldest WebGL context once about 16 are open, and the deck has more icons than that.
 let shared = null
-export function sharedRender(scene, cam, canvas, S) {
+export function sharedRender(scene, cam, canvas, S, H = S) {
   if (!shared) {
     shared = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true })
     shared.setClearColor(0x000000, 0)
@@ -86,7 +86,7 @@ export function sharedRender(scene, cam, canvas, S) {
     shared.outputColorSpace = THREE.SRGBColorSpace
   }
   const dpr = Math.min(window.devicePixelRatio, 2)
-  shared.setPixelRatio(dpr); shared.setSize(S, S, false)
+  shared.setPixelRatio(dpr); shared.setSize(S, H, false)
   shared.render(scene, cam)
   const ctx = canvas.getContext('2d')
   ctx.clearRect(0, 0, canvas.width, canvas.height)
