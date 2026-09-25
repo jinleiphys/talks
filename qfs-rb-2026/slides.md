@@ -324,7 +324,7 @@ $U^{(\rm nonadd)} = \langle\phi_A|\,\Delta V\,Q_A\,G_A\,Q_A\,\Delta V\,|\phi_A\r
 
 $U^{(\rm pol)} = P_b\,H^{(A)} Q_b\,\dfrac{1}{E - Q_bH^{(A)}Q_b}\,Q_b H^{(A)} P_b$
 
-<div class="elim-note">H<sup>(A)</sup> = H<sub>3</sub><sup>(0)</sup> + U<sup>(nonadd)</sup>. Picture: target in its ground state, the <b>x-b coupling</b> lifts b to b* and back.</div>
+<div class="elim-note">H<sup>(A)</sup> = H<sub>3</sub><sup>(0)</sup> + U<sup>(nonadd)</sup>. Target in its ground state, the <b>x-b coupling</b> lifts b to b* and back. U<sub>bA</sub>, fitted to a free b, knows b excited by the target, <b>not by x</b>.</div>
 </div>
 </div>
 </div>
@@ -343,36 +343,6 @@ $H_{\rm eff} = H_3^{(0)} + U^{(\rm nonadd)} + U^{(\rm pol)}$
 Standard practice keeps H<sub>3</sub><sup>(0)</sup> and deletes both. That deletion <b>is</b> the spectator assumption.
 </div></div>
 
-
----
-
-# What H<sub>3</sub><sup>(0)</sup> leaves out
-
-<div class="grid grid-cols-2 gap-8 mt-1">
-<div>
-<div class="ui-label mb-1">1 &nbsp;target excitation &nbsp;&rarr; U<sup>(nonadd)</sup></div>
-<ElimScene mode="target" :height="205" />
-<div class="box-gap mt-2 text-sm">
-<b>Why not in H<sub>3</sub><sup>(0)</sup>:</b> U<sub>xA</sub> is fitted to a <b>free</b> x on the target: only x de-excites
-the target, and no b is coupled to x while A* lives. Excited by x, de-excited by b needs both fragments:
-no potential in one coordinate holds it.
-</div>
-</div>
-<div>
-<div class="ui-label mb-1">2 &nbsp;excited b &nbsp;&rarr; U<sup>(pol)</sup></div>
-<ElimScene mode="core" :height="205" />
-<div class="box-gap mt-2 text-sm">
-<b>Why not in H<sub>3</sub><sup>(0)</sup>:</b> U<sub>bA</sub> is fitted to a <b>free</b> b, so it knows b excited by the
-target, not by x. V<sub>bx</sub> in H<sub>3</sub><sup>(0)</sup> acts on b's ground state only: b is frozen, and every b
-that comes out is counted as surviving.
-</div>
-</div>
-</div>
-
-<div style="margin-top: 1.0rem;"><div class="takeaway">
-U<sub>bA</sub> and U<sub>xA</sub> each know one fragment: what needs <b>both at once</b> is dropped, and b is counted in
-every state while the experiment counts <b>b bound</b>.
-</div></div>
 
 ---
 
