@@ -7,7 +7,7 @@
 //   deep    x on a tight orbit inside b's surface (large separation energy)
 //   nnp     three nucleons, pair links always on; a central glow pulses: the three-nucleon force
 //   dA      n + p above a target; the target lights up (A*) and n, p couple through it: induced V_3B
-//   bxA     b + x above a target; the target lights up and so does b (b*): two eliminations
+//   bxA     b + x above a target (x a small cluster with the gold x glow); the target lights up and so does b (b*)
 // Fixed pixel size (no clientWidth), so a slide mounted while hidden renders correctly when shown.
 import { useIsSlideActive } from '@slidev/client'
 import { onMounted, onBeforeUnmount, ref } from 'vue'
@@ -129,11 +129,10 @@ function buildTargetPair(scene, composite) {
   const A = makeNucleus(6, 6, 0.3, 11); A.position.set(0, -1.15, 0); scene.add(A)
   const Ag = glow(0xe9674f, 3.0, 0); Ag.position.copy(A.position); scene.add(Ag)
   const left = composite ? makeNucleus(5, 4, 0.26, 5) : nucleon(false, 0.3)
-  const right = composite ? new THREE.Mesh(new THREE.SphereGeometry(0.28, 24, 16),
-    new THREE.MeshPhysicalMaterial({ color: COL.x, roughness: 0.3, clearcoat: 0.6 })) : nucleon(true, 0.3)
+  const right = composite ? makeNucleus(2, 1, 0.24, 7) : nucleon(true, 0.3)   // x: a fragment, not necessarily one nucleon
   const lHome = new THREE.Vector3(-0.75, 1.0, 0), rHome = new THREE.Vector3(0.75, 1.05, 0)
   left.position.copy(lHome); right.position.copy(rHome); scene.add(left, right)
-  if (composite) { const xg = glow(COL.x, 0.9, 0.6); xg.material.depthTest = false; right.add(xg) }
+  if (composite) { const xg = glow(COL.x, 1.5, 0.75); xg.material.depthTest = false; right.add(xg) }
   const bg = glow(0xe9674f, 2.2, 0); bg.material.depthTest = false; scene.add(bg)
   const pair = linkDots(scene, 5, 0x6f86a0, 0.26)
   const down = linkDots(scene, 5, 0xf2c14e, 0.26), up = linkDots(scene, 5, 0xf2c14e, 0.26)
