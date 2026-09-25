@@ -55,7 +55,7 @@ NUBASE2020: Kondev et al., Chin. Phys. C 45, 030001 (2021).
 <div class="box-idea flex items-center gap-3" style="padding: 0.55rem 0.9rem 0.55rem 1.1rem;">
 <div class="flex-1">
 <b>Spectra show where shells break.</b>
-<div class="mt-1 text-sm">N&nbsp;=&nbsp;20 and 28 dissolve, N&nbsp;=&nbsp;32 and 34 appear far from stability; knockout follows N&nbsp;=&nbsp;28 through <sup>36,38,40</sup>Si.</div>
+<div class="mt-1 text-sm">N&nbsp;=&nbsp;20 and 28 dissolve, N&nbsp;=&nbsp;32 and 34 appear far from stability; knockout along <sup>36,38,40</sup>Si tracks the approach to N&nbsp;=&nbsp;28.</div>
 </div>
 <MiniIcon :size="72" mode="shells" />
 </div>
@@ -142,7 +142,7 @@ Aumann et al., PPNP 118, 103847 (2021), Fig. 56(a) to (c).
 </div>
 
 <div class="box-gap text-base mt-2">
-(e,e'p), transfer, (p,2p): <b>flat</b> at 40 to 70%. Only knockout on Be and C falls, analysed with <b>one reaction model</b>.
+(e,e'p), transfer, (p,2p), (p,pn): no strong slope; for modest &Delta;S most lie at 40 to 70%. Only knockout on Be and C falls, analysed with <b>one reaction model</b>.
 </div>
 
 </div>
@@ -161,19 +161,19 @@ Is this <b>structure</b>, or is it the <b>reaction model</b>?
 <div class="col-span-7 eqchain">
 
 <div class="eqgroup">
-<div class="eqrow"><span class="ui-label">many-body</span>
+<div class="eqrow"><span class="ui-label">cluster</span>
 
 $H = T_R + T_r + H_A + H_a + V_{bA} + V_{xA}$
 
 </div>
-<div class="eqnote">every nucleon; H<sub>a</sub> = H<sub>b</sub> + V<sub>bx</sub> keeps the internal states of b</div>
+<div class="eqnote">b, x and target with their internal states; H<sub>a</sub> = H<sub>b</sub> + H<sub>x</sub> + V<sub>bx</sub></div>
 </div>
 
 <div class="eqarrow">&darr;&ensp;exact projection: target in its ground state, b bound</div>
 
 <div class="eqrow"><span class="ui-label">three-body</span>
 
-$H_{\rm eff} = PHP + PHQ\,\dfrac{1}{E - QHQ}\,QHP$
+$H_{\rm eff} = PHP + PHQ\,\dfrac{1}{E + i0 - QHQ}\,QHP$
 
 </div>
 
@@ -181,7 +181,7 @@ $H_{\rm eff} = PHP + PHQ\,\dfrac{1}{E - QHQ}\,QHP$
 
 <div class="eqrow"><span class="ui-label">model</span>
 
-$H_3^{(0)} = T_R + T_r + V_{bx} + U_{bA} + U_{xA}$
+$H_3^{(0)} = T_R + T_r + H_a + U_{bA} + U_{xA}$
 
 </div>
 
@@ -213,7 +213,7 @@ Every &sigma;<sub>sp</sub> behind the systematics takes <b>H<sub>eff</sub> = H<s
 </div>
 
 <div style="margin-top: 1.6rem;"><div class="takeaway">
-This work: what the optical reduction leaves out of H<sub>eff</sub>, and how much of the trend it carries.
+This work: what the optical reduction leaves out of H<sub>eff</sub>, and which of it the trend can carry.
 </div></div>
 
 
@@ -231,7 +231,7 @@ This work: what the optical reduction leaves out of H<sub>eff</sub>, and how muc
 $H = T + \sum V_{NN} + V_{3N}$
 
 </div>
-<div class="tb-what">V<sub>3N</sub>: &Delta; and pion excitations projected out <span class="tb-ref">Fujita, Miyazawa 1957</span></div>
+<div class="tb-what">V<sub>3N</sub>: two-pion exchange through an intermediate &Delta;, the &Delta; projected out <span class="tb-ref">Fujita, Miyazawa 1957</span></div>
 </div>
 
 <div class="kami-card tb-row">
@@ -253,7 +253,7 @@ $H = T + V_{np} + U_{nA} + U_{pA} + V_{3B}$
 $H = H_3^{(0)} + \;?$
 
 </div>
-<div class="tb-what">The same shared target excitation, <b>plus</b> the internal states of b and x: a second elimination. <b>Not derived before this work.</b></div>
+<div class="tb-what">The same shared target excitation, <b>plus</b> the internal states of b and x: a second elimination. Its connection to <b>knockout quenching</b> had not been established.</div>
 </div>
 
 </div>
@@ -278,7 +278,7 @@ Knockout is the <b>x = N</b> limit: only b&rsquo;s internal states are projected
 <div class="sg-cell sg-p"><div class="sg-key"><b>P</b> = P<sub>A</sub>P<sub>b</sub></div>model space<br><span>elastic, diffraction</span></div>
 <div class="sg-cell"><div class="sg-key"><b>C</b> = P<sub>A</sub>Q<sub>b</sub></div>b excited<br><span>&rarr; U<sup>(pol)</sup></span></div>
 <div class="sg-side"><div>target excited<br>Q<sub>A</sub><br><b style="color: var(--near-black);">stripping</b></div></div>
-<div class="sg-cell sg-meas"><div class="sg-key"><b>R</b> = Q<sub>A</sub>P<sub>b</sub></div><b>b bound</b><br><span>measured</span></div>
+<div class="sg-cell sg-meas"><div class="sg-key"><b>R</b> = Q<sub>A</sub>P<sub>b</sub></div><b>b bound</b><br><span>contains the measured yield</span></div>
 <div class="sg-cell sg-lost"><div class="sg-key"><b>D</b> = Q<sub>A</sub>Q<sub>b</sub></div><b>b lost</b><br><span>&rarr; G<sub>A</sub> of U<sup>(nonadd)</sup></span></div>
 </div>
 
@@ -298,7 +298,7 @@ R, C, D are eliminated exactly. The spectator model counts <b>both</b> R and D:
 
 $U^{(\rm nonadd)} = \langle\phi_A|\,\Delta V\,Q_A\,G_A\,Q_A\,\Delta V\,|\phi_A\rangle$
 
-<div class="elim-note">&Delta;V = &Delta;v<sub>bA</sub> + &Delta;v<sub>xA</sub>, G<sub>A</sub> = (E &minus; Q<sub>A</sub>HQ<sub>A</sub>)<sup>&minus;1</sup>. Picture: <b>x excites</b> the target, <b>b de-excites</b> it, the cross term no U<sub>xA</sub> or U<sub>bA</sub> holds.</div>
+<div class="elim-note">Hartree reference, so no first-order term. &Delta;V = &Delta;v<sub>bA</sub> + &Delta;v<sub>xA</sub>, G<sub>A</sub> = (E + i0 &minus; Q<sub>A</sub>HQ<sub>A</sub>)<sup>&minus;1</sup>; all resolvents outgoing. Picture: <b>x excites</b> the target, <b>b de-excites</b> it, the cross term no U<sub>xA</sub> or U<sub>bA</sub> holds.</div>
 </div>
 </div>
 </div>
@@ -310,7 +310,7 @@ $U^{(\rm nonadd)} = \langle\phi_A|\,\Delta V\,Q_A\,G_A\,Q_A\,\Delta V\,|\phi_A\r
 
 $U^{(\rm pol)} = P_b\,H^{(A)} Q_b\,\dfrac{1}{E - Q_bH^{(A)}Q_b}\,Q_b H^{(A)} P_b$
 
-<div class="elim-note">H<sup>(A)</sup> = H<sub>3</sub><sup>(0)</sup> + U<sup>(nonadd)</sup>. Target in its ground state, the <b>x-b coupling</b> lifts b to b* and back. U<sub>bA</sub>, fitted to a free b, knows b excited by the target, <b>not by x</b>.</div>
+<div class="elim-note">H<sup>(A)</sup> = H<sub>3</sub><sup>(0)</sup> + U<sup>(nonadd)</sup>. Target in its ground state, b lifted to b* and back: by the <b>x-b coupling</b>, and by the target through &Delta;v<sub>bA</sub>. U<sub>bA</sub>, fitted to a free b, knows b excited by the target, <b>not by x</b>.</div>
 </div>
 </div>
 </div>
@@ -326,7 +326,7 @@ $H_{\rm eff} = H_3^{(0)} + U^{(\rm nonadd)} + U^{(\rm pol)}$
 </div>
 
 <div style="margin-top: 1.2rem;"><div class="takeaway">
-Standard practice keeps H<sub>3</sub><sup>(0)</sup> and deletes both. That deletion <b>is</b> the spectator assumption.
+Standard practice keeps H<sub>3</sub><sup>(0)</sup> and drops both. Freezing b is the <b>spectator</b> part of that step.
 </div></div>
 
 
@@ -408,10 +408,10 @@ $U_R^{(D)} = RHD\,\dfrac{1}{E - DHD}\,DHR$
 <div class="eqm-row">
 <div class="eqm-eq">
 
-$-\mathrm{Im}\,U_{xx} = \text{flux in } R + \langle\psi_R|W_R^{(bA)} + W_R^{(bx)}|\psi_R\rangle$
+$-\mathrm{Im}\,\langle U_{xx}\rangle = \text{flux in } R + \langle\psi_R|W_R|\psi_R\rangle$
 
 </div>
-<div class="eqm-say"><span class="eqm-step">count</span> All stripping = <b style="color: var(--color-evidence);">b bound</b> (measured) + <b style="color: var(--color-gap);">b lost</b>: broken by the target (standard) or by the <b>N-b coupling</b> (new).</div>
+<div class="eqm-say"><span class="eqm-step">count</span> Direct stripping = <b style="color: var(--color-evidence);">b bound</b> (its b + N continuum part is measured) + <b style="color: var(--color-gap);">b lost</b>. W<sub>R</sub> = W<sub>R</sub><sup>(bA)</sup> (target, in |S<sub>b</sub>|<sup>2</sup> under the eikonal step) + W<sub>R</sub><sup>(bx)</sup> (<b>N-b coupling</b>) + interference.</div>
 </div>
 
 </div>
@@ -419,7 +419,7 @@ $-\mathrm{Im}\,U_{xx} = \text{flux in } R + \langle\psi_R|W_R^{(bA)} + W_R^{(bx)
 <div class="flex items-center gap-6 mt-2">
 <OutcomeScene :width="420" :height="150" :caption="false" story />
 <div class="takeaway flex-1">
-The spectator model freezes b (V<sub>bx</sub> &rarr; P<sub>b</sub>V<sub>bx</sub>P<sub>b</sub>): W<sub>R</sub><sup>(bx)</sup> = 0 and every b is counted. <b>W<sub>R</sub><sup>(bx)</sup></b> is the one new term.
+Freezing b (V<sub>bx</sub> &rarr; P<sub>b</sub>V<sub>bx</sub>P<sub>b</sub>) sets W<sub>R</sub><sup>(bx)</sup> = 0: the new term of direct stripping.
 </div>
 </div>
 
@@ -473,7 +473,7 @@ Prediction: the deep channel loses more of b, and the effect <b>fades as the bin
 
 ---
 
-# The term evaluated: Gomez-Ramos <i>et al.</i> 2023
+# A sudden-eikonal evaluation: Gomez-Ramos <i>et al.</i> 2023
 
 <div class="grid grid-cols-12 gap-6 mt-1">
 <div class="col-span-7">
@@ -481,7 +481,7 @@ Prediction: the deep channel loses more of b, and the effect <b>fades as the bin
 <img src="./figures/gr23-fig4.png" class="kami-img" style="height: 19rem;" />
 
 <div class="fig-caption">
-Gomez-Ramos, Gomez-Camacho, Moro, PLB 847, 138284 (2023), Fig. 4. Models I, II: return from PACE, GEMINI.
+Gomez-Ramos, Gomez-Camacho, Moro, PLB 847, 138284 (2023), Fig. 4. Models I, II: PACE, GEMINI return fractions set the N-core absorption.
 </div>
 
 </div>
@@ -492,7 +492,7 @@ Gomez-Ramos, Gomez-Camacho, Moro, PLB 847, 138284 (2023), Fig. 4. Models I, II: 
 </div>
 
 <div class="box-evidence mt-4">
-<b>(b)</b> The slope of R<sub>s</sub>: &minus;0.013 &rarr; &minus;0.004 (I), &minus;0.005 (II) MeV<sup>&minus;1</sup>, <b>less than half</b>. Close to the (p,pN) trend.
+<b>(b)</b> For their six systems, the slope of R<sub>s</sub>: &minus;0.013 &rarr; &minus;0.004 (I), &minus;0.005 (II) MeV<sup>&minus;1</sup>, <b>less than half</b>. Close to the (p,pN) trend.
 </div>
 
 <div class="box-gap mt-4">
@@ -503,14 +503,14 @@ The size rests on the N-core absorption and the compound-nucleus return.
 </div>
 
 <div style="margin-top: 0.8rem;"><div class="takeaway">
-In H<sub>eff</sub>, this is W<sub>R</sub><sup>(bx)</sup>: the non-spectator dynamics of b, evaluated.
+A sudden-eikonal realization of W<sub>R</sub><sup>(bx)</sup>: the non-spectator dynamics of b.
 </div></div>
 
 ---
 
 # What is open
 
-<div class="grid grid-cols-2 gap-8 mt-8">
+<div class="grid grid-cols-2 gap-6 mt-3">
 <div class="kami-card">
 <span class="tag">1</span> <b class="ml-2">The return from the framework</b>
 <div class="mt-2 text-sm">Flux that leaves bound b and comes back is a D &rarr; R path. Compute it instead of borrowing a decay code.</div>
@@ -521,7 +521,7 @@ In H<sub>eff</sub>, this is W<sub>R</sub><sup>(bx)</sup>: the non-spectator dyna
 </div>
 <div class="kami-card">
 <span class="tag">3</span> <b class="ml-2">Beam energy</b>
-<div class="mt-2 text-sm">The trend is the same from 80 MeV/nucleon to 1.6 GeV/nucleon; the correction must be too.</div>
+<div class="mt-2 text-sm">The trend holds from 80 MeV/nucleon to 1.6 GeV/nucleon; a dominant correction has to follow it.</div>
 </div>
 <div class="kami-card">
 <span class="tag">4</span> <b class="ml-2">The real N-b interaction</b>
@@ -530,9 +530,9 @@ In H<sub>eff</sub>, this is W<sub>R</sub><sup>(bx)</sup>: the non-spectator dyna
 </div>
 
 <div class="box-evidence mt-5">
-<b>A direct test.</b> b broken by the x-b coupling leaves b &minus; 1, b &minus; 2, &hellip;: it feeds <b>multi-nucleon removal</b> of the same beam.
-The yield beyond the target breaking b directly is the flux the spectator formula counts as survival.
-<span class="text-xs" style="color: var(--stone);">First attempt: <sup>14</sup>O on C, 60 MeV/nucleon, <sup>13</sup>O* &rarr; p + <sup>12</sup>N and 2p + <sup>11</sup>C below 7.5 MeV: &lt; 4.6(20) mb, against 16.8 mb for &minus;1n. Higher <sup>13</sup>O* not measured. Sun et al., PRC 93, 044607 (2016).</span>
+<b>A candidate constraint.</b> b broken by the x-b coupling leaves b &minus; 1, b &minus; 2, &hellip;: it feeds <b>multi-nucleon removal</b> of the same beam.
+The yield beyond the target breaking b directly is flux the spectator formula counts as survival.
+<span class="text-xs" style="color: var(--stone);">First attempt: <sup>14</sup>O on C, 60 MeV/nucleon, <sup>13</sup>O* &rarr; p + <sup>12</sup>N and 2p + <sup>11</sup>C below 7.5 MeV: upper limits 2.0(14) and 2.6(14) mb, against 16.8(12) mb for &minus;1n (scaled from 53 MeV/nucleon). Higher <sup>13</sup>O* not measured. Sun et al., PRC 93, 044607 (2016).</span>
 </div>
 
 ---
@@ -616,7 +616,7 @@ Real and absorption-free: &Delta;v carries <b>all</b> coupling to target excitat
 </div>
 <div>
 
-<div class="kami-card"><b>In practice</b> S<sub>b</sub>, S<sub>x</sub> come from Glauber with complex NN amplitudes, or from a fitted optical potential: U<sup>H</sup> plus the <b>free-fragment</b> U<sub>bb</sub>, U<sub>xx</sub>.</div>
+<div class="kami-card"><b>In practice</b> S<sub>b</sub>, S<sub>x</sub> come from Glauber with complex NN amplitudes, or from a fitted optical potential. These absorb part of the diagonal target-excitation physics <b>phenomenologically</b>; they are not the exact U<sub>bb</sub>, U<sub>xx</sub> of the composite.</div>
 
 <div class="kami-card mt-4"><b>b broken by the target</b> after stripping (W<sub>R</sub><sup>(bA)</sup>) sits in the same factor under the eikonal step, identically in &sigma;<sub>surv</sub> and &sigma;<sub>sp</sub>.</div>
 
