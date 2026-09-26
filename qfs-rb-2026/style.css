@@ -511,3 +511,9 @@
   text-transform: uppercase; color: var(--ink-blue); margin-right: 0.3rem; }
 .sg-key { font-size: 1.05em; margin-bottom: 0.2rem; white-space: nowrap; }
 .sg-key b { font-size: 1.15em; margin-right: 0.1rem; }
+
+/* "The story is not over": icon, term, meaning */
+.nc-list { display: flex; flex-direction: column; gap: 0.45rem; }
+.nc-row { display: grid; grid-template-columns: 66px 8rem 1fr; gap: 1rem; align-items: center; padding: 0.15rem 1rem 0.15rem 0.6rem; font-size: 0.92rem; line-height: 1.35; }
+.nc-row > b { font-size: 1.1rem; }
+.nc-sub { margin-top: 0.15rem; font-size: 0.86rem; }

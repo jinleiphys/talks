@@ -32,9 +32,13 @@ Southern Center for Nuclear-Science Theory, Institute of Modern Physics, CAS, Hu
 QFS-RB 2026 &nbsp;&middot;&nbsp; Takayama
 </div>
 
-<div class="text-xs mt-16" style="color: var(--stone);">
+<div class="text-xs mt-6" style="color: var(--stone);">
 NSFC 12475132 and 12535009 &nbsp;&middot;&nbsp; Fundamental Research Funds for the Central Universities
 </div>
+
+<div style="height: 7rem;"></div>
+
+<TakayamaScene :height="290" />
 
 ---
 
@@ -308,7 +312,7 @@ $U^{(\rm nonadd)} = \langle\phi_A|\,\Delta V\,Q_A\,G_A\,Q_A\,\Delta V\,|\phi_A\r
 <MiniIcon mode="elimB" :size="96" />
 <div class="elim-body">
 
-$U^{(\rm pol)} = P_b\,H^{(A)} Q_b\,\dfrac{1}{E - Q_bH^{(A)}Q_b}\,Q_b H^{(A)} P_b$
+$U^{(\rm pol)} = P_b\,H^{(A)} Q_b\,\dfrac{1}{E + i0 - Q_bH^{(A)}Q_b}\,Q_b H^{(A)} P_b$
 
 <div class="elim-note">H<sup>(A)</sup> = H<sub>3</sub><sup>(0)</sup> + U<sup>(nonadd)</sup>. Target in its ground state, b lifted to b* and back: by the <b>x-b coupling</b>, and by the target through &Delta;v<sub>bA</sub>. U<sub>bA</sub>, fitted to a free b, knows b excited by the target, <b>not by x</b>.</div>
 </div>
@@ -364,116 +368,86 @@ $U^{(\rm nonadd)} = \underbrace{U_{xx}}_{\text{N in, N out}} + \underbrace{U_{bb
 </div>
 
 ---
+clicks: 5
+---
 
 # Inside stripping, b is not frozen
+
+<StripScene :step="$clicks" :height="260" />
+
+<div class="takeaway mt-4" :style="{ opacity: $clicks >= 5 ? 1 : 0, transition: 'opacity 0.4s' }">
+U<sub>xx</sub> looks like N on the target alone, yet inside [G<sub>A</sub>]<sub>RR</sub> <b>b is not frozen</b>.
+</div>
+
+
+---
+
+# What the absorption of U<sub>xx</sub> counts
 
 <div class="eqmeaning mt-1">
 
 <div class="eqm-row">
 <div class="eqm-eq">
 
-$Q_A = \underbrace{Q_A P_b}_{R} + \underbrace{Q_A Q_b}_{D}$
+$$-\mathrm{Im}\,U_{xx}\;\Rightarrow\;\sigma_{\rm str} = \underbrace{\sigma_{R}}_{\textcolor{#4a6b3a}{\text{b bound}}} + \underbrace{\sigma_{R\to D}}_{\textcolor{#b53333}{\text{b lost}}}$$
 
 </div>
-<div class="eqm-say"><span class="eqm-step">split</span> Target excited, sorted by b. <b>R</b>: b still bound. <b>D</b>: b excited or broken. (The lower row of the table.)</div>
+<div class="eqm-say"><span class="eqm-step">split</span> The absorption of U<sub>xx</sub> is all of stripping: N takes the target out of its ground state. That flux then <b style="color: var(--color-evidence);">stays in R</b> (b bound, measured) or <b style="color: var(--color-gap);">passes to D</b> (b lost).</div>
 </div>
 
-<div class="eqm-row">
+<div class="eqm-row" v-click>
 <div class="eqm-eq">
 
-$U_{xx} = P\,\Delta v_{xA}\,R\,[G_A]_{RR}\,R\,\Delta v_{xA}\,P$
+$$\sigma_{R\to D} = -\frac{2}{\hbar v}\,\langle W_R\rangle, \qquad W_R \le 0$$
 
 </div>
-<div class="eqm-say"><span class="eqm-step">strip</span> &Delta;v<sub>xA</sub> does not touch b, so N enters and leaves through R.</div>
+<div class="eqm-say"><span class="eqm-step">loss</span> Because b can leave R for D, [G<sub>A</sub>]<sub>RR</sub> has an absorptive part of its own, W<sub>R</sub> (U = V + iW convention), taken over the state N leaves behind in R.</div>
 </div>
 
-<div class="eqm-row">
+<div class="eqm-row" v-click>
 <div class="eqm-eq">
 
-$[G_A]_{RR} = \big(E - RHR - U_R^{(D)}\big)^{-1}$
+$$W_R = W_R^{(bA)} + W_R^{(bx)} + \text{interference}$$
 
 </div>
-<div class="eqm-say"><span class="eqm-step">fold</span> Fold D back into R, the same Feshbach step one level down: <b>b is not frozen.</b></div>
+<div class="eqm-say"><span class="eqm-step">who</span> <b>W<sub>R</sub><sup>(bA)</sup></b>: the target breaks b, already in the eikonal as |S<sub>b</sub>|<sup>2</sup>. <b>W<sub>R</sub><sup>(bx)</sup></b>: the <b>N-b coupling</b> breaks b. Freezing b sets it to zero.</div>
 </div>
 
-<div class="eqm-row">
+<div class="eqm-row" v-click>
 <div class="eqm-eq">
 
-$U_R^{(D)} = RHD\,\dfrac{1}{E - DHD}\,DHR$
+$$W_R^{(bx)} \;\approx\; \mathrm{Im}\,U_{N\text{-core}}(E_{N\text{-core}})$$
 
 </div>
-<div class="eqm-say"><span class="eqm-step">meaning</span> b goes from R into D and back, with the target still excited.</div>
-</div>
-
-<div class="eqm-row">
-<div class="eqm-eq">
-
-$-\mathrm{Im}\,\langle U_{xx}\rangle = \text{flux in } R + \langle\psi_R|W_R|\psi_R\rangle$
-
-</div>
-<div class="eqm-say"><span class="eqm-step">count</span> Direct stripping = <b style="color: var(--color-evidence);">b bound</b> (its b + N continuum part is measured) + <b style="color: var(--color-gap);">b lost</b>. W<sub>R</sub> = W<sub>R</sub><sup>(bA)</sup> (target, in |S<sub>b</sub>|<sup>2</sup> under the eikonal step) + W<sub>R</sub><sup>(bx)</sup> (<b>N-b coupling</b>) + interference.</div>
+<div class="eqm-say"><span class="eqm-step">in practice</span> The imaginary part of the nucleon-core optical potential, at the N-core energy inside the projectile. It is the absorption in <b>Eq. (7) of Gomez-Ramos et al.</b></div>
 </div>
 
 </div>
 
-<div class="flex items-center gap-6 mt-2">
-<OutcomeScene :width="420" :height="150" :caption="false" story />
-<div class="takeaway flex-1">
-Freezing b (V<sub>bx</sub> &rarr; P<sub>b</sub>V<sub>bx</sub>P<sub>b</sub>) sets W<sub>R</sub><sup>(bx)</sup> = 0: the new term of direct stripping.
+<div v-click>
+<div class="takeaway mt-4">
+The spectator formula counts the b lost through the N-b coupling as survival. Gomez-Ramos et al. compute that piece.
 </div>
 </div>
 
 ---
 
-# Where "b excited or broken" sits in H<sub>eff</sub>
-
-<div class="text-center text-lg mt-1" style="color: var(--stone);">It depends on what the <b>target</b> is doing at that moment.</div>
-
-<div class="grid grid-cols-2 gap-6 mt-4">
-<div class="kami-card-accent">
-<div class="ui-label">target excited (after stripping)</div>
-<div class="mt-2">b broken there is the sector D = Q<sub>A</sub>Q<sub>b</sub>. Eliminating the target first, it is integrated out <b>inside G<sub>A</sub> of U<sup>(nonadd)</sup></b>, together with Q<sub>A</sub>.</div>
-<div class="mt-3"><b>The new term:</b> W<sub>R</sub><sup>(bx)</sup> in the N-target term.</div>
-</div>
-<div class="kami-card-accent">
-<div class="ui-label">target in its ground state</div>
-<div class="mt-2">b excited there is the sector C = P<sub>A</sub>Q<sub>b</sub>: this is <b>U<sup>(pol)</sup></b>. It holds three things:</div>
-<div class="mt-2 text-sm">
-<b>a.</b> b broken in diffraction: the same N-b coupling, target in its ground state.<br>
-<b>b.</b> core-first stripping (b excited, then the target): dropped by the sudden target, in both &sigma;<sub>surv</sub> and &sigma;<sub>sp</sub>.<br>
-<b>c.</b> b* admixed in the projectile: a normalization, not a yield.
-</div>
-</div>
-</div>
-
-<div class="grid grid-cols-2 gap-6 mt-4 text-sm">
-<div class="kami-card" style="padding: 0.6rem 1rem;"><b>U<sup>(nonadd)</sup>, U<sub>bb</sub>:</b> b excites the target, b de-excites it. The same in &sigma;<sub>surv</sub> and &sigma;<sub>sp</sub>.</div>
-<div class="kami-card" style="padding: 0.6rem 1rem;"><b>U<sup>(nonadd)</sup>, U<sub>xb</sub> + U<sub>bx</sub>:</b> N excites the target, b de-excites it, or the reverse: the induced three-body force of slide 6.</div>
-</div>
-
-<div style="margin-top: 1.0rem;"><div class="takeaway">
-The direct sequence, strip first and then break b, never passes through C: it is in U<sup>(nonadd)</sup>, not U<sup>(pol)</sup>.
-</div></div>
-
-
----
-
-# What decides how much b is disturbed
+# Which channel loses more of b
 
 <OrbitalCloud :height="300" />
 
 <div class="grid grid-cols-2 gap-8 mt-3 text-center">
-<div><b style="color: var(--color-gap);">deeply bound x</b>: overlaps b, many channels open</div>
-<div><b style="color: var(--ink-blue);">weakly bound x</b>: mostly outside b, few channels open</div>
+<div><b style="color: var(--color-gap);">deeply bound x</b>: its orbital lies inside b, where the N-core absorption acts</div>
+<div><b style="color: var(--ink-blue);">weakly bound x</b>: mostly outside b, little overlap with it</div>
 </div>
 
 <div class="takeaway mt-5">
-Prediction: the deep channel loses more of b, and the effect <b>fades as the binding goes to zero</b>.
+Prediction: &langle;W<sub>R</sub><sup>(bx)</sup>&rangle; is larger in the deep channel, and <b>fades as the binding goes to zero</b>.
 </div>
 
 ---
 
-# A sudden-eikonal evaluation: Gomez-Ramos <i>et al.</i> 2023
+# W<sub>R</sub><sup>(bx)</sup> computed: Gomez-Ramos <i>et al.</i> 2023
 
 <div class="grid grid-cols-12 gap-6 mt-1">
 <div class="col-span-7">
@@ -503,36 +477,46 @@ The size rests on the N-core absorption and the compound-nucleus return.
 </div>
 
 <div style="margin-top: 0.8rem;"><div class="takeaway">
-A sudden-eikonal realization of W<sub>R</sub><sup>(bx)</sup>: the non-spectator dynamics of b.
+Keeping the N-b coupling during stripping, W<sub>R</sub><sup>(bx)</sup>, <b>halves the slope</b>.
 </div></div>
+
 
 ---
 
-# What is open
+# The story is not over
 
-<div class="grid grid-cols-2 gap-6 mt-3">
-<div class="kami-card">
-<span class="tag">1</span> <b class="ml-2">The return from the framework</b>
-<div class="mt-2 text-sm">Flux that leaves bound b and comes back is a D &rarr; R path. Compute it instead of borrowing a decay code.</div>
-</div>
-<div class="kami-card">
-<span class="tag">2</span> <b class="ml-2">Diffraction</b>
-<div class="mt-2 text-sm">The same N-b coupling with the target in its ground state, in U<sup>(pol)</sup>.</div>
-</div>
-<div class="kami-card">
-<span class="tag">3</span> <b class="ml-2">Beam energy</b>
-<div class="mt-2 text-sm">The trend holds from 80 MeV/nucleon to 1.6 GeV/nucleon; a dominant correction has to follow it.</div>
-</div>
-<div class="kami-card">
-<span class="tag">4</span> <b class="ml-2">The real N-b interaction</b>
-<div class="mt-2 text-sm">Dropped in the published calculation.</div>
-</div>
+<div class="text-center mt-2">
+
+$$H_{\rm eff} = H_3^{(0)} + \underbrace{U_{xx}}_{\textcolor{#4a6b3a}{W_R^{(bx)}:\ \text{GR23}}} + \underbrace{U_{bb}}_{\textcolor{#b53333}{\text{not computed}}} + \underbrace{U_{xb} + U_{bx}}_{\textcolor{#b53333}{\text{not computed}}} + \underbrace{U^{(\rm pol)}}_{\textcolor{#b53333}{\text{not computed}}}$$
+
 </div>
 
-<div class="box-evidence mt-5">
-<b>A candidate constraint.</b> b broken by the x-b coupling leaves b &minus; 1, b &minus; 2, &hellip;: it feeds <b>multi-nucleon removal</b> of the same beam.
-The yield beyond the target breaking b directly is flux the spectator formula counts as survival.
-<span class="text-xs" style="color: var(--stone);">First attempt: <sup>14</sup>O on C, 60 MeV/nucleon, <sup>13</sup>O* &rarr; p + <sup>12</sup>N and 2p + <sup>11</sup>C below 7.5 MeV: upper limits 2.0(14) and 2.6(14) mb, against 16.8(12) mb for &minus;1n (scaled from 53 MeV/nucleon). Higher <sup>13</sup>O* not measured. Sun et al., PRC 93, 044607 (2016).</span>
+<div class="nc-list mt-3">
+<div class="kami-card nc-row" v-click>
+<MiniIcon mode="ubb" :size="66" />
+<b>U<sub>bb</sub></b>
+<div>b excites the target, b de-excites it, with N still present: not the free U<sub>bA</sub>.</div>
+</div>
+<div class="kami-card nc-row" v-click>
+<MiniIcon mode="elimA" :size="66" />
+<b>U<sub>xb</sub> + U<sub>bx</sub></b>
+<div>N excites the target, b de-excites it, or the reverse: the induced three-body force. In <sup>40</sup>Ca(d,p): &minus;20 to &minus;40%.</div>
+</div>
+<div class="kami-card nc-row" v-click>
+<MiniIcon mode="elimB" :size="66" />
+<b>U<sup>(pol)</sup></b>
+<div>Target in its ground state; b lifted to b* and back, by N or by the target. Three things:
+<div class="nc-sub"><b>a.</b> diffraction: a breaks up on the unexcited target and the N-b coupling excites b on the way out, so b is lost from the diffractive yield;</div>
+<div class="nc-sub"><b>b.</b> core-first stripping: b excited first, then N strips while b de-excites;</div>
+<div class="nc-sub"><b>c.</b> b* mixed into the ground state of a: a normalization, not a yield.</div>
+</div>
+</div>
+</div>
+
+<div v-click>
+<div class="takeaway mt-4">
+Gomez-Ramos et al. computed one piece of one term. The slope is settled only when the rest of H<sub>eff</sub> is in.
+</div>
 </div>
 
 ---
@@ -565,6 +549,8 @@ class: text-center
 <div class="mt-8 text-lg" style="color: var(--stone);">
 Jin Lei &nbsp;&middot;&nbsp; Tongji University &nbsp;&middot;&nbsp; jinl@tongji.edu.cn
 </div>
+
+<TakayamaScene :height="320" />
 
 
 ---
@@ -638,6 +624,21 @@ Not defined in the caption or text of Fig. 56. It spans about 0.45 to 0.72 (read
 <div class="kami-card mt-6">
 Fig. 29 of the same review uses a grey band for the mean &plusmn; 2&sigma; of (e,e'p) data, but at about 0.40 to 0.68 (read from the figure): a different band.
 Aumann <i>et al.</i>, Prog. Part. Nucl. Phys. 118, 103847 (2021).
+</div>
+
+</div>
+
+
+---
+
+# Backup: a test with multi-nucleon removal
+
+<div class="mt-6 text-lg">
+
+<div class="box-evidence">
+<b>A candidate constraint.</b> b broken by the x-b coupling leaves b &minus; 1, b &minus; 2, &hellip;: it feeds <b>multi-nucleon removal</b> of the same beam.
+The yield beyond the target breaking b directly is flux the spectator formula counts as survival.
+<span class="text-xs" style="color: var(--stone);">First attempt: <sup>14</sup>O on C, 60 MeV/nucleon, <sup>13</sup>O* &rarr; p + <sup>12</sup>N and 2p + <sup>11</sup>C below 7.5 MeV: upper limits 2.0(14) and 2.6(14) mb, against 16.8(12) mb for &minus;1n (scaled from 53 MeV/nucleon). Higher <sup>13</sup>O* not measured. Sun et al., PRC 93, 044607 (2016).</span>
 </div>
 
 </div>
