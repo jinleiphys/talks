@@ -60,7 +60,7 @@ const curves = Array.from({ length: NC }, () => ({
 
 // world mapping
 const WX = (x: number) => -2.1 + 4.2 * x
-const WY = (y: number) => (y - 0.55) * 2.3
+const WY = (y: number) => (y - 0.55) * 2.9
 
 onMounted(() => { try { build() } catch { /* the cover stays text-only without WebGL */ } })
 onUnmounted(() => { disposed = true; cancelAnimationFrame(raf); observer?.disconnect(); renderer?.dispose(); renderer?.forceContextLoss(); renderer?.domElement.remove() })
@@ -97,10 +97,6 @@ function build() {
   env.setAttribute('position', new THREE.BufferAttribute(envPos, 3)); env.setAttribute('color', new THREE.BufferAttribute(envCol, 4)); env.setIndex(idx)
   scene.add(new THREE.Mesh(env, new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, depthWrite: false, side: THREE.DoubleSide })))
 
-  // axes (thin, stone)
-  const axMat = new THREE.LineBasicMaterial({ color: '#a19d90' })
-  scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(WX(0) - 0.1, WY(-0.05), 0), new THREE.Vector3(WX(1) + 0.1, WY(-0.05), 0)]), axMat))
-  scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(WX(0) - 0.1, WY(-0.05), 0), new THREE.Vector3(WX(0) - 0.1, WY(1.15), 0)]), axMat))
 
   // curves: glossy tubes, colour graded along x, rebuilt from the rotating posterior draws
   const tubeMats: THREE.MeshPhysicalMaterial[] = []
@@ -126,15 +122,15 @@ function build() {
   const barMat = new THREE.MeshStandardMaterial({ color: '#141413', roughness: 0.5 })
   XD.forEach((x, i) => {
     const s = new THREE.Mesh(new THREE.SphereGeometry(0.085, 28, 18), bead); s.position.set(WX(x), WY(YD[i]), 0.6); scene.add(s)
-    const h = 4 * SN * 2.3   // +-2 sigma
+    const h = 4 * SN * 2.9   // +-2 sigma
     const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.016, 0.016, h, 8), barMat); bar.position.copy(s.position); scene.add(bar)
     for (const sgn of [-1, 1]) { const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.016, 0.016, 0.12, 8), barMat); cap.rotation.z = Math.PI / 2; cap.position.set(s.position.x, s.position.y + sgn * h / 2, 0.6); scene.add(cap) }
   })
 
   // labels
   const LAB = [
-    { text: 'data', at: new THREE.Vector3(WX(0.22), WY(-0.05) - 0.32, 0), cls: 'ink' },
-    { text: 'prediction', at: new THREE.Vector3(WX(0.82), WY(-0.05) - 0.32, 0), cls: 'warm' },
+    { text: 'data', at: new THREE.Vector3(WX(0.22), WY(0.36), 0.6), cls: 'ink' },
+    { text: 'prediction', at: new THREE.Vector3(WX(0.84), WY(1.3), 0), cls: 'warm' },
   ]
   const tmp = new THREE.Vector3()
   let W = 1, H = 1
@@ -150,7 +146,7 @@ function build() {
 
   // fixed camera: the data stay put, only the posterior draws move
   const yaw = -0.22
-  camera.position.set(9.2 * Math.sin(yaw), 1.3, 9.2 * Math.cos(yaw)); camera.lookAt(0.05, 0.05, 0); placeLabels()
+  camera.position.set(8.4 * Math.sin(yaw), 1.2, 8.4 * Math.cos(yaw)); camera.lookAt(-0.35, 0.3, 0); placeLabels()
   const t0 = performance.now(), still = navigator.webdriver || matchMedia('(prefers-reduced-motion: reduce)').matches
   let lastBuild = -1
   function frame(now: number) {
@@ -173,7 +169,7 @@ function build() {
 </template>
 
 <style scoped>
-.cover-uq { position: absolute; right: 36px; bottom: 44px; width: 410px; height: 260px; pointer-events: none; }
+.cover-uq { position: absolute; right: 16px; bottom: 22px; width: 525px; height: 380px; pointer-events: none; }
 .cover-uq-canvas { position: absolute; inset: 0; }
 .cover-uq-canvas :deep(canvas) { display: block; }
 .cover-uq-label { position: absolute; transform: translate(-50%, 0); font-family: Inter, sans-serif; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
