@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "slidev --port 3039",
+    "build": "slidev build --base /talks/dreb2026-dream/",
+    "export": "slidev export --output differentiable-emulation-dreb2026"
+  },
+  "dependencies": {
+    "@slidev/cli": "^53.0.0",
+    "@slidev/theme-seriph": "^0.25.0",
+    "three": "^0.186.0"
+  }
+}

@@ -1,0 +1,646 @@
+/* =============================================================
+   Kami Style — warm parchment canvas, ink-blue accent, serif-led.
+   Adapted from the Kami print design system for Slidev decks.
+   Principles: parchment not white, single accent, warm grays only,
+   serif carries hierarchy, no italic, no hard drop shadows.
+   ============================================================= */
+
+:root {
+  /* Surface — parchment, never pure white */
+  --paper-base:    #f5f4ed;
+  --paper-ivory:   #faf9f5;
+  --paper-sand:    #e8e6dc;
+
+  /* Single chromatic accent (≤5% of surface area) */
+  --ink-blue:      #1B365D;
+  --ink-blue-light:#2D5A8A;
+  --ink-tint:      #E4ECF5;
+
+  /* Warm neutral text stack (R ≥ G > B) */
+  --near-black:    #141413;
+  --dark-warm:     #3d3d3a;
+  --charcoal:      #4d4c48;
+  --olive:         #5e5d59;
+  --stone:         #66655f;   /* 5.3:1 on parchment, projector safe */
+  --stone-faint:   #8a8981;   /* chrome only: page number, never body text */
+
+  /* Warm borders */
+  --border-cream:  #e8e5da;
+  --border-warm:   #e0ddd2;
+  --border-soft:   #e5e3d8;
+
+  /* Ring / whisper shadow */
+  --ring-warm:     #d1cfc5;
+  --ring-deep:     #c2c0b6;
+
+  /* Narrative semantics — warm-restrained */
+  --color-gap:        #b53333;
+  --color-gap-bg:     #f3e6e0;
+  --color-idea:       var(--ink-blue);
+  --color-idea-bg:    var(--ink-tint);
+  --color-evidence:   #4a6b3a;
+  --color-evidence-bg:#e9ead9;
+}
+
+/* ====== SLIDE SURFACE ====== */
+.slidev-layout {
+  background: var(--paper-base) !important;
+  color: var(--near-black);
+  font-family: "Newsreader", "Source Serif 4", "Source Serif Pro",
+               "TsangerJinKai02", "Source Han Serif SC", "Noto Serif CJK SC",
+               "Songti SC", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  overflow-y: auto !important;
+}
+
+/* Kill Seriph theme dark overlay on cover / intro / section */
+.slidev-layout::before,
+.slidev-layout::after {
+  background: none !important;
+  background-image: none !important;
+  display: none !important;
+}
+
+.slidev-layout em,
+.slidev-layout i,
+.slidev-layout cite {
+  font-style: normal;
+  color: var(--dark-warm);
+}
+
+/* ====== TYPOGRAPHY ====== */
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3,
+.slidev-layout h4 {
+  color: var(--near-black);
+  font-weight: 500;
+  letter-spacing: 0;
+  font-style: normal;
+}
+
+.slidev-layout h1 {
+  line-height: 1.15;
+  border-left: 3px solid var(--ink-blue);
+  padding-left: 0.7em;
+}
+
+.slidev-layout h2 {
+  line-height: 1.22;
+  color: var(--dark-warm);
+}
+
+.slidev-layout h3 {
+  line-height: 1.30;
+  color: var(--charcoal);
+}
+
+.slidev-layout p,
+.slidev-layout li {
+  line-height: 1.52;
+  color: var(--near-black);
+}
+
+.slidev-layout strong {
+  font-weight: 500;
+  color: var(--ink-blue);
+}
+
+.slidev-layout a {
+  color: var(--ink-blue);
+  border-bottom: 1px solid var(--ink-blue-light);
+  text-decoration: none;
+}
+
+.slidev-layout code {
+  font-family: "JetBrains Mono", "SF Mono", Consolas, Monaco,
+               "TsangerJinKai02", "Source Han Serif SC", monospace;
+  background: var(--paper-sand);
+  color: var(--near-black);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  font-size: 0.92em;
+}
+
+.slidev-layout pre {
+  background: var(--paper-ivory);
+  border: 1px solid var(--border-cream);
+  border-left: 3px solid var(--ink-blue);
+  border-radius: 4px;
+  padding: 0.9rem 1.1rem;
+  box-shadow: 0 0 0 1px var(--ring-warm) inset;
+}
+
+.ui-label,
+.eyebrow,
+.meta {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont,
+               "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--olive);
+}
+
+/* ====== COVER / TITLE LAYOUT ====== */
+.slidev-layout.cover,
+.slidev-layout.intro {
+  background: var(--paper-base);
+}
+
+.slidev-layout.cover h1 {
+  font-size: 3.2rem;
+  font-weight: 500;
+  line-height: 1.12;
+  border-left: none;
+  padding-left: 0;
+  color: var(--near-black);
+  position: relative;
+}
+
+.slidev-layout.cover h1::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 2px;
+  background: var(--ink-blue);
+  margin: 1.1rem auto 0;
+}
+
+.slidev-layout.cover p {
+  color: var(--olive);
+  font-size: 1.05rem;
+}
+
+/* ====== SECTION DIVIDER ====== */
+.slidev-layout.section {
+  background: var(--paper-ivory);
+}
+.slidev-layout.section h1 {
+  color: var(--ink-blue);
+  border-left: 3px solid var(--ink-blue);
+}
+
+/* ====== FACT / CENTER LAYOUT ====== */
+.slidev-layout.fact h1,
+.slidev-layout.center h1 {
+  color: var(--ink-blue);
+  border-left: none;
+  padding-left: 0;
+}
+
+/* ====== CARDS ====== */
+.kami-card {
+  background: var(--paper-ivory);
+  border: 1px solid var(--border-cream);
+  border-radius: 4px;
+  padding: 1.1rem 1.3rem;
+  box-shadow: 0 0 0 1px var(--ring-warm);
+  color: var(--near-black);
+}
+
+.kami-card-accent {
+  background: var(--paper-ivory);
+  border: 1px solid var(--border-warm);
+  border-left: 3px solid var(--ink-blue);
+  border-radius: 3px;
+  padding: 1.1rem 1.3rem;
+  box-shadow: 0 0 0 1px var(--ring-warm);
+}
+
+/* ====== SEMANTIC CALLOUT BOXES ======
+   Fixed contract, do not improvise per slide:
+     .box-gap       red     what is MISSING, what fails, what cannot be claimed
+     .box-idea      blue    what I ADD: my construction, my operators, my number
+     .box-evidence  olive   what is ESTABLISHED: measured, published, verified
+   .kami-card is neutral and carries no claim.
+   ==================================================================== */
+.box-gap {
+  background: var(--color-gap-bg);
+  border: 1px solid var(--border-warm);
+  border-left: 3px solid var(--color-gap);
+  border-radius: 3px;
+  padding: 0.9rem 1.2rem;
+  color: var(--near-black);
+}
+
+.box-idea {
+  background: var(--color-idea-bg);
+  border: 1px solid var(--border-warm);
+  border-left: 3px solid var(--color-idea);
+  border-radius: 3px;
+  padding: 0.9rem 1.2rem;
+  color: var(--near-black);
+}
+
+.box-evidence {
+  background: var(--color-evidence-bg);
+  border: 1px solid var(--border-warm);
+  border-left: 3px solid var(--color-evidence);
+  border-radius: 3px;
+  padding: 0.9rem 1.2rem;
+  color: var(--near-black);
+}
+
+.takeaway {
+  font-weight: 500;
+  color: var(--ink-blue);
+  border-bottom: 1.5px solid var(--ink-blue);
+  display: inline;
+  padding-bottom: 2px;
+  font-style: normal;
+}
+
+/* ====== TAGS ====== */
+.tag {
+  display: inline-block;
+  background: var(--ink-tint);
+  color: var(--ink-blue);
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.55rem;
+  border-radius: 2px;
+}
+
+/* ====== FIGURES ====== */
+.kami-img {
+  /* Let each figure keep its own aspect ratio. A fixed height here stretches any
+     figure whose aspect is not the one it was tuned for. Size by width instead. */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 3px;
+  border: 1px solid var(--border-warm);
+  box-shadow: 0 0 0 1px var(--ring-warm);
+  background: var(--paper-ivory);
+}
+
+.fig-caption {
+  font-family: "Inter", "PingFang SC", sans-serif;
+  font-size: 0.78rem;
+  color: var(--olive);
+  margin-top: 0.55rem;
+  text-align: center;
+  letter-spacing: 0;
+  font-style: normal;
+}
+
+/* ====== EQUATION HIGHLIGHT ====== */
+.eq-highlight {
+  background: var(--paper-ivory);
+  border: 1px solid var(--border-cream);
+  border-left: 3px solid var(--ink-blue);
+  border-radius: 3px;
+  padding: 0.9rem 1.2rem;
+  box-shadow: 0 0 0 1px var(--ring-warm);
+}
+
+/* ====== BLOCKQUOTE ====== */
+.slidev-layout blockquote {
+  border-left: 2px solid var(--border-warm);
+  color: var(--charcoal);
+  padding: 0.2rem 0 0.2rem 1rem;
+  font-style: normal;
+}
+
+/* ====== TABLES ======
+   Read from the back row: lining tabular figures so columns align on the
+   digit, numerals one step larger than body text, numeric columns right
+   aligned via .num. ==================================================== */
+.slidev-layout table {
+  border-collapse: collapse;
+  font-size: 1.0rem;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  width: 100%;
+}
+.slidev-layout td.num,
+.slidev-layout th.num { text-align: right; font-variant-numeric: tabular-nums lining-nums; }
+.slidev-layout tbody tr:last-child td { border-bottom: none; }
+.slidev-layout tr.rule-above td { border-top: 1px solid var(--border-warm); }
+.slidev-layout th {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: var(--olive);
+  text-align: left;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+  border-bottom: 1.5px solid var(--charcoal);
+  padding: 0.45rem 0.8rem;
+}
+.slidev-layout td {
+  color: var(--near-black);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 0.52rem 0.8rem;
+}
+
+/* ====== LIST MARKERS ====== */
+.slidev-layout ul {
+  list-style: none;
+  padding-left: 0;
+}
+.slidev-layout ul > li {
+  position: relative;
+  padding-left: 1.2em;
+  margin: 0.25em 0;
+}
+.slidev-layout ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0.1em;
+  top: 0.68em;
+  width: 0.4em;
+  height: 1px;
+  background: var(--ink-blue);
+}
+
+/* ====== CJK ADJUSTMENTS ====== */
+.slidev-layout[lang="zh"] p,
+.slidev-layout[lang="zh"] li,
+.slidev-layout[lang="ja"] p,
+.slidev-layout[lang="ja"] li {
+  font-family: "TsangerJinKai02", "Source Han Serif SC", "Noto Serif CJK SC",
+               "Songti SC", serif;
+  line-height: 1.62;
+}
+
+/* Hide Slidev goto-dialog sidebar that leaks into production build */
+#slidev-goto-dialog {
+  display: none !important;
+}
+
+/* =============================================================
+   Legacy sketch-token compatibility shim.
+   Maps --pencil-* variables and .sketch-card* / .sketch-img classes
+   used in the original deck onto the Kami palette so slides.md
+   renders correctly without rewriting 33 slides.
+   ============================================================= */
+
+:root {
+  --pencil-blue:   var(--ink-blue);
+  --pencil-red:    var(--color-gap);
+  --pencil-green:  var(--color-evidence);
+  --pencil-brown:  var(--olive);
+  --pencil-orange: var(--color-gap);
+  --pencil-purple: var(--ink-blue-light);
+  --pencil-teal:   var(--ink-blue-light);
+  --pencil-cyan:   var(--ink-blue-light);
+  --pencil-pink:   var(--color-gap);
+  --pencil-yellow: var(--olive);
+}
+
+.sketch-card {
+  background: var(--paper-ivory);
+  border: 1px solid var(--border-cream);
+  border-left: 3px solid var(--ink-blue);
+  border-radius: 3px;
+  padding: 1.1rem 1.3rem;
+  box-shadow: 0 0 0 1px var(--ring-warm);
+  color: var(--near-black);
+}
+
+.sketch-card-blue   { border-left-color: var(--ink-blue); }
+.sketch-card-red    { border-left-color: var(--color-gap); }
+.sketch-card-green  { border-left-color: var(--color-evidence); }
+.sketch-card-purple { border-left-color: var(--ink-blue-light); }
+
+.sketch-img {
+  display: block;
+  margin: 0 auto;
+  border-radius: 3px;
+  border: 1px solid var(--border-warm);
+  box-shadow: 0 0 0 1px var(--ring-warm);
+  background: var(--paper-ivory);
+}
+
+.sketch-table {
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.review-thumb {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--border-warm);
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px var(--ring-warm);
+  background: #fff;
+}
+
+.qr-img {
+  width: 5.2rem;
+  margin: 0 auto;
+  display: block;
+}
+
+
+/* ====== PROJECTION FLOOR ======
+   Tailwind's text-xs is 0.75rem, which vanishes in a lit hall. Anything that
+   is worth putting on a slide is worth reading from the back, so the small
+   utilities are clamped and given a legible tone. ===================== */
+.slidev-layout .text-xs { font-size: 0.84rem !important; color: var(--stone); }
+.slidev-layout .text-sm { font-size: 0.95rem !important; }
+
+/* Chrome, and only chrome, may use the faint tone. */
+.slide-page-number { color: var(--stone-faint) !important; }
+
+
+/* ====================================================================
+   Equation chain (slide "What the reaction model assumes"): spread over the column height
+   ==================================================================== */
+.eqchain { display: flex; flex-direction: column; gap: 0.95rem; padding-top: 0.2rem; }
+.eqchain .eqrow { display: flex; align-items: baseline; gap: 1.1rem; font-size: 1.14rem; }
+.eqchain .eqrow p { margin: 0; white-space: nowrap; }
+.eqchain .eqrow .ui-label { min-width: 6.6rem; }
+.eqchain .eqnote { margin: 0.15rem 0 0 7.7rem; font-size: 0.8rem; color: var(--stone); }
+.eqchain .eqarrow { margin: 0 0 0 7.7rem; font-size: 0.84rem; color: var(--stone); }
+.eqchain .eqask { color: var(--color-gap); font-weight: 600; }
+.eqchain .eqgroup { display: flex; flex-direction: column; gap: 0.35rem; }
+
+
+/* ====================================================================
+   "What H_eff is": sector grid and elimination steps
+   ==================================================================== */
+.sector-grid { display: grid; grid-template-columns: 5.2rem 1fr 1fr; gap: 0.35rem; font-size: 0.86rem; }
+.sector-grid .sg-head { font-size: 0.74rem; color: var(--stone); text-align: center; letter-spacing: 0.02em; padding-bottom: 0.15rem; }
+.sector-grid .sg-side { font-size: 0.74rem; color: var(--stone); display: flex; align-items: center; line-height: 1.3; }
+.sector-grid .sg-cell { border: 1px solid var(--border-warm); border-radius: 4px; padding: 0.55rem 0.6rem; min-height: 4.6rem; line-height: 1.35; background: #faf9f5; }
+.sector-grid .sg-cell span { font-size: 0.76rem; color: var(--stone); }
+.sector-grid .sg-p { background: var(--color-idea-bg); border-left: 3px solid var(--color-idea); }
+.sector-grid .sg-meas { background: var(--color-evidence-bg); border-left: 3px solid var(--color-evidence); }
+.sector-grid .sg-lost { background: var(--color-gap-bg); border-left: 3px solid var(--color-gap); }
+.elim { display: flex; flex-direction: column; gap: 1.0rem; }
+.elim .elim-step p, .elim .elim-result p { margin: 0.25rem 0 0; font-size: 0.94rem; white-space: nowrap; }
+.elim .elim-note { font-size: 0.8rem; color: var(--stone); line-height: 1.4; margin-top: 0.2rem; }
+.elim .elim-result { border-top: 1px solid var(--border-warm); padding-top: 0.5rem; }
+.elim .elim-result p { font-size: 1.2rem; color: var(--ink-blue); }
+
+/* time-ordered diagrams on the H_eff slide: time runs left to right; x top, b middle, target bottom */
+.elim .elim-row { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.2rem; }
+.elim .elim-body { flex: 1; min-width: 0; }
+.tdiag { width: 9.2rem; flex: none; overflow: visible; }
+.tdiag .tl { font-family: Newsreader, Georgia, serif; font-size: 12px; }
+.tdiag .tsm { font-size: 9px; fill: #66655f; }
+.tdiag .tx { fill: #b07d10; } .tdiag .tb { fill: #1B365D; } .tdiag .ta { fill: #4d4c48; } .tdiag .tex { fill: #b53333; font-size: 10px; text-anchor: middle; }
+.tdiag text.tsm[x="100"] { text-anchor: middle; }
+.tdiag .lx { stroke: #d9a21b; stroke-width: 2; } .tdiag .lb { stroke: #1B365D; stroke-width: 2.4; } .tdiag .la { stroke: #4d4c48; stroke-width: 2.4; }
+.tdiag .lex { stroke: #b53333; stroke-width: 1.6; }
+.tdiag .vtx { stroke: #4d4c48; stroke-width: 1.1; stroke-dasharray: 3 2; }
+.tdiag .cpl { stroke: #1B365D; stroke-width: 1.1; stroke-dasharray: 1.5 2; }
+.tdiag .dot { fill: #4d4c48; }
+
+/* three-body ladder slide */
+.tb-ladder { display: flex; flex-direction: column; gap: 0.5rem; }
+.tb-row { display: grid; grid-template-columns: 104px 9rem 19rem 1fr; gap: 1rem; align-items: center; padding: 0.3rem 1rem 0.3rem 0.6rem; }
+.tb-row .katex-display { margin: 0; text-align: left; font-size: 0.92em; }
+.tb-what { font-size: 0.95rem; line-height: 1.4; }
+.tb-sys .ui-label { white-space: nowrap; }
+.tb-ref { display: block; font-size: 0.72rem; color: var(--stone); margin-top: 0.15rem; }
+
+/* equation + meaning rows (slide "What happens to b during stripping") */
+.eqmeaning { display: flex; flex-direction: column; gap: 0.35rem; }
+.eqm-row { display: grid; grid-template-columns: 30rem 1fr; gap: 0.9rem; align-items: center;
+  border-bottom: 1px solid var(--border-cream); padding-bottom: 0.3rem; }
+.eqm-row .katex-display { margin: 0; text-align: left; font-size: 0.8em; white-space: nowrap; }
+.eqm-eq p { margin: 0; }
+.eqm-say { font-size: 0.9rem; line-height: 1.35; }
+.eqm-step { display: inline-block; min-width: 3.6rem; font-family: Inter, sans-serif; font-size: 0.66rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-blue); margin-right: 0.3rem; }
+.sg-key { font-size: 1.05em; margin-bottom: 0.2rem; white-space: nowrap; }
+.sg-key b { font-size: 1.15em; margin-right: 0.1rem; }
+
+/* "The story is not over": icon, term, meaning */
+.nc-list { display: flex; flex-direction: column; gap: 0.45rem; }
+.nc-row { display: grid; grid-template-columns: 66px 8rem 1fr; gap: 1rem; align-items: center; padding: 0.15rem 1rem 0.15rem 0.6rem; font-size: 0.92rem; line-height: 1.35; }
+.nc-row > b { font-size: 1.1rem; }
+.nc-sub { margin-top: 0.15rem; font-size: 0.86rem; }
+
+/* =============================================================
+   Click-driven Three.js scenes (skill rule 12).
+
+   Layout, projected labels and caption column are shared by every scene
+   component, so they live here once rather than in five scoped blocks.
+   ============================================================= */
+.scene { display: grid; width: 100%; gap: 0; }
+.scene-viewport { position: relative; min-width: 0; }
+.scene-canvas { position: absolute; inset: 0; touch-action: none; }
+.scene-canvas canvas { display: block; }
+.scene-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-family: Inter, 'PingFang SC', sans-serif;
+  font-size: 0.9rem;
+  color: var(--stone);
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.scene-label.mark { font-size: 1.5rem; color: var(--ink-blue); font-weight: 300; }
+.scene-caption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 1.15rem;
+  border-left: 1px solid var(--border-warm);
+}
+.scene-caption .step {
+  font-family: Inter, 'PingFang SC', sans-serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  color: var(--stone);
+  margin-bottom: 0.62rem;
+}
+.scene-caption h3 { font-weight: 500; font-size: 1.28rem; line-height: 1.28; margin: 0 0 0.7rem; color: var(--near-black); }
+.scene-caption p { font-size: 0.88rem; line-height: 1.5; margin: 0 0 0.8rem; color: var(--dark-warm); }
+.scene-caption .verdict { font-size: 0.88rem; line-height: 1.45; color: var(--ink-blue); padding-top: 0.7rem; border-top: 1px solid var(--border-warm); }
+.scene-beats { display: flex; gap: 0.34rem; margin-top: 0.9rem; }
+.scene-beats span { width: 1rem; height: 2px; background: var(--border-warm); }
+.scene-beats span.on { background: var(--ink-blue); }
+.scene-fallback { position: absolute; inset: 0; display: flex; align-items: center; padding: 1.6rem; font-size: 0.95rem; color: var(--dark-warm); background: var(--paper-ivory); }
+.scene-slide .subtitle {
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: var(--stone);
+  margin: 0.15rem 0 0.55rem;
+}
+.scene-slide h1 { margin-bottom: 0.2rem; }
+
+/* Presentation hierarchy: figures first, short annotations, consistent baselines. */
+.slidev-layout { padding: 40px 52px 42px; overflow: hidden !important; font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; font-size: 18px; }
+.slidev-layout h1 { font-family: 'Newsreader', Georgia, serif; font-size: 31px; line-height: 1.12; border: 0; padding: 0; letter-spacing: -0.025em; margin: 0 0 27px; max-width: 860px; }
+.slidev-layout h1::before { content: ''; display: block; height: 2px; width: 30px; margin-bottom: 15px; background: var(--ink-blue); }
+.slidev-layout h2 { font-family: 'Newsreader', Georgia, serif; font-size: 34px; }
+.slidev-layout h3 { font-size: 21px; }
+.slidev-layout p, .slidev-layout li { line-height: 1.45; }
+.slidev-layout .text-base { font-size: 17px; }
+.slidev-layout .text-sm { font-size: 16px !important; line-height: 1.42 !important; }
+.slidev-layout .text-xs { font-size: 13px !important; }
+.slidev-layout .grid { column-gap: 30px; }
+.slidev-layout b, .slidev-layout strong { font-weight: 600; }
+.box-gap, .box-evidence, .box-idea, .kami-card, .kami-card-accent { background: transparent; border: 0; border-top: 1px solid var(--border-warm); box-shadow: none; border-radius: 0; padding: 14px 0 0; }
+.box-gap > b, .box-evidence > b, .box-idea > b { display: block; font-size: 17px; margin-bottom: 7px; }
+.box-gap > b { color: var(--color-gap); }
+.box-evidence > b { color: var(--color-evidence); }
+.box-idea > b { color: var(--ink-blue); }
+.takeaway { display: block; position: absolute; bottom: 39px; left: 52px; right: 52px; padding: 12px 0 0; border-bottom: 0; border-top: 1px solid var(--border-warm); font-size: 18px; line-height: 1.32; font-weight: 400; margin: 0 !important; }
+.kami-img { border: 0; box-shadow: none; border-radius: 0; background: transparent; max-height: 350px; object-fit: contain; }
+.fig-caption { font-size: 11px; line-height: 1.4; text-align: left; margin-top: 10px; }
+.ui-label { font-size: 10px; letter-spacing: 0.12em; margin-bottom: 10px; }
+.metric { display: block; font-size: 38px; line-height: 1.2; font-weight: 500; letter-spacing: -0.045em; color: var(--ink-blue); margin: 8px 0 12px; font-variant-numeric: tabular-nums; }
+.metric-unit { font-size: 20px; color: var(--stone); letter-spacing: 0; }
+.metric-arrow { font-size: 25px; color: var(--stone); }
+.slidev-layout table { font-size: 15px; }
+.slidev-layout td { padding: 10px 8px; }
+.slidev-layout th { font-size: 10px; padding: 8px; }
+.scene-slide h1 { margin-bottom: 14px; }
+.scene-slide .subtitle { font-size: 15px; max-width: 850px; line-height: 1.4; margin-bottom: 8px; }
+.scene-caption h3 { font-family: 'Newsreader', Georgia, serif; font-size: 25px; }
+.scene-caption p, .scene-caption .verdict { font-size: 15px; line-height: 1.4; }
+.scene-label { font-size: 13px; }
+.budget-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin: 35px 0 20px; }
+.budget-grid > div + div { border-left: 1px solid var(--border-warm); padding-left: 45px; }
+.hero-number { font-size: 72px; line-height: 1.1; letter-spacing: -0.06em; color: var(--ink-blue); font-weight: 500; }
+.budget-grid h3 { margin: 8px 0 18px; }
+.budget-grid p { font-size: 16px; color: var(--stone); }
+.scope-line { font-size: 13px; color: var(--stone); margin-top: 28px; }
+.outlook-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; margin-top: 30px; }
+.outlook-grid h2 { line-height: 1.12; margin: 20px 0; }
+.outlook-grid p { font-size: 15px; color: var(--stone); margin: 6px 0 0; }
+.next-row { display: flex; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--border-warm); }
+.next-row > span { font-size: 12px; color: var(--ink-blue); padding-top: 4px; }
+.next-row b { font-size: 19px; }
+.slidev-layout.cover { text-align: left; display: block; padding: 49px 58px; }
+.cover-kicker { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: var(--ink-blue); }
+.cover-kicker span { margin-left: 23px; font-size: 10px; font-weight: 400; color: var(--stone); }
+.slidev-layout.cover .cover-title { font-size: 55px; line-height: 1.05; margin: 63px 0 14px; max-width: 850px; }
+.slidev-layout.cover h1::before, .slidev-layout.cover h1::after { display: none; }
+.cover-subtitle { font-family: 'Newsreader', Georgia, serif; font-size: 32px; line-height: 1.15; color: var(--stone); }
+.cover-rule { width: 48px; height: 2px; background: var(--ink-blue); margin: 30px 0 20px; }
+.cover-author { font-size: 21px; color: var(--ink-blue); }
+.cover-affiliation { font-size: 12px; line-height: 1.6; margin-top: 9px; color: var(--stone); }
+.cover-support { position: absolute; bottom: 24px; font-size: 10px; color: var(--stone); }
+.citation { font-size: 11px; color: var(--stone); }
+.slidev-layout .mt-7 { margin-top: 18px; }
+.slidev-layout li { margin-bottom: 11px; }
+.closing-message { font-family: 'Newsreader', Georgia, serif; font-size: 42px; line-height: 1.17; margin-top: 42px; }
+.closing-message span { color: var(--ink-blue); }
+.closing-contact { position: absolute; right: 70px; bottom: 110px; font-size: 17px; line-height: 1.7; }
+.closing-credit { position: absolute; left: 52px; bottom: 34px; color: var(--stone); font-size: 11px; line-height: 1.6; }
+
+/* Direct scientific diagrams use explicit quantities and complete context. */
+.diagram-label {font-family:Inter,Arial,sans-serif;font-size:11px;line-height:1.4;color:var(--stone)}
+
+/* act label: which of the five acts a slide belongs to */
+.act-label { position: absolute; top: 15px; left: 52px; font-family: Inter, Arial, sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-blue); opacity: 0.8; }
+.dream-map table { font-size: 15px; }
+.dream-map td, .dream-map th { padding-top: 6px !important; padding-bottom: 6px !important; }
+.dream-map td:first-child { white-space: nowrap; }
+.timeline { display: flex; flex-direction: column; gap: 0.3rem; margin-top: 0.4rem; font-size: 15.5px; }
+.timeline > div { display: grid; grid-template-columns: 3.4rem 1fr; gap: 0.6rem; align-items: baseline; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border-warm); line-height: 1.35; }
+.timeline b { color: var(--ink-blue); font-variant-numeric: tabular-nums; }
+.timeline i.citation { font-style: normal; display: inline; margin-left: 0.35em; }
