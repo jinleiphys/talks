@@ -720,18 +720,22 @@ class: scene-slide
 
 <div class="subtitle">Correlated parameters favor a narrow region. Gradient-based proposals use its local geometry.</div>
 
-<LiveOnly><RidgeScene :step="$clicks" :height="322" /></LiveOnly>
+<HmcScene :step="$clicks" :height="322" />
 
 <div class="takeaway mt-3">The missing ingredient: <b>a differentiable reaction model</b>.</div>
 
 <!--
 Central message: gradients help construct proposals in a correlated parameter space.
 This is a schematic two-parameter density, not the posterior of the 18-parameter calculation.
-Click 0: identify axes and equal-density contours. Several correlated combinations fit similarly.
-Click 1: show proposals into low-density regions, which are often rejected. A random-walk chain can explore, but may require short steps.
-Click 2: show an illustrative HMC trajectory. Momentum and gradients generate the trajectory; it is not gradient ascent and is not guaranteed to remain on a ridge.
-Click 3: NUTS adapts trajectory length, requiring the log posterior and its gradient. An acceptance check still follows.
-Do not infer an efficiency ratio from this schematic or say 18 parameters are impossible for an ensemble sampler.
+The figure is live (public/hmc_ridge.html, source figures/hmc_ridge/): the block is carved to height
+U = -log p, so HMC is literally a frictionless puck sliding on it. Each click runs one sampler;
+the audience can drag to turn the block. Focus returns to the deck after a drag, so the arrow keys
+keep advancing slides. "Gradient field" shows the -grad U arrows if asked.
+Click 0: identify axes and equal-density contours (1, 2, 3 sigma). Several correlated combinations fit similarly.
+Click 1: eight random-walk proposals. Red crosses are proposals into low-density regions, rejected. Short steps improve acceptance but explore slowly.
+Click 2: one HMC trajectory. Momentum plus the slope carry the puck along the ridge; every leapfrog step costs one gradient (counter top right). It is not gradient ascent. An acceptance check follows.
+Click 3: NUTS, full doubling tree. The ring marks the start; the trajectory grows by 1, 2, 4, ... steps, each time forward or backward in time at random, until it turns back at both ends. A new half that turns back inside itself is dropped (red dashed). One state of the kept trajectory is drawn with weight exp(-H) (multinomial NUTS, no separate accept/reject). Checked: 10^5 transitions reproduce the exact means and variances to 1-2 percent.
+Do not infer an efficiency ratio from this schematic or from the counters, and do not say 18 parameters are impossible for an ensemble sampler.
 Timing target: 1 minute.
 -->
 

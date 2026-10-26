@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Posterior Ridge</title>
+<style>
+  /* kami palette for the DREB2026 deck: parchment, ink blue, one red, one green */
+  :root{--paper:#f5f4ed !important;--ink:#141413;--muted:#66655f;--rule:#e0ddd2}
+  body{background:#f5f4ed !important;background-image:none !important}
+  body, .act, button, .stat .k, .stat .v, .toast{font-family:Newsreader, Georgia, serif !important}
+  .act{border-color:#1B365D !important;color:#1B365D !important;font-size:15px !important}
+  .act[aria-pressed=true]{background:#1B365D !important;color:#f5f4ed !important}
+  .stat .k{letter-spacing:.06em !important;font-size:11px !important}
+  .stat .v{color:#1B365D !important}
+  html.embed body{padding:4px 6px 0 !important}
+  html.embed #fig{height:calc(100vh - 8px) !important;max-height:none !important;margin:0 !important}
+  html.still .actions, html.still .vset, html.still .stats, html.still .toast{display:none !important}
+  /* inside the deck the frame is narrower than the engine's phone breakpoint: keep the desktop layout */
+  html.embed .stage{position:relative !important}
+  html.embed .actions{position:absolute !important;top:2px !important;left:0 !important;flex-direction:column !important;gap:5px !important;margin:0 !important;max-width:none !important}
+  html.embed .act{font-size:12.5px !important;padding:2px 10px !important}
+  html.embed .stats{position:absolute !important;top:2px !important;right:0 !important;flex-direction:column !important;align-items:flex-end !important;gap:4px !important;margin:0 !important}
+  html.embed .stat .k{font-size:9.5px !important} html.embed .stat .v{font-size:16px !important}
+  html.embed .vset{position:absolute !important;right:0 !important;bottom:4px !important;top:auto !important;margin:0 !important}
+  html.embed .lgd{display:none !important}
+  html .toast{font-family:Newsreader, Georgia, serif !important;font-size:13px !important}
+  html.embed header, html.embed .controls, html.embed .made-with, html.embed .zchip{display:none !important}
+</style>
+</head><body>
+<script src="core.js"></script>
+<script>
+/* Hamiltonian Monte Carlo as mechanics: a puck sliding without friction on the surface U = -log p(theta | data).
+   Schematic two-parameter posterior (a Gaussian bent into a banana), the same kind of shape as RidgeScene.vue;
+   NOT the 18-parameter d + 58Ni posterior. Nothing here is a sampler-efficiency benchmark.
+
+   How the real thing works (one press = one real step of each algorithm):
+     RANDOM WALK  propose theta' = theta + N(0, s^2) (isotropic, no gradient) -> Metropolis accept with
+                  min(1, exp(U(theta) - U(theta'))) -> move or stay. 8 proposals per press.
+     HMC          draw momentum p ~ N(0, M) -> leapfrog on H = U + p M^-1 p / 2 with a FIXED number of steps
+                  (each step one gradient of U) -> accept the end point with min(1, exp(-dH)).
+     NUTS         same dynamics, built as a doubling tree in both time directions (1, 2, 4, ... new steps, each
+                  half in a random direction). A new half is dropped if one of its balanced sub-trees turns back
+                  or it diverges; growth also stops when the whole trajectory turns back (either end's velocity
+                  points toward the other end). One state of the kept trajectory is drawn with weight exp(-H)
+                  (multinomial NUTS). Not implemented: Stan's extra checks across neighbouring sub-trees. The mass matrix M = diag(1/sa^2, 1/sb^2) is the usual adapted
+                  diagonal metric and is shared by HMC and NUTS.
+
+   Parts (what is drawn, what holds what):
+     BLOCK     parchment block, rim flat at the top (U capped at UMAX), stands on the paper, cast shadow
+     SURFACE   height = -log p, carved into the block top; tinted ink blue where the density is high;
+               inked contours at 1, 2, 3 sigma (U = 0.5, 2, 4.5)
+     PUCK      ink-blue disc = current state theta, sits on the surface
+     MARKS     sample dots (red RW, blue HMC, green NUTS) on the surface; red crosses = rejected proposals;
+               dashed proposal line; trajectory trail on the surface; NUTS start ring; dropped NUTS half, red dashed
+     FIELD     arrows of -grad U on the surface (what a differentiable model returns)
+     AXES      theta1 along the long side, theta2 along the short side, engraved on the block sides */
+
+const W = 100, D = 150, HB = 16, DEP = 10;                 // block depth (x, theta2), width (y, theta1), rim height, carve depth
+const T1 = [-2.2, 2.2], T2 = [-1.15, 1.6];
+const SA = .65, SB = .22, UMAX = 5.5;
+const MI = [SA*SA, SB*SB];                                 // inverse mass = diagonal covariance scale
+const BK = .35;                                           // how strongly the ridge bends
+const bendF = a => BK*(a*a - 1);
+const Uf = (a, b) => { const c = b - bendF(a); return a*a/(2*SA*SA) + c*c/(2*SB*SB); };
+const gradU = (a, b) => { const c = b - bendF(a); return [a/(SA*SA) - 2*BK*c*a/(SB*SB), c/(SB*SB)]; };
+const xOf = b => W*(T2[1] - b)/(T2[1] - T2[0]), yOf = a => D*(T1[1] - a)/(T1[1] - T1[0]);
+const zOf = (a, b) => HB - DEP + DEP*Math.min(Uf(a, b), UMAX)/UMAX;
+const S3 = (q, lift = 0) => [xOf(q[1]), yOf(q[0]), zOf(q[0], q[1]) + lift];
+const START = [-1.6, bendF(-1.6)];
+
+/* kami colours */
+const KB = '#1B365D', KR = '#b53333', KG = '#4a6b3a';
+const SAND = { l:'#f3eee2', m:'#ddd5c2', d:'#b2a891' }, POOL = { l:'#b9cce4', m:'#97afd0', d:'#6683ab' };
+const PUCKM = matOf('#2D5A8A');
+for (const k of Object.keys(PALS)) delete PALS[k];
+PALS.kami = { l:'#E4ECF5', m:'#c9d6e6', d:KB };
+
+/* ---------- the carved surface: a static grid, shaded per view ---------- */
+const N1 = 48, N2 = 32;
+const ga = i => T1[0] + (T1[1] - T1[0])*i/N1, gb = j => T2[0] + (T2[1] - T2[0])*j/N2;
+const CELLS = [];
+for (let i = 0; i < N1; i++) for (let j = 0; j < N2; j++){
+  const c = [[ga(i), gb(j)], [ga(i+1), gb(j)], [ga(i+1), gb(j+1)], [ga(i), gb(j+1)]];
+  const P3 = c.map(q => S3(q)), u = c.map(q => Uf(q[0], q[1]));
+  const um = Uf((ga(i) + ga(i+1))/2, (gb(j) + gb(j+1))/2);
+  const flat = u.every(v => v >= UMAX);
+  // contour pieces by marching squares, levels at 1, 2, 3 sigma
+  let cont = [];
+  for (const lv of [.5, 1.25, 2, 3.2, 4.5]){
+    const pts = [];
+    for (let e = 0; e < 4; e++){ const a0 = u[e] - lv, a1 = u[(e+1)%4] - lv;
+      if ((a0 < 0) !== (a1 < 0)){ const t = a0/(a0 - a1), q = [c[e][0] + t*(c[(e+1)%4][0] - c[e][0]), c[e][1] + t*(c[(e+1)%4][1] - c[e][1])]; pts.push(S3(q, .15)); } }
+    const major = lv === .5 || lv === 2 || lv === 4.5;
+    if (pts.length >= 2) cont.push({ q: [pts[0], pts[1]], major });
+    if (pts.length === 4) cont.push({ q: [pts[2], pts[3]], major });
+  }
+  const w = .92*Math.pow(1 - Math.min(um, UMAX)/UMAX, 1.6);   // ink pools where -log p is low
+  let n = norm(cross(sub(P3[2], P3[0]), sub(P3[3], P3[1]))); if (n[2] < 0) n = n.map(v => -v);   // a height field faces up
+  CELLS.push({ i, j, P3, flat, w, cont, mid: avg(P3), n });
+}
+// flat rim cells far from the carving are painted as one slab; only a 3-cell band round the valley is sorted
+{ const carved = new Set(CELLS.filter(c => !c.flat).map(c => c.i*N2 + c.j));
+  for (const c of CELLS){ c.plain = true;
+    for (let di = -3; di <= 3 && c.plain; di++) for (let dj = -3; dj <= 3; dj++) if (carved.has((c.i + di)*N2 + c.j + dj) && c.i + di >= 0 && c.i + di < N1){ c.plain = false; break; } } }
+const SORTED = CELLS.filter(c => !c.plain);
+// a height field is painted correctly back to front along the horizontal view direction
+const hk = p => p[0]*CAM_V[0] + p[1]*CAM_V[1];
+let cellCache = { key: '', list: [] };
+function cellList(){
+  const key = YAW.toFixed(2) + ',' + PITCH.toFixed(2);
+  if (cellCache.key === key) return cellCache.list;
+  const list = [];
+  for (const c of SORTED){
+    if (!vis(c.n)) continue;
+    const base = tone(c.n, SAND), col = c.w > .01 ? mix(base, tone(c.n, POOL), c.w) : base;
+    let s = face(pd(c.P3), col);
+    for (const mj of [true, false]){ const seg = c.cont.filter(o => o.major === mj); if (seg.length) s += `<path d="${seg.map(o => pd(o.q, false)).join('')}" fill="none" stroke="${KB}" stroke-width="${mj ? .9 : .5}" opacity="${mj ? .8 : .45}" stroke-linecap="round"/>`; }
+    list.push({ k: hk(c.mid), svg: s });
+  }
+  list.sort((a, b) => a.k - b.k);
+  return (cellCache = { key, list }).list;
+}
+
+/* ---------- small things lying on the surface ---------- */
+const disc = (q, r, col, lift = .25) => { const [x, y, z] = S3(q, lift); return shape(on(PZ(z), ellUV(x, y, r, r, 12)), col, .5); };
+const cross2 = (q, r, col) => { const [x, y, z] = S3(q, .4);
+  return `<path d="${pd([[x - r, y - r, z], [x + r, y + r, z]], false)}${pd([[x - r, y + r, z], [x + r, y - r, z]], false)}" fill="none" stroke="${col}" stroke-width="1.8" stroke-linecap="round"/>`; };
+const frontK = (p, r) => hk(p) + r*Math.hypot(CAM_V[0], CAM_V[1]);   // painted after every cell it covers
+// a path on the surface, cut into short pieces so each sorts with the cells around it
+function trailItems(path, col, w, op, dash = ''){
+  const out = [];
+  for (let i = 0; i + 1 < path.length; i++){
+    const a = S3(path[i], .5), b = S3(path[i+1], .5);
+    out.push({ k: Math.max(frontK(a, 1.2), frontK(b, 1.2)), svg: `<path d="${pd([a, b], false)}" fill="none" stroke="${col}" stroke-width="${w}" opacity="${op}" stroke-linecap="round" ${dash}/>` });
+  }
+  return out;
+}
+// an arrow of -grad U lying on the surface, from q, length len (model units)
+function arrowItem(q, len, col, w){
+  const g = gradU(q[0], q[1]), dx = g[1]*W/(T2[1] - T2[0]), dy = g[0]*D/(T1[1] - T1[0]);   // -dU along -x for theta2, -y for theta1
+  const m = Math.hypot(dx, dy); if (m < 1e-9) return null;
+  const ux = dx/m, uy = dy/m, [x, y] = S3(q);
+  const ex = x + ux*len, ey = y + uy*len;
+  const zA = S3(q, .6)[2], tip = [ex, ey, zA], tail = [x, y, zA];
+  const hx = -ux*len*.35, hy = -uy*len*.35, px = -uy*len*.22, py = ux*len*.22;
+  const d = pd([tail, tip], false) + pd([[ex + hx + px, ey + hy + py, zA], tip, [ex + hx - px, ey + hy - py, zA]], false);
+  return { k: Math.max(frontK(tail, 1), frontK(tip, 1)), svg: `<path d="${d}" fill="none" stroke="${col}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>` };
+}
+const FIELD_PTS = [];
+for (let i = 1; i < 12; i++) for (let j = 1; j < 9; j++){ const q = [T1[0] + (T1[1] - T1[0])*i/12, T2[0] + (T2[1] - T2[0])*j/9]; if (Uf(q[0], q[1]) < 5.2) FIELD_PTS.push(q); }
+
+/* ---------- block sides and engraved axes ---------- */
+function faceText(p, dir, str, size, col){
+  const o = P(...p), V = Dv(0, 0, -1); let U = Dv(...dir);
+  if (U[0]*V[1] - U[1]*V[0] <= 0) U = U.map(v => -v);
+  return `<text transform="${txM(o, U, V)}" font-size="${size}" fill="${col}" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-style="italic">${str}</text>`;
+}
+function sides(){
+  let s = '';
+  const F = [
+    { n:[1,0,0],  q:[[W,0,0],[W,D,0],[W,D,HB],[W,0,HB]], axis:[[W+.2, D*.82, 4], [W+.2, D*.18, 4]], lab:[W+.2, D/2, 9.6], dir:[0,-1,0], t:'θ₁' },
+    { n:[-1,0,0], q:[[0,0,0],[0,D,0],[0,D,HB],[0,0,HB]], axis:[[-.2, D*.82, 4], [-.2, D*.18, 4]], lab:[-.2, D/2, 9.6], dir:[0,1,0], t:'θ₁' },
+    { n:[0,1,0],  q:[[0,D,0],[W,D,0],[W,D,HB],[0,D,HB]], axis:[[W*.8, D+.2, 4], [W*.2, D+.2, 4]], lab:[W/2, D+.2, 9.6], dir:[1,0,0], t:'θ₂' },
+    { n:[0,-1,0], q:[[0,0,0],[W,0,0],[W,0,HB],[0,0,HB]], axis:[[W*.8, -.2, 4], [W*.2, -.2, 4]], lab:[W/2, -.2, 9.6], dir:[1,0,0], t:'θ₂' } ];
+  for (const fc of F){ if (!facing(fc.n)) continue;
+    s += shape(fc.q, tone(fc.n, SAND), 1.6);
+    const [a, b] = fc.axis, d = sub(b, a), L0 = Math.hypot(...d), u = d.map(v => v/L0), hd = 3.2;
+    const side = fc.n[0] ? [0,0,1] : [0,0,1];
+    s += `<path d="${pd([a, b], false)}${pd([[b[0] - u[0]*hd, b[1] - u[1]*hd, b[2] + hd*.55], b, [b[0] - u[0]*hd, b[1] - u[1]*hd, b[2] - hd*.55]], false)}" fill="none" stroke="${KB}" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>`;
+    s += faceText([fc.lab[0], fc.lab[1], 9.5], fc.dir, fc.t, 9, KB);
+  }
+  return s;
+}
+
+/* ---------- scene ---------- */
+let ui;
+function scene(st){
+  const BOX = [[0,0,0],[W,0,0],[W,D,0],[0,D,0],[0,0,HB],[W,0,HB],[W,D,HB],[0,D,HB]];
+  // cast shadow in warm grey (the engine's blue is too loud on the deck's parchment)
+  const [sx, sy] = yawTurn(SH), sk = SHADOW_LEN/SHADOW_K;
+  let s = fill(sp(hull(BOX.map(([x, y, z]) => P(x + z*sx*sk, y + z*sy*sk, 0)))), '#dcd7c8');
+  const items = cellList().slice();
+  // marks on the surface
+  for (const t of st.old) items.push(...trailItems(t.path, t.col, 1.3, .35));
+  if (st.trail.length > 1) items.push(...trailItems(st.trail, st.trailCol, 2.2, .95));
+  if (st.badPath && st.badPath.length > 1) items.push(...trailItems(st.badPath, KR, 1.8, .9, 'stroke-dasharray="3 3"'));
+  if (st.ghost) items.push(...trailItems([st.ghost.from, st.ghost.to], st.ghost.acc ? KB : KR, 1.4, .9, 'stroke-dasharray="3 3"'));
+  for (const r of st.rej) items.push({ k: frontK(S3(r), 3), svg: cross2(r, 2.6, KR) });
+  for (const p of st.samples){ const q = p.q; items.push({ k: frontK(S3(q), 1.6), svg: disc(q, 1.5, p.col) }); }
+  if (st.field) for (const q of FIELD_PTS){ const a = arrowItem(q, Math.min(9, 3 + 1.1*Math.log1p(Math.hypot(...gradU(q[0], q[1])))), KB, 1.1); if (a){ a.svg = `<g opacity=".7">${a.svg}</g>`; items.push(a); } }
+  if (st.mark) items.push({ k: frontK(S3(st.mark), 4), svg: shape(on(PZ(S3(st.mark, .3)[2]), ellUV(S3(st.mark)[0], S3(st.mark)[1], 4, 4, 16)), 'none', 1.4) });
+  // the puck
+  const [px, py, pz] = S3(st.th);
+  items.push({ k: frontK([px, py], 3.2), svg: cyl(px, py, pz, pz + 2.6, 3.2, PUCKM, toneI, 1.3, 20) });
+  if (st.field){ const a = arrowItem(st.th, 9, KR, 2); if (a){ a.k = frontK([px, py], 9); items.push(a); } }
+  items.sort((a, b) => a.k - b.k);
+  // the top surface stays inside the rim outline: anything carved below the rim and outside it is behind the block
+  const rim = hull([[0,0,HB],[W,0,HB],[W,D,HB],[0,D,HB],[0,0,HB+30],[W,0,HB+30],[W,D,HB+30],[0,D,HB+30]].map(p => P(...p)));
+  s += `<clipPath id="rimclip"><path d="${sp(rim)}"/></clipPath><g clip-path="url(#rimclip)">${face(pd([[0,0,HB],[W,0,HB],[W,D,HB],[0,D,HB]]), tone([0,0,1], SAND))}${items.map(i => i.svg).join('')}</g>`;
+  s += ink(pd([[0,0,HB],[W,0,HB],[W,D,HB],[0,D,HB]]), 1.6);
+  s += sides();
+  s += hullInk(BOX, 2.6);
+  if (st.labels !== false) s += xrCallouts(labelItems(st), [0, W, 0, D, 0, HB]);
+  return s;
+}
+function labelItems(st){
+  const it = [
+    { at: S3([0, -.5]), text: 'HIGH DENSITY', on: false },
+    { at: S3([2.1, bendF(2.1)]), text: 'CURVED RIDGE', on: false },
+    { at: [W*.9, D*.9, HB], text: 'HEIGHT = -LOG P', on: false },
+    { at: S3(st.th, 2.6), text: 'CURRENT STATE', on: true } ];
+  if (st.field) it.push({ at: S3(st.th, .6), text: '-GRAD U', on: true });
+  return it;
+}
+
+/* ---------- the samplers ---------- */
+let seed = 7;
+const rng = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+const gauss = () => { let u = 0; while (!u) u = rng(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*rng()); };
+const inBox = q => q[0] > T1[0] && q[0] < T1[1] && q[1] > T2[0] && q[1] < T2[1];
+let job = 0;
+const keep = (st, q, col) => st.samples.push({ q: q.slice(), col });
+
+function clearMarks(st){ st.rej = []; st.ghost = null; st.mark = null; st.badPath = null;
+  if (st.trail.length > 1){ st.old.push({ path: st.trail, col: st.trailCol }); if (st.old.length > 3) st.old.shift(); }
+  st.trail = []; }
+
+function randomWalk(st){
+  const id = ++job; clearMarks(st);
+  let k = 0, t = 0, prop = null;
+  const next = () => { const q = [st.th[0] + .35*gauss(), st.th[1] + .35*gauss()];
+    const acc = inBox(q) && rng() < Math.exp(Uf(...st.th) - Uf(...q)); return { q, acc, from: st.th.slice(), done: false }; };
+  prop = next();
+  ui.animate(dt => { if (id !== job) return false; t += dt;
+    st.ghost = { from: prop.from, to: prop.q, acc: prop.acc };
+    if (t >= .3 && !prop.done){ prop.done = true; st.nProp++;
+      if (prop.acc) st.nAcc++; else st.rej.push(prop.q); }
+    if (prop.done && prop.acc){ const u = Math.min(1, (t - .3)/.18), e = ease(u); st.th = [prop.from[0] + (prop.q[0] - prop.from[0])*e, prop.from[1] + (prop.q[1] - prop.from[1])*e]; }
+    if (t >= .55){ if (prop.acc) st.th = prop.q.slice(); keep(st, st.th, KR); k++; t = 0;
+      if (k >= 8){ st.ghost = null; return false; } prop = next(); }
+    return true; });
+}
+
+// leapfrog with the diagonal metric, a fixed number of steps (HMC)
+function leapfrog(st, q0, p0, eps, nmax, stop){
+  let q = q0.slice(), p = p0.slice(), g = gradU(...q); st.nGrad++;
+  const H = (q, p) => Uf(...q) + .5*(p[0]*p[0]*MI[0] + p[1]*p[1]*MI[1]);
+  const path = [q.slice()], Hs = [H(q, p)];
+  for (let s = 0; s < nmax; s++){
+    p = [p[0] - .5*eps*g[0], p[1] - .5*eps*g[1]];
+    q = [q[0] + eps*MI[0]*p[0], q[1] + eps*MI[1]*p[1]];
+    g = gradU(...q); st.nGrad++;
+    p = [p[0] - .5*eps*g[0], p[1] - .5*eps*g[1]];
+    if (!inBox(q)) break;
+    path.push(q.slice()); Hs.push(H(q, p));
+    if (stop && stop(q, p, q0)) break;
+  }
+  return { path, Hs };
+}
+const momentum = () => [gauss()/SA, gauss()/SB];     // p ~ N(0, M), M = diag(1/sa^2, 1/sb^2)
+
+function playPath(st, id, path, col, done){
+  st.trail = [path[0]]; st.trailCol = col; let t = 0;
+  const rate = 26;                                  // leapfrog steps shown per second
+  ui.animate(dt => { if (id !== job) return false; t += dt;
+    const x = Math.min(path.length - 1, t*rate), i = Math.floor(x), u = x - i;
+    const a = path[i], b = path[Math.min(path.length - 1, i + 1)];
+    st.th = [a[0] + (b[0] - a[0])*u, a[1] + (b[1] - a[1])*u];
+    st.trail = path.slice(0, i + 1).concat([st.th]);
+    if (x >= path.length - 1){ done(); return false; }
+    return true; });
+}
+function slideTo(st, id, q, then){
+  const from = st.th.slice(); let t = 0;
+  ui.animate(dt => { if (id !== job) return false; t += dt; const e = ease(Math.min(1, t/.35));
+    st.th = [from[0] + (q[0] - from[0])*e, from[1] + (q[1] - from[1])*e]; if (t >= .35){ st.th = q.slice(); then && then(); return false; } return true; });
+}
+
+function hmc(st){
+  const id = ++job; clearMarks(st);
+  const q0 = st.th.slice(), { path, Hs } = leapfrog(st, q0, momentum(), .15, 34, null);
+  st.nProp++;
+  playPath(st, id, path, KB, () => {
+    const end = path[path.length - 1], acc = rng() < Math.exp(Hs[0] - Hs[Hs.length - 1]);
+    if (acc){ st.nAcc++; st.th = end.slice(); keep(st, end, KB); }
+    else { st.rej.push(end); slideTo(st, id, q0, () => keep(st, q0, KB)); ui.flash('Energy error too large: proposal rejected'); }
+  });
+}
+
+/* NUTS (Hoffman and Gelman 2014, multinomial variant as in Betancourt 2017): the trajectory grows by doubling, each
+   time in a random direction (forward or backward in time). A new half whose balanced sub-trees turn back, or that
+   diverges, is thrown away and growth stops; growth also stops when the whole trajectory turns back. One state of the
+   kept trajectory is then drawn with weight exp(-H). */
+const Hof = (q, p) => Uf(...q) + .5*(p[0]*p[0]*MI[0] + p[1]*p[1]*MI[1]);
+function lfStep(st, a, eps){
+  let p = [a.p[0] - .5*eps*a.g[0], a.p[1] - .5*eps*a.g[1]];
+  const q = [a.q[0] + eps*MI[0]*p[0], a.q[1] + eps*MI[1]*p[1]], g = gradU(...q); st.nGrad++;
+  p = [p[0] - .5*eps*g[0], p[1] - .5*eps*g[1]];
+  return { q, p, g, H: Hof(q, p) };
+}
+// U-turn of the span from L to R (L earlier in time): either end's velocity points back toward the other end
+const uturn = (L, R) => { const d = [R.q[0] - L.q[0], R.q[1] - L.q[1]];
+  return d[0]*MI[0]*L.p[0] + d[1]*MI[1]*L.p[1] < 0 || d[0]*MI[0]*R.p[0] + d[1]*MI[1]*R.p[1] < 0; };
+function buildTree(st, q0, eps, maxDepth = 8){
+  const s0 = { q: q0.slice(), p: momentum(), g: gradU(...q0) }; st.nGrad++; s0.H = Hof(s0.q, s0.p);
+  let traj = [s0], why = 'depth';
+  const events = [];
+  for (let depth = 0; depth < maxDepth; depth++){
+    const dir = rng() < .5 ? -1 : 1, n = 1 << depth, block = [];
+    let cur = dir > 0 ? traj[traj.length - 1] : traj[0], bad = false;
+    for (let i = 0; i < n; i++){ cur = lfStep(st, cur, dir*eps); block.push(cur);
+      if (!inBox(cur.q) || cur.H - s0.H > 50){ bad = true; break; } }          // divergence
+    const ordered = dir > 0 ? block : block.slice().reverse();                  // in time order
+    // every balanced sub-tree of the new half must not turn back
+    for (let w = 2; w <= n && !bad; w *= 2) for (let a = 0; a + w <= n; a += w) if (uturn(ordered[a], ordered[a + w - 1])){ bad = true; break; }
+    events.push({ dir, states: block, bad });
+    if (bad){ why = 'subtree'; break; }                                         // drop the new half, keep the rest
+    traj = dir > 0 ? traj.concat(block) : ordered.concat(traj);
+    if (uturn(traj[0], traj[traj.length - 1])){ why = 'uturn'; break; }
+  }
+  return { traj, events, s0, why };
+}
+
+function nuts(st){
+  const id = ++job; clearMarks(st);
+  const q0 = st.th.slice(), { traj, events, s0, why } = buildTree(st, q0, .15);
+  st.nProp++; st.mark = q0; st.trailCol = KG;
+  const left = [], right = [];                       // states grown backward (nearest first) and forward
+  const show = () => { st.trail = left.slice().reverse().concat([q0], right); };
+  let ei = 0, k = 0, t = 0, hold = 0;
+  const finish = () => {
+    const w = traj.map(a => Math.exp(s0.H - a.H)), tot = w.reduce((a, b) => a + b, 0);
+    let r = rng()*tot, idx = 0; while (idx < w.length - 1 && (r -= w[idx]) > 0) idx++;
+    ui.flash(why === 'subtree' ? 'New half turns back inside: drop it, draw one state' : why === 'uturn' ? 'Trajectory turns back at both ends: draw one state' : 'Maximum depth: draw one state', 1600);
+    st.nAcc++;
+    const q = traj[idx].q; slideTo(st, id, q, () => keep(st, q, KG));
+  };
+  show();
+  ui.animate(dt => { if (id !== job) return false;
+    if (hold > 0){ hold -= dt; if (hold <= 0){ st.badPath = null; ei = events.length; } return true; }
+    if (ei >= events.length){ finish(); return false; }
+    const ev = events[ei], n = ev.states.length, per = Math.max(1/30, Math.min(.12, .5/n));   // small trees slow enough to follow, big ones about 1 s
+    t += dt;
+    while (t >= per && k < n){ t -= per; const q = ev.states[k].q;
+      if (ev.bad){ const from = ev.dir > 0 ? (right.length ? right[right.length - 1] : q0) : (left.length ? left[left.length - 1] : q0);
+        st.badPath = (k === 0 ? [from] : st.badPath).concat([q]); }
+      else (ev.dir > 0 ? right : left).push(q);
+      k++; }
+    show();
+    if (k >= n){ if (ev.bad) hold = .7; else { ei++; k = 0; t = 0; } }
+    return true; });
+}
+
+function reset(st){ ++job; seed = 7;
+  Object.assign(st, { th: START.slice(), samples: [], rej: [], trail: [], old: [], ghost: null, mark: null, badPath: null, nProp: 0, nAcc: 0, nGrad: 0 }); }
+
+if (window.parent !== window || new URLSearchParams(location.search).get('embed') === '1'){ window.FIG_A = () => .75; window.LBL_U = () => 0; }
+ui = mountFigure({
+  fig: 'H', title: 'Posterior ridge', turn: 'full', credit: false,
+  size: [W, D, HB + 34], center: [W/2, D/2], palette: 'kami',
+  state: { th: START.slice(), samples: [], rej: [], trail: [], trailCol: KB, old: [], ghost: null, mark: null, field: false,
+           nProp: 0, nAcc: 0, nGrad: 0 },
+  scene,
+  buttons: [
+    { label: 'Random walk', onClick: st => randomWalk(st) },
+    { label: 'HMC', onClick: st => hmc(st) },
+    { label: 'NUTS', onClick: st => nuts(st) },
+    { label: 'Gradient field', onClick: st => { st.field = !st.field; } },
+    { label: 'Reset', onClick: st => reset(st) },
+  ],
+  stats: st => [
+    { label: 'proposals', value: st.nProp, small: true },
+    { label: 'accepted', value: st.nAcc, small: true },
+    { label: 'gradients of U', value: st.nGrad, small: true } ],
+  params(st, q){
+    if (q.get('field') === '1') st.field = true;
+    if (q.get('embed') === '1') document.documentElement.classList.add('embed');
+    if (q.get('still') === '1') document.documentElement.classList.add('still');
+  },
+});
+if (!new URLSearchParams(location.search).has('pitch')){ setCam(YAW, 50); }
+xrMount(() => ui, () => '', { labelsOnly: true });
+
+/* ---------- driving it from the slide ----------
+   The deck sends {hmcStep: n}: 0 reset, 1 random walk, 2 HMC, 3 NUTS. Inside the deck the arrow keys belong to the
+   slides, so they never turn the camera here, and focus goes back to the deck after every press or drag. */
+const embedded = window.parent !== window;
+if (embedded){ window.GAME_KEYS = true; document.documentElement.classList.add('embed');
+  addEventListener('pointerup', () => setTimeout(() => { try { document.activeElement && document.activeElement.blur(); window.parent.focus(); } catch (e) {} }, 0), true); }
+addEventListener('message', e => { const n = e.data && e.data.hmcStep; if (n == null) return; const st = ui.st;
+  if (n <= 0) reset(st); else if (n === 1){ reset(st); randomWalk(st); } else if (n === 2) hmc(st); else nuts(st); ui.render(); });
+{ const q = new URLSearchParams(location.search), demo = q.get('demo');
+  if (q.get('fps') === '1') setTimeout(() => { let n = 0, t0 = performance.now(); const r0 = ui.render; ui.render = () => { r0(); n++; };
+    hmc(ui.st); setTimeout(() => { document.documentElement.dataset.fps = (n*1000/(performance.now() - t0)).toFixed(1) + ' fps, cells ' + SORTED.length + '/' + CELLS.length; }, 1500); }, 300);
+  if (q.get('bench') === '1') (() => { const t0 = performance.now(); for (let i = 0; i < 20; i++){ setCam(45 + i, 50); ui.render(); }
+    const t1 = performance.now(); for (let i = 0; i < 20; i++) ui.render(); document.documentElement.dataset.bench = ((t1 - t0)/20).toFixed(1) + ' ms new view, ' + ((performance.now() - t1)/20).toFixed(1) + ' ms same view'; })();
+  if (demo) setTimeout(() => { const st = ui.st; for (const m of demo.split('+')) ({ rw: () => randomWalk(st), hmc: () => hmc(st), nuts: () => nuts(st) })[m]?.(); }, 50); }
+</script></body></html>

@@ -11,6 +11,22 @@ developments and advances in direct reaction theory.
 
 Reworked the cover, typography, figure annotations, budget, verification, and closing pages. Long explanations remain in speaker notes. Figures and data are unchanged. PNG export of all 20 pages was inspected; an overlap on slide 10 was corrected. A separate cold-reader pass clarified the two chi-square definitions and the offline batch of reference solves. This was a presentation edit, not a fresh validation of the scientific claims.
 
+## Live sampler figure, 2026-10-26
+
+Slide 12 ("Difficulty 2: the posterior is a curved ridge") now uses `components/HmcScene.vue`
+instead of `RidgeScene.vue` (kept, unused). It embeds `public/hmc_ridge.html`, a hand-inked
+block carved to height U = -log p of a schematic two-parameter banana posterior. Clicks 1-3 run
+eight random-walk proposals, one HMC trajectory, one NUTS transition (full doubling tree in both time
+directions, sub-tree U-turn checks, multinomial draw; 10^5 transitions match the exact means and
+variances to 1-2 percent); the audience can drag to
+turn the block, and focus returns to the deck so the arrow keys still advance. PDF export shows
+`public/hmc_ridge_still.png`. Source: `figures/hmc_ridge/hmc_ridge.html` plus the Colorfigures
+engine `core.js`; rebuild with
+
+    python3 ~/Downloads/colorfigures/scripts/build.py figures/hmc_ridge/hmc_ridge.html public/hmc_ridge.html
+
+Schematic only: not the 18-parameter posterior, and the counters are not an efficiency benchmark.
+
 ## Run it
 
     export PATH=/usr/local/bin:$PATH    # node 22; Homebrew node breaks Slidev
