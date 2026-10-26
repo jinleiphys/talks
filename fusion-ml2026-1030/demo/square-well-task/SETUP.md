@@ -1,0 +1,49 @@
+# 第一次启动：只选择一个工具
+
+三个工具都可以作为编程智能体入口。先选你能登录且适合当前电脑的一个，不必同时安装。
+
+## 官方安装与登录入口
+
+- [Codex CLI](https://learn.chatgpt.com/docs/codex/cli)：从官方安装入口开始，按账号提示配置。CLI 可检查文件、编辑和运行命令。
+- [Claude Code Quickstart](https://code.claude.com/docs/en/quickstart)：按操作系统选择安装方式，首次启动按提示登录。
+- [OpenCode 官方文档](https://opencode.ai/docs/)：选择要用的版本，按其说明安装并连接模型服务。当前文档提示不同主要版本使用相同的 `opencode` 命令，按自己版本的指引操作。
+
+以上页面在备课时核对；产品入口与账号要求可能更新，实际安装以官方页面为准。没有在本课程中替你配置账号、购买订阅或连接模型凭据。
+
+软件启动、模型服务可用、电脑具有任务运行环境是三项独立检查。图形界面与终端入口都可以，能否执行取决于实际工具和权限。
+
+## 终端是什么
+
+终端是输入命令并显示执行结果的窗口。macOS 可打开“终端”，Windows 可打开 PowerShell。Linux 使用系统终端。
+
+`cd` 用来切换当前工作目录。先在文件管理器中找到解压后的练习文件夹，取得它的完整路径。macOS 的 Finder 中，选中文件夹，按住 Option 后右键，选择复制路径名称；Windows 文件资源管理器中，选中文件夹，使用“复制文件地址/复制为路径”（不同版本菜单名称可能不同）。也可直接复制文件管理器地址栏中的完整路径。
+
+macOS 路径示例，请替换用户名与实际解压位置：
+
+```bash
+cd "/Users/你的用户名/Downloads/square-well-task"
+```
+
+Windows PowerShell 路径示例：
+
+```powershell
+cd "C:\Users\你的用户名\Downloads\square-well-task"
+```
+
+这些是路径示例，不应原样执行。先输入 `pwd` 查看当前路径，确认末尾是练习文件夹。然后只运行已经安装的一个工具：
+
+```text
+codex
+```
+
+或 `claude`，或 `opencode`。首次启动仍可能要求认证；OpenCode 的模型服务配置依其版本官方说明。进入会话后用中文发送 `PROMPTS.md` 中的第一条任务。图形界面则直接选中练习文件夹。
+
+## 本例需要 Python
+
+先在终端执行：
+
+```text
+python3 -c "import numpy, matplotlib; print('ok')"
+```
+
+看到 ok 就可以。若提示找不到模块，可以先让 agent 告诉你缺什么、打算怎么装，你同意后再装；也可以先阅读 `reference/output.txt` 做纸笔练习。不要把没运行的代码当作已经执行的结果。

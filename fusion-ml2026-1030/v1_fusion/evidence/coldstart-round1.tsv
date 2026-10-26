@@ -1,0 +1,18 @@
+skill	install_rc	install_s	verify_rc	verify_s	disk_mb	note
+azure2	1	0	-	-	1	
+fresco	0	32	none	-	32	
+coloss	2	4	none	-	4	
+ccfull	0	4	none	-	1	
+skynet	1	43	-	-	499	
+nucleartoolkit	1	0	-	-	1	
+cgmf	0	10	0	33	179	
+pikoe	0	7	1	0	56	
+nlat	0	6	1	0	64	
+cnok	0	41	0	14	33	
+sides	0	7	0	1	1	
+swanlop	1	4	-	-	29	
+gsm	3	11	none	-	285	
+kshell	0	56	0	38	71	
+sky3d	1	18	-	-	38	
+thermal-fist	0	21	0	328	106	
+smash	0	149	0	418	1848	

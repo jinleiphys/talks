@@ -1,0 +1,4 @@
+Input: data/input.csv
+Rows: 6
+Max absolute difference: 0.0059 deg at E = 1.0 MeV
+Scope: these input rows only; not a model-validity claim.

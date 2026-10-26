@@ -1,0 +1,19 @@
+Configuration: E in center-of-mass MeV, lengths in fm, R = 2.0 fm
+Numerov: h = 0.0002 fm, rmax = 10.0 fm; six check energies listed below
+Bound-state residual K*cot(KR)+kappa (correct mass) = -1.942890293094024e-16 fm^-1
+Bound-state residual K*cot(KR)+kappa (bad mass) = -2.7755575615628914e-16 fm^-1
+V0 (reduced mass) = 36.567 MeV
+a_t (reduced mass) = 5.356 fm
+V0 (nucleon mass) = 20.986 MeV
+a_t (nucleon mass) = 4.105 fm
+
+ E(MeV)   δ_numerov   δ_exact   |diff|    δ_badmass
+   0.1   165.1048   165.1075   0.0027   163.8453
+   1.0   136.9283   136.9342   0.0059   132.9729
+   5.0   103.2185   103.2238   0.0053    94.6623
+  10.0    86.5518    86.5556   0.0038    74.9974
+  20.0     68.648      68.65    0.002    54.0132
+  50.0    43.1032    43.1033  0.00017    29.7509
+
+max |numerov-exact| (correct mass) = 0.0059 deg
+max |numerov-exact| (bad mass, same slip in both) = 0.0037 deg

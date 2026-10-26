@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Copy Paste Desk</title>
+<style>
+  /* kami palette of the deck */
+  :root{--paper:#f5f4ed !important;--ink:#141413;--muted:#6b6a63;--rule:#e0ddd2}
+  body{background:#f5f4ed !important;background-image:none !important}
+  body, .act, button, .stat .k, .stat .v, .toast{font-family:Inter, "PingFang SC", sans-serif !important}
+  .act{border-color:#1B365D !important;color:#1B365D !important;font-size:14px !important}
+  .stat .k{letter-spacing:.04em !important;font-size:12px !important;text-transform:none !important}
+  .stat .v{color:#b53333 !important}
+  html.embed body{padding:2px 4px 0 !important}
+  html.embed header, html.embed .controls, html.embed .made-with, html.embed .zchip, html.embed .actions, html.embed .toast{display:none !important}
+  html.embed #fig{height:calc(100vh - 6px) !important;max-height:none !important;margin:0 auto !important}
+  html.embed .stage{position:relative !important}
+  html.embed .stats{position:absolute !important;top:2px !important;right:0 !important;margin:0 !important}
+  html.embed .stat .v{font-size:24px !important}
+  html.still .stats{display:none !important}
+</style>
+</head><body>
+<script src="core.js"></script>
+<script>
+/* The copy-paste desk: why a web chat makes you the courier, and what an agent changes.
+   How the real thing works (one press = one real step):
+     WEB    1 the chat window shows code             (it lives only in the browser)
+            2 you copy it, save it into the project folder, run it in the terminal -> error
+            3 you copy the error back into the chat
+            4 the chat gives a fixed version; you carry it to the folder and the terminal again -> xs.png
+            every leg between the windows is carried by you (counter)
+     AGENT  1 the agent in the terminal reads plot_xs.py and runs/*.out itself (reach line to the folder)
+            2 it runs the script and sees the error itself
+            3 it reads the error, edits line 14 of plot_xs.py in the folder
+            4 it runs again -> xs.png lands next to the folder; you carried nothing
+     SEES   what the model can see: web = only what was pasted into the chat window; agent = the terminal and
+            the whole project folder
+   Parts (each held by another):
+     DESK      wooden desk top (board), everything stands on it
+     MONITORS  two monitors, each panel on a neck on a foot; left = web chat (light screen), right = terminal
+               (dark screen); screen content drawn on the panel's front face
+     FOLDER    manila folder flat on the desk: plot_xs.py sheet, runs/ stack of .out sheets
+     CARD      xs.png print-out, slides out of the folder onto the desk when the plot is made
+     SLIP      the paper slip you carry (code, or the error in red)
+     REACH     dashed ink-blue line from the terminal to the folder while the agent reads or edits */
+
+const DW = 70, DD = 120, DH = 4;                               // desk depth (x), width (y), top height
+const KB = '#1B365D', KR = '#b53333', KG = '#4a6b3a';
+const DESK = { l:'#eadfc8', m:'#d6c7a8', d:'#ab9c7e' }, FOLD = { l:'#efd9a6', m:'#d9bf86', d:'#a88f5c' };
+const PAPER = { l:'#fdfcf8', m:'#ebe8df', d:'#c9c5b8' }, BODY = { l:'#5d5b56', m:'#3d3d3a', d:'#262624' };
+for (const k of Object.keys(PALS)) delete PALS[k];
+PALS.kami = { l:'#E4ECF5', m:'#c9d6e6', d:KB };
+const SANS = 'Inter, PingFang SC, sans-serif', MONO = 'SF Mono, Menlo, monospace';
+
+/* ---------- text on a face: o = 3D anchor, U = reading direction, V = text-down direction ---------- */
+const txF = (p, U, V, str, size, col, fam = SANS, weight = 600, anchor = 'start') =>
+  `<text transform="${txM(P(...p), Dv(...U), Dv(...V))}" font-size="${size}" fill="${col}" text-anchor="${anchor}" font-family="${fam}" font-weight="${weight}">${str}</text>`;
+const txScreen = (p, str, size, col, fam, w, a) => txF(p, [0,-1,0], [0,0,-1], str, size, col, fam, w, a);   // front plane x = const
+const txTop = (p, str, size, col, fam, w, a) => txF(p, [0,-1,0], [1,0,0], str, size, col, fam, w, a);        // desk-level plane z = const
+
+/* ---------- monitors ---------- */
+const MON = {
+  chat: { y0: 64, y1: 118 },
+  term: { y0: 4, y1: 58 } };
+const PX0 = 10, PX1 = 13, PZ0 = 20, PZ1 = 56, SB = 1.6;          // panel depth and height, bezel
+// a point on a screen: u from the screen's left edge, v down from its top (model units)
+const scr = (m, u, v, lift = .06) => [PX1 + lift, m.y1 - SB - u, PZ1 - SB - v];
+const SW = MON.chat.y1 - MON.chat.y0 - 2*SB, SHt = PZ1 - PZ0 - 2*SB;
+const srect = (m, u0, v0, u1, v1, lift) => [scr(m, u0, v0, lift), scr(m, u1, v0, lift), scr(m, u1, v1, lift), scr(m, u0, v1, lift)];
+
+function monitor(m, screen){
+  const yc = (m.y0 + m.y1)/2, parts = [];
+  parts.push({ box: [[2, yc - 11, DH], [19, yc + 11, DH + 1.2]], svg: box(2, yc - 11, DH, 19, yc + 11, DH + 1.2, BODY, toneI, 1.1) });
+  parts.push({ box: [[7, yc - 2.2, DH + 1.2], [10, yc + 2.2, PZ0 + 6]], svg: box(7, yc - 2.2, DH + 1.2, 10, yc + 2.2, PZ0 + 6, BODY, toneI, 1) });
+  let pan = box(PX0, m.y0, PZ0, PX1, m.y1, PZ1, BODY, tone, 1.3);
+  if (facing([1,0,0])) pan += screen;
+  parts.push({ box: [[PX0, m.y0, PZ0], [PX1, m.y1, PZ1]], svg: pan });
+  return byDepth(parts);
+}
+
+/* screen contents */
+function chatScreen(st){
+  const m = MON.chat, B = BUB(st);
+  let s = shape(srect(m, 0, 0, SW, SHt), '#faf9f5', .8);
+  s += fill(pd(srect(m, 0, 0, SW, 4.2, .08)), '#e8e6dc') + txScreen(scr(m, 2, 3.2, .1), '网页聊天', 3, '#3d3d3a');
+  for (const c of [[SW - 7, '#d1cfc5'], [SW - 4.5, '#d1cfc5'], [SW - 2, '#d1cfc5']]) s += fill(pd(srect(m, c[0], 1.6, c[0] + 1.4, 2.8, .09)), c[1]);
+  // bubbles, newest at the bottom: AI on the left, you on the right
+  let v = 6.5;
+  for (const b of B){
+    const w = b.who === 'ai' ? 33 : 29, u0 = b.who === 'ai' ? 2 : SW - 2 - w, h = 7.4;
+    s += shape(srect(m, u0, v, u0 + w, v + h, .1), b.bg, .6);
+    s += txScreen(scr(m, u0 + 1.6, v + 3.1, .12), b.t1, 2.9, b.fg, b.mono ? MONO : SANS, 600);
+    s += txScreen(scr(m, u0 + 1.6, v + 6.3, .12), b.t2, 2.5, b.fg2 || '#6b6a63', MONO, 500);
+    v += h + 1.3;
+  }
+  // input box
+  s += shape(srect(m, 2, SHt - 4.4, SW - 2, SHt - 1.2, .1), '#ffffff', .5) + txScreen(scr(m, 3.4, SHt - 2, .12), '有什么可以帮你？', 2.2, '#a3a199', SANS, 400);
+  if (st.over && st.mode === 'web') s += seeGlow(srect(m, 0, 0, SW, SHt, .14));
+  return s;
+}
+function termScreen(st){
+  const m = MON.term, L = TERM(st);
+  let s = shape(srect(m, 0, 0, SW, SHt), '#1d2a26', .8);
+  s += fill(pd(srect(m, 0, 0, SW, 4.2, .08)), '#2b3a35') + txScreen(scr(m, 2, 3.2, .1), '终端  ~/project', 2.8, '#cfe8d6', MONO, 600);
+  L.forEach((ln, i) => { s += txScreen(scr(m, 2, 8 + i*3.9, .12), ln.t, 2.8, ln.c, MONO, ln.c === '#ff7b6e' ? 700 : 500); });
+  // blinking cursor at the next free line
+  const blink = Math.floor(performance.now()/450) % 2 === 0;
+  if (blink && L.length < 7) s += fill(pd(srect(m, 2, 8 + L.length*3.9 - 2.5, 3.6, 8 + L.length*3.9 + .3, .12)), '#8af0ae');
+  if (st.over && st.mode === 'agent') s += seeGlow(srect(m, 0, 0, SW, SHt, .14));
+  return s;
+}
+const seeGlow = q => `<path d="${pd(q)}" fill="${KB}" fill-opacity=".16" stroke="${KB}" stroke-width="2.4" stroke-dasharray="5 3"/>`;
+
+/* ---------- the folder, the sheets, the print-out ---------- */
+const FD = { x0: 30, x1: 58, y0: 37, y1: 71 };
+function folder(st){
+  let s = '';
+  // tab on the back edge, then the folder board
+  s += box(FD.x0 - 2.4, FD.y0 + 4, DH, FD.x0, FD.y0 + 13, DH + .5, FOLD, toneI, .8);
+  s += box(FD.x0, FD.y0, DH, FD.x1, FD.y1, DH + .5, FOLD, toneI, 1.1);
+  s += txTop([FD.x0 - .9, FD.y0 + 12, DH + .55], 'project', 1.7, '#6b5a35', MONO, 600);
+  const lit = sheetLit(st);
+  // runs/: a stack of .out sheets
+  for (let i = 0; i < 4; i++){ const o = i*.7;
+    s += box(FD.x0 + 4 + o, FD.y0 + 17 + o, DH + .5 + i*.18, FD.x1 - 5 + o, FD.y1 - 3 + o, DH + .68 + i*.18, PAPER, toneI, .6); }
+  const zr = DH + .5 + 4*.18 + .02;
+  s += txTop([FD.x0 + 9.5, FD.y1 - 4.5, zr], 'runs/', 2.3, '#3d3d3a', MONO, 700);
+  for (let i = 0; i < 4; i++) s += line([[FD.x0 + 13 + i*2.6, FD.y1 - 5, zr], [FD.x0 + 13 + i*2.6, FD.y0 + 21, zr]], .35);
+  s += txTop([FD.x0 + 23.5, FD.y1 - 4.5, zr], '6 × .out', 1.9, '#6b6a63', MONO, 500);
+  // plot_xs.py on top, lit while it is being read or written
+  const zp = DH + 1.6;
+  s += box(FD.x0 + 2.5, FD.y0 + 2.5, DH + .5, FD.x1 - 7, FD.y0 + 18, zp, PAPER, toneI, .7);
+  if (lit) s += fill(pd([[FD.x0 + 2.5, FD.y0 + 2.5, zp + .01], [FD.x1 - 7, FD.y0 + 2.5, zp + .01], [FD.x1 - 7, FD.y0 + 18, zp + .01], [FD.x0 + 2.5, FD.y0 + 18, zp + .01]]), lit, 'opacity=".55"');
+  s += txTop([FD.x0 + 5, FD.y0 + 16.5, zp + .02], 'plot_xs.py', 2.3, '#3d3d3a', MONO, 700);
+  for (let i = 0; i < 6; i++){ const x = FD.x0 + 8 + i*2.6, len = [9, 6, 11, 7, 10, 5][i];
+    const hot = i === 3 && editedLine(st);
+    s += `<path d="${pd([[x, FD.y0 + 15.5, zp + .02], [x, FD.y0 + 15.5 - len, zp + .02]], false)}" stroke="${hot ? '#d9822b' : '#a3a199'}" stroke-width="${hot ? 1.4 : .7}" stroke-linecap="round"/>`; }
+  return s;
+}
+function card(st){
+  const k = CARD(st); if (k <= 0) return null;
+  // slides out of the folder onto the desk beside it
+  const e = ease(k), x0 = 35, y0 = 5 + (40 - 5)*(1 - e), z = DH + .05 + 7*Math.sin(Math.PI*e)*(1 - e)*1.6, w = 22, d = 26;
+  const X0 = x0, X1 = x0 + w, Y0 = y0, Y1 = y0 + d;
+  let s = box(X0, Y0, z, X1, Y1, z + .35, PAPER, toneI, .9);
+  const zt = z + .37, pu = (u, v) => [X0 + 4 + v*(w - 8), Y1 - 4 - u*(d - 8), zt];      // plot frame: u right, v down
+  s += `<path d="${pd([pu(0, 0), pu(0, 1), pu(1, 1)], false)}" fill="none" stroke="#3d3d3a" stroke-width=".7"/>`;
+  const cols = ['#1B365D', '#2D5A8A', '#4a6b3a', '#b53333', '#8a6d3b', '#6b6a63'];
+  cols.forEach((c, i) => { const pts = Array.from({ length: 16 }, (_, j) => { const u = j/15; return pu(u, .12 + (.55 + .05*i)*(1 - Math.exp(-u*(1.5 + .9*i))) ); });
+    s += `<path d="${pd(pts, false)}" fill="none" stroke="${c}" stroke-width=".9" stroke-linejoin="round"/>`; });
+  s += txTop([X0 + 2.3, Y1 - 4, zt], 'xs.png', 2.2, '#3d3d3a', MONO, 700);
+  return { box: [[X0, Y0, z], [X1, Y1, z + .4]], svg: s };
+}
+
+/* ---------- the slip you carry, and the agent's reach ---------- */
+const CHAT_OUT = [18, 91, 40], TERM_OUT = [18, 31, 40], FOLD_IN = [40, 46, DH + 3];
+const bez = (a, c, b, t) => a.map((_, i) => (1-t)*(1-t)*a[i] + 2*(1-t)*t*c[i] + t*t*b[i]);
+const arcCtl = (a, b) => [(a[0] + b[0])/2 + 14, (a[1] + b[1])/2, Math.max(a[2], b[2]) + 16];
+function slip(st){
+  const S = SLIP(st); if (!S) return null;
+  const p = bez(S.a, arcCtl(S.a, S.b), S.b, ease(S.t)), [x, y, z] = p, w = 10, d = 7;
+  const q = [[x - d/2, y - w/2, z], [x + d/2, y - w/2, z], [x + d/2, y + w/2, z], [x - d/2, y + w/2, z]];
+  let s = shape(q, S.err ? '#fbe9e4' : '#ffffff', 1.1);
+  for (let i = 0; i < 4; i++) s += `<path d="${pd([[x - d/2 + 1.4 + i*1.4, y + w/2 - 1.5, z + .01], [x - d/2 + 1.4 + i*1.4, y + w/2 - 1.5 - [7, 5, 6.5, 4][i], z + .01]], false)}" stroke="${S.err ? KR : KB}" stroke-width=".8" stroke-linecap="round"/>`;
+  s += pill(p, 0, -15, S.err ? '你在搬：报错' : '你在搬：代码', true);
+  return { box: [[x - 4, y - 5, z - .5], [x + 4, y + 5, z + .5]], svg: s };
+}
+function reach(st){
+  const f = REACH(st); if (f <= 0) return '';
+  const a = [PX1 + .4, 31, PZ0 + 3], b = [FD.x0 + 10, FD.y0 + 10, DH + 2], c = [36, 36, 34];
+  const pts = Array.from({ length: 30 }, (_, i) => bez(a, c, b, f*i/29));
+  const h = pts[pts.length - 1], [X, Y] = P(...h);
+  return `<path d="${pd(pts, false)}" fill="none" stroke="${KB}" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/><circle cx="${f2(X)}" cy="${f2(Y)}" r="${f2(2.2*INK_K)}" fill="${KB}"/>`;
+}
+const f2 = v => v.toFixed(1);
+
+/* ---------- labels: pills that fit Chinese text ---------- */
+function pill(p3, dx, dy, text, on = false){
+  const k = INK_K, [X, Y] = P(...p3), fs = 9.5*k, h = fs*1.85;
+  const w = [...text].reduce((a, ch) => a + (/[　-鿿＀-￯]/.test(ch) ? 1 : .6), 0)*fs + fs*1.4;
+  const cx = X + dx*k, cy = Y + dy*k;
+  return `<g><path d="M${f2(X)} ${f2(Y)}L${f2(cx)} ${f2(cy)}" stroke="${INK}" stroke-width="1"/><circle cx="${f2(X)}" cy="${f2(Y)}" r="${f2(1.4*k)}" fill="${INK}"/>`
+    + `<rect x="${f2(cx - w/2)}" y="${f2(cy - h/2)}" width="${f2(w)}" height="${f2(h)}" rx="${f2(h/2)}" fill="${on ? '#fbe9e4' : '#fcfbf7'}" stroke="${on ? KR : INK}" stroke-width="1.2"/>`
+    + `<text x="${f2(cx)}" y="${f2(cy + fs*.36)}" font-size="${f2(fs)}" text-anchor="middle" font-family="${SANS}" font-weight="600" fill="${on ? KR : INK}">${text}</text></g>`;
+}
+
+/* ---------- the story: everything on the desk follows from (mode, step, t) ---------- */
+const after = (st, k, tt) => st.step > k || (st.step === k && st.t >= tt);
+const during = (st, k, a, b) => st.step === k && st.t >= a && st.t < b;
+function BUB(st){
+  if (st.mode !== 'web') return [];
+  const B = [];
+  if (after(st, 1, .3)) B.push({ who: 'ai', bg: '#f0eee6', fg: '#3d3d3a', t1: 'AI：这是代码', t2: 'np.loadtxt(f) ...', mono: false });
+  if (after(st, 3, .85)) B.push({ who: 'you', bg: '#fbe9e4', fg: KR, t1: '你：报错了', t2: 'ValueError ...', fg2: KR });
+  if (after(st, 4, .12)) B.push({ who: 'ai', bg: '#f0eee6', fg: '#3d3d3a', t1: 'AI：改好了', t2: 'skiprows=1', mono: false });
+  return B;
+}
+const RUN = { t: '$ python plot_xs.py', c: '#cfe8d6' }, ERR = { t: 'ValueError (line 14)', c: '#ff7b6e' }, OK = { t: 'saved xs.png', c: '#8af0ae' };
+function TERM(st){
+  const L = [];
+  if (st.mode === 'web'){
+    if (after(st, 2, .68)) L.push(RUN); if (after(st, 2, .82)) L.push(ERR);
+    if (after(st, 4, .76)) L.push(RUN); if (after(st, 4, .88)) L.push(OK);
+  } else {
+    if (after(st, 1, .45)) L.push({ t: 'read plot_xs.py', c: '#9fc3ea' }); if (after(st, 1, .7)) L.push({ t: 'read runs/*.out (6)', c: '#9fc3ea' });
+    if (after(st, 2, .3)) L.push(RUN); if (after(st, 2, .6)) L.push(ERR);
+    if (after(st, 3, .65)) L.push({ t: 'edit line 14: skiprows=1', c: '#f0b46a' });
+    if (after(st, 4, .3)) L.push(RUN); if (after(st, 4, .6)) L.push(OK);
+  }
+  return L;
+}
+function CARD(st){ const t0 = st.mode === 'web' ? .88 : .6; return !after(st, 4, t0) ? 0 : Math.min(1, (st.t - t0)/(1 - t0)); }
+function SLIP(st){
+  if (st.mode !== 'web') return null;
+  const seg = (a, b, t0, t1, err) => st.t >= t0 && st.t < t1 ? { a, b, t: (st.t - t0)/(t1 - t0), err } : null;
+  if (st.step === 2) return seg(CHAT_OUT, FOLD_IN, 0, .33) || seg(FOLD_IN, TERM_OUT, .33, .62);
+  if (st.step === 3) return seg(TERM_OUT, CHAT_OUT, .05, .8, true);
+  if (st.step === 4) return seg(CHAT_OUT, FOLD_IN, .15, .45) || seg(FOLD_IN, TERM_OUT, .45, .7);
+  return null;
+}
+const CARRIES = st => st.mode !== 'web' ? 0 : [after(st, 2, .33), after(st, 2, .62), after(st, 3, .8), after(st, 4, .45), after(st, 4, .7)].filter(Boolean).length;
+function REACH(st){
+  if (st.mode !== 'agent') return 0;
+  if (st.step === 1) return Math.min(1, st.t/.4);
+  if (st.step === 3) return Math.min(1, st.t/.4);
+  return 0;
+}
+function sheetLit(st){
+  if (st.mode === 'web') return during(st, 2, .26, .4) || during(st, 4, .38, .52) ? '#f6d58f' : '';
+  return (st.step === 1 && st.t > .4) ? '#c9d6e6' : (st.step === 3 && st.t > .4) ? '#f6d58f' : '';
+}
+const editedLine = st => st.mode === 'agent' ? after(st, 3, .65) : after(st, 4, .45);
+
+/* ---------- scene ---------- */
+function scene(st){
+  let s = board(0, 0, DW, DD, DH, 6, DESK);
+  // soft shadows of the monitors on the desk
+  const [sx, sy] = yawTurn(SH), sk = SHADOW_LEN/SHADOW_K;
+  const shade = pts => fill(sp(hull(pts.map(([x, y, z]) => P(x + (z - DH)*sx*sk, y + (z - DH)*sy*sk, DH)))), '#cdbd9c');
+  let sh = '';
+  for (const m of [MON.chat, MON.term]) sh += shade([[PX0, m.y0, PZ0], [PX1, m.y0, PZ0], [PX0, m.y1, PZ0], [PX1, m.y1, PZ0], [PX0, m.y0, PZ1], [PX1, m.y0, PZ1], [PX0, m.y1, PZ1], [PX1, m.y1, PZ1], [7, (m.y0+m.y1)/2, DH], [10, (m.y0+m.y1)/2, PZ0]]);
+  s += clipTo(boardTop(0, 0, DW, DD, DH, 6), sh);
+  // what the agent can see: the whole project on the desk
+  if (st.over && st.mode === 'agent') s += seeGlow(on(PZ(DH + .03), rrUV(FD.x0 - 4, 2, FD.x1 + 4, FD.y1 + 4, 4)));
+  const items = [
+    { box: [[FD.x0 - 2.4, FD.y0, DH], [FD.x1 + 3, FD.y1 + 3, DH + 1.7]], svg: folder(st) },
+    card(st),
+    { box: [[2, MON.chat.y0, DH], [19, MON.chat.y1, PZ1]], svg: monitor(MON.chat, chatScreen(st)) },
+    { box: [[2, MON.term.y0, DH], [19, MON.term.y1, PZ1]], svg: monitor(MON.term, termScreen(st)) },
+  ];
+  s += byDepth(items);
+  if (facing([1,0,0])) s += reach(st);          // seen from behind, the screens hide the reach
+  const sl = slip(st); if (sl) s += sl.svg;
+  // names of the things on the desk
+  if (facing([1,0,0])){
+    s += pill([PX1, MON.chat.y1 - 6, PZ1], -6, -14, '网页聊天');
+    s += pill([PX1, MON.term.y0 + 6, PZ1], 6, -14, '终端');
+  }
+  if (facing([1,0,0])) s += pill([FD.x1 - 4, FD.y1 - 2, DH + 1], 8, 16, '项目文件夹');
+  if (CARD(st) >= 1) s += pill([48, 12, DH + .4], 14, 12, 'xs.png');
+  if (st.over) s += st.mode === 'web'
+    ? pill([PX1, (MON.chat.y0 + MON.chat.y1)/2, PZ0 + 2], 0, 26, 'AI 只看得到你贴进来的', true)
+    : pill([FD.x1 + 4, 8, DH], 6, 26, 'agent 看得到整个文件夹', true);
+  return s;
+}
+
+/* ---------- driving the story ---------- */
+const DUR = { web: [0, 1.0, 2.6, 1.9, 2.8], agent: [0, 1.8, 1.6, 1.8, 1.8] };
+let ui, job = 0;
+function go(st, step, animate = true){
+  const id = ++job;
+  st.step = Math.max(0, Math.min(4, step));
+  if (!animate || st.step === 0){ st.t = 1; ui.render(); return; }
+  st.t = 0; const T = DUR[st.mode][st.step];
+  ui.animate(dt => { if (id !== job) return false; st.t = Math.min(1, st.t + dt/T); return st.t < 1; });
+}
+// the deck sends a click number; a step forward animates, any other jump lands at once
+function toClick(st, mode, k){
+  const want = mode === 'web' ? { step: Math.min(4, k), over: k >= 5 } : { step: Math.min(4, k + 1), over: k >= 4 };
+  if (mode !== st.mode){ st.mode = mode; st.step = 0; st.t = 1; }
+  st.over = want.over;
+  if (want.step === st.step + 1) go(st, want.step);
+  else if (want.step !== st.step || st.t < 1) go(st, want.step, false);
+  ui.render();
+}
+const q0 = new URLSearchParams(location.search);
+const MODE0 = q0.get('mode') === 'agent' ? 'agent' : 'web';
+if (window.parent !== window || q0.get('embed') === '1'){ window.FIG_A = () => .75; window.LBL_U = () => 0; }
+const steps = MODE0 === 'web'
+  ? ['AI 给代码', '复制、保存、运行', '把报错贴回去', '给修改版，再跑']
+  : ['读文件', '运行', '看报错、改一行', '再运行'];
+ui = mountFigure({
+  fig: '3', title: 'Copy paste desk', turn: 'full', credit: false,
+  size: [DW, DD, PZ1], center: [DW/2, DD/2], palette: 'kami',
+  state: { mode: MODE0, step: 0, t: 1, over: false },
+  scene,
+  buttons: [
+    ...steps.map((label, i) => ({ label, onClick: st => go(st, i + 1) })),
+    { label: '它能看到什么', onClick: st => { st.over = !st.over; } },
+    { label: MODE0 === 'web' ? '换成 agent' : '换成网页', onClick: () => { location.search = '?mode=' + (MODE0 === 'web' ? 'agent' : 'web'); } },
+  ],
+  stats: st => [{ label: '你搬了', value: CARRIES(st) + ' 次' }],
+  params(st, q){
+    if (q.get('embed') === '1') document.documentElement.classList.add('embed');
+    if (q.get('still') === '1') document.documentElement.classList.add('still');
+  },
+});
+if (q0.has('k')) toClick(ui.st, MODE0, +q0.get('k'));
+// the terminal cursor blinks
+setInterval(() => { if (!document.hidden) ui.render(); }, 450);
+const embedded = window.parent !== window;
+if (embedded){ window.GAME_KEYS = true; document.documentElement.classList.add('embed');
+  addEventListener('pointerup', () => setTimeout(() => { try { document.activeElement && document.activeElement.blur(); window.parent.focus(); } catch (e) {} }, 0), true); }
+addEventListener('message', e => { const d = e.data && e.data.desk; if (!d) return; toClick(ui.st, d.mode, d.k); });
+</script></body></html>

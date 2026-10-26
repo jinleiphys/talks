@@ -1,0 +1,20 @@
+{
+  "name": "fusion-ml2026-1030",
+  "private": true,
+  "scripts": {
+    "dev": "slidev slides.md --port 3038",
+    "present": "slidev slides.md --port 3038 --presenter",
+    "build": "slidev build slides.md",
+    "export": "slidev export slides.md --output using-ai-in-research.pdf",
+    "handout": "slidev export slides.md --with-clicks --output using-ai-in-research-clicks.pdf"
+  },
+  "dependencies": {
+    "@slidev/cli": "53.0.0",
+    "@slidev/theme-seriph": "0.25.0",
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "playwright-chromium": "1.56.0"
+  },
+  "type": "module"
+}

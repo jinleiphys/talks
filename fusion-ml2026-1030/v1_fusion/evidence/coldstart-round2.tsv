@@ -1,0 +1,13 @@
+skill	install_rc	install_s	verify_rc	verify_s	disk_mb	note
+coloss	2	2	none	-	2	
+swanlop	0	5	0	2	30	
+pikoe	0	5	0	23	56	
+nlat	1	33	-	-	1	
+gibuu	0	34	0	79	251	
+sky3d	0	13	0	13	38	
+gsm	3	8	none	-	285	
+coloss	0	3	none	-	5	
+vhlle	0	65	0	88	1236	
+nlat	0	7	124	5400	64	verify TIMEOUT 5400s
+talys	0	319	2	0	11493	
+nlat	0	7	0	6500	64	

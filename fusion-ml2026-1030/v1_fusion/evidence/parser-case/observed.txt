@@ -1,0 +1,6 @@
+# compare  evidence/parser-case/missing-fields.out
+# against  evidence/parser-case/reference.out
+# required agreement: 6 sig figs
+
+  quantity                this        reference   sigfigs  ok
+  reaction          1299.19061       1299.19061     exact  PASS

@@ -1,0 +1,26 @@
+
+> export
+> slidev export slides.md --output using-ai-in-research.pdf
+
+[Slidev] Try the new browser exporter!
+You can use the browser exporter instead by starting the dev server as normal and visit localhost:<port>/export
+
+
+
+  ●■▲
+  Slidev  v53.0.0 
+
+  theme       @slidev/theme-seriph
+  css engine  unocss
+  entry       /Users/jinlei/Desktop/talks/fusion-ml2026-1030/slides.md
+1:48:15 AM [vite] (client) [console.error] Failed to patch FloatingVue TypeError: Cannot read properties of undefined (reading 'Popper')
+    at app.component (http://localhost:12445/@fs/Users/jinlei/.cache/talk-build/fusion-ml2026/node_modules/@shikijs/vitepress-twoslash/dist/client.mjs?v=40069495:27:42)
+    at Object.install (http://localhost:12445/@fs/Users/jinlei/.cache/talk-build/fusion-ml2026/node_modules/floating-vue/dist/floating-vue.mjs?v=40069495:1683:9)
+    at Object.use (http://localhost:12445/@fs/Users/jinlei/.cache/talk-build/fusion-ml2026/node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js?v=40069495:3706:13)
+    at Object.install (http://localhost:12445/@fs/Users/jinlei/.cache/talk-build/fusion-ml2026/node_modules/@shikijs/vitepress-twoslash/dist/client.mjs?v=40069495:43:6)
+    at Object.use (http://localhost:12445/@fs/Users/jinlei/.cache/talk-build/fusion-ml2026/node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js?v=40069495:3706:13)
+    at setupMain (http://localhost:12445/@fs/Users/jinlei/.cache/talk-build/fusion-ml2026/node_modules/@slidev/client/setup/main.ts?v=40069495:30:6)
+    at main (http://localhost:12445/@fs/Users/jinlei/.cache/talk-build/fusion-ml2026/node_modules/@slidev/client/main.ts:7:8)
+    at http://localhost:12445/@fs/Users/jinlei/.cache/talk-build/fusion-ml2026/node_modules/@slidev/client/main.ts:10:1
+  ✓ exported to ./using-ai-in-research.pdf
+
