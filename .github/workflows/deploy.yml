@@ -40,6 +40,9 @@ jobs:
           exit $missing
 
       - name: Build all talks
+        # playwright-chromium is only for PDF export; its browser download is not needed to build.
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
         run: |
           mkdir -p _site
           cp index.html _site/
