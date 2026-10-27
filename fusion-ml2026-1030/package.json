@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "slidev slides.md --port 3038",
     "present": "slidev slides.md --port 3038 --presenter",
-    "build": "slidev build slides.md",
+    "build": "slidev build slides.md --base /talks/fusion-ml2026-1030/",
     "export": "slidev export slides.md --output using-ai-in-research.pdf",
     "handout": "slidev export slides.md --with-clicks --output using-ai-in-research-clicks.pdf"
   },
