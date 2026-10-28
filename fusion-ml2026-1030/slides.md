@@ -605,12 +605,39 @@ class: dense
 
 <div class="two qr-slide">
 <div>
-<div class="handoff-steps ab-steps">
-<div><span>①</span><b>直接问</b><small>网页 AI，关掉联网：“帮我检查这些参考文献对不对。”</small></div>
-<div><span>②</span><b>先给规程，再问</b><small>新对话，同一个 AI。规程 6 行：不凭记忆，逐字段核对，查不到标 UNVERIFIED。</small></div>
-<div><span>③</span><b>agent 加 skill</b><small>真的去查 CrossRef，打开原始记录对答案。</small></div>
+<div class="ab-steps">
+<details name="ab">
+<summary><span>①</span><b>直接问</b><small>网页 AI，关掉联网：“帮我检查这些参考文献对不对。”</small></summary>
+<div class="ab-res">
+<div><i>[1][3]</i>“正确” ✅</div>
+<div class="bad"><i>[2]</i>“正确，经典文献” ✅ <em>页码 275 是错的</em></div>
+<div class="bad"><i>[4]</i>“Lei 与 Moro 确实在 PRC 96, 064607 发表过，卷号、页码、年份本身是对的” <em>这篇是编的</em></div>
+<div><i>[5]</i>先说“有问题”，绕一圈又改口“正确”</div>
+<p>两处错，一处也没抓到。</p>
 </div>
-<div class="note-line">5 条里有错。三轮每次只多一样东西：先多 6 行规程，再多一个真能查数据库的工具。</div>
+</details>
+<details name="ab">
+<summary><span>②</span><b>先给规程，再问</b><small>新对话，同一个 AI，前面加 6 行规程。关联网、开联网各跑一次。</small></summary>
+<div class="ab-res">
+<div class="sub">关联网</div>
+<div class="bad"><i>[2][4]</i>“依据 Crossref …，逐字段一致”，判正确 <em>记录是编的</em></div>
+<div class="sub">开联网</div>
+<div class="good"><i>[2][4]</i>都抓到：起始页应为 257；Lei、Moro 2017 年发的是 PRC 95, 044605 <em>对</em></div>
+<div class="bad"><i>[1]</i>判“有误”：别人参考文献表里写的是 32, 432 (1982) <em>误判，这条是对的</em></div>
+<p>没联网，规程只教会它编依据；联了网，它拿二手引用当原始记录。</p>
+</div>
+</details>
+<details name="ab">
+<summary><span>③</span><b>agent 加 skill</b><small>真的去查 CrossRef，打开原始记录对答案。</small></summary>
+<div class="ab-res">
+<div><i>[1][3][5]</i>DOI 原始记录逐字段一致，正确（[1] 就是 32, 431, 1985）</div>
+<div class="good"><i>[2]</i>10.1103/RevModPhys.30.257：起始页 <b>257</b>，列表写成 275 <em>有误</em></div>
+<div class="good"><i>[4]</i>PRC 96, 064607 是 M. Mirea 的 α 衰变文章；Lei、Moro 2017 年发的是 PRC 95, 044605 <em>编造</em></div>
+<p>两处都查出来了，每条都能点开原始记录。</p>
+</div>
+</details>
+</div>
+<div class="note-line">5 条里有错。每轮只多一样：先是 6 行规程，再是真能查的工具。</div>
 </div>
 <div class="qr-box">
 <img src="./figures/prompts-qr.svg" alt="提示词网页二维码" />
@@ -620,20 +647,33 @@ class: dense
 </div>
 
 <style>
-.ab-steps > div { display: grid; grid-template-columns: 30px 1fr; column-gap: 8px; align-items: baseline; padding: 8px 12px; margin: 6px 0; border-radius: 8px; border: 1px solid #e0ddd2; background: #fcfbf7; }
-.ab-steps span { grid-row: span 2; font-size: 18px; color: #1B365D; font-weight: 600; }
-.ab-steps b { font-size: 18px; font-weight: 600; color: #141413; }
-.ab-steps small { font-size: 14px; color: #3d3d3a; line-height: 1.45; }
-.qr-slide { align-items: center; }
+.ab-steps details { margin: 6px 0; border-radius: 8px; border: 1px solid #e0ddd2; background: #fcfbf7; }
+.ab-steps details[open] { border-color: #1B365D; }
+.ab-steps summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 30px 1fr; column-gap: 8px; align-items: baseline; padding: 8px 12px; }
+.ab-steps summary::-webkit-details-marker { display: none; }
+.ab-steps summary span { grid-row: span 2; font-size: 18px; color: #1B365D; font-weight: 600; }
+.ab-steps summary b { font-size: 18px; font-weight: 600; color: #141413; }
+.ab-steps summary small { font-size: 14px; color: #3d3d3a; line-height: 1.45; }
+.ab-steps details[open] summary small { display: none; }
+.ab-res { padding: 0 12px 8px 50px; font-size: 13.5px; line-height: 1.45; color: #3d3d3a; }
+.ab-res > div { margin: 2px 0; }
+.ab-res i { font-style: normal; font-weight: 600; color: #1B365D; margin-right: 6px; }
+.ab-res em { font-style: normal; font-size: 12px; padding: 0 6px; border-radius: 4px; margin-left: 4px; white-space: nowrap; }
+.ab-res .bad em { background: #f3e0dc; color: #9b3b2a; }
+.ab-res .good em { background: #e2ebdb; color: #4a6b3a; }
+.ab-res > div.sub { margin: 4px 0 0; font-size: 13px; font-weight: 600; color: #6b6a63; }
+.ab-res p { margin: 5px 0 0; font-weight: 600; color: #141413; font-size: 14px; }
+.qr-slide { align-items: center; grid-template-columns: 1.75fr 1fr !important; }
+.qr-slide .note-line { margin-top: 8px; font-size: 17px; }
 .qr-box { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.qr-box img { width: 210px; height: 210px; border-radius: 10px; box-shadow: 0 0 0 1px #e0ddd2; }
-.qr-box a { font-size: 12.5px; color: #1B365D; word-break: break-all; text-align: center; }
+.qr-box img { width: 190px; height: 190px; border-radius: 10px; box-shadow: 0 0 0 1px #e0ddd2; }
+.qr-box a { font-size: 11.5px; white-space: nowrap; color: #1B365D; word-break: break-all; text-align: center; }
 </style>
 
 <!--
 Central message: 只有规程、没有工具，AI 会照着规程的格式编出依据；规程加上真能查的工具，才查得出错。三轮每次只多一样东西。
 操作：［点下面的链接打开提示词网页，复制第一轮，切到网页 AI（关联网）粘贴。］学生可以扫码跟着做。
-讲述：第一轮，我什么都不说，直接问。［预演 2026-10-28，DeepSeek 关联网：[2] 的 275 判“正确，经典文献”；[4] 说“Lei 与 Moro 确实在 PRC 96, 064607 发表过”，“卷号、页码、年份本身是对的”；[5] 先说“有问题”，绕一圈又改口“正确”。］第二轮，新开对话，同一个模型，前面多贴 6 行规程。［预演：它给出一张很规整的表，每条都写“依据 Crossref DOI ……”，五个字段逐一“一致”，[4] 也判“正确”。可它关着联网，什么都没查，这些 Crossref 记录全是编的。］这一轮最要紧：规程让输出看起来更严谨，却没让它更对。它学会了依据长什么样，没学会去查。第三轮，切到终端，让 agent 用 literature-search 真的去查。答案：第 2 条起始页是 257，不是 275；第 4 条是编的，PRC 96, 064607 这个 DOI 能打开，但打开的是 Mirea 一篇 α 衰变的文章。Lei 和 Moro 2017 年在 PRC 发的是 95, 044605。只查 DOI 存不存在，会放过它。
+讲述：第一轮，我什么都不说，直接问。［预演 2026-10-28，DeepSeek 关联网：[2] 的 275 判“正确，经典文献”；[4] 说“Lei 与 Moro 确实在 PRC 96, 064607 发表过”，“卷号、页码、年份本身是对的”；[5] 先说“有问题”，绕一圈又改口“正确”。］第二轮，新开对话，同一个模型，前面多贴 6 行规程。［预演：它给出一张很规整的表，每条都写“依据 Crossref DOI ……”，五个字段逐一“一致”，[4] 也判“正确”。可它关着联网，什么都没查，这些 Crossref 记录全是编的。］这一轮最要紧：规程让输出看起来更严谨，却没让它更对。它学会了依据长什么样，没学会去查。［再开联网跑一次第二轮：[2] 和 [4] 都抓到了（它找到了 PRC 95, 044605，但没打开 96, 064607 看那是谁的文章）；可它把对的 [1] 判成“有误”，依据是别人论文参考文献表里写的 “32, 432 (1982)”。二手引用当成了原始记录，违反规程第 4 条的精神：要确认打开的就是这一篇。］第三轮，切到终端，让 agent 用 literature-search 真的去查。答案：第 2 条起始页是 257，不是 275；第 4 条是编的，PRC 96, 064607 这个 DOI 能打开，但打开的是 Mirea 一篇 α 衰变的文章。Lei 和 Moro 2017 年在 PRC 发的是 95, 044605。只查 DOI 存不存在，会放过它。
 预演原文：demo/literature/ab-test/runs/（未提交）。
 备用：现场失败时打开 demo/literature/ab-test/ANSWERS.md 和 crossref/ 里的原始记录。
 Timing target: 57:30–65:00。
