@@ -610,7 +610,7 @@ class: dense
 <div><span>②</span><b>先给规程，再问</b><small>新对话，同一个 AI。规程 6 行：不凭记忆，逐字段核对，查不到标 UNVERIFIED。</small></div>
 <div><span>③</span><b>agent 加 skill</b><small>真的去查 CrossRef，打开原始记录对答案。</small></div>
 </div>
-<div class="note-line">5 条里有错。第二轮和第一轮用的是同一个 AI，只是前面多贴了 6 行规程。</div>
+<div class="note-line">5 条里有错。三轮每次只多一样东西：先多 6 行规程，再多一个真能查数据库的工具。</div>
 </div>
 <div class="qr-box">
 <img src="./figures/prompts-qr.svg" alt="提示词网页二维码" />
@@ -631,12 +631,13 @@ class: dense
 </style>
 
 <!--
-Central message: 规程本身就能改变 AI 的行为；工具让它真的能查。三轮只改一样东西。
+Central message: 只有规程、没有工具，AI 会照着规程的格式编出依据；规程加上真能查的工具，才查得出错。三轮每次只多一样东西。
 操作：［点下面的链接打开提示词网页，复制第一轮，切到网页 AI（关联网）粘贴。］学生可以扫码跟着做。
-讲述：第一轮，我什么都不说，直接问。看它的结论。［通常会说基本正确，或者只挑出格式问题。］第二轮，新开对话，同一个模型，只在前面多贴 6 行规程。看它怎么说：它没法查数据库，按规程就只能标 UNVERIFIED，不再说“都对”。第三轮，切到终端，让 agent 用 literature-search 真的去查。答案：第 2 条起始页是 257，不是 275；第 4 条是编的，PRC 96, 064607 这个 DOI 能打开，但打开的是 Mirea 一篇 α 衰变的文章。只查 DOI 存不存在，会放过它。
+讲述：第一轮，我什么都不说，直接问。［预演 2026-10-28，DeepSeek 关联网：[2] 的 275 判“正确，经典文献”；[4] 说“Lei 与 Moro 确实在 PRC 96, 064607 发表过”，“卷号、页码、年份本身是对的”；[5] 先说“有问题”，绕一圈又改口“正确”。］第二轮，新开对话，同一个模型，前面多贴 6 行规程。［预演：它给出一张很规整的表，每条都写“依据 Crossref DOI ……”，五个字段逐一“一致”，[4] 也判“正确”。可它关着联网，什么都没查，这些 Crossref 记录全是编的。］这一轮最要紧：规程让输出看起来更严谨，却没让它更对。它学会了依据长什么样，没学会去查。第三轮，切到终端，让 agent 用 literature-search 真的去查。答案：第 2 条起始页是 257，不是 275；第 4 条是编的，PRC 96, 064607 这个 DOI 能打开，但打开的是 Mirea 一篇 α 衰变的文章。Lei 和 Moro 2017 年在 PRC 发的是 95, 044605。只查 DOI 存不存在，会放过它。
+预演原文：demo/literature/ab-test/runs/（未提交）。
 备用：现场失败时打开 demo/literature/ab-test/ANSWERS.md 和 crossref/ 里的原始记录。
 Timing target: 57:30–65:00。
-Transition: 第二轮那 6 行，就是 skill 的雏形。看完整版。
+Transition: 第二轮那 6 行，就是 skill 的一半；另一半是让它真的能查的工具。看完整版。
 -->
 
 ---
