@@ -4,7 +4,7 @@
 
 受众：已经用网页 GPT 聊天，但没用过、也不知道为什么要用 agent 的研究生。
 
-当前入口：`slides.md`，31 页正文、3 页备用。上一版（六行 CSV 入门教程）存于 `archive/pre-cases-20261020/`。
+当前入口：`slides.md`，32 页正文、3 页备用。上一版（六行 CSV 入门教程）存于 `archive/pre-cases-20261020/`。
 
 ## 主线
 
@@ -14,8 +14,8 @@
 | 10–24 | 6–11 | 三个真实案例：APS 校样、45 条参考文献复核、过时预印本 |
 | 24–49 | 12–17 | 现场演示：Claude Code 加 FUSION skill，一句话算 KD02 p+208Pb 30 MeV 并和 EXFOR 对比；同一句话问网页 AI 作对照 |
 | 49–57 | 18–20 | 它错得很像对：eza 空结果、13+4=17 |
-| 57–73 | 21–28 | skill：参考文献三轮对照、literature-search、现场查库、FUSION、两程序对照查出 bug；权限 |
-| 73–90 | 29–31 | 写自己的任务、总结、课后材料（提示词网页）、问答 |
+| 57–73 | 21–29 | skill：参考文献三轮对照、literature-search、现场查库、FUSION、FUSION 访客地图（嵌入 vibeinscience.com/visitors.html，断网用截图）、两程序对照查出 bug；权限 |
+| 73–90 | 30–32 | 写自己的任务、总结、课后材料（提示词网页）、问答 |
 
 案例都来自 `~/research-wiki-personal/log.md` 及其原始记录（proof_corrections_2026-10-13.txt、4b-IAV reference-audit/RECHECK-2026-09-28.md、arxiv_2407.20737_v3/README_v3.md、FUSION 失败页）。案例 6 暂不公开程序名（对方工作未发表），也不放 ΔR 数字。
 

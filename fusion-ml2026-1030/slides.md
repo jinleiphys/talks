@@ -728,6 +728,33 @@ Transition: FUSION 就是把这件事做到核物理程序上。
 Central message: FUSION 的两条核心规矩，正是前面两类错误的解药。
 讲述：FUSION 是我把一些核物理程序的操作写成 skill。两条规矩：第一，它不凭记忆从零写 FRESCO 输入，而是在一份核对过的输入上改；第二，跑完先复现一个已知结果。这两条防的是“编”和“自说自话”。但要说清楚：复现了作者的结果，只说明程序装对了，不说明你的物理对了，这就是刚才那张检查表的最后一行。
 Timing target: 65:00–68:00。
+Transition: 这些 skill 放在公开仓库里，看看谁在看。
+-->
+
+---
+
+# 世界上谁在看 FUSION
+<div class="subtitle">vibeinscience.com/visitors.html · live</div>
+
+<div class="vis-frame">
+<img class="vis-still" src="./figures/fusion-visitors.png" alt="FUSION 访客地图截图" />
+<iframe class="vis-live" src="https://vibeinscience.com/visitors.html" loading="lazy" title="FUSION 访客地图"></iframe>
+</div>
+<div class="vis-foot">每个亮点是有人打开过这个网站的地方。<a href="https://vibeinscience.com/visitors.html" target="_blank">在浏览器里打开</a></div>
+
+<style>
+.vis-frame { position: relative; width: 845px; height: 310px; margin: 18px auto 0; border-radius: 10px; overflow: hidden; background: #070b14; }
+.vis-still { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.vis-live { position: absolute; top: 0; left: 0; width: 1280px; height: 1000px; border: 0; transform: scale(0.66) translateY(-360px); transform-origin: 0 0; pointer-events: none; }
+.vis-foot { text-align: center; font-size: 15px; color: #6b6a63; margin-top: 12px; }
+.vis-foot a { margin-left: 10px; }
+</style>
+
+<!--
+Central message: skill 是公开的，别人在用、在看。
+讲述：这是 FUSION 网站的访客地图，实时的。每个亮点是有人打开过网站的国家。计数来自 GoatCounter，它不记 IP，同一个人不同天、不同页面会重复计数，所以这里只说“哪些地方有人看”，不报人数。
+操作：嵌入的网页只显示地图、不接收点击，翻页不受影响；要看国家列表和每日曲线，点“在浏览器里打开”。断网时显示的是 2026-10-28 的截图。
+Timing target: 68:00–69:00。
 Transition: 最后一个案例，两个程序对不上的时候。
 -->
 

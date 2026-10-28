@@ -11,19 +11,19 @@ const PARTS = [
   { start: 13, label: '现场演示：一句话到实验对比' },
   { start: 19, label: '它也会错，而且错得很像对' },
   { start: 22, label: '把吃过的亏写下来' },
-  { start: 27, label: '自己动手：权限与第一份任务' },
+  { start: 29, label: '自己动手：权限与第一份任务' },
 ]
 const part = computed(() => {
   const p = currentPage.value
-  if (p < 2 || p > 30 || [6, 12, 18, 21].includes(p)) return ''
+  if (p < 2 || p > 31 || [6, 12, 18, 21].includes(p)) return ''
   return [...PARTS].reverse().find(x => p >= x.start)?.label ?? ''
 })
 </script>
 
 <template>
   <div v-if="part" class="slide-part">{{ part }}</div>
-  <footer v-if="$page <= 31 && $page > 1" class="slide-page-number">
-    {{ $page }} / 31
+  <footer v-if="$page <= 32 && $page > 1" class="slide-page-number">
+    {{ $page }} / 32
   </footer>
 </template>
 
