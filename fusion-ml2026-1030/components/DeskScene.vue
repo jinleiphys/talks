@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Slides 3 and 4: the copy-paste desk (public/desk.html, built from figures/desk/ with the
 // Colorfigures engine). mode="web": you carry code and errors between the chat and the terminal;
-// mode="agent": the terminal reads, runs and edits the project folder itself. Each click is one
+// mode="agent": the terminal reads, runs and edits the project on the computer itself; the plot comes out of the printer. Each click is one
 // step; the last click shows what the model can see. The audience may drag to turn the desk.
 // In PDF export the live page is replaced by a still per click (public/desk_<mode>_<k>.png).
 import { computed, ref, watch } from 'vue'
@@ -18,7 +18,7 @@ watch(k, send)
 <template>
 <div class="desk-scene" :style="{ height: height + 'px', gridTemplateColumns: cols }">
 <div class="desk-fig">
-<img v-if="isPrintMode" :src="`${base}desk_${mode}_${k}.png`" class="desk-still" alt="书桌示意：网页聊天、终端和项目文件夹" />
+<img v-if="isPrintMode" :src="`${base}desk_${mode}_${k}.png`" class="desk-still" alt="书桌示意：网页聊天、终端、主机和打印机" />
 <iframe v-else ref="frame" :src="`${base}desk.html?embed=1&mode=${mode}`" @load="send" title="书桌示意"></iframe>
 </div>
 <div class="desk-side"><slot :k="k" /></div>

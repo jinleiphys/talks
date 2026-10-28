@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>课上提示词</title>
+<style>
+  :root { --paper:#f5f4ed; --card:#fcfbf7; --ink:#141413; --muted:#6b6a63; --rule:#e0ddd2; --accent:#1B365D; --ok:#4a6b3a; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --paper:#1d1d1b; --card:#262624; --ink:#ecebe6; --muted:#a3a199; --rule:#3d3d3a; --accent:#9fc3ea; --ok:#8fbf7a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 Inter, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+  header { border-bottom: 1px solid var(--rule); padding-bottom: 14px; margin-bottom: 8px; }
+  .kicker { font-size: 13px; color: var(--muted); letter-spacing: .04em; }
+  h1 { font-size: 24px; margin: 4px 0 6px; }
+  header p { margin: 0; color: var(--muted); font-size: 14px; }
+  h2 { font-size: 19px; margin: 34px 0 6px; color: var(--accent); }
+  .lead { margin: 0 0 12px; font-size: 15px; color: var(--muted); }
+  .block { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; margin: 12px 0 18px; overflow: hidden; }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 12px; border-bottom: 1px solid var(--rule); }
+  .bar b { font-size: 15px; }
+  .bar small { display: block; color: var(--muted); font-size: 12.5px; font-weight: 400; }
+  button { flex: none; font: 600 14px/1 inherit; font-family: inherit; color: #fff; background: var(--accent); border: 0; border-radius: 8px; padding: 9px 14px; cursor: pointer; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) button { color: #141413; } }
+  button.done { background: var(--ok); }
+  pre { margin: 0; padding: 12px; white-space: pre-wrap; word-break: break-word; font: 14px/1.55 "SF Mono", Menlo, Consolas, "PingFang SC", monospace; -webkit-user-select: all; user-select: all; }
+  .note { font-size: 13.5px; color: var(--muted); margin: -8px 0 16px; }
+  footer { margin-top: 40px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 12px; }
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="kicker">Using AI in Research · 金磊 · 2026.10.30</div>
+  <h1>课上用到的提示词</h1>
+  <p>点“复制”，粘贴到你常用的 AI 里。复制按钮不灵时，长按文字也能全选。</p>
+</header>
+
+<h2>一、参考文献核对：加一份规程，结果有什么不同？</h2>
+<p class="lead">同一个 AI，做两次。第二次先开一个新对话。网页版请关掉联网搜索。</p>
+
+<div class="block">
+  <div class="bar"><div><b>第一轮：直接问</b><small>记下它的结论：哪几条它说有问题？</small></div><button data-copy="r1">复制</button></div>
+<pre id="r1">帮我检查这些参考文献对不对。
+
+[1] M. Ichimura, N. Austern, and C. M. Vincent, Equivalence of post and prior sum rules for inclusive breakup reactions, Phys. Rev. C 32, 431 (1985).
+[2] A. M. Lane and R. G. Thomas, R-matrix theory of nuclear reactions, Rev. Mod. Phys. 30, 275 (1958).
+[3] A. J. Koning and J. P. Delaroche, Local and global nucleon optical models from 1 keV to 200 MeV, Nucl. Phys. A 713, 231 (2003).
+[4] J. Lei and A. M. Moro, Continuum effects in the nonelastic breakup of 6Li on heavy targets, Phys. Rev. C 96, 064607 (2017).
+[5] W. Hauser and H. Feshbach, The inelastic scattering of neutrons, Phys. Rev. 87, 366 (1952).</pre>
+</div>
+
+<div class="block">
+  <div class="bar"><div><b>第二轮：先给规程，再问</b><small>新对话。规程和题目已经拼好，复制一次即可。</small></div><button data-copy="r2">复制</button></div>
+<pre id="r2">核对参考文献时，遵守以下规程：
+1. 不凭记忆下结论。没有查到原始记录的条目，一律标 UNVERIFIED，不许说“正确”。
+2. 每条逐个字段核对：作者及顺序、题目、期刊、卷、起始页或文章号、年份。
+3. 每个字段写明依据：查了哪个数据库，记录里写的是什么。
+4. DOI 能打开不算通过，要确认打开的就是这一篇。
+5. 发现不符，写出原文和记录各是什么，不自行“修正”。
+6. 最后给一张表：条目号、结论（正确 / 有误 / UNVERIFIED）、依据。
+
+帮我检查这些参考文献对不对。
+
+[1] M. Ichimura, N. Austern, and C. M. Vincent, Equivalence of post and prior sum rules for inclusive breakup reactions, Phys. Rev. C 32, 431 (1985).
+[2] A. M. Lane and R. G. Thomas, R-matrix theory of nuclear reactions, Rev. Mod. Phys. 30, 275 (1958).
+[3] A. J. Koning and J. P. Delaroche, Local and global nucleon optical models from 1 keV to 200 MeV, Nucl. Phys. A 713, 231 (2003).
+[4] J. Lei and A. M. Moro, Continuum effects in the nonelastic breakup of 6Li on heavy targets, Phys. Rev. C 96, 064607 (2017).
+[5] W. Hauser and H. Feshbach, The inelastic scattering of neutrons, Phys. Rev. 87, 366 (1952).</pre>
+</div>
+<p class="note">这 5 条里有错的。答案课上公布。</p>
+
+<h2>二、方势阱：让 agent 写、跑、画、交</h2>
+<p class="lead">需要 agent（Claude Code、Codex 或 OpenCode）。新建一个空文件夹，先把任务说明存成 README.md，在这个文件夹里启动 agent，然后依次发送三条提示词。</p>
+
+<div class="block">
+  <div class="bar"><div><b>任务说明</b><small>存成文件夹里的 README.md</small></div><button data-copy="readme">复制</button></div>
+<pre id="readme"># 任务：n–p 方势阱的 s 波相移
+
+## 物理设定
+- 中子和质子之间是一个吸引方势阱：r &lt; R 时 V(r) = −V₀，r ≥ R 时 V = 0。
+- 半径 R = 2.0 fm。
+- 调整深度 V₀，使这个势阱的唯一 s 波束缚态的结合能等于氘核结合能 B_d = 2.224575 MeV。
+- 用这个 V₀ 计算 s 波相移 δ₀(E)，E 是质心系能量，取 0.1、1、5、10、20、50 MeV。
+- 两种方法都算：径向方程的 Numerov 数值解，和方势阱的解析解。
+
+## 常数
+- ħc = 197.3269804 MeV fm
+- 中子质量 m_n = 939.56542 MeV
+- 质子质量 m_p = 938.27209 MeV
+- 氘核结合能 B_d = 2.224575 MeV
+
+## 约定
+- 用 Python 3，可以用 numpy 和 matplotlib。
+- 新文件放在当前目录，结果放进 results/。</pre>
+</div>
+
+<div class="block">
+  <div class="bar"><div><b>提示词 1：先读，说清打算，不动手</b></div><button data-copy="p1">复制</button></div>
+<pre id="p1">请读 README.md。
+告诉我要算什么物理量、用什么方程和边界条件、打算怎么验证结果。
+现在先不写代码，也不运行。</pre>
+</div>
+
+<div class="block">
+  <div class="bar"><div><b>提示词 2：写程序、跑、画图、存结果</b></div><button data-copy="p2">复制</button></div>
+<pre id="p2">用 Python 写 square_well.py 并实际运行：
+先调深度 V₀ 使束缚能等于 B_d；
+在 E = 0.1, 1, 5, 10, 20, 50 MeV 用 Numerov 数值解和解析解各算 δ₀，列表比较；
+画 δ₀(E) 存到 results/phase_shift.png，数值和 V₀ 写进 results/summary.txt。
+做完告诉我运行命令和你做了哪些检查。</pre>
+</div>
+
+<div class="block">
+  <div class="bar"><div><b>提示词 3：用一个没参与拟合的量来查</b></div><button data-copy="p3">复制</button></div>
+<pre id="p3">再算三重态散射长度 a_t，和实验值比较。
+告诉我你用的是哪个质量，为什么。</pre>
+</div>
+
+<div class="block">
+  <div class="bar"><div><b>课后实验</b><small>做完上面三步之后再发</small></div><button data-copy="p4">复制</button></div>
+<pre id="p4">改用核子质量 939 MeV 重算。</pre>
+</div>
+<p class="note">不要提别的。看它会不会提出异议、会不会主动去比 a_t；再自己打开代码，找到三处：质量、r = 0 的边界条件、势外的匹配。</p>
+
+<footer>金磊 · 同济大学物理系 · 材料来自报告 “Using AI in Research: Lessons from FUSION”</footer>
+</main>
+<script>
+  function copyText(t) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t);
+    return new Promise(function (ok, bad) {
+      var a = document.createElement('textarea'); a.value = t; a.setAttribute('readonly', '');
+      a.style.position = 'fixed'; a.style.opacity = '0'; document.body.appendChild(a); a.select();
+      try { document.execCommand('copy') ? ok() : bad(); } catch (e) { bad(e); } finally { document.body.removeChild(a); }
+    });
+  }
+  document.querySelectorAll('button[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = document.getElementById(b.dataset.copy).textContent;
+      copyText(t).catch(function () {
+        var a = document.createElement('textarea'); a.value = t; document.body.appendChild(a); a.select();
+        document.execCommand('copy'); document.body.removeChild(a);
+      }).then(function () { b.textContent = '已复制'; b.classList.add('done'); setTimeout(function () { b.textContent = '复制'; b.classList.remove('done'); }, 1600); });
+    });
+  });
+</script>
+</body>
+</html>

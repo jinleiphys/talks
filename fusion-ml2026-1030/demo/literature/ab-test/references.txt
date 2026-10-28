@@ -1,0 +1,5 @@
+[1] M. Ichimura, N. Austern, and C. M. Vincent, Equivalence of post and prior sum rules for inclusive breakup reactions, Phys. Rev. C 32, 431 (1985).
+[2] A. M. Lane and R. G. Thomas, R-matrix theory of nuclear reactions, Rev. Mod. Phys. 30, 275 (1958).
+[3] A. J. Koning and J. P. Delaroche, Local and global nucleon optical models from 1 keV to 200 MeV, Nucl. Phys. A 713, 231 (2003).
+[4] J. Lei and A. M. Moro, Continuum effects in the nonelastic breakup of 6Li on heavy targets, Phys. Rev. C 96, 064607 (2017).
+[5] W. Hauser and H. Feshbach, The inelastic scattering of neutrons, Phys. Rev. 87, 366 (1952).

@@ -89,7 +89,7 @@ class: scene-slide
 
 <!--
 Central message: 网页聊天的瓶颈不是模型笨，而是它碰不到你的电脑。
-图：左边是网页聊天，右边是终端，桌上是项目文件夹。每点一次走一步，红色纸条是你在搬的东西，右上角数你搬了几次（四步下来 5 次）。第 5 次点击显示聊天窗口能看到的范围：只有你贴进去的那几行。可以拖动转桌子。
+图：左边是网页聊天，右边是终端，桌上是装着项目的主机和一台打印机，左上方的云是 AI 模型，网页模式下它只连着聊天窗口。每点一次走一步，红色纸条是你在搬的东西，右上角数你搬了几次（四步下来 5 次）。第 5 次点击显示聊天窗口能看到的范围：只有你贴进去的那几行。可以拖动转桌子。
 讲述：大家有没有这样改过程序？［请一位学生说一次经历。］来回十几轮很正常。文件一多，你还得告诉它哪个目录、哪个版本、谁调用谁。它所有的信息都是你贴进去的，你贴漏了，它就猜。
 Timing target: 3:00–5:00。
 Transition: 那就让它自己去看、自己去跑。
@@ -133,7 +133,7 @@ class: scene-slide
 
 <!--
 Central message: agent 就是把“你当搬运工”的那一环交给工具。
-图：同一张桌子。点击推进时，终端自己伸出虚线去读文件夹、运行、改 plot_xs.py 第 14 行（文件上亮橙色），再跑后 xs.png 从文件夹滑到桌上；右上角“你搬了 0 次”。第 4 次点击显示 agent 能看到的范围：终端加整个文件夹。
+图：同一张桌子。点击推进时，云端的模型改连到终端；终端自己伸出虚线去读主机、运行、改 plot_xs.py 第 14 行（主机侧窗上那一行亮起），再跑后 xs.png 从打印机里出来；右上角“你搬了 0 次”。第 4 次点击显示 agent 能看到的范围：终端加主机上的整个项目。注意模型本身仍在云端，读到的文件内容会发给它，这一点在“授权之前”那页再讲。
 讲述：［按点击逐步讲。］我只写第一行。它先自己读脚本和数据目录；［点］自己运行，报错直接回到它眼前，不用我贴；［点］它看报错找到原因，改了一行；［点］再跑，图出来了，改动和结果都留在我的目录里。［点］对比第三页：复制、运行、贴报错、再复制，这四步全是它做的。模型还是那些模型，GPT、Claude，区别是它现在能动你的文件、能看到运行结果。软件我今天不比较，三个里哪个能登录就用哪个。这里是示意例子，后面现场会真做一个。
 Timing target: 5:00–8:00。
 Transition: 那什么活该交给它？
@@ -593,7 +593,50 @@ layout: section
 
 <!--
 Timing target: 57:00–57:30。
-Transition: 先看查文献。
+Transition: 先做一个对照。
+-->
+
+---
+class: dense
+---
+
+# 让 AI 核对 5 条参考文献，它能找出错吗？
+<div class="subtitle">Ask once, then again with six lines of rules, then let the agent look it up</div>
+
+<div class="two qr-slide">
+<div>
+<div class="handoff-steps ab-steps">
+<div><span>①</span><b>直接问</b><small>网页 AI，关掉联网：“帮我检查这些参考文献对不对。”</small></div>
+<div><span>②</span><b>先给规程，再问</b><small>新对话，同一个 AI。规程 6 行：不凭记忆，逐字段核对，查不到标 UNVERIFIED。</small></div>
+<div><span>③</span><b>agent 加 skill</b><small>真的去查 CrossRef，打开原始记录对答案。</small></div>
+</div>
+<div class="note-line">5 条里有错。第二轮和第一轮用的是同一个 AI，只是前面多贴了 6 行规程。</div>
+</div>
+<div class="qr-box">
+<img src="./figures/prompts-qr.svg" alt="提示词网页二维码" />
+<div class="ui-label">扫码复制提示词</div>
+<a href="https://jinleiphys.github.io/talks/fusion-ml2026-1030/prompts.html" target="_blank">jinleiphys.github.io/talks/fusion-ml2026-1030/prompts.html</a>
+</div>
+</div>
+
+<style>
+.ab-steps > div { display: grid; grid-template-columns: 30px 1fr; column-gap: 8px; align-items: baseline; padding: 8px 12px; margin: 6px 0; border-radius: 8px; border: 1px solid #e0ddd2; background: #fcfbf7; }
+.ab-steps span { grid-row: span 2; font-size: 18px; color: #1B365D; font-weight: 600; }
+.ab-steps b { font-size: 18px; font-weight: 600; color: #141413; }
+.ab-steps small { font-size: 14px; color: #3d3d3a; line-height: 1.45; }
+.qr-slide { align-items: center; }
+.qr-box { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.qr-box img { width: 210px; height: 210px; border-radius: 10px; box-shadow: 0 0 0 1px #e0ddd2; }
+.qr-box a { font-size: 12.5px; color: #1B365D; word-break: break-all; text-align: center; }
+</style>
+
+<!--
+Central message: 规程本身就能改变 AI 的行为；工具让它真的能查。三轮只改一样东西。
+操作：［点下面的链接打开提示词网页，复制第一轮，切到网页 AI（关联网）粘贴。］学生可以扫码跟着做。
+讲述：第一轮，我什么都不说，直接问。看它的结论。［通常会说基本正确，或者只挑出格式问题。］第二轮，新开对话，同一个模型，只在前面多贴 6 行规程。看它怎么说：它没法查数据库，按规程就只能标 UNVERIFIED，不再说“都对”。第三轮，切到终端，让 agent 用 literature-search 真的去查。答案：第 2 条起始页是 257，不是 275；第 4 条是编的，PRC 96, 064607 这个 DOI 能打开，但打开的是 Mirea 一篇 α 衰变的文章。只查 DOI 存不存在，会放过它。
+备用：现场失败时打开 demo/literature/ab-test/ANSWERS.md 和 crossref/ 里的原始记录。
+Timing target: 57:30–65:00。
+Transition: 第二轮那 6 行，就是 skill 的雏形。看完整版。
 -->
 
 ---
