@@ -615,7 +615,7 @@ class: dense
 <div class="qr-box">
 <img src="./figures/prompts-qr.svg" alt="提示词网页二维码" />
 <div class="ui-label">扫码复制提示词</div>
-<a href="https://jinleiphys.github.io/talks/fusion-ml2026-1030/prompts.html" target="_blank">jinleiphys.github.io/talks/fusion-ml2026-1030/prompts.html</a>
+<a href="https://jinlei.fewbody.com/talks/fusion-ml2026-1030/prompts.html" target="_blank">jinlei.fewbody.com/talks/fusion-ml2026-1030/prompts.html</a>
 </div>
 </div>
 
