@@ -72,58 +72,17 @@
 </div>
 <p class="note">这 5 条里有错的。答案课上公布。</p>
 
-<h2>二、方势阱：让 agent 写、跑、画、交</h2>
-<p class="lead">需要 agent（Claude Code、Codex 或 OpenCode）。新建一个空文件夹，先把任务说明存成 README.md，在这个文件夹里启动 agent，然后依次发送三条提示词。</p>
+<h2 id="task">二、现场演示：一句话，从光学势到实验数据</h2>
+<p class="lead">课上我用 Claude Code 加 FUSION 的 skill 现场跑的就是这一句。也可以原样贴进网页 AI，比一比两边交回来的东西。</p>
 
 <div class="block">
-  <div class="bar"><div><b>任务说明</b><small>存成文件夹里的 README.md</small></div><button data-copy="readme">复制</button></div>
-<pre id="readme"># 任务：n–p 方势阱的 s 波相移
-
-## 物理设定
-- 中子和质子之间是一个吸引方势阱：r &lt; R 时 V(r) = −V₀，r ≥ R 时 V = 0。
-- 半径 R = 2.0 fm。
-- 调整深度 V₀，使这个势阱的唯一 s 波束缚态的结合能等于氘核结合能 B_d = 2.224575 MeV。
-- 用这个 V₀ 计算 s 波相移 δ₀(E)，E 是质心系能量，取 0.1、1、5、10、20、50 MeV。
-- 两种方法都算：径向方程的 Numerov 数值解，和方势阱的解析解。
-
-## 常数
-- ħc = 197.3269804 MeV fm
-- 中子质量 m_n = 939.56542 MeV
-- 质子质量 m_p = 938.27209 MeV
-- 氘核结合能 B_d = 2.224575 MeV
-
-## 约定
-- 用 Python 3，可以用 numpy 和 matplotlib。
-- 新文件放在当前目录，结果放进 results/。</pre>
+  <div class="bar"><div><b>现场演示的那一句</b><small>在一个空文件夹里启动 agent 后发送</small></div><button data-copy="live">复制</button></div>
+<pre id="live">用 KD02 光学势算 p + 208Pb 30 MeV 的弹性散射角分布（对卢瑟福之比），和 EXFOR 里的实验数据画在一张图上，用 Python 画图，存成 results/p208pb_30MeV.png。告诉我用了哪组实验数据，以及你做了哪些检查。</pre>
 </div>
+<p class="note">FUSION 的 skill：github.com/jinleiphys/FUSION。不装 skill 也能跑，看看差在哪里。</p>
 
-<div class="block">
-  <div class="bar"><div><b>提示词 1：先读，说清打算，不动手</b></div><button data-copy="p1">复制</button></div>
-<pre id="p1">请读 README.md。
-告诉我要算什么物理量、用什么方程和边界条件、打算怎么验证结果。
-现在先不写代码，也不运行。</pre>
-</div>
-
-<div class="block">
-  <div class="bar"><div><b>提示词 2：写程序、跑、画图、存结果</b></div><button data-copy="p2">复制</button></div>
-<pre id="p2">用 Python 写 square_well.py 并实际运行：
-先调深度 V₀ 使束缚能等于 B_d；
-在 E = 0.1, 1, 5, 10, 20, 50 MeV 用 Numerov 数值解和解析解各算 δ₀，列表比较；
-画 δ₀(E) 存到 results/phase_shift.png，数值和 V₀ 写进 results/summary.txt。
-做完告诉我运行命令和你做了哪些检查。</pre>
-</div>
-
-<div class="block">
-  <div class="bar"><div><b>提示词 3：用一个没参与拟合的量来查</b></div><button data-copy="p3">复制</button></div>
-<pre id="p3">再算三重态散射长度 a_t，和实验值比较。
-告诉我你用的是哪个质量，为什么。</pre>
-</div>
-
-<div class="block">
-  <div class="bar"><div><b>课后实验</b><small>做完上面三步之后再发</small></div><button data-copy="p4">复制</button></div>
-<pre id="p4">改用核子质量 939 MeV 重算。</pre>
-</div>
-<p class="note">不要提别的。看它会不会提出异议、会不会主动去比 a_t；再自己打开代码，找到三处：质量、r = 0 的边界条件、势外的匹配。</p>
+<h2>三、回去做一个对照</h2>
+<p class="lead">选你课题里一个常用程序，同一句话问两次：一次什么都不给；一次先给它一份核对过的输入和一个已知结果。比一比两次交回来的东西。</p>
 
 <footer>金磊 · 同济大学物理系 · 材料来自报告 “Using AI in Research: Lessons from FUSION”</footer>
 </main>

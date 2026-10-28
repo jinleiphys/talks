@@ -29,12 +29,12 @@ layout: cover
 </div>
 <div class="cover-side">
 <LiveOnly><HeroNucleus /></LiveOnly>
-<div class="signoff"><div class="ui-label">TODAY</div><div class="slip-title">从聊天窗口到 agent</div><div class="row"><span>我平时让它做什么？</span><span>①</span></div><div class="row"><span>现场做一个物理小任务</span><span>②</span></div><div class="row"><span>它怎样错得很像对？</span><span>③</span></div></div>
+<div class="signoff"><div class="ui-label">TODAY</div><div class="slip-title">从聊天窗口到 agent</div><div class="row"><span>我平时让它做什么？</span><span>①</span></div><div class="row"><span>现场演示：一句话到实验对比</span><span>②</span></div><div class="row"><span>它怎样错得很像对？</span><span>③</span></div></div>
 </div>
 
 <!--
 Central message: 今天讲我自己怎么用 agent，不讲产品介绍。
-讲述：有多少同学用过网页上的 GPT 或者 DeepSeek？有多少同学让它直接改过你电脑里的文件、跑过你的程序？今天我讲三件事：我最近实际让它做了什么；现场做一个物理小任务；最后讲它错的时候是什么样子，这部分最重要。
+讲述：有多少同学用过网页上的 GPT 或者 DeepSeek？有多少同学让它直接改过你电脑里的文件、跑过你的程序？今天我讲三件事：我最近实际让它做了什么；现场演示一次：一句话，从光学势算到和实验数据对比；最后讲它错的时候是什么样子，这部分最重要。
 Timing target: 0:00–1:00。
 Transition: 先看一张截图。
 -->
@@ -315,202 +315,150 @@ layout: section
 <div class="part-no">02</div>
 <div class="kicker">PART 02</div>
 
-# 现场：一个物理小任务
+# 现场：一句话到实验对比
 
-<div class="part-lead">n–p 方势阱的 s 波相移：让它写、跑、画、交，然后我们来验收</div>
+<div class="part-lead">p + ²⁰⁸Pb 弹性散射：同一句话，网页 AI 和 agent 加 FUSION 各做一次</div>
 <div class="part-track"><span class="done"></span><span class="on"></span><span></span><span></span></div>
 
 <!--
 Timing target: 24:00–24:30。
-Transition: 准备文件夹。
+Transition: 我们停一下，下面现场演示。
 -->
 
 ---
+class: live-stop
+---
 
-# 现场：准备一个文件夹，启动 agent
-<div class="subtitle">One folder, one command</div>
+# 下面现场演示
+<div class="subtitle">I switch to the terminal now</div>
 
-<div class="two">
+<div class="kami-card task-brief lesson-prompt live-prompt" data-label="这一句话，原样发给 Claude Code">
+<div class="copy-corner"><CopyButton label="复制提示词" text="用 KD02 光学势算 p + 208Pb 30 MeV 的弹性散射角分布（对卢瑟福之比），和 EXFOR 里的实验数据画在一张图上，用 Python 画图，存成 results/p208pb_30MeV.png。告诉我用了哪组实验数据，以及你做了哪些检查。" /></div>
+用 KD02 光学势算 p + ²⁰⁸Pb 30 MeV 的弹性散射角分布（对卢瑟福之比），和 EXFOR 里的实验数据画在一张图上，用 Python 画图，存成 results/p208pb_30MeV.png。告诉我用了哪组实验数据，以及你做了哪些检查。
+</div>
+
+<div class="live-row">
 <div>
 
-```text
-square-well-task/
-  README.md      ← 任务和常数
-```
-
 ```bash
-cd square-well-task
-claude        # 或 codex / opencode
+mkdir p208pb && cd p208pb    # 空文件夹
+claude                       # 没有输入、数据、脚本
 ```
 
+<div class="live-note">两次预演用了 4 到 11 分钟。它跑的时候，我们回到幻灯片。</div>
+
 </div>
-<div class="kami-card"><h3>README.md 里写了什么</h3><p>n–p 在半径 R = 2 fm 的方势阱里。</p><p>调势阱深度，让氘核结合能等于 2.2246 MeV。</p><p>算 s 波相移 δ₀(E)：数值解和解析解。</p><p>给了 ħc、m<sub>n</sub>、m<sub>p</sub>。没写该用哪个质量。</p></div>
+<div class="task-qr">
+<img src="./figures/task-qr.svg" alt="提示词网页二维码" />
+<div class="ui-label">扫码复制</div>
+<a href="https://jinlei.fewbody.com/talks/fusion-ml2026-1030/prompts.html#task" target="_blank">prompts.html#task</a>
 </div>
-<div class="bottom-line">今天用 Python。安装、登录、终端用法都在材料包的 SETUP.md 里。</div>
+</div>
+
+
+<style>
+.live-stop .lesson-prompt { font-size: 19px; line-height: 1.55; }
+.live-row { margin-top: 18px; display: grid; grid-template-columns: 1fr 150px; gap: 24px; align-items: center; }
+.live-prompt { position: relative; }
+.copy-corner { position: absolute; top: -17px; right: 18px; z-index: 5; }
+.live-note { font-size: 15px; color: #6b6a63; margin-top: 8px; }
+.task-qr { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.task-qr img { width: 112px; height: 112px; border-radius: 8px; box-shadow: 0 0 0 1px #e0ddd2; }
+.task-qr a { font-size: 12px; color: #1B365D; }
+</style>
 
 <!--
-Central message: 一个文件夹加一条命令，就是一个项目。
-讲述：［打开终端，cd 进目录，启动工具。］现场用的副本里只有一个 README，写了物理任务和常数；提示词和参考答案我放在外面。注意我故意没写用哪个质量，后面会回到这一点。安装和登录今天不讲，材料包里一步步写了。
+Central message: 一句物理请求，交给装了 FUSION skill 的 agent。
+操作：［切到终端。在一个空文件夹里启动 claude，把提示词粘进去，回车。］看到它第一步调用 fresco skill 再切回来。
+讲述：好，我们停一下，现场演示。这是一句很普通的话，任何做核反应的研究生都会这么问。文件夹是空的：没有输入，没有数据。它要自己写 FRESCO 输入，自己去 EXFOR 找实验数据，自己画图。我先发出去，它要跑十分钟左右，我们边等边看它在干什么。
+备用：现场失败或太慢，打开 demo/fusion-live/runs/ 里的预演记录和图。
 Timing target: 24:30–27:00。
-Transition: 第一句话，先让它读，不让它动手。
+Transition: 屏幕上它在做什么？
 -->
 
 ---
 
-# 第一句：先读，说清打算，不动手
-<div class="subtitle">Prompt 1 · inspect before acting</div>
+# 屏幕上它在做什么？
+<div class="subtitle">What to watch while it runs</div>
 
-<div class="kami-card task-brief lesson-prompt" data-label="PROMPT 1 · 可以直接复制">
-请读 README.md。<br>
-告诉我要算什么物理量、用什么方程和边界条件、打算怎么验证结果。<br>
-现在先不写代码，也不运行。
+<div class="watch-steps">
+<div><span>①</span><b>读 fresco skill</b><small>KD02 参数用脚本按原文公式算出，再填进一份核对过的 FRESCO 输入。不凭记忆写。</small></div>
+<div><span>②</span><b>读 exfor-data skill</b><small>去 EXFOR 找 p + ²⁰⁸Pb 弹性散射的测量，看能量、单位、是不是从图上扫描的。</small></div>
+<div><span>③</span><b>跑 FRESCO，查收敛</b><small>改步长、匹配半径、分波数，结果不变才算数。</small></div>
+<div><span>④</span><b>画图，写报告</b><small>说清用了哪组数据、排除了什么、做了哪些检查。</small></div>
 </div>
-<div class="note-line">看它说的是不是 README 里的东西：半径、结合能、哪几个能量。<br>它说的方程和你课本上的一样吗？</div>
+<div class="bottom-line">网页聊天做不到的不是“懂物理”，是这四步里的“去读、去查、去跑”。</div>
+
+<style>
+.watch-steps > div { display: grid; grid-template-columns: 34px 1fr; column-gap: 8px; align-items: baseline; padding: 6px 14px; margin: 6px 0; border-radius: 8px; border: 1px solid #e0ddd2; background: #fcfbf7; }
+.watch-steps span { grid-row: span 2; font-size: 19px; color: #1B365D; font-weight: 600; }
+.watch-steps b { font-size: 20px; font-weight: 600; color: #141413; }
+.watch-steps small { font-size: 15px; color: #3d3d3a; line-height: 1.5; }
+</style>
 
 <!--
-Central message: 先确认它理解了任务，再放手。
-讲述：［发送提示词。］大家看屏幕，它先去读了文件，这一步网页聊天没有。它会复述：径向方程、r=0 处波函数为零、外面匹配到 sin(kr+δ)。我们核对一下是不是 README 里的半径和结合能。它说用什么质量了吗？［如果它主动说用约化质量，就点一下：很好，我们记住它说了。］
+Central message: skill 让它在核对过的输入上改，去原始数据库取数据。
+讲述：［切回终端看一眼，指出它调用了哪个 skill。］它没有从零写 FRESCO 输入，而是从 skill 里一份核对过的例子改起；KD02 的参数不是它背出来的，是脚本算的。然后它去 EXFOR 查数据。这四步，网页上的 AI 一步都做不了。
 Timing target: 27:00–30:00。
-Transition: 没问题，让它做。
--->
-
----
-
-# 第二句：写程序、跑、画图、存结果
-<div class="subtitle">Prompt 2 · ask for files and a completed run</div>
-
-<div class="kami-card task-brief lesson-prompt" data-label="PROMPT 2 · 可以直接复制">
-用 Python 写 square_well.py 并实际运行：<br>
-先调深度 V₀ 使束缚能等于 B_d；<br>
-在 E = 0.1, 1, 5, 10, 20, 50 MeV 用 Numerov 数值解和解析解各算 δ₀，列表比较；<br>
-画 δ₀(E) 存到 results/phase_shift.png，数值和 V₀ 写进 results/summary.txt。<br>
-做完告诉我运行命令和你做了哪些检查。
-</div>
-<div class="bottom-line">没运行就不算做完。缺 numpy 之类的包，先告诉我，再装。</div>
-
-<!--
-Central message: 说清输入、操作、交付，问答就变成了一个可以验收的任务。
-讲述：［发送。等它工作，边等边讲。］大家看它在做什么：写文件、运行、报错、自己改、再运行。这个循环原来是你在做。如果你以前在网页里写过 Numerov，想想那要来回贴多少次。［等待最多 90 秒；不行就切到 reference/square_well.py，明确说这是我备课写好的。］
-Timing target: 30:00–34:00。
-Transition: 它写的代码，我们只看三处。
+Transition: 同一句话，问网页 AI 会怎样？
 -->
 
 ---
 class: dense
 ---
 
-# 它写的代码，只看三处
-<div class="subtitle">You don't have to read every line, but read these</div>
+# 同一句话，网页 AI 怎么答？
+<div class="subtitle">Same sentence, DeepSeek web with search on</div>
 
 <div class="two">
-<div>
-
-```python
-MN, MP = 939.56542, 938.27209   # MeV
-mu = MN * MP / (MN + MP)        # ① 用的哪个质量？
-
-u[0], u[1] = 0.0, h             # ② r = 0 处 u = 0
-for i in range(1, n):           #    Numerov 往外推
-    u[i+1] = (2*u[i]*(1 - 5*h**2*w[i]/12)
-              - u[i-1]*c[i-1]) / c[i+1]
-
-# ③ 势外匹配 u = A sin(kr + δ)，取最外两点
-t = (u[n-1]*sin(k*r2) - u[n]*sin(k*r1)) / \
-    (u[n]*cos(k*r1) - u[n-1]*cos(k*r2))
-```
-
+<div class="kami-card"><h3>它说</h3><p>“我无法直接为你生成这张图，当前没有可运行的核反应计算环境，也无法直接访问 EXFOR。”</p><p>推荐 Watson 等，NPA 92, 193 (1967)，EXFOR O0490：<br>“明确给出了 30 MeV 质子被 ²⁰⁸Pb 弹性散射的角分布”。</p><p>然后给了一份五条的检查清单。</p></div>
+<div class="box-gap"><h3>我去查了</h3><p>文章是真的，条目也是真的。</p><p>但 O0490 里 ²⁰⁸Pb 的截面角分布只有 <b>26.3 MeV</b>，任意单位，是从文章的图上扫描下来的。</p><p>30 MeV 那组只有极化数据。</p></div>
 </div>
-<div class="kami-card"><h3>你要会看的</h3><p><b>① 质量：</b>两体相对运动，ħ²/2μ 里的 μ。</p><p><b>② 边界条件：</b>约化径向函数 u(0) = 0。</p><p><b>③ 匹配：</b>在势外面，用自由解读出相移。</p><p>循环怎么写、数组怎么存，可以不看。<br>物理在哪几行，你得知道。</p></div>
-</div>
-<div class="note-line">据 reference/square_well.py（备课参考实现）简化；现场生成的代码写法会不同，三处一样要找。</div>
+<div class="bottom-line">半对的建议，读起来和全对的一样。去 EXFOR 打开原始条目，才看得出来。</div>
 
 <!--
-Central message: 不必读懂每一行代码，但物理所在的那几行必须自己看。
-讲述：［打开它生成的 square_well.py。］代码它写，但有三处你得自己找到：质量、原点的边界条件、外面怎么匹配读出相移。这三处就是物理。如果你连这三处在哪都找不到，这份结果你就没法负责。现场它写的版本跟我的不一样，没关系，我们一起在它的代码里找这三处。
-Timing target: 34:00–37:00。
-Transition: 打开它交回来的文件。
+Central message: 网页 AI 给的是建议，而且是需要你自己去核实的建议。
+讲述：同一句话我贴给了 DeepSeek，开着联网。它很诚实，说算不了、取不到数据。它推荐了一组数据，文章和条目都是真的，这比我们刚才看参考文献时好。但它说这组数据是 30 MeV 的，我打开原始条目一看：铅的截面只有 26.3 MeV，而且是从图上扫描的任意单位。拿它去比 30 MeV 的计算，就错了。这种半对的建议最难发现。
+Timing target: 30:00–33:00。
+Transition: 回到终端，看它做到哪了。
 -->
 
 ---
 
-# 打开文件夹：图、表、说明
+# 切回终端：它交回来的
 <div class="subtitle">Live demo · open what it delivered</div>
 
 <div class="two">
-<div><img src="./figures/phase-shift-ok.png" class="kami-img" /></div>
-<div class="kami-card"><h3>参考结果（备课实测）</h3><p>V₀ = 36.567 MeV</p><p>六个能量上，数值解与解析解<br>最大差 0.0059°（在 1 MeV）</p><p>点和线重合。</p><p>任务完成了。</p><p><b>可以交了吗？</b></p></div>
+<div><img src="./figures/fusion-live-p208pb.png" class="kami-img" /></div>
+<div class="kami-card"><h3>它报告的（备课预演）</h3><p>没有 30.0 MeV 的数据，测量在 <b>30.3 MeV</b>；两个能量都算了。</p><p>用 van Oers 1974 的表格数据；同条目从图上扫描的那组，<b>只拿来交叉检查</b>。</p><p>KD02：前角吻合，60° 以后偏高 20–50%。</p></div>
 </div>
-<div class="source">横轴为质心系能量，纵轴为 s 波相移；点为 Numerov，线为解析解。数字来自 reference/square_well.py 的实际运行，Julia 原版逐点对照到 11 位有效数字。</div>
+<div class="source">图：备课预演时它自己画的，3 分 43 秒。另一次预演用了 11 分钟，选的数据和做的检查不完全一样。现场以终端为准。</div>
 
 <!--
-Central message: 交付齐了，检查也通过了，这时最容易放松。
-讲述：［打开 results，看图和 summary。］数值解和解析解对上了，差千分之几度。它还会告诉你“我已验证数值解与解析解一致”。问大家：这个结果可以交了吗？［让学生举手。］
-Timing target: 37:00–40:00。
-Transition: 我把质量换一下。
--->
-
----
-clicks: 1
----
-
-# 换成核子质量，检查照样通过
-<div class="subtitle">Two solvers can share the same wrong assumption</div>
-
-<div class="two">
-<div><img src="./figures/phase-shift-slip.png" class="kami-img" /></div>
-<div class="kami-card"><h3>我故意改了一处</h3><p>相对运动该用约化质量<br>μ = m<sub>n</sub>m<sub>p</sub>/(m<sub>n</sub>+m<sub>p</sub>) ≈ 469 MeV，</p><p>改成核子质量 m ≈ 939 MeV。</p><p>重新拟合深度：V₀ = 20.986 MeV，<br>结合能照样对。</p><p v-click="1"><b>数值解和解析解也照样重合</b>，<br>最大差 0.0037°。</p></div>
-</div>
-<div class="bottom-line" v-click="1">两边用的是同一个错质量，所以彼此吻合。“数值对上解析”查不出这个错。</div>
-
-<!--
-Central message: 一致性检查只能查实现，查不了共同的物理设定。
-讲述：这是我构造的反例，不是 AI 的某次真实回答。可是这个错在网页和 agent 里都非常常见，ħ²/2m 里的 m 到底是什么。我把质量换成核子质量，深度重新拟合，结合能还是对的；数值解和解析解用的是同一个错质量，所以还是对得上。［点击。］刚才那张“检查通过”，对这两个版本都成立。那怎么分出来？
-Timing target: 40:00–43:00。
-Transition: 用一个没参与拟合的量。
--->
-
----
-
-# 用一个没参与拟合的量来查
-<div class="subtitle">Prompt 3 · check against physics the fit did not use</div>
-
-<div class="kami-card task-brief lesson-prompt" data-label="PROMPT 3 · 追问">
-再算三重态散射长度 a_t，和实验值比较。<br>
-告诉我你用的是哪个质量，为什么。
-</div>
-
-| | 约化质量 | 核子质量 | 实验 |
-|---|---|---|---|
-| 结合能 B_d | 2.2246 MeV（拟合） | 2.2246 MeV（拟合） | 2.2246 MeV |
-| 散射长度 a_t | **5.356 fm** | **4.105 fm** | ≈ 5.42 fm |
-
-<div class="bottom-line">结合能是拟合进去的，当然对；a_t 没参与拟合，一比就分开：差 1% 和差 24%。</div>
-
-<!--
-Central message: 物理检查要找独立的量；拟合进去的量对上了不说明任何问题。
-讲述：［发送追问。］结合能是我们拟合进去的，两个版本当然都对。散射长度没有参与拟合，一比就分开了：约化质量差 1%，核子质量差 24%。注意，跟实验比，检验的是设定加模型整体：这是一个单通道方势阱，忽略了张量力，剩下的 1% 不能全算到哪一边。但 24% 这么大的偏差，提醒你回头去查设定，查方程里的质量从哪来。这个检查需要你知道 a_t 是什么、实验值大概多少。这一步 AI 可以帮你算，但“该拿什么来比”是物理，是你的事。
-Timing target: 43:00–47:00。
-Transition: 把刚才几种检查放在一起。
+Central message: 交回来的不只是一张图，还有它为什么这样选。
+讲述：［打开 results 里的图，念它报告里的几句。］注意三件事。第一，它发现数据在 30.3 MeV，没有硬算 30，两条都画了。第二，它分得清表格数据和从图上扫描的数据，扫描的只拿来交叉检查。另一次预演里，它还在 EXFOR 里发现一个点大了十倍，排除并注明，没有自己去“修正”。第三，物理结果：全局光学势在前角很好，后角偏高。这一句是物理，要你来判断是不是合理。两次预演做的事不完全一样，现场这一次也会不一样，这本身就值得说一句。
+Timing target: 33:00–40:00。
+Transition: 它说“检查过了”，查的是什么？
 -->
 
 ---
 
 # 每一种检查，各回答一个问题
-<div class="subtitle">Implementation, setup, and model adequacy</div>
+<div class="subtitle">Implementation, input, and model adequacy</div>
 
-| 想知道什么 | 刚才怎么查的 | 查不出什么 |
+| 想知道什么 | 它怎么查的 | 查不出什么 |
 |---|---|---|
 | 它真的跑了吗？ | 打开文件，用它给的命令再跑一次 | 算得对不对 |
-| 方程解对了吗？ | 数值解对解析解 | 两边共用的错设定 |
-| 设定和模型整体对吗？ | 没参与拟合的量：a_t 对实验 | 偏差来自设定还是模型 |
-| 模型够用吗？ | 更多没拟合的数据，带误差 | |
+| 数值算准了吗？ | 改步长、匹配半径、分波数，结果不变 | 输入本身错了 |
+| 输入对吗？ | KD02 参数两个独立来源对照 | 这个势适不适合这个核 |
+| 模型够用吗？ | 两组独立实验数据，带误差 | 偏差来自势还是数据 |
 
 <div class="bottom-line">AI 说“我已经验证过了”，要问它：验证的是这一列里的哪一行？</div>
 
 <!--
 Central message: 不同的检查回答不同的问题，不能互相代替。
-讲述：它说“验证过了”，通常是第二行：数值对解析，或者两个程序对上。这一行很有用，但它查不出第三行的错。大家以后看到“验证通过”，先问一句：验证的是哪一行。
-Timing target: 47:00–49:00。
+讲述：它报告里列了一串检查。大部分是第二、三行：数值收敛、参数核对。这些很有用，但它们查不出最后一行：KD02 在后角偏高，是势的问题还是数据的问题？这一步是物理，是你的事。以后看到“验证通过”，先问一句：验证的是哪一行。
+Timing target: 40:00–49:00（含现场等待的余量）。
 Transition: 下面两个是我自己碰到的，它错得更像对。
 -->
 
@@ -731,7 +679,7 @@ description: 搜索并核实科学文献；
 </div>
 <div class="kami-card"><h3>三部分各做什么</h3><p><b>名称和说明：</b>告诉它什么时候用。</p><p><b>操作步骤：</b>调什么工具、查什么、何时停。</p><p><b>脚本：</b>实际访问数据库的程序，<br>例如 scripts/verify_doi.py。</p><p>没有训练新模型，<br>只是把做事的方法交给它。</p></div>
 </div>
-<div class="note-line">中文教学节选；完整 skill 还有分支流程。材料包 literature/ 里有一次真实查询的原始记录。</div>
+<div class="note-line">中文教学节选；完整 skill 还有分支流程。</div>
 
 <!--
 Central message: skill 就是一份写给 AI 的操作手册，加上它要调的脚本。
@@ -755,7 +703,7 @@ class: dense
 <div class="kami-card"><h3>它交回三个文件</h3><p>crossref-record.json：数据库原样返回。<br>references.bib：只用返回的字段生成。<br>verification.md：查了哪里、何时、缺什么。</p></div>
 <div class="box-gap"><h3>备课时就碰到一个坑</h3><p>脚本给出的页码是<b>空</b>：PRC 用文章号，CrossRef 放在 article-number，脚本只读 page。原始记录里有 011601，从那里取，不看着 DOI 猜。</p></div>
 </div>
-<div class="source">备课查询：2026-10-20，CrossRef，禁用缓存；记录在材料包 literature/results/。断网时打开它，并说明是备课结果。</div>
+<div class="source">备课查询：2026-10-20，CrossRef，禁用缓存；记录在 demo/literature/results/。断网时打开它，并说明是备课结果。</div>
 
 <!--
 Central message: skill 的效果，要看它实际调了什么、留下了什么文件。
@@ -778,7 +726,7 @@ Transition: FUSION 就是把这件事做到核物理程序上。
 
 <!--
 Central message: FUSION 的两条核心规矩，正是前面两类错误的解药。
-讲述：FUSION 是我把一些核物理程序的操作写成 skill。两条规矩：第一，它不凭记忆从零写 FRESCO 输入，而是在一份核对过的输入上改；第二，跑完先复现一个已知结果。这两条防的是“编”和“自说自话”。但要说清楚：复现了作者的结果，只说明程序装对了，不说明你的物理对了，这就是刚才方势阱那一课。
+讲述：FUSION 是我把一些核物理程序的操作写成 skill。两条规矩：第一，它不凭记忆从零写 FRESCO 输入，而是在一份核对过的输入上改；第二，跑完先复现一个已知结果。这两条防的是“编”和“自说自话”。但要说清楚：复现了作者的结果，只说明程序装对了，不说明你的物理对了，这就是刚才那张检查表的最后一行。
 Timing target: 65:00–68:00。
 Transition: 最后一个案例，两个程序对不上的时候。
 -->
@@ -794,11 +742,11 @@ Transition: 最后一个案例，两个程序对不上的时候。
 <div class="kami-card"><h3>发现什么</h3><p>对不上。逐项排查，那个程序漏掉了自旋翻转项。</p></div>
 <div class="kami-card"><h3>后来</h3><p>联系作者，作者独立确认，已经修复。</p></div>
 </div>
-<div class="bottom-line">方势阱那里，两边对上了也可能都错；这里，对不上本身就是信息。<br>AI 负责跑、比、定位；比什么、信哪个，靠物理。</div>
+<div class="bottom-line">两个程序对上，只说明实现一致；对不上，本身就是信息。<br>AI 负责跑、比、定位；比什么、信哪个，靠物理。</div>
 
 <!--
 Central message: 用 agent 做交叉对照，对不上时它能帮你快速定位，但判断是物理。
-讲述：这是一个反过来的例子。方势阱里，两边对上了，可能都错；这里两边对不上，我们没有随手调参数把它凑上，而是逐项查，查出别人公开代码里漏了一项。作者确认了，已经修了。程序名我先不说，作者那边的工作还没发表。跑两个程序、比较、定位这些活，agent 做得很快；决定比什么、相信哪个，还是物理。
+讲述：这是一个反过来的例子。两个程序对上了，也只说明它们的实现一致；这里两边对不上，我们没有随手调参数把它凑上，而是逐项查，查出别人公开代码里漏了一项。作者确认了，已经修了。程序名我先不说，作者那边的工作还没发表。跑两个程序、比较、定位这些活，agent 做得很快；决定比什么、相信哪个，还是物理。
 Timing target: 68:00–71:00。
 Transition: 自己用之前，说一下权限。
 -->
@@ -836,7 +784,7 @@ Transition: 轮到大家了。
 
 <!--
 Central message: 学生带走一条能执行、能验收的任务。
-讲述：选你课题里一件小事。最后一行最难：你用什么来检查它？刚才方势阱里是 a_t，参考文献里是数据库原始记录。［3 分钟写，3 分钟互换。］同桌只问两个问题：我能找到输入吗？做完我怎么知道它对？［请两三位读一下，现场点评。］
+讲述：选你课题里一件小事。最后一行最难：你用什么来检查它？刚才现场演示里是 EXFOR 的实验数据，参考文献里是数据库原始记录。［3 分钟写，3 分钟互换。］同桌只问两个问题：我能找到输入吗？做完我怎么知道它对？［请两三位读一下，现场点评。］
 Timing target: 73:00–80:00。
 Transition: 最后总结。
 -->
@@ -862,16 +810,23 @@ Transition: 材料。
 ---
 
 # 课后材料
-<div class="subtitle">Everything from today, ready to run</div>
+<div class="subtitle">The prompts from today, one scan away</div>
 
 <div class="two">
-<div class="kami-card"><h3>student-materials.zip</h3><p>square-well-task/：今天的任务、三条提示词、<br>Python 参考程序和输出。</p><p>literature/：skill 节选和一次真实查询的原始记录。</p><p>SETUP.md：安装、登录、终端入门。</p></div>
-<div class="kami-card"><h3>回去先做这个</h3><p>把今天的方势阱自己跑一遍。</p><p>然后故意让它用核子质量，<br>看它自己能不能发现。</p></div>
+<div class="qr-box"><img src="./figures/prompts-qr.svg" alt="提示词网页二维码" /><div class="ui-label">扫码拿今天的提示词</div><a href="https://jinlei.fewbody.com/talks/fusion-ml2026-1030/prompts.html" target="_blank">jinlei.fewbody.com/talks/fusion-ml2026-1030/prompts.html</a><small>FUSION 的 skill：github.com/jinleiphys/FUSION</small></div>
+<div class="kami-card"><h3>回去先做这个</h3><p>选你课题里一个常用程序，<br>同一句话问两次：</p><p>一次直接问，一次先给它一份核对过的输入和一个已知结果。</p><p>比一比两次交回来的东西。</p></div>
 </div>
+
+<style>
+.qr-box { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+.qr-box img { width: 200px; height: 200px; border-radius: 10px; box-shadow: 0 0 0 1px #e0ddd2; }
+.qr-box a { font-size: 12px; color: #1B365D; white-space: nowrap; }
+.qr-box small { font-size: 13px; color: #6b6a63; }
+</style>
 
 <!--
 Central message: 课后有一个能马上做的任务。
-讲述：材料包里有今天的全部东西。回去先把方势阱跑一遍；然后做个实验：告诉它用核子质量，看它会不会提出异议，会不会主动去对 a_t。这个实验比任何产品评测都能让你了解它。
+讲述：今天用到的提示词都在这个网页上，扫码就能复制。回去做一个对照：挑你课题里一个常用程序，同一句话问两次，一次什么都不给，一次给它一份核对过的输入和一个已知结果，也就是一个最小的 skill。比一比两次交回来的东西。这个实验比任何产品评测都能让你了解它，也能让你看到 skill 值多少。
 Timing target: 82:00–84:00。
 Transition: 提问。
 -->

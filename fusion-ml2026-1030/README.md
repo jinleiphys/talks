@@ -27,7 +27,7 @@
 - `figures/phase-shift-ok.png`、`phase-shift-slip.png`：第 17、18 页的图，由 `demo/plot_phase_shift.py` 生成。
 - `demo/intro/`：上一版六行 CSV 任务，已不在正文中。
 - `figures/desk/desk.html`：第 3、4 页的书桌图（Colorfigures 引擎 `core.js`），构建为 `public/desk.html`，由 `components/DeskScene.vue` 嵌入，点击推进。网页模式 5 次点击（第 5 次显示聊天窗口能看到的范围），agent 模式 4 次（第 4 次显示 agent 能看到的范围）。导出 PDF 时换成 `public/desk_<mode>_<k>.png`。改图后重建：原构建脚本 `~/Downloads/colorfigures/scripts/build.py` 已不在；`public/desk.html` 中场景脚本与源文件逐行相同，改源文件后把对应的 `<script>` 段拷过去即可。静态图用 playwright 打开 `desk.html?embed=1&still=1&mode=<mode>&k=<k>`（1000×600）重新截取。
-- `student-materials.zip`：square-well-task + literature + 讲义 PDF。
+- `public/prompts.html`：课上提示词网页（第 22 页和课后材料页的二维码指向它）。不再发材料包。
 
 ## 现场
 
