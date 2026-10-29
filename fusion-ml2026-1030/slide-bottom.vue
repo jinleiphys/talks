@@ -6,24 +6,25 @@ const { currentPage } = useNav()
 
 // First slide of each part; section divider pages carry no running header.
 const PARTS = [
-  { start: 2, label: '为什么不只在网页里聊' },
-  { start: 7, label: '我最近让它做的三件事' },
-  { start: 13, label: '现场演示：一句话到实验对比' },
-  { start: 19, label: '它也会错，而且错得很像对' },
-  { start: 22, label: '把吃过的亏写下来' },
-  { start: 29, label: '自己动手：权限与第一份任务' },
+  { start: 3, label: '为什么不只在网页里聊' },
+  { start: 8, label: '我最近让它做的三件事' },
+  { start: 14, label: '现场：算完和实验比' },
+  { start: 20, label: '把改错经验写下来' },
+  { start: 25, label: '知识库：从 RAG 到 wiki' },
+  { start: 31, label: '把改错经验写下来' },
+  { start: 33, label: '自己动手：权限与第一份任务' },
 ]
 const part = computed(() => {
   const p = currentPage.value
-  if (p < 2 || p > 31 || [6, 12, 18, 21].includes(p)) return ''
+  if (p < 3 || p > 35 || [7, 13, 19].includes(p)) return ''
   return [...PARTS].reverse().find(x => p >= x.start)?.label ?? ''
 })
 </script>
 
 <template>
   <div v-if="part" class="slide-part">{{ part }}</div>
-  <footer v-if="$page <= 32 && $page > 1" class="slide-page-number">
-    {{ $page }} / 32
+  <footer v-if="$page <= 36 && $page > 1" class="slide-page-number">
+    {{ $page }} / 36
   </footer>
 </template>
 

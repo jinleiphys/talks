@@ -26,6 +26,7 @@
 - `figures/fusion-live-p208pb.png`：第 16 页的图，第二次预演时 agent 自己画的。
 - `demo/intro/`：上一版六行 CSV 任务，已不在正文中。
 - `figures/desk/desk.html`：第 3、4 页的书桌图（Colorfigures 引擎 `core.js`），构建为 `public/desk.html`，由 `components/DeskScene.vue` 嵌入，点击推进。网页模式 5 次点击（第 5 次显示聊天窗口能看到的范围），agent 模式 4 次（第 4 次显示 agent 能看到的范围）。导出 PDF 时换成 `public/desk_<mode>_<k>.png`。改图后重建：原构建脚本 `~/Downloads/colorfigures/scripts/build.py` 已不在；`public/desk.html` 中场景脚本与源文件逐行相同，改源文件后把对应的 `<script>` 段拷过去即可。静态图用 playwright 打开 `desk.html?embed=1&still=1&mode=<mode>&k=<k>`（1000×600）重新截取。
+- `figures/desk/fde-scene.js`：第 2 页的 FDE 工地动画（同一个 `core.js` 引擎：飞机从上海天际线起飞，FDE 工程师跳伞落到工地，接上云端 AI；约 9 秒一轮；`?u=0..1` 定在某一时刻），构建为 `public/fde.html`（把 `public/desk.html` 里的场景 `<script>` 段换成这个文件的内容），由 `components/FdeScene.vue` 嵌入，静态图 `public/fde_0.png` 用 `fde.html?embed=1&still=1`（1000×600）截取。
 - `public/prompts.html`：课上提示词网页（第 13、22 页和课后材料页的二维码指向它）。不再发材料包。
 
 ## 现场
