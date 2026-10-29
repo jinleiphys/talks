@@ -1,15 +1,16 @@
 <script setup lang="ts">
-// Slide 2: the FDE site (public/fde.html, built from figures/desk/fde-scene.js with the same Colorfigures engine
-// as the desk). A static picture; the audience may drag to turn it. In PDF export a still is shown (public/fde_0.png).
+// An animated Colorfigures scene embedded from public/<name>.html (built from figures/desk/<name>-scene.js):
+// slide 2 the FDE site (name="fde"), slide 8 the repository and its two remotes (name="repo").
+// The audience may drag to turn it. In PDF export a still is shown (public/<name>_0.png).
 import { useNav } from '@slidev/client'
-withDefaults(defineProps<{ height?: number }>(), { height: 250 })
+withDefaults(defineProps<{ height?: number; name?: string }>(), { height: 250, name: 'fde' })
 const { isPrintMode } = useNav()
 const base = import.meta.env.BASE_URL
 </script>
 <template>
 <div class="fde-scene" :style="{ height: height + 'px' }">
-<img v-if="isPrintMode" :src="`${base}fde_0.png`" class="fde-still" alt="示意：飞机把工程师派到工地，工程师用 AI 干活" />
-<iframe v-else :src="`${base}fde.html?embed=1`" title="FDE 示意"></iframe>
+<img v-if="isPrintMode" :src="`${base}${name}_0.png`" class="fde-still" alt="示意图" />
+<iframe v-else :src="`${base}${name}.html?embed=1`" title="示意图"></iframe>
 </div>
 </template>
 <style scoped>

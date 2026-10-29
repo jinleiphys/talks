@@ -525,3 +525,18 @@
 .why-chat { margin-top: 14px; font-size: 17px; color: var(--olive); }
 .why-chat b { color: var(--dark-warm) !important; }
 .term-err { font-family: var(--f-mono); font-size: 14px; background: #1d1c1a; color: #f0c9c2; padding: 10px 14px; border-radius: 6px; margin-top: 8px; }
+
+/* bullet and numbered points inside a card: add steps-dot (parallel points) or steps-num (steps in order) */
+.steps-num { counter-reset: st; }
+.steps-num p, .steps-dot p { position: relative; padding-left: 1.6em; }
+.steps-num p::before { counter-increment: st; content: counter(st); position: absolute; left: 0; top: .15em; width: 1.25em; height: 1.25em; border-radius: 50%; background: #1B365D; color: #fff; font-size: .78em; font-weight: 700; line-height: 1.25em; text-align: center; }
+.steps-dot p::before { content: ''; position: absolute; left: .45em; top: .62em; width: .4em; height: .4em; border-radius: 50%; background: #1B365D; }
+.box-gap.steps-dot p::before { background: #b53333; }
+.box-evidence.steps-dot p::before { background: #4a6b3a; }
+.slidev-layout .steps-dot p, .slidev-layout .steps-num p, .slidev-layout .case .steps-dot p, .slidev-layout .case .steps-num p { padding-left: 1.6em !important; }
+.box-gap.steps-dot p::before, .box-evidence.steps-dot p::before { top: .75em; }
+
+.slidev-layout.cover .cover-tagline { margin-top: 14px; font-family: var(--f-title); font-style: italic; font-size: 21px; line-height: 1.35; color: var(--ink-blue, #1B365D); }
+
+/* closing slide: let the portal backdrop fill the whole slide, not the centred text column */
+.slidev-layout.section.finale > .my-auto { position: static !important; }
