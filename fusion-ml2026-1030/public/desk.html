@@ -894,7 +894,8 @@ function SLIP(st){
   if (st.step === 4) return seg(CHAT_OUT, FOLD_IN, .15, .45) || seg(FOLD_IN, TERM_OUT, .45, .7);
   return null;
 }
-const CARRIES = st => st.mode !== 'web' ? 0 : [after(st, 2, .33), after(st, 2, .62), after(st, 3, .8), after(st, 4, .45), after(st, 4, .7)].filter(Boolean).length;
+// one carry = one delivery between the chat and the computer: the code, the error, the fixed code (running it is not a carry)
+const CARRIES = st => st.mode !== 'web' ? 0 : [after(st, 2, .62), after(st, 3, .8), after(st, 4, .7)].filter(Boolean).length;
 function REACH(st){
   if (st.mode !== 'agent') return 0;
   if (st.step === 1) return Math.min(1, st.t/.4);

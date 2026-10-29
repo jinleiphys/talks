@@ -204,7 +204,7 @@ function scene(st){
     s += pill([ENG[0] + 6.8, ENG[1] - 5, SHT + 31], 92, 14, '② 接上：AI 读图纸、算结构', true);
   }
   s += pill([USR[0] + 1, USR[1] - 2, SHT + 30], 70, 72, '① 看懂：用户怎么干活', true);
-  s += pill([30, 72, SHT + 9], -26, 30, '③ 验收：对已知结果', true);
+  s += pill([30, 72, SHT + 9], -26, 30, '③ 验收：对照已知结果', true);
   return s;
 }
 const q0 = new URLSearchParams(location.search);
