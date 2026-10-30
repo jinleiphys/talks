@@ -16,7 +16,7 @@ const changed=computed(()=>curve(k.value===1?65:50,k.value>=2?6:5))
       <g fill="#66655f" font-size="14px"><text x="47" y="45" text-anchor="end">0</text><text x="47" y="217" text-anchor="end">−50</text><text x="65" y="290">0</text><text x="320" y="290">6</text><text x="570" y="290">12</text><text x="330" y="309" text-anchor="middle">r (fm)</text><text x="18" y="155" transform="rotate(-90 18 155)" text-anchor="middle">U(r) (MeV)</text></g>
       <polyline :points="base" fill="none" stroke="#9b998f" stroke-width="3" stroke-dasharray="7 5"/>
       <polyline :points="changed" fill="none" stroke="#1b365d" stroke-width="3"/>
-      <g font-size="14px"><text x="345" y="85" fill="#9b998f">Reference: V = 50 MeV, R = 5 fm</text><text x="345" y="110" fill="#1b365d">{{ k===1?'Change depth: V = 65 MeV': k>=2?'Change radius: R = 6 fm':'Reference potential' }}</text></g>
+      <g font-size="14px"><text x="350" y="190" fill="#9b998f">Reference: V = 50 MeV, R = 5 fm</text><text x="350" y="215" fill="#1b365d">{{ k===1?'Change depth: V = 65 MeV': k>=2?'Change radius: R = 6 fm':'Reference potential' }}</text></g>
     </svg>
   </div>
   <div class="potential-note">
@@ -25,7 +25,7 @@ const changed=computed(()=>curve(k.value===1?65:50,k.value>=2?6:5))
     <div class="potential-formula">U(r) = −V / [1 + exp((r − R)/a)]</div>
     <p>{{ k<2?'With R and a fixed, changing V multiplies the same radial function.':'Changing R shifts the radial profile. It cannot be reproduced by scaling the original curve.' }}</p>
     <div class="operator-consequence">{{ k<2?'Operator: a coefficient multiplying a fixed matrix.':'Operator: matrix elements must follow the changing radial shape.' }}</div>
-    <p v-if="k===3">The emulator must retain this dependence to differentiate the likelihood with respect to R and a.</p>
+    <p v-if="k===3">The emulator must keep this dependence to give ∂/∂R and ∂/∂a.</p>
   </div>
 </div>
 </template>

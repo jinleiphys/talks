@@ -84,7 +84,7 @@ ax.plot(theta, exact, color=INK_BLUE, lw=2.4, zorder=5, solid_capstyle="round",
 ax.plot(theta, emu, color=GAP_RED, lw=1.6, ls=(0, (5, 3)), zorder=6, label="emulator")
 ax.legend(loc="upper right", bbox_to_anchor=(0.995, 0.99), frameon=False, fontsize=12.5,
           handlelength=2.0, borderpad=0.2, labelspacing=0.35)
-ax.text(0.025, 0.05, "d + 58Ni elastic, 20 MeV", transform=ax.transAxes,
+ax.text(0.025, 0.05, r"d + $^{58}$Ni elastic, 20 MeV", transform=ax.transAxes,
         fontsize=11.5, color=CHARCOAL, va="bottom")
 ax.set_yscale("log")
 ax.set_ylim(0.010, 1.7)
@@ -93,13 +93,18 @@ ax.tick_params(axis="both", labelsize=12.5)
 
 axr.axhspan(-1, 1, color=SAND, alpha=0.9, linewidth=0, zorder=1)
 axr.axhline(0, color=STONE, lw=1.0, zorder=2)
+data_res = (re - z[f"{LABEL}__exact_exp"]) / ee
+axr.plot(te, data_res, ls="none", marker="o", ms=3.6, mfc=STONE, mec=STONE, alpha=0.75, zorder=3)
 axr.plot(theta, resid, color=INK_BLUE, lw=2.2, zorder=4)
-axr.set_ylim(-2.0, 2.0)
-axr.set_yticks([-2, 0, 2])
+lim = max(3.0, float(np.ceil(np.max(np.abs(data_res)))))
+axr.set_ylim(-lim, lim)
+axr.set_yticks([-lim, 0, lim])
+axr.text(0.012, 0.93, "line: emulator − solver    dots: data − solver", transform=axr.transAxes,
+         fontsize=11, color=CHARCOAL, va="top")
 axr.set_xlim(0, 180)
 axr.set_xticks([0, 30, 60, 90, 120, 150, 180])
 axr.set_xlabel(r"$\theta_\mathrm{c.m.}$ (deg)", labelpad=5, fontsize=13)
-axr.set_ylabel("difference\n(in errors)", labelpad=6, fontsize=11)
+axr.set_ylabel(r"$\Delta/\sigma$", labelpad=6, fontsize=14)
 axr.tick_params(axis="both", labelsize=12.5)
 
 fig.subplots_adjust(hspace=0.10, left=0.135, right=0.975, top=0.965, bottom=0.115)
@@ -111,4 +116,6 @@ for ext in ("png", "pdf"):
 print(f"chi2(emulator, data) = {chi2_emu:.2f}   chi2(direct solver, data) = {chi2_exact:.2f}")
 print(f"chi2(emulator, direct solver) = {chi2_diff:.3f}; "
       f"max |emu-exact|/err = {np.max(np.abs(resid)):.3f}")
+align = float(np.sum(data_res * (z[f"{LABEL}__emu_exp"] - z[f"{LABEL}__exact_exp"]) / ee))
+print(f"sum (data-solver)(emu-solver)/sigma^2 = {align:.2f}; max |data-solver|/sigma = {np.max(np.abs(data_res)):.2f}")
 print("wrote verify_broken")

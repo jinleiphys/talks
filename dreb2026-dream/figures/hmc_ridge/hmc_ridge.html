@@ -352,7 +352,7 @@ function nuts(st){
 function reset(st){ ++job; seed = 7;
   Object.assign(st, { th: START.slice(), samples: [], rej: [], trail: [], old: [], ghost: null, mark: null, badPath: null, nProp: 0, nAcc: 0, nGrad: 0 }); }
 
-if (window.parent !== window || new URLSearchParams(location.search).get('embed') === '1'){ window.FIG_A = () => .75; window.LBL_U = () => 0; }
+if (window.parent !== window || new URLSearchParams(location.search).get('embed') === '1'){ window.FIG_A = () => .75; window.LBL_U = () => 0; window.FIG_ZOOM = () => 1.1; }
 ui = mountFigure({
   fig: 'H', title: 'Posterior ridge', turn: 'full', credit: false,
   size: [W, D, HB + 34], center: [W/2, D/2], palette: 'kami',

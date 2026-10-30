@@ -384,7 +384,7 @@ function mountFigure(cfg){
   // the object fills ~74% of the width / ~88% of the height, nudged right of centre so the buttons (top left) stay clear
   // on a phone (FIG_A, from the gallery) the frame grows taller than 4:3, as far as the object needs, so tall machines fill it;
   // the spare height goes mostly below; the object stays centred (its shadow may run off the edge, by the owner's call)
-  const PA = window.FIG_A ? FIG_A() : .75, A = PA === .75 ? .75 : Math.min(PA, Math.max(.75, bh/.88/(bw/.74)*1.08)), vbW = Math.max(bw/.74, bh/.88/A), vbH = vbW*A;
+  const PA = window.FIG_A ? FIG_A() : .75, A = PA === .75 ? .75 : Math.min(PA, Math.max(.75, bh/.88/(bw/.74)*1.08)), vbW = Math.max(bw/.74, bh/.88/A)/(window.FIG_ZOOM ? FIG_ZOOM() : 1), vbH = vbW*A;
   OX = (vbW-bw)/2 + (PA === .75 ? vbW*.06 : 0) - Math.min(...xs); OY = (PA === .75 ? vbH*.04 : (vbH - bh)*.3) - Math.min(...ys);   // sit a little high: shadows fall downward
   const svg = document.getElementById('fig');
   svg.setAttribute('viewBox', `0 0 ${f(vbW)} ${f(vbH)}`);

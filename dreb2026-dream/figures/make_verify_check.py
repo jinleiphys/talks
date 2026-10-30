@@ -74,7 +74,7 @@ ax.plot(theta, exact, color=INK_BLUE, lw=2.4, zorder=5, solid_capstyle="round",
 ax.plot(theta, emu, color=GAP_RED, lw=1.6, ls=(0, (5, 3)), zorder=6, label="emulator")
 ax.legend(loc="upper right", bbox_to_anchor=(0.995, 0.99), frameon=False, fontsize=12.5,
           handlelength=2.0, borderpad=0.2, labelspacing=0.35)
-ax.text(0.025, 0.05, "d + 58Ni elastic, 20 MeV", transform=ax.transAxes,
+ax.text(0.025, 0.05, r"d + $^{58}$Ni elastic, 20 MeV", transform=ax.transAxes,
         fontsize=11.5, color=CHARCOAL, va="bottom")
 ax.set_yscale("log")
 ax.set_ylim(0.010, 1.7)
@@ -93,7 +93,7 @@ axr.set_yticks([-2, 0, 2])
 axr.set_xlim(0, 180)
 axr.set_xticks([0, 30, 60, 90, 120, 150, 180])
 axr.set_xlabel(r"$\theta_\mathrm{c.m.}$ (deg)", labelpad=5, fontsize=13)
-axr.set_ylabel("difference\n(in errors)", labelpad=6, fontsize=11)
+axr.set_ylabel(r"$\Delta/\sigma$", labelpad=6, fontsize=14)
 axr.tick_params(axis="both", labelsize=12.5)
 
 fig.subplots_adjust(hspace=0.10, left=0.135, right=0.975, top=0.965, bottom=0.115)

@@ -16,7 +16,7 @@ watch(k, send)
 <template>
 <div class="sampling-demo" :style="{ height: height + 'px' }">
 <div class="fig-col">
-<div class="diagram-label">Schematic posterior, height = −log p(θ | data); not the fitted 18-parameter result</div>
+<div class="diagram-label">Schematic posterior, height = −log p(θ | data); not the 13-coordinate posterior</div>
 <img v-if="isPrintMode" :src="base + 'hmc_ridge_still.png'" class="still" alt="Carved posterior ridge with random-walk, HMC and NUTS samples" />
 <iframe v-else ref="frame" :src="base + 'hmc_ridge.html?embed=1'" @load="send" title="Posterior ridge sampler demo"></iframe>
 </div>

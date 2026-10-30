@@ -124,7 +124,7 @@ for i in range(13):
           + ", ".join(f"{V[j, i]:+.2f} {NAMES[j]}" for j in dom))
 assert np.all(rms[determined] > 100 * level) and np.all(rms[~determined] < 100 * level)
 
-fig = plt.figure(figsize=(7.2, 4.25))
+fig = plt.figure(figsize=(6.0, 3.9))
 fig.patch.set_facecolor(PAPER)
 gs = fig.add_gridspec(2, 1, height_ratios=[1.42, 1.0], hspace=0.46,
                       left=0.115, right=0.975, top=0.935, bottom=0.165)
@@ -142,7 +142,7 @@ ax.plot(theta, curves[0], color=GAP_RED, lw=1.5, ls=(0, (5, 3)), zorder=7,
         label="ten percent along the leading direction")
 ax.legend(loc="upper right", bbox_to_anchor=(0.995, 0.99), frameon=False, fontsize=12.5,
           handlelength=2.0, borderpad=0.2, labelspacing=0.35)
-ax.text(0.025, 0.05, "n + 208Pb elastic, 20 MeV", transform=ax.transAxes, va="bottom",
+ax.text(0.025, 0.05, r"n + $^{208}$Pb elastic, 20 MeV", transform=ax.transAxes, va="bottom",
         fontsize=11.5, color=CHARCOAL)
 ax.set_yscale("log")
 ax.set_ylim(1.5, 6.0e4)
@@ -162,26 +162,24 @@ for i, d in zip(range(13), determined):
              ls="none", zorder=6)
 axr.set_yscale("log")
 axr.set_xlim(0.35, 13.65)
-axr.set_ylim(0.08, 700)
+axr.set_ylim(0.08, 1500)
 axr.set_xticks(pos)
 axr.set_xticklabels([str(p) for p in pos], fontsize=10.5)
-axr.set_yticks([0.1, 1, 100 * level, 10, 100])
-axr.set_yticklabels(["0.1", "1", "1.7", "10", "100"])
-axr.get_yticklabels()[2].set_color(OLIVE)
+axr.set_yticks([0.1, 100 * level, 10, 100])
+axr.set_yticklabels(["0.1", "1.7", "10", "100"])
+axr.get_yticklabels()[1].set_color(OLIVE)
 axr.set_xlabel("the thirteen directions, in the order the data see them", labelpad=6,
                fontsize=11.5)
-axr.set_ylabel("change in the curve\n(per cent, at RMS)", labelpad=6, fontsize=11.5)
+axr.set_ylabel("change (%)", labelpad=6, fontsize=11.5)
 axr.tick_params(axis="y", labelsize=12)
 
 # Direct labels, in space the stems do not use.
-axr.text(13.4, 300, "the eight the data determine", ha="right", va="center", fontsize=11.5,
+axr.text(13.4, 500, "the eight the data determine", ha="right", va="center", fontsize=11.5,
          color=GAP_RED, zorder=10)
 axr.text(13.4, 4.6, "the five it does not", ha="right", va="center", fontsize=11.5,
          color=CHARCOAL, zorder=10)
-axr.text(0.5, 0.95, "the line the count is taken at", ha="left", va="top", fontsize=10.5,
+axr.text(0.6, 0.55, "1.7% = 10%/\u221a35", ha="left", va="center", fontsize=11.5,
          color=OLIVE, zorder=10)
-axr.text(0.5, 0.42, "a ten per cent step has to move the curve this far", ha="left",
-         va="top", fontsize=10.5, color=OLIVE, zorder=10)
 
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "potential_information")
 for ext in ("png", "pdf"):

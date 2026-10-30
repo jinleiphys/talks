@@ -35,7 +35,7 @@ const beats = [
   { title: 'The neutron is captured outside the nucleus', text: `Cutting the transfer coupling inside a radius in the calculation: 80% of the cross section comes from ${f1(D.band_kd[0])} to ${f1(D.band_kd[1])} fm (gold), well outside the ${f1(D.R_nuc)} fm nuclear radius (glass shell). Blue: the 2p₃/₂ orbital the neutron enters.` },
   { title: 'KD02: the deuteron is absorbed on the way in', text: `Red: the imaginary part W(r) of the KD02 deuteron potential (log scale). W = 1 MeV at ${f1(D.rW1_kd)} fm. A deuteron passing at 7 fm survives with probability 0.69.` },
   { title: 'CH89 absorbs further out', text: `Same real part, but W = 1 MeV at ${f1(D.rW1_ch)} fm; survival at 7 fm drops to 0.47. Fewer deuterons reach the gold band: the S = 1 cross section is 14% lower, 12% of it from the deuteron channel alone.` },
-  { title: 'S absorbs the difference', text: 'Normalized to the same data: S = 0.49 with KD02, 0.58 with CH89. The scaled curves coincide, so the angular distribution cannot choose.' },
+  { title: 'S absorbs the difference', text: 'Normalized to the same data: S = 0.49 with KD02, 0.58 with CH89, 17% apart; the curves coincide. Bound-state well fixed (r₀ 1.25, a 0.65): compare the ratio, not absolute S.' },
 ]
 
 const host = ref<HTMLDivElement>()
