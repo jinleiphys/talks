@@ -98,9 +98,14 @@ axr.plot(te, data_res, ls="none", marker="o", ms=3.6, mfc=STONE, mec=STONE, alph
 axr.plot(theta, resid, color=INK_BLUE, lw=2.2, zorder=4)
 lim = max(3.0, float(np.ceil(np.max(np.abs(data_res)))))
 axr.set_ylim(-lim, lim)
-axr.set_yticks([-lim, 0, lim])
-axr.text(0.012, 0.93, "line: emulator − solver    dots: data − solver", transform=axr.transAxes,
-         fontsize=11, color=CHARCOAL, va="top")
+axr.set_yticks([-lim / 2, 0, lim / 2])  # keep the end labels clear of the x-axis 0
+t1 = axr.text(0.015, 0.95, "line: emulator − solver", transform=axr.transAxes,
+              fontsize=13.5, color=INK_BLUE, fontweight="bold", va="top")
+# place the second key one em after the first, measured, so they never collide
+fig.canvas.draw()
+x1 = axr.transAxes.inverted().transform(t1.get_window_extent().corners()[-1])[0]
+axr.text(x1 + 0.03, 0.95, "dots: data − solver", transform=axr.transAxes,
+         fontsize=13.5, color=CHARCOAL, va="top")
 axr.set_xlim(0, 180)
 axr.set_xticks([0, 30, 60, 90, 120, 150, 180])
 axr.set_xlabel(r"$\theta_\mathrm{c.m.}$ (deg)", labelpad=5, fontsize=13)

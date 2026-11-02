@@ -16,11 +16,11 @@ watch(k, send)
 <template>
 <div class="sampling-demo" :style="{ height: height + 'px' }">
 <div class="fig-col">
-<div class="diagram-label">Schematic posterior, height = −log p(θ | data); not the 13-coordinate posterior</div>
+<div class="diagram-label">Schematic posterior, height = −log p(θ | data); not the posterior of the calculation</div>
 <img v-if="isPrintMode" :src="base + 'hmc_ridge_still.png'" class="still" alt="Carved posterior ridge with random-walk, HMC and NUTS samples" />
 <iframe v-else ref="frame" :src="base + 'hmc_ridge.html?embed=1'" @load="send" title="Posterior ridge sampler demo"></iframe>
 </div>
-<div class="sampling-note"><div class="ui-label">{{ ['Correlated parameters','Random-walk proposals','Hamiltonian Monte Carlo','No-U-turn sampler'][k] }}</div><h3>{{ ['Many combinations fit similarly','An arbitrary step can leave the band','A puck sliding on −log p','Stop when the path turns back'][k] }}</h3><p>{{ ['The data favor a narrow, curved region. Moving one parameter alone can spoil the fit.','Low-density proposals are often rejected (red crosses). Shorter steps can improve acceptance but explore slowly.','Momentum plus the local slope carry the state along the ridge. Every step needs the gradient; an acceptance check still follows.','NUTS doubles the trajectory, forward or backward in time, until it turns back, then draws one state from it. Every step needs the gradient.'][k] }}</p><div class="gradient-expression">∇<sub>θ</sub> log p(θ | data)</div><div class="diagram-label">Illustration of geometry, not a benchmark of sampler efficiency.</div></div>
+<div class="sampling-note"><div class="ui-label">{{ ['Correlated parameters','Random-walk proposals','Hamiltonian Monte Carlo','No-U-turn sampler'][k] }}</div><h3>{{ ['Many combinations fit similarly','An arbitrary step can leave the band','A puck sliding on −log p','Stop when the path turns back'][k] }}</h3><p>{{ ['The data favor a narrow, curved region. Moving one parameter alone can spoil the fit.','Low-density proposals are often rejected (red crosses). Shorter steps can improve acceptance but explore slowly.','Momentum plus the local slope carry the state along the ridge. Every step needs the slope; an acceptance check still follows.','Momentum and the slope carry long moves through the band; the path stops when it starts to come back, and one point on it is kept.'][k] }}</p><div class="gradient-expression"><span style="font-size:.6em;color:#66655f">the slope:</span> ∇<sub>θ</sub> log p</div></div>
 </div>
 </template>
 <style scoped>

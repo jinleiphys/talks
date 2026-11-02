@@ -19,8 +19,8 @@ class: editorial-cover
 ---
 
 <div class="cover-kicker">DREB 2026 <span>SHENZHEN · NOVEMBER 2026</span></div>
-<h1 class="cover-title">Differentiable emulation</h1>
-<div class="cover-subtitle">Full Bayesian calibration of<br>coupled-channel reaction models</div>
+<h1 class="cover-title">Full Bayesian calibration</h1>
+<div class="cover-subtitle">of coupled-channel reaction models,<br>by differentiable emulation</div>
 <div class="cover-rule"></div>
 <div class="cover-author">Jin Lei</div>
 <div class="cover-affiliation">Tongji University, Shanghai<br>Southern Center for Nuclear-Science Theory, IMP, CAS, Huizhou</div>
@@ -30,6 +30,9 @@ class: editorial-cover
 
 <!--
 Central message: what the talk is, in one line, before any machinery.
+Say in the first sentence what calibration means here: not one best-fit potential, but the
+whole range of potentials compatible with a measured angular distribution, and from it an
+error bar on anything computed with them.
 
 Talking points:
 - This is a methods talk about how a coupled-channel reaction model gets calibrated,
@@ -184,11 +187,6 @@ Timing target: 1 minute 30 seconds.
 
 <div class="subtitle"><sup>48</sup>Ca(d,p)<sup>49</sup>Ca g.s., measured at four deuteron energies, each analyzed with two optical potentials.</div>
 
-<div class="pa-def">
-<div><b>Precision</b>: how closely repeated extractions agree (their spread).</div>
-<div><b>Accuracy</b>: how close they are to the true value.</div>
-</div>
-
 <div class="grid grid-cols-12 gap-7 mt-1 items-center">
 <div class="col-span-8">
 
@@ -198,15 +196,15 @@ Timing target: 1 minute 30 seconds.
 <div class="col-span-4">
 
 <div class="sf-row" style="border-color: #1b365d;">
-<div class="sf-label">CH89 · low precision</div>
+<div class="sf-label">CH89 · across four energies</div>
 <div class="sf-num" style="color: #1b365d;">43% spread</div>
-<div class="sf-note">The same level moves with beam energy alone.</div>
+<div class="sf-note">S of the same level moves with beam energy alone.</div>
 </div>
 
 <div class="sf-row mt-4" style="border-color: #b53333;">
-<div class="sf-label">DOM · high precision</div>
+<div class="sf-label">DOM · across four energies</div>
 <div class="sf-num" style="color: #b53333;">7% spread</div>
-<div class="sf-note">Accurate? 25% below the shell model. Quenching or bias needs a reference.</div>
+<div class="sf-note">Flat across energies; CH89 sits 13 to 57% above it at the same energy.</div>
 </div>
 
 <div class="citation mt-4" style="font-size: 11px; line-height: 1.35; color: #66655f;">S: Nguyen et al., PRC 84, 044611 (2011), Table II. Shell model: Tsang, Lee, Lynch, PRL 95, 222501 (2005).</div>
@@ -215,7 +213,7 @@ Timing target: 1 minute 30 seconds.
 </div>
 
 <div class="takeaway mt-3">
-A small spread is <b>precision</b>, not <b>accuracy</b>: the second needs a reference, and S has no unique one.
+Same data, same level: swapping the potential alone changes S by <b>13 to 57%</b>.
 </div>
 
 <style>
@@ -238,13 +236,15 @@ Figure explanation (the two series of the paper's Table II, redrawn at their fou
   linked by a subtracted dispersion relation (their Eq. 9): 0.72, 0.67, 0.68, 0.70.
 - Both use the same overlap function, so the entire difference between the series is the
   potential. That is what the caption says and it is the point of the slide.
-- Precision vs accuracy (the takeaway). Precision is the spread: CH89 43 percent, DOM 7
-  percent. Accuracy is distance from a true value, and S is not an observable, so it needs a
+- The takeaway: at each energy, CH89/DOM = 1.31, 1.22, 1.13, 1.57 (0.94/0.72, 0.82/0.67,
+  0.77/0.68, 1.10/0.70), so the potential alone moves S by 13 to 57 percent.
+- Accuracy, only if asked: the spread across energies is consistency (CH89 43 percent, DOM 7
+  percent), not the precision of one extraction, and neither series is shown to be accurate. Accuracy is distance from a true value, and S is not an observable, so it needs a
   stated reference. Dashed line: large-basis shell model (Oxbash) 0.92 for 49Ca g.s., Tsang,
   Lee, Lynch, PRL 95, 222501 (2005), Table 1 (same paper extracts 0.68 +- 0.07 with a CH89
   adiabatic prescription). DOM sits about 25 percent below the shell model; Nguyen et al. say
   their DOM values are more in line with (e,e'p), i.e. with the usual quenching. So DOM is
-  precise, and whether it is accurate depends on the reference.
+  consistent, and whether it is accurate depends on the reference.
 - If asked about 2 MeV (below the Coulomb barrier, where little optical-potential dependence
   is expected, yet 0.94 vs 0.72): these are Nguyen et al.'s values, not reanalyzed here; the
   two series also differ in the energy dependence they put into the nucleon potentials. Say
@@ -333,7 +333,7 @@ Transition: so how has the field answered this? That is the next block.
 
 <div class="act-label">I · Why a Bayesian analysis</div>
 
-# Same data, same model: the Bayesian band covers better
+# Same elastic data: the Bayesian band covers better
 
 <div class="grid grid-cols-12 gap-6 mt-1">
 <div class="col-span-6">
@@ -347,21 +347,14 @@ Transition: so how has the field answered this? That is the next block.
 </div>
 <div class="col-span-6">
 
-<div class="ui-label">same data, same model, different statistics</div>
+<div class="ui-label">same elastic data, two ways to build the band</div>
 
 <span class="metric" style="font-size: 32px; margin: 2px 0 6px;">44–92%</span>
 <div class="text-sm">of elastic data inside the nominal 95% frequentist bands (nine data sets); Bayesian: 76–100%. <span class="citation">King et al. 2019</span></div>
 
-<div class="box-gap mt-2">
-
-<span class="metric" style="font-size: 32px; margin: 2px 0 6px;">8.3–34% → 30–158%</span>
-<div class="text-sm">(d,p) band widths at the peak, before and after angle correlations enter χ². <span class="citation">King et al., PRC 98, 044623 (2018)</span></div>
-
-</div>
-
 <div class="mt-2" style="font-size: 16px;">
 
-$p(\theta \mid \text{data}) \propto p(\text{data} \mid \theta)\, p(\theta)$ → band on $\sigma_\text{calc}$ → band on $S$
+<div class="text-sm" style="line-height:1.45;"><b>posterior</b> (potentials allowed) ∝ <b>likelihood</b> (fit to the data) × <b>prior</b> (plausible before) → band on S</div>
 
 </div>
 
@@ -369,7 +362,7 @@ $p(\theta \mid \text{data}) \propto p(\text{data} \mid \theta)\, p(\theta)$ → 
 </div>
 
 <div class="takeaway">
-The uncertainty of an extraction is itself a result, and it needs <b>calibrated statistics</b>.
+Here the best-fit band undercovered; the band from <b>sampled potentials</b> did better.
 </div>
 
 <!--
@@ -386,9 +379,9 @@ Figure explanation (King et al. PRL 2019, Fig. 3a):
   coverage is a statement about the elastic sets, not about this backward region.
 
 Talking points:
-- Coverage is the referee: across nine elastic data sets the nominal-95% frequentist band
+- Coverage is how King et al. compared them: across nine elastic data sets the nominal-95% frequentist band
   contained 44 to 92 percent of the data, the Bayesian one 76 to 100 percent (their Table I).
-- King 2018 shows the same lesson inside the chi-square world: once angle-angle correlations
+- If asked (no longer on screen): King 2018 shows the same lesson inside the chi-square world: once angle-angle correlations
   are put into the fit, (d,p) band widths at the peak go from 8.3 to 34 percent to 30 to 158
   percent (their Table VI). The naive error bar was far too narrow.
 - Coverage here is the fraction of the fitted data inside the band; even the Bayesian case
@@ -397,6 +390,10 @@ Talking points:
   model to get a band on the calculated cross section, hence on S.
 
 Timing target: 1 minute 30 seconds.
+
+- The takeaway is scoped to King et al.'s comparison: the band from sampled potentials covered better.
+  If asked for the coverage of our own band: the noise-inclusive predictive check has not
+  been computed (slide 19 notes); do not quote a number.
 
 Transition: this lesson is what moved the field to Bayesian optical potentials.
 -->
@@ -412,7 +409,7 @@ Transition: this lesson is what moved the field to Bayesian optical potentials.
 
 <div class="timeline text-sm">
 <div><b>2017</b><span>χ² bands for optical-model fits. <i class="citation">Lovell et al., PRC 95</i></span></div>
-<div><b>2018</b><span>MCMC posteriors propagated to transfer: 25–100%. <i class="citation">Lovell and Nunes, PRC 97</i></span></div>
+<div><b>2018</b><span>Distributions of potentials (Markov-chain sampling) propagated to transfer: 25–100%. <i class="citation">Lovell and Nunes, PRC 97</i></span></div>
 <div><b>2019</b><span>Bayesian against frequentist, head to head. <i class="citation">King et al., PRL 122</i></span></div>
 <div><b>2019</b><span>Which measurement reduces the uncertainty. <i class="citation">Catacora-Rios et al., PRC 100</i></span></div>
 <div><b>2023</b><span>Global KD and CH89 with uncertainties (KDUQ, CHUQ). <i class="citation">Pruitt et al., PRC 107</i></span></div>
@@ -543,18 +540,18 @@ Transition: the second ingredient the field developed is the emulator.
 <div class="grid grid-cols-12 gap-6 mt-1">
 <div class="col-span-6">
 
-<div class="ui-label">what a reduced basis gives you</div>
+<div class="ui-label">emulator: a fast stand-in built from full calculations</div>
 
 <svg viewBox="0 0 560 190" style="width: 100%; height: 9.5rem;">
   <defs><marker id="ar7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1B365D"/></marker></defs>
   <rect x="10" y="12" width="150" height="150" fill="#E4ECF5" stroke="#1B365D" stroke-width="1.5"/>
-  <text x="85" y="84" font-size="20px" fill="#1B365D" text-anchor="middle" font-family="Newsreader, Georgia, serif">full system</text>
-  <text x="85" y="110" font-size="18px" fill="#66655f" text-anchor="middle" font-family="Newsreader, Georgia, serif">dimension N</text>
+  <text x="85" y="84" font-size="20px" fill="#1B365D" text-anchor="middle" font-family="Newsreader, Georgia, serif">full CDCC</text>
+  <text x="85" y="110" font-size="18px" fill="#66655f" text-anchor="middle" font-family="Newsreader, Georgia, serif">N unknowns</text>
   <path d="M180 87 L350 87" stroke="#1B365D" stroke-width="2" marker-end="url(#ar7)"/>
-  <text x="265" y="72" font-size="17px" fill="#66655f" text-anchor="middle" font-family="Newsreader, Georgia, serif">project onto n</text>
-  <text x="265" y="114" font-size="17px" fill="#66655f" text-anchor="middle" font-family="Newsreader, Georgia, serif">stored solutions</text>
+  <text x="265" y="72" font-size="17px" fill="#66655f" text-anchor="middle" font-family="Newsreader, Georgia, serif">keep the n shapes</text>
+  <text x="265" y="114" font-size="17px" fill="#66655f" text-anchor="middle" font-family="Newsreader, Georgia, serif">that matter</text>
   <rect x="380" y="57" width="60" height="60" fill="#1B365D" opacity="0.85"/>
-  <text x="410" y="145" font-size="18px" fill="#1B365D" text-anchor="middle" font-family="Newsreader, Georgia, serif">n ≪ N, per θ</text>
+  <text x="410" y="145" font-size="18px" fill="#1B365D" text-anchor="middle" font-family="Newsreader, Georgia, serif">small model, n ≪ N</text>
 </svg>
 
 <div class="text-sm" style="line-height: 1.6;">
@@ -572,17 +569,17 @@ Frame et al., PRL 121, 032501 (2018). Melendez et al., PLB 821, 136608 (2021). D
 
 <div class="box-idea">
 
-<b>Where gradients are already used</b>
+<b>What it buys</b>
 
-<div class="mt-1 text-sm">Chiral nucleon-nucleon interactions, sampled with Hamiltonian Monte Carlo. <span class="citation">Svensson et al. 2022–2024.</span><br>The couplings multiply fixed operators, so emulator derivatives follow analytically. <span class="citation">Melendez et al. 2021.</span><br>Photonuclear emulator with NUTS. <span class="citation">Walton et al., PRC 114, 034621 (2026).</span></div>
+<div class="mt-1 text-sm">Milliseconds per evaluation instead of minutes, so a sampler can afford 10<sup>5</sup> to 10<sup>6</sup> of them.</div>
 
 </div>
 
 <div class="box-gap mt-3">
 
-<b>Cited optical-potential fits: gradient-free</b>
+<b>What the fits of slide 7 do not use</b>
 
-<div class="mt-1 text-sm">A likelihood value tests a proposal.<br>A likelihood gradient guides the next step.</div>
+<div class="mt-1 text-sm">The slope: which way to change the potential to fit better.</div>
 
 </div>
 
@@ -590,7 +587,7 @@ Frame et al., PRL 121, 032501 (2018). Melendez et al., PLB 821, 136608 (2021). D
 </div>
 
 <div class="takeaway">
-Cheaper solves made calibration <b>possible</b>; the optical-potential samplers cited here use <b>no gradient</b>.
+An emulator makes <b>each solve cheap</b>; the fits of slide 7 use its value, <b>not its slope</b>.
 </div>
 
 <!--
@@ -617,6 +614,11 @@ Timing target: 1 minute 15 seconds.
 
 Slide 13's takeaway names "non-affine emulators": Odell et al. 2024 (ROSE, single-channel) and
 Catacora-Rios et al. 2026 (coupled channels), both cited here. Point back to them there.
+
+If asked where gradients are already used: chiral NN interactions sampled with HMC
+(Svensson et al. 2022-2024; couplings multiply fixed operators, so emulator derivatives are
+analytic, Melendez et al. 2021) and a photonuclear emulator with NUTS (Walton et al., PRC 114,
+034621 (2026)).
 
 Transition: now move from one channel to coupled channels, and the recipe stops working.
 Three difficulties.
@@ -665,15 +667,15 @@ Transition: even with a cheap emulator, the posterior itself is hard to explore.
 
 <div class="act-label">III · What is hard</div>
 
-# Difficulty 2: very unequal sensitivities
+# Difficulty 2: the data constrain combinations, not parameters
 
 <div class="grid grid-cols-12 gap-6 mt-1">
 <div class="col-span-5">
 <div class="ui-label">one elastic calculation</div>
-<p class="text-sm">n + <sup>208</sup>Pb, 20 MeV, KD02. Step the potential 10% along each of its 13 sensitivity (Fisher) directions; record how far the curve moves.</p>
+<p class="text-sm">n + <sup>208</sup>Pb, 20 MeV, KD02. Step this nucleon potential 10% along each of its 13 parameter-space (Fisher) directions.</p>
 <div class="metric">600<span class="metric-unit">×</span></div>
-<p class="text-sm">Between the largest change (95%) and the smallest (0.15%).</p>
-<div class="box-idea"><b>8 of 13 directions resolved</b><div class="text-sm">To 10%, with 10% data errors. The other five, mostly the absorption, barely move the curve.</div></div>
+<p class="text-sm">Largest change 95%, smallest 0.15%.</p>
+<div class="box-idea"><b>8 of 13 directions resolved</b><div class="text-sm">To 10%; 35 angles to 175°, 10% errors. The other five are mostly absorption.<br>Ten angles at 10–60°: <b>4 of 13</b>, at 10% or 15% errors.</div></div>
 </div>
 <div class="col-span-7"><img src="./figures/potential_information.png" class="kami-img" style="width: 100%;" /></div>
 </div>
@@ -706,6 +708,11 @@ Talking points:
   slide 20.
 - Say "a different 13": these are 13 single-channel potential parameters, not DREAM's 13
   sampled coordinates.
+- The sparse-data line (computed for this talk: figures/make_potential_information.py --count,
+  same forward model, same 10 percent tolerance): 10 angles from 10 to 60 degrees resolve 4 of
+  13 with 10 or 15 percent errors; 10 angles spread over 5 to 175 degrees with 15 percent errors
+  resolve 6; 35 angles to 90 degrees resolve 6. For an experimentalist: angular range buys
+  more than smaller error bars. One nucleon system at one energy; do not generalize the counts.
 - Uneven response means a correlated posterior; a sampler that ignores the correlation pays
   for it. One target, one energy: do not generalize the 8 of 13 beyond this case.
 
@@ -721,13 +728,13 @@ class: scene-slide
 
 <div class="act-label">III · What is hard</div>
 
-# Difficulty 2: the posterior is a curved ridge
+# Difficulty 2, as a shape: a curved ridge
 
-<div class="subtitle">Correlated parameters favor a narrow curved region: a valley in −log p, a ridge in p. Gradient-based proposals use its local geometry.</div>
+<div class="subtitle">Only a narrow, curved band of parameter sets fits the data. Schematic: random steps mostly fall off it; moves guided by the slope travel far and are still accepted. Measured comparison: slide 16.</div>
 
 <HmcScene :step="$clicks" :height="322" />
 
-<div class="takeaway mt-3"><b>Gradient samplers follow this geometry</b>; their gain is expected to grow with dimension.</div>
+<div class="takeaway mt-3">Using the slope, a sampler makes <b>long moves that are still accepted</b>, not short random ones.</div>
 
 <!--
 Central message: gradients help construct proposals in a correlated parameter space.
@@ -735,11 +742,12 @@ This is a schematic two-parameter density, not the 13-coordinate (18-parameter) 
 The figure is live (public/hmc_ridge.html, source figures/hmc_ridge/): the block is carved to height
 U = -log p, so HMC is literally a frictionless puck sliding on it. Each click runs one sampler;
 the audience can drag to turn the block. Focus returns to the deck after a drag, so the arrow keys
-keep advancing slides. "Gradient field" shows the -grad U arrows if asked.
+keep advancing slides.
 Click 0: identify axes and equal-density contours (1, 2, 3 sigma). Several correlated combinations fit similarly.
 Click 1: eight random-walk proposals. Red crosses are proposals into low-density regions, rejected. Short steps improve acceptance but explore slowly.
-Click 2: one HMC trajectory. Momentum plus the slope carry the puck along the ridge; every leapfrog step costs one gradient (counter top right). It is not gradient ascent. An acceptance check follows.
-Click 3: NUTS, full doubling tree. The ring marks the start; the trajectory grows by 1, 2, 4, ... steps, each time forward or backward in time at random, until it turns back at both ends. A new half that turns back inside itself is dropped (red dashed). One state of the kept trajectory is drawn with weight exp(-H) (multinomial NUTS, no separate accept/reject). Checked: 10^5 transitions reproduce the exact means and variances to 1-2 percent.
+Click 2: one HMC trajectory. Momentum plus the slope carry the puck along the ridge; every leapfrog step costs one gradient. It is not gradient ascent. An acceptance check follows.
+Click 3: NUTS. Say only: it keeps extending the path until the path starts to come back, then keeps one point from it, so nobody has to tune the path length.
+If asked about the mechanics: the trajectory grows by 1, 2, 4, ... steps, forward or backward in time at random, until it turns back at both ends; a half that turns back inside itself is dropped (red dashed); one state is drawn with weight exp(-H) (multinomial NUTS). Checked: 10^5 transitions reproduce the exact means and variances to 1-2 percent.
 Do not infer an efficiency ratio from this schematic or from the counters, and do not say 18 parameters are impossible for an ensemble sampler.
 Timing target: 1 minute.
 -->
@@ -757,7 +765,7 @@ class: scene-slide
 
 <LiveOnly><MatrixScene :step="$clicks" :height="300" /></LiveOnly>
 
-<div class="takeaway mt-3">Non-affine emulators exist; to my knowledge, no coupled-channel <b>HMC posterior</b> yet.</div>
+<div class="takeaway mt-3">A fast model must <b>rebuild this shape at every trial potential</b>, and still return the slope.</div>
 
 <!--
 Central message: optical-model geometry cannot be represented by merely scaling one fixed radial function.
@@ -776,19 +784,18 @@ solver. DREAM is built to meet exactly these.
 
 <div class="act-label">IV · Why DREAM</div>
 
-# DREAM: one answer to each difficulty
+# DREAM: one answer to each difficulty, one check for its risk
 
-<div class="subtitle">Differentiable Reduced-basis Emulator with Automatic gradients for Markov-chain inference</div>
+<div class="subtitle">A fast stand-in for full CDCC that also returns the slope, for a sampler that follows it.</div>
 
 <div class="mt-2 dream-map">
 
-| difficulty | DREAM's answer |
+| | DREAM's answer |
 |---|---|
-| expensive solve | reduced basis built from the direct solver: ≈10<sup>3</sup> direct-solve equivalents offline, milliseconds per evaluation online |
-| geometry reshapes the operator | export operators on geometry grids, compress them by SVD, rebuild them online |
-| no derivatives | reduced model built from differentiable operations: exact emulator gradient for ≈1.2 extra forward costs |
-| correlated ridge | No-U-Turn Sampler, the adaptive form of Hamiltonian Monte Carlo (expected to pay as the dimension grows; near parity at 13 coordinates) |
-| silent emulator error | direct-solver checks at posterior points; enrich the basis when they fail |
+| 1 · expensive solve | build a small model once, from ≈10<sup>3</sup> direct-solve equivalents; milliseconds per evaluation afterwards |
+| 2 · correlated ridge | a sampler that follows the slope (No-U-Turn, a form of Hamiltonian Monte Carlo); the small model returns its own slope exactly, for ≈1.2 extra evaluations; built for many-parameter fits, about parity here (slide 16) |
+| 3 · geometry reshapes the potential | store the coupling matrices on a grid of radius and diffuseness, compress them, rebuild them for each trial potential |
+| new risk · a wrong emulator fails silently | rerun the full CDCC at points the sampler visits; enlarge the small model when they disagree |
 
 </div>
 
@@ -797,7 +804,7 @@ Builds on Lei, PRC 113, 024614 (2026), the direct solver, and PRC 113, 044610 (2
 </div>
 
 <div class="takeaway">
-Do not differentiate the legacy solver. <b>Differentiate its compressed operator.</b>
+Leave the full CDCC code as it is; <b>differentiate its compressed version</b>.
 </div>
 
 <!--
@@ -808,7 +815,7 @@ Talking points:
 - Read the table row by row, pointing back to the slide where each difficulty appeared.
 - Row 1: the solver is used only offline; the full offline database costs about a thousand
   direct solves, versus about 1e5 for a gradient-free campaign on the solver.
-- Row 2: the key idea. Geometry enters nonlinearly, so the solver exports the operator on a
+- Row 3: the key idea. Geometry enters nonlinearly, so the solver exports the operator on a
   grid in radius and diffuseness; SVD keeps 8 to 15 matrix modes per form factor.
 - If asked about accuracy versus cost (the paper's CAT figure, as in Odell 2024 and
   Catacora-Rios): every lower rank is an exact truncation of the production basis, so the
@@ -822,10 +829,12 @@ Talking points:
   central differences the emulator derivative of the cross section agrees to 3.9 to 4.7
   percent, a solution-space plateau; it does not affect sampling, which only needs the
   gradient of the posterior it samples.
-- Row 3: the reduced solve is written in differentiable operations, so reverse-mode
+- Row 2, second half: the reduced solve is written in differentiable operations, so reverse-mode
   automatic differentiation returns the exact gradient of the emulated posterior; measured
   cost 7.3 ms against 3.3 ms forward on one A800.
-- Row 5 is part of the method, not a check added afterwards. Act V shows why.
+- The last row is part of the method, not a check added afterwards. Act V shows why.
+- Rows follow the three difficulties in the order of slides 10 to 13; the last row is the risk the
+  emulator itself brings.
 - The two earlier papers: the exact solver every claim is checked against, and the reduced
   basis that made one solve 220 times cheaper. Neither returned a derivative.
 
@@ -843,7 +852,7 @@ class: scene-slide
 
 # The construction
 
-<div class="subtitle">From reference calculations to cross sections and likelihood gradients: the complete data flow.</div>
+<div class="subtitle">Full calculations once, a small differentiable model many times, and checks against the full calculation.</div>
 
 <LiveOnly><ConstructionScene :step="$clicks" :height="368" /></LiveOnly>
 
@@ -875,12 +884,12 @@ Timing target: 1 minute 30 seconds.
 
 <div class="budget-grid">
 <div><div class="ui-label">01 / offline</div><div class="hero-number">≈1,000</div><h3>direct-solve equivalents</h3><p>728 snapshots + operator grids, once.<br>29 min per solve on 16 cores.</p></div>
-<div><div class="ui-label">02 / online</div><div class="hero-number">16,000</div><h3>posterior samples</h3><p>Four chains, &lt; 1 h on one GPU, 0 divergences,<br>min ESS 1358, R̂ ≤ 1.01.<br>6×10<sup>5</sup> gradients; on the direct solver, finite differences would cost 12 extra solves each.</p></div>
+<div><div class="ui-label">02 / online</div><div class="hero-number">16,000</div><h3>posterior samples</h3><p>Four independent chains agree, &lt; 1 h on one GPU.<br>6×10<sup>5</sup> gradient evaluations.</p></div>
 </div>
-<div class="scope-line" style="margin-top: 10px;">13 sampled coordinates (12 optical + error scale) carrying 18 potential parameters; p–n geometry pairs share a prior quantile</div>
+<div class="scope-line" style="margin-top: 10px;">18 potential parameters, sampled as 12 (proton and neutron geometries move together), plus one error scale</div>
 <div class="box-gap mt-2" style="font-size: 15px; line-height: 1.4;">
-<b>At 13 coordinates the emulator is the win; the gradient is for multi-energy and global fits</b>
-In the physical basin, an ensemble sampler on the same emulator matches the NUTS marginals to 1%. NUTS: 2.4× more independent samples per call, near parity per unit compute. The emulator is the speed-up.
+<b>In this calibration the speed-up is the emulator, not the sampler</b>
+In the physical basin, an ensemble sampler on the same emulator matches the NUTS marginals to 1%. NUTS: 2.4× more independent samples per call, near parity per unit compute.
 </div>
 <div class="takeaway">Pay for the full model offline. Explore the posterior online.</div>
 
@@ -897,10 +906,10 @@ Talking points:
   analytically, so only the 12 optical coordinates need solves). That is the cost argument,
   set against slide 10.
 - Sixteen thousand samples in under an hour on one GPU, and say the qualifier: zero
-  divergences, which means the sampler found no pathological region.
+  divergent trajectories in this run (it does not prove every region was explored; slide 17 notes).
 - Do not present the speed-up as a single headline ratio. The honest statement is the two
   budgets side by side.
-- Rehearse one sentence for "why differentiate, then?": "At 13 coordinates the emulator is the
+- Rehearse one sentence for "why differentiate, then?": "In this calibration the emulator is the
   speed-up; the gradient is built for multi-energy and global fits."
 - The "what the gradient buys" box is the question the Bayesian-optical-potential people in the room will ask, so
   answer it before they do. An affine-invariant ensemble sampler (emcee), 64 walkers, 1e5
@@ -922,75 +931,6 @@ careful.
 
 <div class="act-label">V · What DREAM gives</div>
 
-# Verify before reading the posterior
-
-<div class="grid grid-cols-12 gap-6 mt-1">
-<div class="col-span-5">
-
-<div class="ui-label">the check</div>
-
-<div class="text-base mt-2">
-
-<span class="metric">0.30 <span class="metric-unit">/ 1.0</span></span>Worst emulator–solver χ² / threshold<br><b class="mt-2" style="display:block">10 fresh posterior points</b>None used to build the emulator; error-weighted over 64 angles. 13 more in the paper also pass.
-
-</div>
-
-<div class="box-gap mt-2">
-
-<b>Check the posterior region</b>
-
-<div class="mt-1 text-sm">A smooth emulator error shifts the posterior silently.</div>
-
-</div>
-
-</div>
-<div class="col-span-7">
-
-<img src="./figures/verify_check.png" class="kami-img" style="width: 100%; display: block; margin: 0 auto;" />
-
-</div>
-</div>
-
-<div class="takeaway mt-3">
-Read the posterior <b>only after the solver check</b>.
-</div>
-
-<!--
-Central message: the verification step is part of the method, not a nicety, and the failure
-mode it prevents is a silent one.
-
-Talking points:
-- State the check concretely: ten parameter points, solved both ways, agreement quoted in
-  units of the experimental error so the audience can calibrate it against the fit quality.
-  Say that this is a chi-square summed over the 64 angles, not a per-angle number, and give
-  the worst case: 0.30, with no single angle off by more than 0.29 of an error. The gate is
-  1.0, so this is a factor of three inside it.
-- The lower panel has the same meaning on the next slide (emulator minus solver, in error
-  units); there the axis is wider because the data residuals are drawn too.
-- Explain why silence is the danger. A solver that is wrong usually diverges or returns
-  nonsense. An emulator that is wrong returns a slightly wrong smooth curve, and the
-  posterior quietly moves.
-- "By your own slide 18, a 0.30 discrepancy aligned with the data could move chi2 by up to
-  2 sqrt(chi2_data x 0.30), about 7 to 12 here. What does it actually do?" Computed at all 10
-  points (figures/curves_gate_v728.npz, assigned errors, beta not applied): emulator minus
-  solver chi2 against the data is -1.6 to +3.1, signs mixed (mean +0.6), so about a quarter
-  of the bound and no systematic pull towards the data. With beta in the likelihood the effect
-  on log p is smaller still. Before the rebuild (slide 18) it was -28, one-signed.
-- If asked about model inadequacy: the error scale beta is sampled jointly and absorbs
-  model inadequacy only to the extent that it mimics independent fractional noise; correlated
-  model-space errors are not represented (slide 20 notes).
-- This slide is the bridge. Say that the next slide is what happened before we adopted the
-  rule, and that the results after it were produced with the rule in place.
-
-Timing target: 1 minute 15 seconds.
-
-Transition: the rule did not come first. Here is the run that made it a rule.
--->
-
----
-
-<div class="act-label">V · What DREAM gives</div>
-
 # A smooth emulator error can fake a better fit
 
 <div class="grid grid-cols-12 gap-6 mt-1">
@@ -1000,15 +940,13 @@ Transition: the rule did not come first. Here is the run that made it a rule.
 
 <div class="text-base mt-2">
 
-<span class="metric">89 <span class="metric-arrow">→</span> 117</span>χ² against the data<br>emulator → direct solver, at the same parameters
+<span class="metric">89 <span class="metric-unit">vs</span> 117</span>χ² against the data, same parameters: the emulator (89) looked <b>better</b> than the full calculation (117)
 
 </div>
 
 <div class="box-gap mt-3">
 
-<b>A quiet bias in the likelihood</b>
-
-<div class="mt-1 text-sm">An emulator–solver discrepancy of χ² = <b>6.4</b> improves the apparent fit by <b>28</b>.<br><br>The error points towards the data.</div>
+<div class="text-sm">An emulator–solver discrepancy of χ² = <b>6.4</b> improves the apparent fit by <b>28</b>: the error points towards the data.<br>Δ/σ: difference in data error bars.</div>
 
 </div>
 
@@ -1069,13 +1007,74 @@ Talking points:
 - This is the slide to slow down on. It is the reason the two slides after it are trustworthy:
   say explicitly that the posterior shown next was produced after this fix, and that the
   0.08 to 0.30 in the takeaway is the paper's 13-point table after the rebuild; the 0.30
-  on the previous slide is the worst of 10 further points not used to build the emulator.
+  on the next slide is the worst of 10 further points not used to build the emulator.
   Both are after the rebuild.
 - Do not claim credit for the failure being interesting. Claim the rule.
 
 Timing target: 1 minute 15 seconds.
 
-Transition: with the check now sitting where the sampler goes, here is the posterior.
+Transition: so the rule is to check where the sampler goes. Here is that check on the
+production run.
+-->
+
+---
+
+<div class="act-label">V · What DREAM gives</div>
+
+# Verify before reading the posterior
+
+<div class="grid grid-cols-12 gap-6 mt-1">
+<div class="col-span-5">
+
+<div class="ui-label">the check</div>
+
+<div class="text-base mt-2">
+
+<span class="metric">0.30 <span class="metric-unit">/ 1.0</span></span>Worst disagreement, emulator vs full CDCC: χ² over 64 angles, pass below 1. No angle off by more than 0.3 of an error bar.<br><b class="mt-2" style="display:block">10 fresh posterior points</b>None used to build the emulator. 13 more in the paper also pass.
+
+</div>
+
+</div>
+<div class="col-span-7">
+
+<img src="./figures/verify_check.png" class="kami-img" style="width: 100%; display: block; margin: 0 auto;" />
+
+</div>
+</div>
+
+<div class="takeaway mt-3">
+Read the posterior <b>only after the solver check</b>.
+</div>
+
+<!--
+Central message: the verification step is part of the method, not a nicety, and the failure
+mode it prevents is a silent one.
+
+Talking points:
+- State the check concretely: ten parameter points, solved both ways, agreement quoted in
+  units of the experimental error so the audience can calibrate it against the fit quality.
+  Say that this is a chi-square summed over the 64 angles, not a per-angle number, and give
+  the worst case: 0.30, with no single angle off by more than 0.29 of an error. The gate is
+  1.0, so this is a factor of three inside it.
+- The lower panel has the same meaning as on the previous slide (emulator minus solver, in error
+  units); there the axis is wider because the data residuals are drawn too.
+- Explain why silence is the danger. A solver that is wrong usually diverges or returns
+  nonsense. An emulator that is wrong returns a slightly wrong smooth curve, and the
+  posterior quietly moves.
+- "By your own slide 17, a 0.30 discrepancy aligned with the data could move chi2 by up to
+  2 sqrt(chi2_data x 0.30), about 7 to 12 here. What does it actually do?" Computed at all 10
+  points (figures/curves_gate_v728.npz, assigned errors, beta not applied): emulator minus
+  solver chi2 against the data is -1.6 to +3.1, signs mixed (mean +0.6), so about a quarter
+  of the bound and no systematic pull towards the data. With beta in the likelihood the effect
+  on log p is smaller still. Before the rebuild (slide 17) it was -28, one-signed.
+- If asked about model inadequacy: the error scale beta is sampled jointly and absorbs
+  model inadequacy only to the extent that it mimics independent fractional noise; correlated
+  model-space errors are not represented (slide 20 notes).
+- Say that the results after this slide were produced with the rule in place.
+
+Timing target: 1 minute 15 seconds.
+
+Transition: with the check in place, here is the posterior.
 -->
 
 ---
@@ -1096,22 +1095,22 @@ Transition: with the check now sitting where the sampler goes, here is the poste
 
 <div class="text-base mt-2">
 
-<span class="metric">51.8 <span class="metric-arrow">→</span> 1.16</span>χ²/N with the assigned errors (β not applied): KD02 in CDCC, not refit → posterior mean. 60 of 64 error bars assigned (EXFOR quotes 4).
+<span class="metric">51.8 <span class="metric-arrow">→</span> 1.16</span>χ²/N, assigned errors only: KD02 in CDCC, not refit → posterior mean. 60 of 64 error bars had to be assigned (EXFOR quotes 4).
 
 </div>
 
 <div class="box-evidence mt-2">
 
-<b>Follows the diffraction pattern to 150°.</b>
+<b>Error scale β, sampled with the potential</b>
 
-<div class="mt-1 text-sm">Band: 95% credible, model curve only; widens beyond 150°. Error bars: 4 from EXFOR, 60 assigned. Dashed: KD02.</div>
-
-</div>
+<div class="mt-1 text-sm">Extra fractional error the data ask for: β = 0.03 ± 0.02. Halve every assigned error and β rises to 0.12, restoring nearly the same total.</div>
 
 </div>
+
+</div>
 </div>
 
-<div class="takeaway">Coverage needs the noise-inclusive predictive: <b>the next check</b>, not yet a result.</div>
+<div class="takeaway">Calibrated on one angular distribution, the model <b>follows its diffraction minima to 150°</b>.</div>
 
 <!--
 Central message: the posterior is best shown in data space (a postdiction on the fitted data), because that is what it is
@@ -1132,9 +1131,6 @@ Talking points:
   minima badly, so a narrow band there is a real statement about how much the data
   constrain the prediction. Do not say the band is narrow because the model has eighteen
   parameters; the point is where it is narrow, not that it is.
-- If someone asks whether sliders with more parameters would also give a narrow band, the
-  honest answer is that a wider model would widen the band, not narrow it, and that the check
-  against the solver on the previous slide is what the claim rests on.
 - Be descriptive about the dashed curve, not dismissive: it is a global fit to a very large
   body of data, and it was never fitted to this system at this energy. Numbers if asked:
   KD02 chi2/N = 51.8 in this CDCC model, the posterior mean 1.16. That is not a test of KD02
@@ -1175,7 +1171,7 @@ Transition: so which numbers did the data actually determine.
 </div>
 <div class="col-span-5">
 
-<div class="ui-label">volume integrals per target nucleon</div>
+<div class="ui-label">volume integrals: strength summed over space</div>
 
 | | prior | posterior |
 |---|---|---|
@@ -1183,14 +1179,14 @@ Transition: so which numbers did the data actually determine.
 | imaginary, summed | 219 ± 40 | <b style="white-space: nowrap;">204 ± 14</b> |
 
 <div class="fig-caption" style="text-align: left;">
-MeV fm<sup>3</sup> per nucleon; spinless CDCC, inert <sup>58</sup>Ni. Real sum 15% below the KD02 nominal 913.
+MeV fm<sup>3</sup>/nucleon; spinless CDCC, Woods–Saxon, 3% radius prior. Real sum 15% below KD02.
 </div>
 
 <div class="box-evidence mt-2">
 
-<b>The sum is what is pinned.</b>
+<b>The volume integral of U<sub>p</sub> + U<sub>n</sub> is pinned; the split is not.</b>
 
-<div class="mt-1 text-sm">p–n correlation −0.92 (real), −0.56 (imag.). Position along the dotted line moves with the error model; the sums do not. Woods–Saxon, 3% radius prior.</div>
+<div class="mt-1 text-sm">Absorption, which drove the <sup>48</sup>Ca swing, is less pinned; transfer also needs its shape.</div>
 
 </div>
 
@@ -1198,7 +1194,7 @@ MeV fm<sup>3</sup> per nucleon; spinless CDCC, inert <sup>58</sup>Ni. Real sum 1
 </div>
 
 <div class="takeaway mt-3">
-The summed integrals are better determined than the proton–neutron split.
+Within Woods–Saxon (3% radius prior): <b>real sum to 1.7%, imaginary sum to 7%</b>.
 </div>
 
 <!--
@@ -1246,9 +1242,9 @@ Talking points:
   under a 3 percent radius prior the discrete Igo families are outside the support, and inside
   it the data narrow the sum from 915 +- 99 to 772 +- 13."
 - If asked whether 1.7 percent just reflects the 3 percent radius prior: the prior on the
-  summed real integral is 915 +- 99, the posterior 772 +- 13. The width is set by the data
-  through the likelihood and beta, not by the prior; the location along the p-n ridge is not
-  a result.
+  summed real integral is 915 +- 99, the posterior 772 +- 13, so the narrowing comes from the
+  data, within the Woods-Saxon family and that radius prior; the location along the p-n ridge
+  is not a result.
 - Error rescaling is not monotone in width, and someone will notice: doubled errors give
   777 +- 9, halved 771 +- 18. With the weaker likelihood the posterior slides along the p-n
   ridge toward the prior centre, the p-n anti-correlation tightens from -0.92 to -0.97, and
@@ -1284,13 +1280,13 @@ Transition: the check passed and the run is the one the paper reports. Read the 
 
 # Limits and outlook
 
-<style>.next-row { padding: 11px 0 !important; } .outlook-grid { margin-top: 18px !important; }</style>
+<style>.next-row { padding: 7px 0 !important; } .outlook-grid { margin-top: 18px !important; }</style>
 
 <div class="outlook-grid">
-<div><div class="ui-label">demonstrated</div><h2>One system.<br>One energy.<br>Elastic scattering.</h2><p>d + <sup>58</sup>Ni, with direct-solver checks in the<br>posterior region. Within this spinless,<br>inert-target model, the summed real<br>volume integral is 15% below KD02.</p></div>
-<div><div class="ui-label">next questions</div><div class="next-row"><span>01</span><div><b>Several energies</b><p>Constrain the energy dependence jointly.</p></div></div><div class="next-row"><span>02</span><div><b>Into (d,p)</b><p>Propagate a deuteron posterior into (d,p): a swing like <sup>48</sup>Ca’s (S = 0.49 vs 0.58) becomes an interval. Its driver, the absorption, is the less-constrained part.</p></div></div><div class="next-row"><span>03</span><div><b>Breakup observables, global fits</b><p>Higher fidelity; tens of parameters, where the gradient should pay.</p></div></div></div>
+<div><div class="ui-label">demonstrated</div><h2>One system.<br>One energy.<br>Elastic scattering.</h2><p>d + <sup>58</sup>Ni, with direct-solver checks in the<br>posterior region. Within this spinless,<br>inert-target model, the summed real<br>volume integral is 15% below KD02.</p><p><b>For a new system and energy:</b> ≈10<sup>3</sup> full<br>CDCC solves once, then &lt; 1 h per calibration.</p></div>
+<div><div class="ui-label">what would tighten it: from experiment</div><div class="next-row"><span>01</span><div><b>Elastic where you measure transfer</b><p>Same target, same energy as the (d,p): the posterior then carries into S, and a swing like <sup>48</sup>Ca’s (0.49 vs 0.58) becomes an interval.</p></div></div><div class="next-row"><span>02</span><div><b>Quote every error</b><p>Point-by-point and normalization uncertainties. Here 60 of 64 error bars had to be assigned.</p></div></div><div class="next-row"><span>03</span><div><b>Pin the absorption</b><p>Wide angular range before smaller error bars (slide 11), several energies, σ<sub>R</sub>: absorption is the weak part here.</p></div></div></div>
 </div>
-<div class="takeaway">Verified emulation made a 151-channel CDCC calibration practical; more energies and (d,p) are next.</div>
+<div class="takeaway">A 151-channel CDCC calibration is now practical. <b>Next: several energies and (d,p) on the same target.</b></div>
 
 <!--
 Central message: separate what has been shown from what has not, and give the audience the
@@ -1309,9 +1305,19 @@ Talking points:
   the absorption is the less-constrained part (7 percent against 1.7, centre not shifted), so
   the interval on S may stay wide until several energies or breakup data enter. Say it as
   the next step, not as a result.
-- The third item is the real physics limit: breakup observables need far higher emulator
-  fidelity than elastic, and global or multi-energy fits are where the gradient is expected to
-  pay off (not yet measured).
+- Cost line (left): the paper's offline database is roughly 1e3 direct-solve equivalents
+  (snapshots about 5e3 core-hours plus operator grids and checks); the basis is per system and
+  energy. "< 1 h" is the sampling on one GPU. Item 03's "angular range" points to slide 11.
+- The right column is addressed to the experimentalists in the room; say it as a request.
+  Item 01 is the (d,p) step: same target and energy, so the deuteron posterior propagates
+  into the transfer calculation. Item 02: EXFOR carried errors for 4 of the 64 points.
+  Item 03: the imaginary sum is the weak part (7 percent against 1.7, centre not moved), and
+  slide 3 showed the deuteron absorption drove the 17 percent swing in S. A reaction cross
+  section constrains the absorption directly; several energies constrain its energy
+  dependence. Do not promise how much each would shrink the interval; not computed.
+- Theory next steps if asked: breakup observables need far higher emulator fidelity than
+  elastic, and global or multi-energy fits are where the gradient is expected to pay off
+  (not yet measured).
 - End on the closing line without dressing it up. It is the honest state of the field.
 
 Timing target: 1 minute 15 seconds.
@@ -1323,7 +1329,7 @@ Transition: thank you.
 
 # Thank you
 
-<div class="closing-message">Compress the solver.<br>Differentiate the operator,<br>for where gradients pay.<br><span>Verify where the sampler goes.</span></div>
+<div class="closing-message">Coupled-channel models can now<br>be calibrated on your data,<br>the emulator checked against full CDCC.<br><span>Measure elastic where you measure transfer.</span></div>
 <div class="closing-contact"><b>Jin Lei</b><br>jinl@tongji.edu.cn</div>
 <div class="closing-credit">Tongji University · SCNT, IMP, CAS<br>Supported by NSFC 12475132 and 12535009</div>
 
@@ -1333,8 +1339,8 @@ Central message: stop, thank, and leave the contact and the support line on scre
 Talking points:
 - Say the funding number, because the Chinese funding agencies expect it and it is the right
   thing to do.
-- Say the software line only if someone asks how the emulator is built. It is here so the
-  question has an answer on screen.
+- The closing lines are for the experimentalists: their elastic data, with errors quoted,
+  are what this calibration consumes. Read the last line as the one request.
 - Invite the two questions this talk is built to get: what happens at other energies, and
   what happens for breakup.
 

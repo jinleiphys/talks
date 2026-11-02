@@ -93,6 +93,17 @@ theta_scan = np.linspace(5.0, 175.0, N_SCAN)      # the angles the scan used
 theta = np.linspace(2.0, 178.0, 353)              # the drawing grid
 p0 = np.array(get_kd02_params_13(PROJ, A, Z, E_LAB), dtype=float)
 
+# --count LO HI N ERR: how many of the 13 directions a sparser data set resolves (N angles
+# from LO to HI deg, relative error ERR), with the same 10% tolerance; prints and exits.
+if "--count" in sys.argv:
+    lo, hi, n, err = (float(x) for x in sys.argv[sys.argv.index("--count") + 1:][:4])
+    th = np.linspace(lo, hi, int(n))
+    Sc, _, _ = compute_angle_sensitivity(PROJ, A, Z, E_LAB, th, list(p0))
+    lc = np.linalg.eigvalsh(Sc @ Sc.T)
+    k = int(np.sum(err / np.sqrt(np.clip(lc, 1e-300, None)) < TAU))
+    print(f"{int(n)} angles {lo:g}-{hi:g} deg, {100*err:g}% errors: {k} of 13 resolved to {100*TAU:g}%")
+    sys.exit(0)
+
 # The Fisher matrix and its directions, from the paper's forward model.
 S, _, _ = compute_angle_sensitivity(PROJ, A, Z, E_LAB, theta_scan, list(p0))
 F = S @ S.T

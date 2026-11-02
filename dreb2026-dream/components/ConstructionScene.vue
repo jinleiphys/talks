@@ -8,7 +8,7 @@ const captions=[
 'Compress the snapshots and project the coupled equations into a reduced space.',
 'At each proposed parameter vector, rebuild the small operator and compute the angular distribution.',
 'Compare with the measured angular distribution, then differentiate the log posterior for NUTS.',
-'Resolve selected posterior points with the reference solver. If the discrepancy is too large, enrich and rebuild.'
+''
 ]
 </script>
 <template>
@@ -16,9 +16,9 @@ const captions=[
 <div class="workflow-offline">
 <div class="workflow-title">OFFLINE <span>build outside the sampler</span></div>
 <div class="offline-chain">
-<div class="flow-node" :class="{focus:k===1}"><b>Reference calculations</b><span>Parameter points θ⁽¹⁾, θ⁽²⁾, …<br>Full coupled equations</span></div><div class="flow-arrow">→</div>
-<div class="flow-node" :class="{focus:k===2}"><b>Reduced basis</b><span>Compress stored solutions<br>and operator dependence</span></div><div class="flow-arrow">→</div>
-<div class="flow-node" :class="{focus:k===2}"><b>Small operator Aᵣ(θ)</b><span>Retain parameter dependence<br>in a differentiable form</span></div>
+<div class="flow-node" :class="{focus:k===1}"><b>Full CDCC calculations</b><span>Several hundred trial potentials;<br>store the wave functions</span></div><div class="flow-arrow">→</div>
+<div class="flow-node" :class="{focus:k===2}"><b>Compress</b><span>Keep the shapes that matter,<br>and the θ dependence</span></div><div class="flow-arrow">→</div>
+<div class="flow-node" :class="{focus:k===2}"><b>Small model</b><span>Few unknowns, same θ dependence,<br>differentiable in every parameter</span></div>
 </div>
 </div>
 <div class="operator-bridge">
@@ -27,9 +27,9 @@ const captions=[
 <div class="workflow-online">
 
 <div class="online-chain">
-<div class="flow-node" :class="{focus:k===3}"><b>Parameters θ</b><span>Proposed by NUTS</span></div><div class="flow-arrow">→</div>
-<div class="flow-node" :class="{focus:k===3}"><b>Solve Aᵣ(θ) c = bᵣ(θ)</b><span>Predict dσ(θ)/dΩ</span></div><div class="flow-arrow">→</div>
-<div class="flow-node" :class="{focus:k===4}"><b>Log posterior + gradient</b><span>Measured data + prior<br>Return to NUTS ↶</span></div>
+<div class="flow-node" :class="{focus:k===3}"><b>Trial potential θ</b><span>Chosen by the sampler</span></div><div class="flow-arrow">→</div>
+<div class="flow-node" :class="{focus:k===3}"><b>Solve the small model</b><span>Milliseconds → dσ/dΩ</span></div><div class="flow-arrow">→</div>
+<div class="flow-node" :class="{focus:k===4}"><b>Compare with the data</b><span>Fit to data, and which way to move θ<br>Back to the sampler ↶</span></div>
 </div>
 </div>
 <div class="workflow-validation" :class="{focus:k===5}"><b>VALIDATE</b><span>Posterior points → reference solver → compare cross sections → enrich basis if needed</span></div>

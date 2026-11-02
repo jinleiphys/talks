@@ -89,7 +89,7 @@ for lab in labels:
     axr.plot(te, r, color=INK_BLUE, lw=1.6 if worst else 1.0,
              alpha=1.0 if worst else 0.5, zorder=5 if worst else 4)
 axr.set_ylim(-2.0, 2.0)
-axr.set_yticks([-2, 0, 2])
+axr.set_yticks([-1, 0, 1])  # keep the end labels clear of the x-axis 0
 axr.set_xlim(0, 180)
 axr.set_xticks([0, 30, 60, 90, 120, 150, 180])
 axr.set_xlabel(r"$\theta_\mathrm{c.m.}$ (deg)", labelpad=5, fontsize=13)
