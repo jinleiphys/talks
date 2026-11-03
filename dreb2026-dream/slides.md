@@ -1226,7 +1226,7 @@ class: scene-slide
 
 <!--
 Central message: show explicitly what is computed offline and what happens at each sampler evaluation.
-Click 0: read the two rows, offline construction and online evaluation.
+Click 0: read the two lanes, offline (once) and online (every sampler step); the dashed loop returns value and slope to the sampler.
 Click 1: reference calculations cover parameter points and store solutions and operators.
 Click 2: form the reduced basis and the parameter-dependent small operator.
 Click 3: NUTS proposes theta; rebuild and solve the small system, then compute the angular distribution.
