@@ -383,11 +383,18 @@ Three difficulties.
 coupled channels.
 
 **Talking points:**
-- One converged CDCC solve of this model space: about 29 minutes on 16 cores, roughly 7.7
-  core-hours per likelihood evaluation.
+- One converged CDCC solve of this model space: about 29 minutes on 16 cores with my own
+  direct solver, roughly 7.7 core-hours per likelihood evaluation. Say "my solver" aloud: the
+  number is a property of this code, not of CDCC.
+- If asked "is that just slow code?": possibly, and it does not matter. The direct solver is
+  not tuned (it also carries the known basis-size penalty of dropping the Bloch term). Take a
+  code 10 times faster: 1e5 solves still cost about 8e4 core-hours, some nine core-years; 100
+  times faster, about 8e3. A single-channel optical-model solve is milliseconds, so 1e5 of them
+  take minutes. The gap is six to seven orders of magnitude; no code optimization closes it.
+  Do not quote a FRESCO timing; none was measured for this model space.
 - 1e5 is a floor, not an estimate: my own gradient-free ensemble run on the emulator used
   6.4e6 calls, and NUTS 6e5 gradients. The real gap is larger than the slide says.
-- A gradient-free campaign is of order 1e5 evaluations; the product is of order 1e6
+- A gradient-free calibration is of order 1e5 evaluations; the product is of order 1e6
   core-hours. This is the paper's own cost accounting.
 - So an emulator is mandatory. Plant the second half of the takeaway: an emulator that is
   wrong does not crash, it returns a smooth slightly wrong curve. That comes back in Act V.
@@ -497,7 +504,7 @@ removes each obstacle of Act III, one row per difficulty.
 **Talking points:**
 - Read the table row by row, pointing back to the slide where each difficulty appeared.
 - Row 1: the solver is used only offline; the full offline database costs about a thousand
-  direct solves, versus about 1e5 for a gradient-free campaign on the solver.
+  direct solves, versus about 1e5 for a gradient-free calibration on the solver.
 - Row 3: the key idea. Geometry enters nonlinearly, so the solver exports the operator on a
   grid in radius and diffuseness; SVD keeps 8 to 15 matrix modes per form factor.
 - If asked about accuracy versus cost (the paper's CAT figure, as in Odell 2024 and

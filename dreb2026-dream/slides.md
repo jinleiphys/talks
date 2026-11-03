@@ -964,9 +964,9 @@ Three difficulties.
 <div class="subtitle">The deuteron breaks up on the way in: ADWA folds this in adiabatically; CDCC treats the continuum explicitly, at a price.</div>
 
 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 44px; margin: 22px 0 18px;">
-<div><div class="ui-label">01 / one solve</div><div class="hero-number">29<span class="metric-unit"> min</span></div><p class="text-sm">On 16 cores. Up to 151 channels per total-J block; dense complex systems of dimension ~2.7×10<sup>4</sup>.</p></div>
-<div><div class="ui-label">02 / one campaign</div><div class="hero-number">~10<sup>5</sup></div><p class="text-sm">Likelihood evaluations for one calibration.</p></div>
-<div><div class="ui-label">03 / product</div><div class="hero-number">~10<sup>6</sup></div><p class="text-sm">Core-hours. Direct sampling is out of reach.</p></div>
+<div><div class="ui-label">01 / one solve</div><div class="hero-number">minutes</div><p class="text-sm">Per converged solve (29 min on 16 cores with my direct solver). Up to 151 channels per total-J block.</p></div>
+<div><div class="ui-label">02 / one calibration</div><div class="hero-number">~10<sup>5</sup></div><p class="text-sm">Solves a random-walk sampler needs for one calibration (slide 8).</p></div>
+<div><div class="ui-label">03 / product</div><div class="hero-number">~10<sup>6</sup><span class="metric-unit"> core-hours</span></div><p class="text-sm">With my solver; a 10× faster code still needs ~10<sup>5</sup>. Direct sampling is out of reach.</p></div>
 </div>
 
 <div class="scope-line">d + <sup>58</sup>Ni at 20 MeV · continuum bins to 20 MeV, ℓ ≤ 4 · J ≤ 30</div>
@@ -980,11 +980,18 @@ Central message: the "cheap forward model" of the established recipe does not ex
 coupled channels.
 
 Talking points:
-- One converged CDCC solve of this model space: about 29 minutes on 16 cores, roughly 7.7
-  core-hours per likelihood evaluation.
+- One converged CDCC solve of this model space: about 29 minutes on 16 cores with my own
+  direct solver, roughly 7.7 core-hours per likelihood evaluation. Say "my solver" aloud: the
+  number is a property of this code, not of CDCC.
+- If asked "is that just slow code?": possibly, and it does not matter. The direct solver is
+  not tuned (it also carries the known basis-size penalty of dropping the Bloch term). Take a
+  code 10 times faster: 1e5 solves still cost about 8e4 core-hours, some nine core-years; 100
+  times faster, about 8e3. A single-channel optical-model solve is milliseconds, so 1e5 of them
+  take minutes. The gap is six to seven orders of magnitude; no code optimization closes it.
+  Do not quote a FRESCO timing; none was measured for this model space.
 - 1e5 is a floor, not an estimate: my own gradient-free ensemble run on the emulator used
   6.4e6 calls, and NUTS 6e5 gradients. The real gap is larger than the slide says.
-- A gradient-free campaign is of order 1e5 evaluations; the product is of order 1e6
+- A gradient-free calibration is of order 1e5 evaluations; the product is of order 1e6
   core-hours. This is the paper's own cost accounting.
 - So an emulator is mandatory. Plant the second half of the takeaway: an emulator that is
   wrong does not crash, it returns a smooth slightly wrong curve. That comes back in Act V.
@@ -1225,7 +1232,7 @@ removes each obstacle of Act III, one row per difficulty.
 Talking points:
 - Read the table row by row, pointing back to the slide where each difficulty appeared.
 - Row 1: the solver is used only offline; the full offline database costs about a thousand
-  direct solves, versus about 1e5 for a gradient-free campaign on the solver.
+  direct solves, versus about 1e5 for a gradient-free calibration on the solver.
 - Row 3: the key idea. Geometry enters nonlinearly, so the solver exports the operator on a
   grid in radius and diffuseness; SVD keeps 8 to 15 matrix modes per form factor.
 - If asked about accuracy versus cost (the paper's CAT figure, as in Odell 2024 and
