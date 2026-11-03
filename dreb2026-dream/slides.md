@@ -407,7 +407,7 @@ Timing target: 1 minute 30 seconds.
 
 - The takeaway is scoped to King et al.'s comparison: the band from sampled potentials covered better.
   If asked for the coverage of my own band: the noise-inclusive predictive check has not
-  been computed (slide 19 notes); do not quote a number.
+  been computed (slide 18 notes); do not quote a number.
 
 Transition: this lesson is what moved the field to Bayesian optical potentials.
 -->
@@ -1302,17 +1302,17 @@ careful.
 <div class="grid grid-cols-12 gap-6 mt-1">
 <div class="col-span-5">
 
-<div class="ui-label">an earlier basis, not yet checked at its own posterior</div>
+<div class="ui-label">an earlier version of the emulator</div>
 
 <div class="text-base mt-2">
 
-<span class="metric">89 <span class="metric-unit">vs</span> 117</span>χ² against the data, same parameters: the emulator (89) looked <b>better</b> than the full calculation (117)
+<span class="metric">89 <span class="metric-unit">vs</span> 117</span>χ² against the data at the same parameters: the emulator (89) fits <b>better</b> than the full CDCC it imitates (117). That cannot be real.
 
 </div>
 
 <div class="box-gap mt-3">
 
-<div class="text-sm">An emulator–solver discrepancy of χ² = <b>6.4</b> improves the apparent fit by <b>28</b>: the error points towards the data.<br>Δ/σ: difference in data error bars.</div>
+<div class="text-sm">The two curves differ by only χ² = 6.4, but past 145° the emulator (dashed) bends <b>toward the data points</b>. That buys 28 in χ², so the sampler is drawn to where the emulator is wrong.</div>
 
 </div>
 
@@ -1325,7 +1325,7 @@ careful.
 </div>
 
 <div class="takeaway mt-3">
-Build, sample, <b>check at the posterior</b>, enrich. After rebuilding: emulator–solver χ² = 0.08–0.30.
+Fixed by checking <b>where the sampler goes</b>: rebuilt, it agrees with full CDCC to χ² = 0.08–0.30.
 </div>
 
 <!--
@@ -1341,9 +1341,10 @@ Talking points:
   slide earned.
 - Tell it as a sequence, not as a confession. The check passed, the physics looked right, and
   the numbers were wrong.
-- The lower panel now shows both residuals: line = emulator minus solver, dots = data minus
-  solver. Past 145 degrees they move together: that is "the error points towards the data"
-  made visible, and it is why a 6.4 disagreement buys 28 (2 x 17.3 = 34.6 alignment term).
+- The figure has one panel. Point at 145 to 180 degrees: where the data sit above the full
+  CDCC curve (160 to 168) the dashed emulator is above it too; where the data sit below (173)
+  the emulator is below. Each shift is under one error bar, but always in the data's
+  direction: that is why a 6.4 disagreement buys 28 (2 x 17.3 = 34.6 alignment term).
 - The single most useful sentence: weight the two curves by sin(theta), integrate over the
   measured angles, and they move by 0.84 per cent of each other; at the minima and the back
   angles they differ by up to 0.94 of an error bar. An integrated number hides a structured
@@ -1370,49 +1371,20 @@ Talking points:
   flagged it only through split R-hat 7.35. The direct solver puts it 15 to 33 log-posterior
   units below the physical basin at all 25 points checked, so the reported posterior is the
   basin the solver supports. Lesson: multi-start chains plus direct-solver adjudication.
-- This is the slide to slow down on. It is the reason the two slides after it are trustworthy:
+- This is the slide to slow down on. It is the reason the posterior slides after it are trustworthy:
   say explicitly that the posterior shown next was produced after this fix, and that the
-  0.08 to 0.30 in the takeaway is the paper's 13-point table after the rebuild; the 0.30
-  on the next slide is the worst of 10 further points not used to build the emulator.
+  0.08 to 0.30 in the takeaway covers the paper's 13-point table after the rebuild and
+  10 further points not used to build the emulator (worst 0.30).
   Both are after the rebuild.
 - Do not claim credit for the failure being interesting. Claim the rule.
 
 Timing target: 1 minute 15 seconds.
 
-Transition: so the rule is to check where the sampler goes. Here is that check on the
-production run.
--->
+After the fix (this used to be the next slide; say it in one sentence): 23 posterior points
+re-solved with full CDCC, all agree to chi2 0.08 to 0.30 over 64 angles (pass below 1), no angle
+off by more than 0.3 of an error bar; 10 of them were never used to build the emulator.
 
----
-
-<div class="act-label">V · What DREAM gives</div>
-
-# Verify before reading the posterior
-
-<div class="grid grid-cols-12 gap-6 mt-1">
-<div class="col-span-5">
-
-<div class="ui-label">the check</div>
-
-<div class="text-base mt-2">
-
-<span class="metric">0.30 <span class="metric-unit">/ 1.0</span></span>Worst disagreement, emulator vs full CDCC: χ² over 64 angles, pass below 1. No angle off by more than 0.3 of an error bar.<br><b class="mt-2" style="display:block">10 fresh posterior points</b>None used to build the emulator. 13 more in the paper also pass.
-
-</div>
-
-</div>
-<div class="col-span-7">
-
-<img src="./figures/verify_check.png" class="kami-img" style="width: 100%; display: block; margin: 0 auto;" />
-
-</div>
-</div>
-
-<div class="takeaway mt-3">
-Read the posterior <b>only after the solver check</b>.
-</div>
-
-<!--
+Former verification slide, for questions:
 Central message: the verification step is part of the method, not a nicety, and the failure
 mode it prevents is a silent one.
 
@@ -1422,8 +1394,8 @@ Talking points:
   Say that this is a chi-square summed over the 64 angles, not a per-angle number, and give
   the worst case: 0.30, with no single angle off by more than 0.29 of an error. The gate is
   1.0, so this is a factor of three inside it.
-- The lower panel has the same meaning as on the previous slide (emulator minus solver, in error
-  units); there the axis is wider because the data residuals are drawn too.
+- The lower panel: emulator minus full CDCC at each angle, in units of the data error bar,
+  for all ten points; the grey band is one error bar.
 - Explain why silence is the danger. A solver that is wrong usually diverges or returns
   nonsense. An emulator that is wrong returns a slightly wrong smooth curve, and the
   posterior quietly moves.
@@ -1435,10 +1407,12 @@ Talking points:
   on log p is smaller still. Before the rebuild (slide 17) it was -28, one-signed.
 - If asked about model inadequacy: the error scale beta is sampled jointly and absorbs
   model inadequacy only to the extent that it mimics independent fractional noise; correlated
-  model-space errors are not represented (slide 20 notes).
+  model-space errors are not represented (slide 19 notes).
 - Say that the results after this slide were produced with the rule in place.
 
 Timing target: 1 minute 15 seconds.
+
+Transition: with the check in place, here is the posterior.
 
 Transition: with the check in place, here is the posterior.
 -->

@@ -70,7 +70,7 @@ for a in (ax, axr):
 ax.errorbar(te, re, yerr=ee, ls="none", marker="o", ms=4.0, mfc=STONE, mec=STONE,
             ecolor=STONE, elinewidth=0.8, capsize=0, alpha=0.7, zorder=3)
 ax.plot(theta, exact, color=INK_BLUE, lw=2.4, zorder=5, solid_capstyle="round",
-        label="direct solver")
+        label="full CDCC")
 ax.plot(theta, emu, color=GAP_RED, lw=1.6, ls=(0, (5, 3)), zorder=6, label="emulator")
 ax.legend(loc="upper right", bbox_to_anchor=(0.995, 0.99), frameon=False, fontsize=12.5,
           handlelength=2.0, borderpad=0.2, labelspacing=0.35)
@@ -93,7 +93,7 @@ axr.set_yticks([-1, 0, 1])  # keep the end labels clear of the x-axis 0
 axr.set_xlim(0, 180)
 axr.set_xticks([0, 30, 60, 90, 120, 150, 180])
 axr.set_xlabel(r"$\theta_\mathrm{c.m.}$ (deg)", labelpad=5, fontsize=13)
-axr.set_ylabel(r"$\Delta/\sigma$", labelpad=6, fontsize=14)
+axr.set_ylabel("Δ / error bar", labelpad=6, fontsize=12)
 axr.tick_params(axis="both", labelsize=12.5)
 
 fig.subplots_adjust(hspace=0.10, left=0.135, right=0.975, top=0.965, bottom=0.115)

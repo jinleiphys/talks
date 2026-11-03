@@ -71,16 +71,15 @@ chi2_diff = float(np.sum(((z[f"{LABEL}__emu_exp"] - z[f"{LABEL}__exact_exp"]) / 
 resid = np.interp(theta, te, (z[f"{LABEL}__emu_exp"] - z[f"{LABEL}__exact_exp"]) / ee)
 
 # Axes identical to slide 14's, so that the two figures read as one comparison.
-fig, (ax, axr) = plt.subplots(
-    2, 1, figsize=(7.2, 4.9), height_ratios=[3.0, 1.25], sharex=True)
+# One panel only: the angular distribution carries the point; the residual strip was dropped.
+fig, ax = plt.subplots(figsize=(7.2, 4.4))
 fig.patch.set_facecolor(PAPER)
-for a in (ax, axr):
-    a.set_facecolor(PAPER)
+ax.set_facecolor(PAPER)
 
 ax.errorbar(te, re, yerr=ee, ls="none", marker="o", ms=4.0, mfc=STONE, mec=STONE,
             ecolor=STONE, elinewidth=0.8, capsize=0, alpha=0.7, zorder=3)
 ax.plot(theta, exact, color=INK_BLUE, lw=2.4, zorder=5, solid_capstyle="round",
-        label="direct solver")
+        label="full CDCC")
 ax.plot(theta, emu, color=GAP_RED, lw=1.6, ls=(0, (5, 3)), zorder=6, label="emulator")
 ax.legend(loc="upper right", bbox_to_anchor=(0.995, 0.99), frameon=False, fontsize=12.5,
           handlelength=2.0, borderpad=0.2, labelspacing=0.35)
@@ -91,28 +90,12 @@ ax.set_ylim(0.010, 1.7)
 ax.set_ylabel(r"$\sigma/\sigma_\mathrm{Ruth}$", labelpad=6, fontsize=13)
 ax.tick_params(axis="both", labelsize=12.5)
 
-axr.axhspan(-1, 1, color=SAND, alpha=0.9, linewidth=0, zorder=1)
-axr.axhline(0, color=STONE, lw=1.0, zorder=2)
+ax.set_xlim(0, 180)
+ax.set_xticks([0, 30, 60, 90, 120, 150, 180])
+ax.set_xlabel(r"$\theta_\mathrm{c.m.}$ (deg)", labelpad=5, fontsize=13)
 data_res = (re - z[f"{LABEL}__exact_exp"]) / ee
-axr.plot(te, data_res, ls="none", marker="o", ms=3.6, mfc=STONE, mec=STONE, alpha=0.75, zorder=3)
-axr.plot(theta, resid, color=INK_BLUE, lw=2.2, zorder=4)
-lim = max(3.0, float(np.ceil(np.max(np.abs(data_res)))))
-axr.set_ylim(-lim, lim)
-axr.set_yticks([-lim / 2, 0, lim / 2])  # keep the end labels clear of the x-axis 0
-t1 = axr.text(0.015, 0.95, "line: emulator − solver", transform=axr.transAxes,
-              fontsize=13.5, color=INK_BLUE, fontweight="bold", va="top")
-# place the second key one em after the first, measured, so they never collide
-fig.canvas.draw()
-x1 = axr.transAxes.inverted().transform(t1.get_window_extent().corners()[-1])[0]
-axr.text(x1 + 0.03, 0.95, "dots: data − solver", transform=axr.transAxes,
-         fontsize=13.5, color=CHARCOAL, va="top")
-axr.set_xlim(0, 180)
-axr.set_xticks([0, 30, 60, 90, 120, 150, 180])
-axr.set_xlabel(r"$\theta_\mathrm{c.m.}$ (deg)", labelpad=5, fontsize=13)
-axr.set_ylabel(r"$\Delta/\sigma$", labelpad=6, fontsize=14)
-axr.tick_params(axis="both", labelsize=12.5)
 
-fig.subplots_adjust(hspace=0.10, left=0.135, right=0.975, top=0.965, bottom=0.115)
+fig.subplots_adjust(left=0.135, right=0.975, top=0.965, bottom=0.13)
 
 out = os.path.join(HERE, "verify_broken")
 for ext in ("png", "pdf"):
