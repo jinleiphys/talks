@@ -501,12 +501,12 @@ removes each obstacle of Act III, one row per difficulty.
 ## 15. The construction
 
 **Central message:** show explicitly what is computed offline and what happens at each sampler evaluation.
-Click 0: read the two lanes, offline (once) and online (every sampler step); the dashed loop returns value and slope to the sampler.
-Click 1: reference calculations cover parameter points and store solutions and operators.
-Click 2: form the reduced basis and the parameter-dependent small operator.
-Click 3: NUTS proposes theta; rebuild and solve the small system, then compute the angular distribution.
-Click 4: compare prediction with measured data, add the prior, and differentiate the log posterior. The value and gradient return to NUTS.
-Click 5: resolve selected posterior points with the reference solver. Compare cross sections and enrich the basis if necessary.
+Click 0: start offline: full CDCC calculations at several hundred trial potentials; store the wave functions.
+Click 1: compress them and build the small model: few unknowns, differentiable in every parameter.
+Click 2: online, at every sampler step: the sampler picks a trial potential, the small model is solved in milliseconds.
+Click 3: compare with the data: how well it fits and which way to move; value and slope go back to the sampler (dashed loop).
+Click 4: validate: re-solve posterior points with full CDCC; enlarge the small model if they disagree.
+Click 5: the whole picture; read the takeaway.
 No ring, puck, or physical machine is intended. The diagram labels the actual mathematical objects and the validation loop.
 **Timing target:** 1 minute 30 seconds.
 
