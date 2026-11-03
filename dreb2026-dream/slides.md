@@ -493,26 +493,66 @@ Transition: how do these analyses actually sample the posterior?
 
 <div class="ui-label">how the posterior is sampled</div>
 
-<svg viewBox="0 0 660 150" style="width: 100%; height: 8rem;">
-  <defs><marker id="ar6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1B365D"/></marker></defs>
-  <g font-size="19px" font-family="Newsreader, Georgia, serif" text-anchor="middle">
-    <rect x="2" y="14" width="140" height="50" rx="6" fill="#E4ECF5" stroke="#1B365D"/><text x="72" y="46" fill="#1B365D">propose θ</text>
-    <rect x="174" y="14" width="140" height="50" rx="6" fill="#E4ECF5" stroke="#1B365D"/><text x="244" y="46" fill="#1B365D">solve</text>
-    <rect x="346" y="14" width="140" height="50" rx="6" fill="#E4ECF5" stroke="#1B365D"/><text x="416" y="46" fill="#1B365D">compare</text>
-    <rect x="518" y="14" width="140" height="50" rx="6" fill="#E4ECF5" stroke="#1B365D"/><text x="588" y="46" fill="#1B365D">accept / reject</text>
-  </g>
-  <g stroke="#1B365D" stroke-width="2" fill="none" marker-end="url(#ar6)">
-    <path d="M142 39 L172 39"/><path d="M314 39 L344 39"/><path d="M486 39 L516 39"/>
-    <path d="M588 64 L588 104 L72 104 L72 67"/>
-  </g>
-  <text x="330" y="136" font-size="18px" fill="#b53333" text-anchor="middle" font-family="Newsreader, Georgia, serif">repeat many times; each step is a random guess, it never uses the slope of χ²</text>
+<svg viewBox="0 0 660 240" style="width: 100%; height: 11.2rem;" font-family="Newsreader, Georgia, serif">
+<defs><marker id="ar8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1B365D"/></marker><filter id="sh8" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#1B365D" flood-opacity="0.13"/></filter></defs>
+<g filter="url(#sh8)"><rect x="2" y="10" width="148" height="158" rx="10" fill="#FFFFFF" stroke="#c9d3df"/></g>
+<path d="M2 46 V20 a10 10 0 0 1 10 -10 H140 a10 10 0 0 1 10 10 V46 Z" fill="#1B365D"/>
+<circle cx="20" cy="28.0" r="10" fill="#fff"/><text x="20" y="33.0" text-anchor="middle" fill="#1B365D" font-weight="700" style="font-size:14px">1</text>
+<text x="88.0" y="34.0" text-anchor="middle" fill="#fff" style="font-size:17px">propose θ</text>
+<text x="76.0" y="142" text-anchor="middle" fill="#4d4c48" style="font-size:14.5px">new parameters,</text>
+<text x="76.0" y="159" text-anchor="middle" fill="#4d4c48" style="font-size:14.5px">picked at random</text>
+<g filter="url(#sh8)"><rect x="172" y="10" width="148" height="158" rx="10" fill="#FFFFFF" stroke="#c9d3df"/></g>
+<path d="M172 46 V20 a10 10 0 0 1 10 -10 H310 a10 10 0 0 1 10 10 V46 Z" fill="#1B365D"/>
+<circle cx="190" cy="28.0" r="10" fill="#fff"/><text x="190" y="33.0" text-anchor="middle" fill="#1B365D" font-weight="700" style="font-size:14px">2</text>
+<text x="258.0" y="34.0" text-anchor="middle" fill="#fff" style="font-size:17px">solve</text>
+<text x="246.0" y="142" text-anchor="middle" fill="#4d4c48" style="font-size:14.5px">one optical-model</text>
+<text x="246.0" y="159" text-anchor="middle" fill="#4d4c48" style="font-size:14.5px">calculation</text>
+<g filter="url(#sh8)"><rect x="342" y="10" width="148" height="158" rx="10" fill="#FFFFFF" stroke="#c9d3df"/></g>
+<path d="M342 46 V20 a10 10 0 0 1 10 -10 H480 a10 10 0 0 1 10 10 V46 Z" fill="#1B365D"/>
+<circle cx="360" cy="28.0" r="10" fill="#fff"/><text x="360" y="33.0" text-anchor="middle" fill="#1B365D" font-weight="700" style="font-size:14px">3</text>
+<text x="428.0" y="34.0" text-anchor="middle" fill="#fff" style="font-size:17px">compare</text>
+<text x="416.0" y="142" text-anchor="middle" fill="#4d4c48" style="font-size:14.5px">σ(θ) against the</text>
+<text x="416.0" y="159" text-anchor="middle" fill="#4d4c48" style="font-size:14.5px">data gives χ²</text>
+<g filter="url(#sh8)"><rect x="512" y="10" width="148" height="158" rx="10" fill="#FFFFFF" stroke="#c9d3df"/></g>
+<path d="M512 46 V20 a10 10 0 0 1 10 -10 H650 a10 10 0 0 1 10 10 V46 Z" fill="#1B365D"/>
+<circle cx="530" cy="28.0" r="10" fill="#fff"/><text x="530" y="33.0" text-anchor="middle" fill="#1B365D" font-weight="700" style="font-size:14px">4</text>
+<text x="598.0" y="34.0" text-anchor="middle" fill="#fff" style="font-size:17px">accept/reject</text>
+<text x="586.0" y="142" text-anchor="middle" fill="#4d4c48" style="font-size:14.5px">keep the new θ</text>
+<text x="586.0" y="159" text-anchor="middle" fill="#4d4c48" style="font-size:14.5px">or the old one</text>
+<rect x="53.0" y="61.0" width="46" height="46" rx="9" fill="#E4ECF5" stroke="#1B365D" stroke-width="1.6" transform="rotate(-10 76.0 84)"/>
+<circle cx="62.1" cy="74.3" r="3.6" fill="#1B365D"/>
+<circle cx="85.7" cy="70.1" r="3.6" fill="#1B365D"/>
+<circle cx="76.0" cy="84.0" r="3.6" fill="#1B365D"/>
+<circle cx="66.3" cy="97.9" r="3.6" fill="#1B365D"/>
+<circle cx="89.9" cy="93.7" r="3.6" fill="#1B365D"/>
+<line x1="200" y1="70" x2="298" y2="70" stroke="#9aa6b5" stroke-width="1"/>
+<path d="M200 70 L200.0 114.0 L201.7 113.9 L203.3 113.9 L205.0 113.9 L206.6 113.9 L208.3 113.8 L210.0 113.8 L211.6 113.7 L213.3 113.6 L214.9 113.5 L216.6 113.3 L218.3 113.1 L219.9 112.8 L221.6 112.5 L223.3 112.0 L224.9 111.4 L226.6 110.6 L228.2 109.6 L229.9 108.4 L231.6 106.8 L233.2 104.9 L234.9 102.7 L236.5 100.2 L238.2 97.4 L239.9 94.4 L241.5 91.3 L243.2 88.2 L244.8 85.3 L246.5 82.6 L248.2 80.2 L249.8 78.2 L251.5 76.5 L253.2 75.1 L254.8 73.9 L256.5 73.0 L258.1 72.3 L259.8 71.8 L261.5 71.4 L263.1 71.0 L264.8 70.8 L266.4 70.6 L268.1 70.4 L269.8 70.3 L271.4 70.3 L273.1 70.2 L274.7 70.1 L276.4 70.1 L278.1 70.1 L279.7 70.1 L281.4 70.0 L283.1 70.0 L284.7 70.0 L286.4 70.0 L288.0 70.0 L289.7 70.0 L291.4 70.0 L293.0 70.0 L294.7 70.0 L296.3 70.0 L298.0 70.0" fill="none" stroke="#1B365D" stroke-width="2.2"/>
+<text x="300" y="74" fill="#4d4c48" font-style="italic" style="font-size:13px">r</text>
+<text x="262" y="110" fill="#1B365D" font-style="italic" style="font-size:14px">V(r)</text>
+<path d="M364.0 60.5 L366.1 63.0 L368.2 66.0 L370.4 69.3 L372.5 72.7 L374.6 76.2 L376.7 79.6 L378.8 82.7 L381.0 85.4 L383.1 87.7 L385.2 89.5 L387.3 90.8 L389.4 91.6 L391.6 92.0 L393.7 92.1 L395.8 91.9 L397.9 91.6 L400.0 91.1 L402.2 90.6 L404.3 90.2 L406.4 90.0 L408.5 89.9 L410.6 90.0 L412.8 90.3 L414.9 90.8 L417.0 91.5 L419.1 92.3 L421.2 93.2 L423.4 94.2 L425.5 95.2 L427.6 96.2 L429.7 97.1 L431.8 97.9 L434.0 98.5 L436.1 99.1 L438.2 99.5 L440.3 99.7 L442.4 99.9 L444.6 99.9 L446.7 99.9 L448.8 99.8 L450.9 99.6 L453.0 99.5 L455.2 99.4 L457.3 99.3 L459.4 99.3 L461.5 99.3 L463.6 99.4 L465.8 99.5 L467.9 99.7 L470.0 99.9" fill="none" stroke="#1B365D" stroke-width="2"/>
+<line x1="371.4" x2="371.4" y1="63.8" y2="73.8" stroke="#b53333" stroke-width="1.2"/><circle cx="371.4" cy="68.8" r="2.8" fill="#b53333"/>
+<line x1="385.2" x2="385.2" y1="85.9" y2="95.9" stroke="#b53333" stroke-width="1.2"/><circle cx="385.2" cy="90.9" r="2.8" fill="#b53333"/>
+<line x1="400.0" x2="400.0" y1="84.9" y2="94.9" stroke="#b53333" stroke-width="1.2"/><circle cx="400.0" cy="89.9" r="2.8" fill="#b53333"/>
+<line x1="414.9" x2="414.9" y1="86.7" y2="96.7" stroke="#b53333" stroke-width="1.2"/><circle cx="414.9" cy="91.7" r="2.8" fill="#b53333"/>
+<line x1="429.7" x2="429.7" y1="91.1" y2="101.1" stroke="#b53333" stroke-width="1.2"/><circle cx="429.7" cy="96.1" r="2.8" fill="#b53333"/>
+<line x1="445.6" x2="445.6" y1="95.4" y2="105.4" stroke="#b53333" stroke-width="1.2"/><circle cx="445.6" cy="100.4" r="2.8" fill="#b53333"/>
+<line x1="461.5" x2="461.5" y1="93.9" y2="103.9" stroke="#b53333" stroke-width="1.2"/><circle cx="461.5" cy="98.9" r="2.8" fill="#b53333"/>
+<circle cx="562.0" cy="84" r="19" fill="#E4ECF5" stroke="#1B365D" stroke-width="1.6"/><path d="M553.0 84 l7 8 l13 -15" fill="none" stroke="#1B365D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="610.0" cy="84" r="19" fill="#F6E3E1" stroke="#b53333" stroke-width="1.6"/><path d="M603.0 77 l14 14 M617.0 77 l-14 14" stroke="#b53333" stroke-width="3" stroke-linecap="round"/>
+<path d="M153 97.0 L169 97.0" stroke="#1B365D" stroke-width="2" marker-end="url(#ar8)"/>
+<path d="M323 97.0 L339 97.0" stroke="#1B365D" stroke-width="2" marker-end="url(#ar8)"/>
+<path d="M493 97.0 L509 97.0" stroke="#1B365D" stroke-width="2" marker-end="url(#ar8)"/>
+<path d="M586.0 171 C 586.0 205, 546.0 205, 506.0 205 L 156.0 205 C 116.0 205, 76.0 205, 76.0 177" fill="none" stroke="#1B365D" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#ar8)"/>
+<rect x="258" y="193" width="144" height="24" rx="12" fill="#F5F4ED"/>
+<text x="330" y="210" text-anchor="middle" fill="#1B365D" font-style="italic" style="font-size:15px">repeat many times</text>
+<text x="330" y="237" text-anchor="middle" fill="#b53333" style="font-size:16.5px">each step is a random guess; it never uses the slope of χ²</text>
 </svg>
 
-<div class="box-evidence mt-3">
+<div class="box-evidence" style="margin-top: 4px;">
 
 <b>Why it works</b>
 
-<div class="mt-1 text-sm">Single-channel optical-model solves are cheap, so many random steps are affordable, even when one likelihood needs many targets and energies.</div>
+<div class="text-sm">Single-channel optical-model solves are cheap, so many random steps are affordable, even when one likelihood needs many targets and energies.</div>
 
 </div>
 
