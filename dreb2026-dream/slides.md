@@ -311,8 +311,7 @@ illustrative, neither is fitted to measured data):
   rmatch 25 -> 30, jtmax 60 -> 70.
 - Control: for n + 208Pb at 20 MeV with KD02 (weak absorption) the same exercise fails even
   for a 10 percent depth change (chi2/N about 2.5 with r and a free). Nucleon elastic
-  scattering sees more of the interior; that matches the Fisher slide, 8 of 13 directions
-  resolved. Do not claim the alpha picture holds for nucleons.
+  scattering sees more of the interior. Do not claim the alpha picture holds for nucleons.
 
 Talking points:
 - Feshbach projection: the optical potential is what is left of a many-body problem after
@@ -408,7 +407,7 @@ Timing target: 1 minute 30 seconds.
 
 - The takeaway is scoped to King et al.'s comparison: the band from sampled potentials covered better.
   If asked for the coverage of my own band: the noise-inclusive predictive check has not
-  been computed (slide 20 notes); do not quote a number.
+  been computed (slide 19 notes); do not quote a number.
 
 Transition: this lesson is what moved the field to Bayesian optical potentials.
 -->
@@ -722,7 +721,7 @@ An emulator makes <b>each solve cheap</b>, so the random walk of slide 8 can aff
 
 <!--
 Central message: emulators solved the cost of one evaluation. Do not raise the slope on this
-slide (slides 8 and 13 own it); the gradient material below is for questions only. Gradient samplers exist where
+slide (slides 8 and 12 own it); the gradient material below is for questions only. Gradient samplers exist where
 the structure allows it (chiral EFT; a differentiable photonuclear emulator with NUTS, Walton,
 Khatiwada and Kawano, PRC 114, 034621 (2026)), but the optical-potential calibrations
 cited here are gradient-free. Non-affine emulators exist (Odell et al. 2024, ROSE, single-channel optical
@@ -942,10 +941,10 @@ Talking points:
 - An optical potential has both kinds: depths are affine, geometry is not. A calibration that
   frees only depths is cheap; one that frees geometry is not, unless the emulator handles it.
 - Non-affine emulators exist: empirical interpolation (Odell et al. 2024, ROSE, single
-  channel; Catacora-Rios et al. 2026, coupled channels). DREAM's own answer is on slide 15.
+  channel; Catacora-Rios et al. 2026, coupled channels). DREAM's own answer is on slide 14.
 - If asked about derivatives: in the affine case the derivative with respect to theta_k is the
   fixed piece H_k itself, which is why HMC is routine for chiral interactions. Do not raise it
-  unprompted; slides 13 and 15 own the slope.
+  unprompted; slides 12 and 14 own the slope.
 - The curves are analytic Woods-Saxon shapes (left R = 5 fm; right R = 4, 5, 6 fm; a = 0.6 fm),
   not a fitted potential. The small matrix and the dot grid are icons, not data.
 
@@ -1002,90 +1001,34 @@ Transition: even with a cheap emulator, the posterior itself is hard to explore.
 -->
 
 ---
-
-<div class="act-label">III · What is hard</div>
-
-# Difficulty 2: the data constrain combinations, not parameters
-
-<div class="grid grid-cols-12 gap-6 mt-1">
-<div class="col-span-5">
-<div class="ui-label">one elastic calculation</div>
-<p class="text-sm">n + <sup>208</sup>Pb, 20 MeV, KD02. Step this nucleon potential 10% along each of its 13 parameter-space (Fisher) directions.</p>
-<div class="metric">600<span class="metric-unit">×</span></div>
-<p class="text-sm">Largest change 95%, smallest 0.15%.</p>
-<div class="box-idea"><b>8 of 13 directions resolved</b><div class="text-sm">To 10%; 35 angles to 175°, 10% errors. The other five are mostly absorption.<br>Ten angles at 10–60°: <b>4 of 13</b>, at 10% or 15% errors.</div></div>
-</div>
-<div class="col-span-7"><img src="./figures/potential_information.png" class="kami-img" style="width: 100%;" /></div>
-</div>
-<div class="takeaway">The measured directions <b>mix parameters</b>, so the posterior is a correlated ridge.</div>
-
-<!--
-Central message: the information the data carry about the potential is anisotropic, which is
-the physical reason a posterior over many parameters is a ridge.
-
-Figure explanation (n + 208Pb elastic at 20 MeV, KD02 reference, 13 parameters, 35 angles;
-computed for this talk):
-- Top panel. Bold: the elastic angular distribution at KD02. Red dashed: the potential moved
-  ten per cent (in log space) along the direction the data see best; the diffraction pattern
-  goes out of phase. Thin curves: the same step along other directions.
-  Directions 9 to 13 move the curve by less than 1.7 per cent: those are the ridge.
-- Lower panel. Each dot is the RMS change of the curve from that ten per cent step. Leading
-  direction 95 per cent, last one 0.15 per cent: a factor of about six hundred.
-- The line at 1.7 per cent is derived, not chosen: a step eps changes the curve by
-  eps sqrt(lambda/n) at RMS over n = 35 angles, so a direction resolved exactly at ten per
-  cent sits at 10/sqrt(35) = 1.7 per cent. Eight above, five below.
-
-Talking points:
-- Define the matrix in one clause: Fisher information of the angular distribution with
-  respect to the potential parameters, under the data errors; eigenvectors are directions in
-  parameter space.
-- Physics payoff, say it slowly: the data determine the real radius against the depth, the
-  surface absorption geometry and the real diffuseness; they leave the volume absorption, the
-  imaginary geometry and the imaginary spin-orbit nearly free.
-- One spoken bridge: the same thing shows up in the real calibration as the p-n ridge on
-  slide 21.
-- Say "a different 13": these are 13 single-channel potential parameters, not DREAM's 13
-  sampled coordinates.
-- The sparse-data line (computed for this talk: figures/make_potential_information.py --count,
-  same forward model, same 10 percent tolerance): 10 angles from 10 to 60 degrees resolve 4 of
-  13 with 10 or 15 percent errors; 10 angles spread over 5 to 175 degrees with 15 percent errors
-  resolve 6; 35 angles to 90 degrees resolve 6. For an experimentalist: angular range buys
-  more than smaller error bars. One nucleon system at one energy; do not generalize the counts.
-- Uneven response means a correlated posterior; a sampler that ignores the correlation pays
-  for it. One target, one energy: do not generalize the 8 of 13 beyond this case.
-
-Timing target: 1 minute 15 seconds.
-
-Transition: so state the obstruction precisely, in one slide.
--->
-
----
 clicks: 3
 class: scene-slide
 ---
 
 <div class="act-label">III · What is hard</div>
 
-# Difficulty 2, as a shape: a curved ridge
+# Difficulty 2: change one parameter and the others must follow
 
-<div class="subtitle">Only a narrow, curved band of parameter sets fits the data. Schematic: random steps mostly fall off it; moves guided by the slope travel far and are still accepted. Measured comparison: slide 17.</div>
+<div class="subtitle">As on slide 5: a deeper potential still fits if it is also smaller. The good fits form a narrow, curved band; random steps mostly fall off it, steps that follow the slope stay on it.</div>
 
 <HmcScene :step="$clicks" :height="322" />
 
-<div class="takeaway mt-3">Using the slope, a sampler makes <b>long moves that are still accepted</b>, not short random ones.</div>
+<div class="takeaway mt-3">Using the slope, a sampler moves <b>along the band</b> in long steps that are still accepted.</div>
 
 <!--
-Central message: gradients help construct proposals in a correlated parameter space.
+Central message: good fits require parameters to move together, so they form a narrow, curved band;
+gradients let a sampler travel along it. Say first: every point on the block is a set of potential
+parameters, and the height is how badly it fits. Use "ridge" only if someone asks.
 This is a schematic two-parameter density, not the 13-coordinate (18-parameter) posterior of the calculation.
 The figure is live (public/hmc_ridge.html, source figures/hmc_ridge/): the block is carved to height
 U = -log p, so HMC is literally a frictionless puck sliding on it. Each click runs one sampler;
 the audience can drag to turn the block. Focus returns to the deck after a drag, so the arrow keys
 keep advancing slides.
-Click 0: identify axes and equal-density contours (1, 2, 3 sigma). Several correlated combinations fit similarly.
-Click 1: eight random-walk proposals. Red crosses are proposals into low-density regions, rejected. Short steps improve acceptance but explore slowly.
-Click 2: one HMC trajectory. Momentum plus the slope carry the puck along the ridge; every leapfrog step costs one gradient. It is not gradient ascent. An acceptance check follows.
-Click 3: NUTS. Say only: it keeps extending the path until the path starts to come back, then keeps one point from it, so nobody has to tune the path length.
-If asked about the mechanics: the trajectory grows by 1, 2, 4, ... steps, forward or backward in time at random, until it turns back at both ends; a half that turns back inside itself is dropped (red dashed); one state is drawn with weight exp(-H) (multinomial NUTS). Checked: 10^5 transitions reproduce the exact means and variances to 1-2 percent.
+Click 0: each point is one set of potential parameters; height is chi^2. Good fits: the narrow, curved valley.
+Click 1: random walk (Metropolis MCMC): jump in a random direction, keep or throw away depending on the change in fit. In a narrow valley most jumps hit the wall (red crosses); short jumps survive but crawl.
+Click 2: HMC: roll a ball. Push it in a random direction and let it roll under "gravity"; it follows the valley floor and travels far. Rolling needs the slope of chi^2 at every step: that is why the gradient matters. It is not a minimizer: the ball has momentum, climbs as well as falls.
+Click 3: NUTS decides how long to roll. Too short and the ball barely moves; too long and it swings back towards the start and the gradients are wasted. It stops each roll when the path starts to turn back (a U-turn, not reaching the bottom), then keeps one random point from it, not the lowest. Details, including why the path grows in both directions: backup slide.
+If asked why the height is chi^2 or what H is: with Gaussian errors and a flat prior the posterior is exp(-chi^2/2), formally a Boltzmann distribution, so chi^2/2 plays the potential energy of a fictitious particle in parameter space (U-tilde, not the optical potential); H = T + U-tilde is its total energy, nearly conserved while it rolls, which is why the end point is almost always accepted. Random walk = Metropolis Monte Carlo (energies only); HMC = molecular dynamics (needs forces). If asked about the mechanics: the trajectory grows by 1, 2, 4, ... steps, forward or backward in time at random, until it turns back at both ends; a half that turns back inside itself is dropped (red dashed); one state is drawn with weight exp(-H) (multinomial NUTS). Checked: 10^5 transitions reproduce the exact means and variances to 1-2 percent.
 Do not infer an efficiency ratio from this schematic or from the counters, and do not say 18 parameters are impossible for an ensemble sampler.
 Timing target: 1 minute.
 -->
@@ -1204,14 +1147,14 @@ solver. DREAM is built to meet exactly these.
 
 # DREAM: one answer to each difficulty, one check for its risk
 
-<div class="subtitle">A fast stand-in for full CDCC that also returns the slope, for a sampler that follows it.</div>
+<div class="subtitle"><b>DREAM</b> = <b>D</b>ifferentiable <b>R</b>educed-basis <b>E</b>mulator with <b>A</b>utomatic gradients for <b>M</b>arkov-chain inference.</div>
 
 <div class="mt-2 dream-map">
 
 | | DREAM's answer |
 |---|---|
 | 1 · expensive solve | build a small model once, from ≈10<sup>3</sup> direct-solve equivalents; milliseconds per evaluation afterwards |
-| 2 · correlated ridge | a sampler that follows the slope (No-U-Turn, a form of Hamiltonian Monte Carlo); the small model returns its own slope exactly, for ≈1.2 extra evaluations; built for many-parameter fits, about parity here (slide 17) |
+| 2 · parameters that move together | a sampler that follows the slope (No-U-Turn, a form of Hamiltonian Monte Carlo); built for many-parameter fits, about parity here |
 | 3 · geometry reshapes the potential | store the coupling matrices on a grid of radius and diffuseness, compress them, rebuild them for each trial potential |
 | new risk · a wrong emulator fails silently | rerun the full CDCC at points the sampler visits; enlarge the small model when they disagree |
 
@@ -1226,8 +1169,13 @@ Leave the full CDCC code as it is; <b>differentiate its compressed version</b>.
 </div>
 
 <!--
-Central message: DREAM is not a new sampler or a new emulator; it is the combination that
+Central message: read the name out once (Differentiable Reduced-basis Emulator with Automatic
+gradients for Markov-chain inference: a fast stand-in for full CDCC that also returns the slope).
+DREAM is not a new sampler or a new emulator; it is the combination that
 removes each obstacle of Act III, one row per difficulty.
+
+If asked how the slope is obtained: the small model returns its own slope exactly, for about
+1.2 extra forward evaluations per gradient.
 
 Talking points:
 - Read the table row by row, pointing back to the slide where each difficulty appeared.
@@ -1251,7 +1199,7 @@ Talking points:
   automatic differentiation returns the exact gradient of the emulated posterior; measured
   cost 7.3 ms against 3.3 ms forward on one A800.
 - The last row is part of the method, not a check added afterwards. Act V shows why.
-- Rows follow the three difficulties in the order of slides 11 to 14; the last row is the risk the
+- Rows follow the three difficulties in the order of slides 11 to 13; the last row is the risk the
   emulator itself brings.
 - The two earlier papers: the exact solver every claim is checked against, and the reduced
   basis that made one solve 220 times cheaper. Neither returned a derivative.
@@ -1324,7 +1272,7 @@ Talking points:
   analytically, so only the 12 optical coordinates need solves). That is the cost argument,
   set against slide 11.
 - Sixteen thousand samples in under an hour on one GPU, and say the qualifier: zero
-  divergent trajectories in this run (it does not prove every region was explored; slide 18 notes).
+  divergent trajectories in this run (it does not prove every region was explored; slide 17 notes).
 - Do not present the speed-up as a single headline ratio. The honest statement is the two
   budgets side by side.
 - Rehearse one sentence for "why differentiate, then?": "In this calibration the emulator is the
@@ -1479,15 +1427,15 @@ Talking points:
 - Explain why silence is the danger. A solver that is wrong usually diverges or returns
   nonsense. An emulator that is wrong returns a slightly wrong smooth curve, and the
   posterior quietly moves.
-- "By your own slide 18, a 0.30 discrepancy aligned with the data could move chi2 by up to
+- "By your own slide 17, a 0.30 discrepancy aligned with the data could move chi2 by up to
   2 sqrt(chi2_data x 0.30), about 7 to 12 here. What does it actually do?" Computed at all 10
   points (figures/curves_gate_v728.npz, assigned errors, beta not applied): emulator minus
   solver chi2 against the data is -1.6 to +3.1, signs mixed (mean +0.6), so about a quarter
   of the bound and no systematic pull towards the data. With beta in the likelihood the effect
-  on log p is smaller still. Before the rebuild (slide 18) it was -28, one-signed.
+  on log p is smaller still. Before the rebuild (slide 17) it was -28, one-signed.
 - If asked about model inadequacy: the error scale beta is sampled jointly and absorbs
   model inadequacy only to the extent that it mimics independent fractional noise; correlated
-  model-space errors are not represented (slide 21 notes).
+  model-space errors are not represented (slide 20 notes).
 - Say that the results after this slide were produced with the rule in place.
 
 Timing target: 1 minute 15 seconds.
@@ -1702,7 +1650,7 @@ Transition: the check passed and the run is the one the paper reports. Read the 
 
 <div class="outlook-grid">
 <div><div class="ui-label">demonstrated</div><h2>One system.<br>One energy.<br>Elastic scattering.</h2><p>d + <sup>58</sup>Ni, with direct-solver checks in the<br>posterior region. Within this spinless,<br>inert-target model, the summed real<br>volume integral is 15% below KD02.</p><p><b>For a new system and energy:</b> ≈10<sup>3</sup> full<br>CDCC solves once, then &lt; 1 h per calibration.</p></div>
-<div><div class="ui-label">what would tighten it: from experiment</div><div class="next-row"><span>01</span><div><b>Elastic where you measure transfer</b><p>Same target, same energy as the (d,p): the posterior then carries into S, and a swing like <sup>48</sup>Ca’s (0.49 vs 0.58) becomes an interval.</p></div></div><div class="next-row"><span>02</span><div><b>Quote every error</b><p>Point-by-point and normalization uncertainties. Here 60 of 64 error bars had to be assigned.</p></div></div><div class="next-row"><span>03</span><div><b>Pin the absorption</b><p>Wide angular range before smaller error bars (slide 12), several energies, σ<sub>R</sub>: absorption is the weak part here.</p></div></div></div>
+<div><div class="ui-label">what would tighten it: from experiment</div><div class="next-row"><span>01</span><div><b>Elastic where you measure transfer</b><p>Same target, same energy as the (d,p): the posterior then carries into S, and a swing like <sup>48</sup>Ca’s (0.49 vs 0.58) becomes an interval.</p></div></div><div class="next-row"><span>02</span><div><b>Quote every error</b><p>Point-by-point and normalization uncertainties. Here 60 of 64 error bars had to be assigned.</p></div></div><div class="next-row"><span>03</span><div><b>Pin the absorption</b><p>Wide angular range, several energies, σ<sub>R</sub>: absorption is the weak part here.</p></div></div></div>
 </div>
 <div class="takeaway">A 151-channel CDCC calibration is now practical. <b>Next: several energies and (d,p) on the same target.</b></div>
 
@@ -1725,7 +1673,7 @@ Talking points:
   the next step, not as a result.
 - Cost line (left): the paper's offline database is roughly 1e3 direct-solve equivalents
   (snapshots about 5e3 core-hours plus operator grids and checks); the basis is per system and
-  energy. "< 1 h" is the sampling on one GPU. Item 03's "angular range" points to slide 12.
+  energy. "< 1 h" is the sampling on one GPU.
 - The right column is addressed to the experimentalists in the room; say it as a request.
   Item 01 is the (d,p) step: same target and energy, so the deuteron posterior propagates
   into the transfer calculation. Item 02: EXFOR carried errors for 4 of the 64 points.
@@ -1774,4 +1722,111 @@ backup: true
 <!--
 Backup separator. The page counter stops here, so "Thank you" is the last numbered-looking
 slide and nothing after it carries a number.
+-->
+
+---
+
+<div class="act-label">Backup</div>
+
+# How NUTS decides how long to roll
+
+<div class="grid grid-cols-12 gap-6 mt-1">
+<div class="col-span-7">
+
+<svg viewBox="0 0 520 360" style="width: 100%; height: 300px;" font-family="Newsreader, Georgia, serif">
+<defs><marker id="nA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1B365D"/></marker><marker id="nR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b53333"/></marker></defs>
+<defs><clipPath id="nC"><rect x="20" y="20" width="480" height="320"/></clipPath></defs><rect x="20" y="20" width="480" height="320" fill="#FBFAF6" stroke="#cfccc2"/><g clip-path="url(#nC)">
+<path d="M254.3 352.6 L251.7 352.3 L247.9 351.7 L244.2 351.0 L241.5 350.3 L238.6 349.4 L235.1 348.3 L232.6 347.3 L230.0 346.2 L227.0 344.8 L223.9 343.2 L221.1 341.7 L218.6 340.2 L216.0 338.6 L213.7 337.1 L211.5 335.5 L209.3 334.0 L207.1 332.3 L204.5 330.3 L202.0 328.1 L199.8 326.3 L198.1 324.7 L195.6 322.4 L193.2 320.1 L191.6 318.5 L189.2 316.1 L187.2 313.9 L185.4 312.0 L183.0 309.3 L181.6 307.7 L179.0 304.7 L177.7 303.1 L175.2 300.1 L173.9 298.5 L171.5 295.4 L170.1 293.5 L168.0 290.7 L166.3 288.3 L164.7 286.1 L162.5 283.0 L161.2 281.1 L159.3 278.4 L157.4 275.5 L156.1 273.5 L154.2 270.6 L152.3 267.6 L151.0 265.5 L149.4 262.9 L147.5 259.8 L145.9 257.1 L144.6 255.0 L143.0 252.1 L141.2 249.0 L139.5 246.1 L138.3 243.8 L136.9 241.3 L135.2 238.2 L133.5 235.1 L131.9 232.0 L130.6 229.6 L129.3 227.2 L127.9 224.3 L126.3 221.2 L124.7 218.1 L123.2 215.0 L121.7 211.9 L120.4 209.3 L119.1 206.6 L117.9 204.0 L116.5 201.1 L115.1 198.0 L113.6 195.0 L112.2 191.9 L110.8 188.8 L109.4 185.7 L108.1 182.6 L106.7 179.5 L105.4 176.4 L104.0 173.3 L102.7 170.2 L101.4 167.1 L100.1 164.1 L98.8 161.0 L97.5 157.9 L96.2 154.8 L95.0 151.7 L93.7 148.6 L92.5 145.5 L91.3 142.4 L90.1 139.3 L88.8 136.2 L87.6 133.2 L86.5 130.1 L85.3 127.0 L84.1 123.9 L82.9 120.8 L81.8 117.7 L80.6 114.6 L79.5 111.5 L78.3 108.4 L77.1 104.9 L75.8 101.4 L74.5 97.9 L73.3 94.5 L72.2 91.4 L71.2 88.4 L70.1 85.3 L69.0 82.2 L67.9 79.1 L66.9 76.0 L65.6 72.2 L64.3 68.4 L63.2 65.2 L62.2 62.1 L61.2 59.0 L60.2 55.9 L59.1 52.8 L57.9 49.1 L56.7 45.2 L55.7 42.0 L54.7 38.9 L53.7 35.8 L52.7 32.7 L51.6 29.1 L50.3 25.0 L49.4 21.9 L48.4 18.8 L47.5 15.8 L46.5 12.5 L45.2 8.3 L44.2 4.9 L43.3 1.9 L42.4 -1.2 L41.4 -4.7 L40.1 -9.0 L39.2 -12.1 L38.3 -15.1 L37.4 -18.2 L36.3 -22.4 L35.3 -26.0 L34.4 -29.0 L33.5 -32.1 L32.4 -36.1 L31.4 -39.9 L30.6 -42.9 L29.8 -46.0 L28.6 -50.3 L27.7 -53.8 L26.9 -56.9 L26.1 -60.0 L24.9 -64.6 L24.2 -67.7 L23.4 -70.8 L22.2 -75.2 L21.5 -78.5 L20.7 -81.6 L19.7 -85.8 L18.9 -89.3 L18.2 -92.4 L17.2 -97.0 L16.6 -100.1 L15.9 -103.6 L15.2 -107.8 L14.6 -112.2 L15.9 -113.8 L17.4 -110.9 L18.8 -107.8 L20.1 -104.7 L21.4 -101.6 L22.6 -98.6 L23.9 -95.5 L25.1 -92.4 L26.3 -89.3 L27.5 -86.2 L28.7 -83.1 L29.9 -79.9 L31.2 -76.5 L32.4 -73.1 L33.7 -69.7 L35.0 -66.4 L36.2 -63.0 L37.4 -59.9 L38.6 -56.9 L39.7 -53.8 L40.9 -50.7 L42.1 -47.6 L43.3 -44.5 L44.4 -41.4 L45.6 -38.3 L46.8 -35.2 L48.0 -32.1 L49.2 -29.0 L50.4 -26.0 L51.6 -22.9 L52.8 -19.8 L54.1 -16.5 L55.4 -13.3 L56.7 -10.1 L57.9 -6.9 L59.2 -3.7 L60.5 -0.5 L61.8 2.6 L63.0 5.7 L64.3 8.9 L65.6 12.0 L66.9 15.0 L68.1 18.1 L69.4 21.2 L70.7 24.2 L72.0 27.2 L73.2 30.2 L74.5 33.2 L75.8 36.2 L77.1 39.1 L78.3 42.0 L79.7 45.1 L81.0 48.2 L82.4 51.3 L83.8 54.4 L85.2 57.5 L86.6 60.6 L88.0 63.6 L89.4 66.7 L90.8 69.8 L92.3 72.9 L93.6 75.8 L94.9 78.4 L96.2 81.1 L97.5 83.8 L98.9 86.8 L100.4 89.9 L102.0 93.0 L103.5 96.1 L105.1 99.2 L106.4 101.8 L107.7 104.3 L109.0 106.9 L110.6 110.0 L112.2 113.1 L113.9 116.2 L115.3 118.8 L116.6 121.1 L118.1 123.9 L119.8 127.0 L121.5 130.1 L123.0 132.6 L124.2 134.8 L125.9 137.8 L127.7 140.9 L129.3 143.6 L130.6 145.7 L132.4 148.6 L134.2 151.7 L135.7 154.0 L137.1 156.3 L139.1 159.4 L140.8 162.0 L142.1 164.1 L144.2 167.1 L145.9 169.7 L147.3 171.8 L149.5 174.9 L151.0 177.1 L152.8 179.5 L154.8 182.3 L156.2 184.1 L158.5 187.2 L159.9 189.1 L162.1 191.9 L163.7 194.0 L165.8 196.5 L167.6 198.6 L169.7 201.1 L171.4 203.1 L173.7 205.8 L175.2 207.4 L177.8 210.2 L179.5 211.9 L181.6 214.1 L184.0 216.6 L185.6 218.1 L188.0 220.4 L190.5 222.7 L192.3 224.3 L194.3 226.1 L196.9 228.2 L199.4 230.2 L201.8 232.0 L203.9 233.6 L206.0 235.1 L208.4 236.7 L210.9 238.4 L213.5 240.0 L216.0 241.5 L218.6 242.9 L221.4 244.4 L224.6 245.9 L227.5 247.2 L230.0 248.2 L232.6 249.2 L236.4 250.4 L239.0 251.2 L242.7 252.1 L245.3 252.7 L249.2 253.3 L252.1 253.7 L255.5 253.9 L259.4 254.1 L263.2 254.0 L267.0 253.7 L269.6 253.5 L273.4 252.9 L277.2 252.1 L279.8 251.5 L283.2 250.6 L286.1 249.6 L288.7 248.7 L291.8 247.5 L295.1 246.1 L297.6 244.9 L300.2 243.6 L302.7 242.2 L305.3 240.7 L307.8 239.2 L310.4 237.6 L312.9 235.9 L315.5 234.1 L318.0 232.2 L320.2 230.5 L322.2 228.9 L324.4 227.1 L326.9 225.0 L329.4 222.8 L331.1 221.2 L333.3 219.2 L335.9 216.7 L337.5 215.0 L339.7 212.8 L342.0 210.4 L343.5 208.8 L346.1 206.0 L347.6 204.2 L349.9 201.6 L351.6 199.6 L353.7 197.1 L355.5 195.0 L357.5 192.4 L359.1 190.3 L361.4 187.4 L362.7 185.7 L365.0 182.6 L366.5 180.6 L368.4 178.0 L370.3 175.2 L371.6 173.3 L373.7 170.2 L375.4 167.8 L376.9 165.6 L378.9 162.5 L380.5 160.1 L381.9 157.9 L383.8 154.8 L385.6 152.0 L386.8 149.9 L388.6 147.1 L390.4 144.0 L391.9 141.4 L393.2 139.2 L395.0 136.2 L396.7 133.2 L398.3 130.4 L399.6 128.1 L401.1 125.4 L402.8 122.3 L404.4 119.3 L406.0 116.4 L407.2 114.0 L408.6 111.5 L410.2 108.4 L411.8 105.4 L413.4 102.3 L414.9 99.2 L416.2 96.7 L417.4 94.2 L418.8 91.4 L420.3 88.4 L421.8 85.3 L423.3 82.2 L424.8 79.1 L426.3 76.0 L427.6 73.0 L428.9 70.3 L430.2 67.6 L431.5 64.8 L432.7 62.0 L434.1 59.0 L435.5 55.9 L436.9 52.8 L438.3 49.7 L439.7 46.7 L441.0 43.6 L442.4 40.5 L443.7 37.4 L445.0 34.3 L446.4 31.2 L447.7 28.1 L449.0 25.0 L450.3 21.9 L451.6 18.8 L452.9 15.8 L454.1 12.7 L455.4 9.6 L456.7 6.5 L457.9 3.4 L459.2 0.3 L460.4 -2.8 L461.7 -5.9 L462.9 -9.0 L464.1 -12.1 L465.4 -15.1 L466.6 -18.2 L467.8 -21.3 L469.0 -24.4 L470.2 -27.5 L471.4 -30.6 L472.6 -33.7 L473.8 -36.8 L475.0 -39.9 L476.1 -42.9 L477.4 -46.2 L478.6 -49.5 L479.9 -52.9 L481.2 -56.2 L482.5 -59.6 L483.7 -63.0 L484.9 -66.1 L486.1 -69.2 L487.3 -72.3 L488.5 -75.4 L489.6 -78.5 L490.8 -81.6 L492.0 -84.7 L493.2 -87.7 L494.3 -90.8 L495.5 -93.9 L496.7 -97.0 L498.0 -100.1 L499.2 -103.2 L500.5 -106.3 L501.9 -109.4 L503.6 -112.5 L505.4 -112.5 L505.0 -109.4 L504.3 -104.7 L503.7 -101.6 L502.9 -97.2 L502.1 -93.9 L501.4 -90.8 L500.4 -86.2 L499.6 -83.1 L498.9 -80.0 L497.8 -75.4 L497.0 -72.3 L496.3 -69.2 L495.2 -65.0 L494.3 -61.5 L493.5 -58.4 L492.7 -55.1 L491.5 -50.7 L490.6 -47.6 L489.8 -44.5 L488.8 -40.8 L487.7 -36.8 L486.9 -33.7 L486.0 -30.6 L485.0 -26.9 L483.9 -22.9 L483.0 -19.8 L482.1 -16.7 L481.2 -13.4 L479.9 -9.0 L479.0 -5.9 L478.1 -2.8 L477.2 0.3 L476.1 4.0 L474.9 8.0 L473.9 11.1 L473.0 14.2 L472.1 17.3 L471.0 20.9 L469.7 25.0 L468.7 28.1 L467.8 31.2 L466.8 34.3 L465.8 37.4 L464.6 41.2 L463.4 45.1 L462.4 48.2 L461.4 51.3 L460.3 54.4 L459.3 57.5 L458.2 60.8 L457.0 64.6 L455.7 68.3 L454.7 71.4 L453.6 74.5 L452.6 77.5 L451.5 80.6 L450.5 83.7 L449.3 87.0 L448.0 90.7 L446.8 94.3 L445.6 97.6 L444.5 100.7 L443.3 103.8 L442.2 106.9 L441.1 110.0 L439.9 113.1 L438.8 116.2 L437.7 119.3 L436.5 122.3 L435.3 125.5 L434.0 128.9 L432.7 132.2 L431.5 135.5 L430.2 138.7 L428.9 142.0 L427.6 145.2 L426.4 148.3 L425.1 151.5 L423.8 154.6 L422.5 157.7 L421.3 160.8 L420.0 163.9 L418.7 166.9 L417.4 169.9 L416.2 172.9 L414.9 175.8 L413.6 178.8 L412.3 181.7 L411.1 184.5 L409.8 187.4 L408.5 190.3 L407.1 193.4 L405.6 196.5 L404.2 199.6 L402.7 202.7 L401.3 205.8 L399.8 208.9 L398.3 211.9 L397.0 214.5 L395.8 217.1 L394.5 219.7 L392.9 222.8 L391.3 225.8 L389.7 228.9 L388.1 232.0 L386.8 234.4 L385.6 236.8 L384.0 239.7 L382.3 242.8 L380.6 245.9 L379.2 248.3 L377.9 250.6 L376.1 253.7 L374.3 256.7 L372.8 259.3 L371.5 261.4 L369.6 264.5 L367.7 267.6 L366.5 269.6 L364.8 272.2 L362.7 275.3 L361.4 277.4 L359.6 279.9 L357.5 283.0 L356.3 284.8 L354.2 287.6 L352.4 290.1 L350.8 292.3 L348.6 295.2 L347.3 296.9 L344.8 300.0 L343.5 301.6 L341.0 304.6 L339.7 306.2 L337.1 309.2 L335.7 310.8 L333.3 313.4 L331.4 315.4 L329.5 317.4 L326.9 320.0 L325.2 321.6 L323.1 323.6 L320.6 325.9 L318.4 327.8 L316.6 329.3 L314.2 331.3 L311.6 333.3 L309.1 335.1 L306.5 336.9 L304.0 338.6 L301.5 340.2 L298.9 341.7 L296.3 343.1 L293.8 344.4 L291.2 345.6 L288.7 346.8 L285.9 347.9 L282.3 349.2 L279.8 349.9 L275.9 350.9 L273.4 351.5 L269.6 352.1 L266.2 352.5 L263.2 352.7 L259.4 352.8 L255.5 352.7 Z" fill="#DCE5EF" stroke="#7F96B2" stroke-width="0.7" stroke-opacity="0.6"/>
+<path d="M250.4 335.7 L247.9 335.2 L244.1 334.4 L241.5 333.8 L237.7 332.6 L235.1 331.7 L232.6 330.7 L229.5 329.3 L226.3 327.8 L223.7 326.4 L221.1 324.9 L218.6 323.4 L216.0 321.8 L213.6 320.1 L211.4 318.5 L209.4 317.0 L207.1 315.2 L204.5 313.1 L202.0 310.9 L200.1 309.3 L198.2 307.5 L195.6 305.0 L193.7 303.1 L191.8 301.2 L189.2 298.5 L187.8 296.9 L185.4 294.3 L183.7 292.3 L181.6 289.8 L179.8 287.6 L177.8 285.1 L176.1 283.0 L173.9 280.2 L172.6 278.4 L170.3 275.3 L168.8 273.3 L167.0 270.6 L165.0 267.9 L163.7 266.0 L161.7 262.9 L159.9 260.2 L158.6 258.2 L156.7 255.2 L154.8 252.2 L153.5 250.1 L152.0 247.5 L150.2 244.4 L148.5 241.5 L147.2 239.2 L145.7 236.7 L144.0 233.6 L142.3 230.5 L140.8 227.7 L139.5 225.3 L138.2 222.8 L136.6 219.7 L135.0 216.6 L133.4 213.5 L131.9 210.4 L130.6 207.8 L129.3 205.2 L128.1 202.5 L126.7 199.6 L125.2 196.5 L123.8 193.4 L122.4 190.3 L121.0 187.2 L119.7 184.1 L118.3 181.0 L117.0 178.0 L115.7 174.9 L114.4 171.8 L113.1 168.7 L111.9 165.6 L110.6 162.5 L109.4 159.4 L108.2 156.3 L107.0 153.2 L105.9 150.2 L104.7 147.1 L103.6 144.0 L102.5 140.9 L101.3 137.2 L100.0 133.3 L99.0 130.1 L98.2 127.0 L97.3 123.9 L96.5 119.3 L98.2 117.7 L100.0 119.6 L102.0 122.3 L103.8 125.0 L105.1 127.0 L107.1 130.1 L108.9 133.0 L110.2 135.0 L111.9 137.8 L113.8 140.9 L115.3 143.3 L116.7 145.5 L118.6 148.6 L120.4 151.5 L121.7 153.6 L123.4 156.3 L125.4 159.4 L126.8 161.6 L128.3 164.1 L130.4 167.1 L131.9 169.5 L133.4 171.8 L135.5 174.9 L137.0 177.1 L138.6 179.5 L140.8 182.6 L142.1 184.5 L144.0 187.2 L145.9 189.8 L147.4 191.9 L149.7 195.0 L151.0 196.7 L153.2 199.6 L154.8 201.7 L156.8 204.2 L158.6 206.6 L160.5 208.9 L162.5 211.2 L164.4 213.5 L166.3 215.7 L168.4 218.1 L170.1 220.1 L172.6 222.8 L174.0 224.3 L176.5 226.9 L178.5 228.9 L180.3 230.8 L182.9 233.3 L184.8 235.1 L186.7 236.9 L189.2 239.1 L191.7 241.3 L193.6 242.8 L195.6 244.5 L198.2 246.5 L200.7 248.5 L203.3 250.3 L205.8 252.1 L208.2 253.7 L210.6 255.2 L213.2 256.7 L215.9 258.3 L218.6 259.7 L221.1 261.0 L223.7 262.2 L226.2 263.3 L229.0 264.5 L232.6 265.8 L235.1 266.6 L238.3 267.6 L241.5 268.4 L245.0 269.1 L247.9 269.6 L251.7 270.1 L255.5 270.4 L259.4 270.5 L263.2 270.5 L267.0 270.2 L270.8 269.8 L274.7 269.2 L277.2 268.7 L281.0 267.7 L283.6 267.0 L286.7 266.0 L290.0 264.9 L292.5 263.9 L295.1 262.8 L298.1 261.4 L301.2 259.8 L304.0 258.4 L306.5 256.9 L309.1 255.4 L311.6 253.8 L314.1 252.1 L316.4 250.6 L318.5 249.0 L320.6 247.5 L323.1 245.5 L325.7 243.5 L328.2 241.3 L330.1 239.7 L332.0 238.0 L334.6 235.7 L336.8 233.6 L338.4 232.0 L341.0 229.5 L343.0 227.4 L344.8 225.6 L347.3 222.9 L348.8 221.2 L351.2 218.7 L353.0 216.6 L355.0 214.3 L356.9 211.9 L358.8 209.7 L360.8 207.3 L362.6 205.0 L364.4 202.7 L366.5 200.1 L368.0 198.0 L370.3 195.0 L371.5 193.3 L373.8 190.3 L375.4 188.1 L377.1 185.7 L379.2 182.6 L380.5 180.8 L382.4 178.0 L384.3 175.2 L385.6 173.3 L387.6 170.2 L389.4 167.5 L390.7 165.6 L392.7 162.5 L394.5 159.6 L395.8 157.6 L397.6 154.8 L399.5 151.7 L400.9 149.5 L402.4 147.1 L404.3 144.0 L406.0 141.2 L407.2 139.2 L409.1 136.2 L411.0 133.2 L412.3 131.0 L413.9 128.5 L415.9 125.4 L417.4 123.1 L419.1 120.8 L421.3 118.1 L423.4 117.7 L423.0 122.3 L422.3 125.4 L421.3 129.1 L420.0 133.2 L419.0 136.2 L418.0 139.3 L416.9 142.4 L415.8 145.5 L414.7 148.6 L413.6 151.7 L412.3 155.0 L411.1 158.3 L409.8 161.5 L408.5 164.7 L407.2 167.9 L406.0 171.0 L404.7 174.0 L403.4 177.0 L402.1 180.0 L400.9 183.0 L399.6 185.9 L398.3 188.8 L396.9 191.9 L395.5 195.0 L394.0 198.0 L392.6 201.1 L391.1 204.2 L389.6 207.3 L388.1 210.4 L386.8 213.0 L385.6 215.5 L384.2 218.1 L382.6 221.2 L381.0 224.3 L379.4 227.4 L377.9 230.1 L376.6 232.4 L375.2 235.1 L373.4 238.2 L371.6 241.3 L370.3 243.7 L368.9 245.9 L367.1 249.0 L365.2 252.1 L363.9 254.2 L362.3 256.7 L360.3 259.8 L358.8 262.2 L357.3 264.5 L355.2 267.6 L353.7 269.7 L351.9 272.2 L349.9 275.1 L348.6 276.8 L346.3 279.9 L344.8 281.9 L342.7 284.5 L341.0 286.7 L338.9 289.2 L337.1 291.3 L335.0 293.8 L333.3 295.7 L330.8 298.5 L329.3 300.0 L326.9 302.5 L324.8 304.6 L323.1 306.3 L320.6 308.6 L318.2 310.8 L316.4 312.4 L314.2 314.2 L311.6 316.2 L309.1 318.2 L306.5 320.0 L304.2 321.6 L301.8 323.2 L299.3 324.7 L296.6 326.3 L293.8 327.7 L291.2 329.0 L288.7 330.1 L286.1 331.2 L282.8 332.4 L279.8 333.4 L277.2 334.1 L273.4 335.0 L270.4 335.5 L267.0 336.0 L263.2 336.3 L259.4 336.3 L255.5 336.2 L251.7 335.8 Z" fill="#BCCCDE" stroke="#7F96B2" stroke-width="0.7" stroke-opacity="0.6"/>
+<path d="M247.9 318.7 L245.3 318.1 L241.5 317.1 L239.0 316.3 L236.4 315.3 L233.0 313.9 L230.0 312.5 L227.5 311.2 L224.9 309.8 L222.4 308.2 L219.8 306.6 L217.3 304.8 L214.9 303.1 L212.9 301.5 L210.9 299.9 L208.4 297.7 L205.8 295.5 L204.1 293.8 L202.0 291.7 L199.5 289.2 L198.1 287.6 L195.6 284.9 L194.0 283.0 L191.8 280.3 L190.2 278.4 L188.0 275.4 L186.7 273.6 L184.7 270.6 L182.9 267.8 L181.6 265.6 L180.2 262.9 L178.8 259.8 L179.0 255.9 L182.7 256.7 L185.4 258.2 L188.0 259.8 L190.5 261.4 L193.0 262.9 L195.4 264.5 L197.8 266.0 L200.3 267.6 L202.9 269.1 L205.5 270.6 L208.3 272.2 L210.9 273.6 L213.5 274.9 L216.0 276.2 L218.6 277.4 L221.1 278.5 L224.6 279.9 L227.5 281.0 L230.0 281.9 L233.5 283.0 L236.4 283.8 L239.3 284.5 L242.8 285.3 L246.6 286.0 L249.2 286.3 L253.0 286.7 L256.8 286.9 L260.6 287.0 L264.5 286.9 L268.3 286.6 L272.1 286.1 L274.7 285.8 L278.5 285.1 L281.0 284.5 L284.9 283.5 L287.4 282.7 L291.2 281.5 L293.8 280.6 L296.3 279.6 L299.2 278.4 L302.6 276.8 L305.3 275.6 L307.8 274.3 L310.4 272.9 L312.9 271.5 L315.5 270.1 L318.0 268.6 L320.6 267.0 L323.1 265.4 L325.7 263.8 L328.2 262.2 L330.8 260.6 L333.3 259.0 L335.9 257.5 L338.4 256.3 L341.7 256.7 L341.0 260.4 L339.7 263.2 L338.2 266.0 L336.3 269.1 L334.6 271.7 L333.2 273.7 L330.9 276.8 L329.5 278.7 L327.3 281.5 L325.7 283.4 L323.3 286.1 L321.8 287.8 L319.3 290.5 L317.5 292.3 L315.5 294.2 L312.9 296.6 L310.8 298.5 L309.0 300.0 L306.5 302.0 L304.0 303.9 L301.4 305.7 L298.9 307.4 L296.3 309.0 L293.8 310.5 L291.2 311.9 L288.7 313.1 L286.1 314.3 L283.3 315.4 L279.8 316.7 L277.2 317.5 L273.4 318.4 L270.8 318.9 L267.0 319.5 L263.2 319.8 L259.4 319.9 L255.5 319.7 L251.7 319.3 L247.9 318.7 Z" fill="#9DB2CB" stroke="#7F96B2" stroke-width="0.7" stroke-opacity="0.6"/>
+</g>
+<path d="M152.9 218.5 L152.4 219.7 L151.2 222.6 L153.7 224.9 L158.6 227.5 L161.8 232.2 L163.6 239.0 L167.7 245.8 L175.2 252.0 L183.6 259.0 L191.3 267.8 L199.0 277.9 L208.3 288.0 L220.3 296.6 L234.8 303.5 L250.9 308.4 L267.6 310.8 L283.7 309.8 L297.0 304.2 L306.1 294.1 L311.8 281.6 L317.7 270.6 L327.1 263.9 L339.7 261.0 L349.2 257.4 L349.4 249.8 L346.0 241.5 L348.5 237.9 L357.5 239.4 L362.5 240.1 L356.5 236.6 L350.0 234.2" fill="none" stroke="#1B365D" stroke-width="2"/>
+<circle cx="152.9" cy="218.5" r="3" fill="#1B365D"/>
+<circle cx="152.4" cy="219.7" r="3" fill="#1B365D"/>
+<circle cx="151.2" cy="222.6" r="3" fill="#1B365D"/>
+<circle cx="153.7" cy="224.9" r="3" fill="#1B365D"/>
+<circle cx="158.6" cy="227.5" r="3" fill="#1B365D"/>
+<circle cx="161.8" cy="232.2" r="3" fill="#1B365D"/>
+<circle cx="163.6" cy="239.0" r="3" fill="#1B365D"/>
+<circle cx="167.7" cy="245.8" r="3" fill="#1B365D"/>
+<circle cx="175.2" cy="252.0" r="3" fill="#1B365D"/>
+<circle cx="183.6" cy="259.0" r="3" fill="#1B365D"/>
+<circle cx="191.3" cy="267.8" r="3" fill="#1B365D"/>
+<circle cx="199.0" cy="277.9" r="3" fill="#1B365D"/>
+<circle cx="208.3" cy="288.0" r="3" fill="#1B365D"/>
+<circle cx="220.3" cy="296.6" r="3" fill="#1B365D"/>
+<circle cx="234.8" cy="303.5" r="3" fill="#1B365D"/>
+<circle cx="250.9" cy="308.4" r="3" fill="#1B365D"/>
+<circle cx="267.6" cy="310.8" r="3" fill="#1B365D"/>
+<circle cx="283.7" cy="309.8" r="3" fill="#1B365D"/>
+<circle cx="297.0" cy="304.2" r="3" fill="#1B365D"/>
+<circle cx="306.1" cy="294.1" r="3" fill="#1B365D"/>
+<circle cx="311.8" cy="281.6" r="3" fill="#1B365D"/>
+<circle cx="317.7" cy="270.6" r="3" fill="#1B365D"/>
+<circle cx="327.1" cy="263.9" r="3" fill="#1B365D"/>
+<circle cx="339.7" cy="261.0" r="3" fill="#1B365D"/>
+<circle cx="349.2" cy="257.4" r="3" fill="#1B365D"/>
+<circle cx="349.4" cy="249.8" r="3" fill="#1B365D"/>
+<circle cx="346.0" cy="241.5" r="3" fill="#1B365D"/>
+<circle cx="348.5" cy="237.9" r="3" fill="#1B365D"/>
+<circle cx="357.5" cy="239.4" r="3" fill="#1B365D"/>
+<circle cx="362.5" cy="240.1" r="3" fill="#1B365D"/>
+<circle cx="356.5" cy="236.6" r="3" fill="#1B365D"/>
+<circle cx="350.0" cy="234.2" r="3" fill="#1B365D"/>
+<circle cx="161.8" cy="232.2" r="7" fill="#fff" stroke="#1B365D" stroke-width="2"/>
+<text x="147.8" y="238.2" text-anchor="end" fill="#1B365D" style="font-size:16px">start</text>
+<line x1="152.9" y1="218.5" x2="98.5" y2="221.6" stroke="#b53333" stroke-width="2.4" marker-end="url(#nR)"/>
+<circle cx="152.9" cy="218.5" r="5" fill="#b53333"/>
+<text x="152.9" y="202.5" text-anchor="middle" fill="#b53333" style="font-size:15px">still growing</text>
+<line x1="350.0" y1="234.2" x2="297.2" y2="245.5" stroke="#b53333" stroke-width="2.4" marker-end="url(#nR)"/>
+<circle cx="350.0" cy="234.2" r="5" fill="#b53333"/>
+<text x="350.0" y="218.2" text-anchor="middle" fill="#b53333" style="font-size:15px">turns back: stop</text>
+<circle cx="346.0" cy="241.5" r="9" fill="none" stroke="#b07d10" stroke-width="2.6"/>
+<text x="364.0" y="263.5" text-anchor="start" fill="#b07d10" style="font-size:16px">next sample</text>
+</svg>
+
+<div class="fig-caption">One real trajectory (32 leapfrog steps) on a schematic curved valley; height = χ²/2. Red arrows: the direction in which each end of the path is growing.</div>
+
+</div>
+<div class="col-span-5">
+
+<div class="nstep"><span>1</span><div><b>Grow.</b> Double the path, 1, 2, 4, 8, … steps, each time forward or backward in time at random, so the start can sit anywhere on it. Each step: one gradient.</div></div>
+<div class="nstep"><span>2</span><div><b>Stop.</b> When an end starts heading back toward the other end, the path has turned back.</div></div>
+<div class="nstep"><span>3</span><div><b>Pick.</b> One point of the path at random, not the lowest: the lowest would be a fit, not a sample.</div></div>
+
+</div>
+</div>
+
+<style>
+.nstep { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; padding: 8px 14px; background: #fff; border: 1px solid #c9d3df; border-radius: 10px; box-shadow: 0 2px 5px rgba(27,54,93,0.12); font-size: 15px; line-height: 1.42; }
+.nstep span { flex: none; width: 26px; height: 26px; border-radius: 13px; background: #1B365D; color: #fff; font-family: Newsreader, Georgia, serif; font-size: 16px; text-align: center; line-height: 26px; }
+.nstep b { color: #1B365D; }
+</style>
+
+<div class="takeaway">No path length to tune: <b>each roll stops itself</b> when it turns back.</div>
+
+<!--
+Backup for the question "what does the No-U-turn sampler actually do?" (slide 12, click 3).
+
+Talking points:
+- Plain HMC needs a roll length set by hand. Too short: the ball barely moves, a random walk
+  again. Too long: it swings back towards where it started and the gradients are wasted. The
+  best length is about half a swing, and that differs from place to place.
+- NUTS chooses it per roll. It grows the path by doubling (1, 2, 4, 8 ... steps), each time
+  forward or backward in time at random, so the path has two ends. It stops when the
+  direction in which either end is growing points back toward the other end (the U-turn).
+  It is not "the ball reached the bottom": it is "the path started to fold back".
+- Then one point of the path is kept, drawn with weight exp(-H); since H is nearly conserved
+  this is close to uniform. Keeping the lowest point would be optimization and would lose the
+  width of the posterior.
+- Why both directions: if the path only grew forward, the starting point would always be at
+  one end, and the chain would not sample the posterior correctly (detailed balance). Growing
+  both ways at random puts the start anywhere along the path.
+- Every step costs one gradient; checking the U-turn costs nothing extra (positions and
+  momenta only).
+
+The picture: figures/make_nuts_backup.py, seed 2, directions backward/forward alternating,
+step 0.12; U-tilde = (y - 0.9 x^2)^2 / (2 * 0.18^2) + x^2 / (2 * 0.75^2). The path stopped
+after the fifth doubling (32 steps); the right end turned back. Energy spread along the path
+0.10. Schematic potential, not the calculation.
 -->

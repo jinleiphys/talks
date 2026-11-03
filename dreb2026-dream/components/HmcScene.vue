@@ -16,11 +16,11 @@ watch(k, send)
 <template>
 <div class="sampling-demo" :style="{ height: height + 'px' }">
 <div class="fig-col">
-<div class="diagram-label">Schematic posterior, height = −log p(θ | data); not the posterior of the calculation</div>
+<div class="diagram-label">Schematic: each point is a parameter set, height = χ²; not the posterior of the calculation</div>
 <img v-if="isPrintMode" :src="base + 'hmc_ridge_still.png'" class="still" alt="Carved posterior ridge with random-walk, HMC and NUTS samples" />
 <iframe v-else ref="frame" :src="base + 'hmc_ridge.html?embed=1'" @load="send" title="Posterior ridge sampler demo"></iframe>
 </div>
-<div class="sampling-note"><div class="ui-label">{{ ['Correlated parameters','Random-walk proposals','Hamiltonian Monte Carlo','No-U-turn sampler'][k] }}</div><h3>{{ ['Many combinations fit similarly','An arbitrary step can leave the band','A puck sliding on −log p','Stop when the path turns back'][k] }}</h3><p>{{ ['The data favor a narrow, curved region. Moving one parameter alone can spoil the fit.','Low-density proposals are often rejected (red crosses). Shorter steps can improve acceptance but explore slowly.','Momentum plus the local slope carry the state along the ridge. Every step needs the slope; an acceptance check still follows.','Momentum and the slope carry long moves through the band; the path stops when it starts to come back, and one point on it is kept.'][k] }}</p><div class="gradient-expression"><span style="font-size:.6em;color:#66655f">the slope:</span> ∇<sub>θ</sub> log p</div></div>
+<div class="sampling-note"><div class="ui-label">{{ ['The landscape','Random-walk MCMC','Hamiltonian Monte Carlo (HMC)','No-U-turn sampler (NUTS)'][k] }}</div><h3>{{ ['Height = χ²','Jump blindly','Roll a ball','It decides how long to roll'][k] }}</h3><p>{{ ['Each point is one set of potential parameters. Good fits lie in a narrow, curved valley.','Jump in a random direction. In a narrow valley most jumps land on the wall and are thrown away (red crosses).','Give the ball a push and let it roll. It follows the valley floor and travels far. Rolling needs the slope of χ² at every step.','Too short and the ball barely moves; too long and it swings back. NUTS stops each roll when the path starts to turn back, then keeps one random point from it.'][k] }}</p><div class="gradient-expression"><span style="font-size:.6em;color:#66655f">slope:</span> ∂χ²/∂θ</div></div>
 </div>
 </template>
 <style scoped>
