@@ -458,15 +458,32 @@ Do not infer an efficiency ratio from this schematic or from the counters, and d
 
 ---
 
-## 14. Difficulty 3: geometry changes the operator
+## 14. Difficulty 3: geometry changes every coupling
 
-**Central message:** optical-model geometry cannot be represented by merely scaling one fixed radial function.
-Click 0: define the Woods–Saxon formula and the reference V = 50 MeV, R = 5 fm, a = 0.6 fm.
-Click 1: increase V to 65 MeV at fixed R and a. The radial function scales.
-Click 2: restore V and move R to 6 fm. The surface moves rather than simply scaling.
-Click 3: connect this dependence to matrix elements and likelihood gradients.
-The curves are analytic illustrations, not a calibrated potential or a scattering calculation. Affine operator dependence does not imply an affine observable or a simple posterior. Gradient samplers can be used in both cases; the issue here is constructing a differentiable non-affine operator.
-**Timing target:** 1 minute 15 seconds.
+**Central message:** slide 10's non-affine problem, multiplied. In CDCC the deuteron feels the
+proton and neutron potentials separately; the couplings between continuum bins are those
+two potentials folded over the deuteron's internal wave functions. Change a radius or a
+diffuseness and every element of every block changes.
+
+**Talking points:**
+- Left: the deuteron is a proton and a neutron; each sees its own optical potential, with its
+  own radius and diffuseness. These are the parameters being calibrated.
+- Right: one block of the coupling matrix for one total angular momentum J. Element ij is the
+  coupling between bin i and bin j: U_p plus U_n, folded over the two bin wave functions.
+  Up to 151 channels per block and one block for every J up to 30 (slide 11's model space).
+- Single channel (slide 10): one radial shape to rebuild. Here: every element of every block,
+  because each one folds the same R- and a-dependent potentials.
+- Red line: this is why the cheap projection of slide 10 is lost. The fast model has to
+  rebuild every coupling for each trial potential, and return its derivative for the sampler.
+
+**If asked:**
+- The small curves are schematic: diagonal couplings look like a potential, off-diagonal ones
+  are peaked at the surface. They are not computed form factors.
+- Multipoles: each coupling is a sum over multipoles q of the folded potential; the slide
+  hides that layer.
+- Depths are affine and would be cheap on their own; the geometry is what forces the rebuild.
+
+**Timing target:** 1 minute.
 **Transition:** so the requirements are three: cheap, differentiable, and checked against the
 solver. DREAM is built to meet exactly these.
 

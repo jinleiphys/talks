@@ -1084,28 +1084,108 @@ Timing target: 1 minute.
 -->
 
 ---
-clicks: 3
-class: scene-slide
----
 
 <div class="act-label">III · What is hard</div>
 
-# Difficulty 3: geometry changes the operator
+# Difficulty 3: geometry changes every coupling
 
-<div class="subtitle">Depth scales the radial profile. Radius and diffuseness change its shape; the reduced operator must retain that dependence.</div>
+<div class="subtitle">Slide 10, inside CDCC: every coupling form factor carries <i>R</i> and <i>a</i>.</div>
 
-<LiveOnly><MatrixScene :step="$clicks" :height="300" /></LiveOnly>
+<div class="mt-2">
 
-<div class="takeaway mt-3">A fast model must <b>rebuild this shape at every trial potential</b>, and still return the slope.</div>
+<svg viewBox="0 0 940 330" style="width: 100%; height: 19.5rem;" font-family="Newsreader, Georgia, serif">
+<defs><filter id="sh14" x="-5%" y="-5%" width="110%" height="115%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#1B365D" flood-opacity="0.13"/></filter><marker id="a14" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1B365D"/></marker><radialGradient id="tg14" cx="40%" cy="38%" r="65%"><stop offset="0" stop-color="#E4ECF5"/><stop offset="1" stop-color="#9DB2CB"/></radialGradient></defs>
+<g filter="url(#sh14)"><rect x="4" y="4" width="330" height="322" rx="12" fill="#fff" stroke="#c9d3df"/></g>
+<path d="M4 46 V16 a12 12 0 0 1 12 -12 H322 a12 12 0 0 1 12 12 V46 Z" fill="#1B365D"/>
+<text x="169.0" y="32" text-anchor="middle" fill="#fff" style="font-size:20px">the deuteron sees two potentials</text>
+<circle cx="96" cy="178" r="56" fill="url(#tg14)" stroke="#1B365D" stroke-width="1.5"/>
+<text x="96" y="185" text-anchor="middle" fill="#1B365D" style="font-size:20px"><tspan style="font-size:13px" dy="-8">58</tspan><tspan dy="8">Ni</tspan></text>
+<line x1="266" y1="118" x2="286" y2="232" stroke="#4d4c48" stroke-width="1.4" stroke-dasharray="4 4"/>
+<text x="288.0" y="180.0" fill="#4d4c48" font-style="italic" style="font-size:17px">r</text>
+<line x1="148.8" y1="159.4" x2="250.9" y2="123.3" stroke="#b53333" stroke-width="1.8"/>
+<line x1="149.9" y1="193.3" x2="270.6" y2="227.6" stroke="#1B365D" stroke-width="1.8"/>
+<circle cx="266" cy="118" r="14" fill="#F6E3E1" stroke="#b53333" stroke-width="1.6"/><text x="266" y="124" text-anchor="middle" fill="#b53333" style="font-size:17px">p</text>
+<circle cx="286" cy="232" r="14" fill="#E4ECF5" stroke="#1B365D" stroke-width="1.6"/><text x="286" y="238" text-anchor="middle" fill="#1B365D" style="font-size:17px">n</text>
+<text x="172" y="104" fill="#b53333" style="font-size:18px"><tspan font-style="italic">U</tspan><tspan style="font-size:13px" dy="4">p</tspan><tspan dy="-4">(</tspan><tspan font-style="italic">R</tspan><tspan style="font-size:13px" dy="4">p</tspan><tspan dy="-4">, </tspan><tspan font-style="italic">a</tspan><tspan style="font-size:13px" dy="4">p</tspan><tspan dy="-4">)</tspan></text>
+<text x="154" y="268" fill="#1B365D" style="font-size:18px"><tspan font-style="italic">U</tspan><tspan style="font-size:13px" dy="4">n</tspan><tspan dy="-4">(</tspan><tspan font-style="italic">R</tspan><tspan style="font-size:13px" dy="4">n</tspan><tspan dy="-4">, </tspan><tspan font-style="italic">a</tspan><tspan style="font-size:13px" dy="4">n</tspan><tspan dy="-4">)</tspan></text>
+<text x="169.0" y="312" text-anchor="middle" fill="#4d4c48" style="font-size:16px">each nucleon potential has its own <tspan font-style="italic">R</tspan> and <tspan font-style="italic">a</tspan></text>
+<path d="M340 170 L372 170" stroke="#1B365D" stroke-width="2.2" marker-end="url(#a14)"/>
+<g filter="url(#sh14)"><rect x="380" y="4" width="556" height="322" rx="12" fill="#fff" stroke="#c9d3df"/></g>
+<path d="M380 46 V16 a12 12 0 0 1 12 -12 H924 a12 12 0 0 1 12 12 V46 Z" fill="#1B365D"/>
+<text x="658.0" y="32" text-anchor="middle" fill="#fff" style="font-size:20px">one total-J block of the coupling matrix</text>
+<text x="404" y="80" fill="#1B365D" style="font-size:19px"><tspan font-style="italic">U</tspan><tspan style="font-size:13px" dy="5" font-style="italic">ij</tspan><tspan dy="-5">(</tspan><tspan font-style="italic">R</tspan><tspan>) = ⟨ bin </tspan><tspan font-style="italic">i</tspan><tspan> | </tspan><tspan font-style="italic" fill="#b53333">U</tspan><tspan style="font-size:13px" dy="4" fill="#b53333">p</tspan><tspan dy="-4"> + </tspan><tspan font-style="italic">U</tspan><tspan style="font-size:13px" dy="4">n</tspan><tspan dy="-4"> | bin </tspan><tspan font-style="italic">j</tspan><tspan> ⟩</tspan></text>
+<rect x="404" y="104" width="42" height="42" rx="4" fill="#E4ECF5" stroke="#c9d3df"/>
+<path d="M408.0 140.9 L409.1 140.9 L410.3 140.9 L411.4 140.9 L412.5 140.9 L413.7 140.8 L414.8 140.8 L415.9 140.7 L417.1 140.5 L418.2 140.3 L419.3 140.0 L420.5 139.5 L421.6 138.8 L422.7 137.9 L423.9 136.8 L425.0 135.4 L426.1 133.8 L427.3 132.2 L428.4 130.6 L429.5 129.2 L430.7 128.0 L431.8 127.1 L432.9 126.5 L434.1 126.0 L435.2 125.7 L436.3 125.4 L437.5 125.3 L438.6 125.2 L439.7 125.1 L440.9 125.1 L442.0 125.1" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<rect x="450" y="104" width="42" height="42" rx="4" fill="#F4F6F9" stroke="#c9d3df"/>
+<path d="M454.0 125.0 L455.1 125.0 L456.3 125.0 L457.4 125.0 L458.5 125.1 L459.7 125.1 L460.8 125.2 L461.9 125.3 L463.1 125.5 L464.2 125.7 L465.3 126.2 L466.5 126.8 L467.6 127.8 L468.7 129.2 L469.9 131.1 L471.0 133.5 L472.1 135.9 L473.3 137.8 L474.4 138.6 L475.5 137.8 L476.7 135.9 L477.8 133.5 L478.9 131.1 L480.1 129.2 L481.2 127.8 L482.3 126.8 L483.5 126.2 L484.6 125.7 L485.7 125.5 L486.9 125.3 L488.0 125.2" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<rect x="496" y="104" width="42" height="42" rx="4" fill="#F4F6F9" stroke="#c9d3df"/>
+<path d="M500.0 125.0 L501.1 125.0 L502.3 125.0 L503.4 125.0 L504.5 124.9 L505.7 124.9 L506.8 124.8 L507.9 124.8 L509.1 124.6 L510.2 124.4 L511.3 124.0 L512.5 123.5 L513.6 122.6 L514.7 121.4 L515.9 119.8 L517.0 117.8 L518.1 115.7 L519.3 114.1 L520.4 113.5 L521.5 114.1 L522.7 115.7 L523.8 117.8 L524.9 119.8 L526.1 121.4 L527.2 122.6 L528.3 123.5 L529.5 124.0 L530.6 124.4 L531.7 124.6 L532.9 124.8 L534.0 124.8" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<rect x="542" y="104" width="42" height="42" rx="4" fill="#F4F6F9" stroke="#c9d3df"/>
+<path d="M546.0 125.0 L547.1 125.0 L548.3 125.0 L549.4 125.0 L550.5 125.0 L551.7 125.1 L552.8 125.1 L553.9 125.2 L555.1 125.3 L556.2 125.5 L557.3 125.8 L558.5 126.3 L559.6 127.0 L560.7 128.0 L561.9 129.4 L563.0 131.1 L564.1 132.9 L565.3 134.3 L566.4 134.8 L567.5 134.3 L568.7 132.9 L569.8 131.1 L570.9 129.4 L572.1 128.0 L573.2 127.0 L574.3 126.3 L575.5 125.8 L576.6 125.5 L577.7 125.3 L578.9 125.2 L580.0 125.1" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<rect x="404" y="150" width="42" height="42" rx="4" fill="#F4F6F9" stroke="#c9d3df"/>
+<path d="M408.0 171.0 L409.1 171.0 L410.3 171.0 L411.4 171.0 L412.5 171.1 L413.7 171.1 L414.8 171.2 L415.9 171.3 L417.1 171.5 L418.2 171.7 L419.3 172.2 L420.5 172.8 L421.6 173.8 L422.7 175.2 L423.9 177.1 L425.0 179.5 L426.1 181.9 L427.3 183.8 L428.4 184.6 L429.5 183.8 L430.7 181.9 L431.8 179.5 L432.9 177.1 L434.1 175.2 L435.2 173.8 L436.3 172.8 L437.5 172.2 L438.6 171.7 L439.7 171.5 L440.9 171.3 L442.0 171.2" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<rect x="450" y="150" width="42" height="42" rx="4" fill="#E4ECF5" stroke="#c9d3df"/>
+<path d="M454.0 186.9 L455.1 186.9 L456.3 186.9 L457.4 186.9 L458.5 186.9 L459.7 186.8 L460.8 186.8 L461.9 186.7 L463.1 186.5 L464.2 186.3 L465.3 186.0 L466.5 185.5 L467.6 184.8 L468.7 183.9 L469.9 182.8 L471.0 181.4 L472.1 179.8 L473.3 178.2 L474.4 176.6 L475.5 175.2 L476.7 174.0 L477.8 173.1 L478.9 172.5 L480.1 172.0 L481.2 171.7 L482.3 171.4 L483.5 171.3 L484.6 171.2 L485.7 171.1 L486.9 171.1 L488.0 171.1" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<rect x="496" y="150" width="42" height="42" rx="4" fill="#F4F6F9" stroke="#c9d3df"/>
+<path d="M500.0 171.0 L501.1 171.0 L502.3 171.0 L503.4 171.0 L504.5 171.1 L505.7 171.1 L506.8 171.2 L507.9 171.3 L509.1 171.5 L510.2 171.7 L511.3 172.2 L512.5 172.8 L513.6 173.8 L514.7 175.2 L515.9 177.1 L517.0 179.5 L518.1 181.9 L519.3 183.8 L520.4 184.6 L521.5 183.8 L522.7 181.9 L523.8 179.5 L524.9 177.1 L526.1 175.2 L527.2 173.8 L528.3 172.8 L529.5 172.2 L530.6 171.7 L531.7 171.5 L532.9 171.3 L534.0 171.2" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<rect x="542" y="150" width="42" height="42" rx="4" fill="#F4F6F9" stroke="#c9d3df"/>
+<path d="M546.0 171.0 L547.1 171.0 L548.3 171.0 L549.4 171.0 L550.5 170.9 L551.7 170.9 L552.8 170.8 L553.9 170.8 L555.1 170.6 L556.2 170.4 L557.3 170.0 L558.5 169.5 L559.6 168.6 L560.7 167.4 L561.9 165.8 L563.0 163.8 L564.1 161.7 L565.3 160.1 L566.4 159.5 L567.5 160.1 L568.7 161.7 L569.8 163.8 L570.9 165.8 L572.1 167.4 L573.2 168.6 L574.3 169.5 L575.5 170.0 L576.6 170.4 L577.7 170.6 L578.9 170.8 L580.0 170.8" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<rect x="404" y="196" width="42" height="42" rx="4" fill="#F4F6F9" stroke="#c9d3df"/>
+<path d="M408.0 217.0 L409.1 217.0 L410.3 217.0 L411.4 217.0 L412.5 216.9 L413.7 216.9 L414.8 216.8 L415.9 216.8 L417.1 216.6 L418.2 216.4 L419.3 216.0 L420.5 215.5 L421.6 214.6 L422.7 213.4 L423.9 211.8 L425.0 209.8 L426.1 207.7 L427.3 206.1 L428.4 205.5 L429.5 206.1 L430.7 207.7 L431.8 209.8 L432.9 211.8 L434.1 213.4 L435.2 214.6 L436.3 215.5 L437.5 216.0 L438.6 216.4 L439.7 216.6 L440.9 216.8 L442.0 216.8" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<rect x="450" y="196" width="42" height="42" rx="4" fill="#F4F6F9" stroke="#c9d3df"/>
+<path d="M454.0 217.0 L455.1 217.0 L456.3 217.0 L457.4 217.0 L458.5 217.1 L459.7 217.1 L460.8 217.2 L461.9 217.3 L463.1 217.5 L464.2 217.7 L465.3 218.2 L466.5 218.8 L467.6 219.8 L468.7 221.2 L469.9 223.1 L471.0 225.5 L472.1 227.9 L473.3 229.8 L474.4 230.6 L475.5 229.8 L476.7 227.9 L477.8 225.5 L478.9 223.1 L480.1 221.2 L481.2 219.8 L482.3 218.8 L483.5 218.2 L484.6 217.7 L485.7 217.5 L486.9 217.3 L488.0 217.2" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<rect x="496" y="196" width="42" height="42" rx="4" fill="#E4ECF5" stroke="#c9d3df"/>
+<path d="M500.0 232.9 L501.1 232.9 L502.3 232.9 L503.4 232.9 L504.5 232.9 L505.7 232.8 L506.8 232.8 L507.9 232.7 L509.1 232.5 L510.2 232.3 L511.3 232.0 L512.5 231.5 L513.6 230.8 L514.7 229.9 L515.9 228.8 L517.0 227.4 L518.1 225.8 L519.3 224.2 L520.4 222.6 L521.5 221.2 L522.7 220.0 L523.8 219.1 L524.9 218.5 L526.1 218.0 L527.2 217.7 L528.3 217.4 L529.5 217.3 L530.6 217.2 L531.7 217.1 L532.9 217.1 L534.0 217.1" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<rect x="542" y="196" width="42" height="42" rx="4" fill="#F4F6F9" stroke="#c9d3df"/>
+<path d="M546.0 217.0 L547.1 217.0 L548.3 217.0 L549.4 217.0 L550.5 217.1 L551.7 217.1 L552.8 217.2 L553.9 217.3 L555.1 217.5 L556.2 217.7 L557.3 218.2 L558.5 218.8 L559.6 219.8 L560.7 221.2 L561.9 223.1 L563.0 225.5 L564.1 227.9 L565.3 229.8 L566.4 230.6 L567.5 229.8 L568.7 227.9 L569.8 225.5 L570.9 223.1 L572.1 221.2 L573.2 219.8 L574.3 218.8 L575.5 218.2 L576.6 217.7 L577.7 217.5 L578.9 217.3 L580.0 217.2" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<rect x="404" y="242" width="42" height="42" rx="4" fill="#F4F6F9" stroke="#c9d3df"/>
+<path d="M408.0 263.0 L409.1 263.0 L410.3 263.0 L411.4 263.0 L412.5 263.0 L413.7 263.1 L414.8 263.1 L415.9 263.2 L417.1 263.3 L418.2 263.5 L419.3 263.8 L420.5 264.3 L421.6 265.0 L422.7 266.0 L423.9 267.4 L425.0 269.1 L426.1 270.9 L427.3 272.3 L428.4 272.8 L429.5 272.3 L430.7 270.9 L431.8 269.1 L432.9 267.4 L434.1 266.0 L435.2 265.0 L436.3 264.3 L437.5 263.8 L438.6 263.5 L439.7 263.3 L440.9 263.2 L442.0 263.1" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<rect x="450" y="242" width="42" height="42" rx="4" fill="#F4F6F9" stroke="#c9d3df"/>
+<path d="M454.0 263.0 L455.1 263.0 L456.3 263.0 L457.4 263.0 L458.5 262.9 L459.7 262.9 L460.8 262.8 L461.9 262.8 L463.1 262.6 L464.2 262.4 L465.3 262.0 L466.5 261.5 L467.6 260.6 L468.7 259.4 L469.9 257.8 L471.0 255.8 L472.1 253.7 L473.3 252.1 L474.4 251.5 L475.5 252.1 L476.7 253.7 L477.8 255.8 L478.9 257.8 L480.1 259.4 L481.2 260.6 L482.3 261.5 L483.5 262.0 L484.6 262.4 L485.7 262.6 L486.9 262.8 L488.0 262.8" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<rect x="496" y="242" width="42" height="42" rx="4" fill="#F4F6F9" stroke="#c9d3df"/>
+<path d="M500.0 263.0 L501.1 263.0 L502.3 263.0 L503.4 263.0 L504.5 263.1 L505.7 263.1 L506.8 263.2 L507.9 263.3 L509.1 263.5 L510.2 263.7 L511.3 264.2 L512.5 264.8 L513.6 265.8 L514.7 267.2 L515.9 269.1 L517.0 271.5 L518.1 273.9 L519.3 275.8 L520.4 276.6 L521.5 275.8 L522.7 273.9 L523.8 271.5 L524.9 269.1 L526.1 267.2 L527.2 265.8 L528.3 264.8 L529.5 264.2 L530.6 263.7 L531.7 263.5 L532.9 263.3 L534.0 263.2" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<rect x="542" y="242" width="42" height="42" rx="4" fill="#E4ECF5" stroke="#c9d3df"/>
+<path d="M546.0 278.9 L547.1 278.9 L548.3 278.9 L549.4 278.9 L550.5 278.9 L551.7 278.8 L552.8 278.8 L553.9 278.7 L555.1 278.5 L556.2 278.3 L557.3 278.0 L558.5 277.5 L559.6 276.8 L560.7 275.9 L561.9 274.8 L563.0 273.4 L564.1 271.8 L565.3 270.2 L566.4 268.6 L567.5 267.2 L568.7 266.0 L569.8 265.1 L570.9 264.5 L572.1 264.0 L573.2 263.7 L574.3 263.4 L575.5 263.3 L576.6 263.2 L577.7 263.1 L578.9 263.1 L580.0 263.1" fill="none" stroke="#1B365D" stroke-width="1.5"/>
+<text x="592" y="225.0" fill="#4d4c48" style="font-size:22px">⋯</text>
+<text x="630" y="118" fill="#2b2a27" style="font-size:18px">up to <tspan font-weight="700" fill="#1B365D">151 channels</tspan> per block</text>
+<text x="630" y="144" fill="#2b2a27" style="font-size:18px">one such block for every <tspan font-style="italic">J</tspan> ≤ 30</text>
+<text x="630" y="184" fill="#2b2a27" style="font-size:18px">each element: both potentials,</text>
+<text x="630" y="210" fill="#2b2a27" style="font-size:18px">folded over the deuteron</text>
+<line x1="630" y1="228" x2="916" y2="228" stroke="#c9d3df" stroke-dasharray="3 4"/>
+<text x="630" y="258" fill="#b53333" style="font-size:19px">change <tspan font-style="italic">R</tspan> or <tspan font-style="italic">a</tspan>:</text>
+<text x="630" y="284" fill="#b53333" style="font-size:19px"><tspan font-weight="700">every element changes</tspan></text>
+<text x="404" y="312" fill="#4d4c48" style="font-size:15px">diagonal: potential-like · off-diagonal: peaked at the surface (schematic)</text>
+</svg>
+
+</div>
+
+<div class="takeaway mt-3">A fast model must <b>rebuild every coupling at every trial potential</b>, and still return the slope.</div>
 
 <!--
-Central message: optical-model geometry cannot be represented by merely scaling one fixed radial function.
-Click 0: define the Woods–Saxon formula and the reference V = 50 MeV, R = 5 fm, a = 0.6 fm.
-Click 1: increase V to 65 MeV at fixed R and a. The radial function scales.
-Click 2: restore V and move R to 6 fm. The surface moves rather than simply scaling.
-Click 3: connect this dependence to matrix elements and likelihood gradients.
-The curves are analytic illustrations, not a calibrated potential or a scattering calculation. Affine operator dependence does not imply an affine observable or a simple posterior. Gradient samplers can be used in both cases; the issue here is constructing a differentiable non-affine operator.
-Timing target: 1 minute 15 seconds.
+Central message: slide 10's non-affine problem, multiplied. In CDCC the deuteron feels the
+proton and neutron potentials separately; the couplings between continuum bins are those
+two potentials folded over the deuteron's internal wave functions. Change a radius or a
+diffuseness and every element of every block changes.
+
+Talking points:
+- Left: the deuteron is a proton and a neutron; each sees its own optical potential, with its
+  own radius and diffuseness. These are the parameters being calibrated.
+- Right: one block of the coupling matrix for one total angular momentum J. Element ij is the
+  coupling between bin i and bin j: U_p plus U_n, folded over the two bin wave functions.
+  Up to 151 channels per block and one block for every J up to 30 (slide 11's model space).
+- Single channel (slide 10): one radial shape to rebuild. Here: every element of every block,
+  because each one folds the same R- and a-dependent potentials.
+- Red line: this is why the cheap projection of slide 10 is lost. The fast model has to
+  rebuild every coupling for each trial potential, and return its derivative for the sampler.
+
+If asked:
+- The small curves are schematic: diagonal couplings look like a potential, off-diagonal ones
+  are peaked at the surface. They are not computed form factors.
+- Multipoles: each coupling is a sum over multipoles q of the folded potential; the slide
+  hides that layer.
+- Depths are affine and would be cheap on their own; the geometry is what forces the rebuild.
+
+Timing target: 1 minute.
 Transition: so the requirements are three: cheap, differentiable, and checked against the
 solver. DREAM is built to meet exactly these.
 -->
