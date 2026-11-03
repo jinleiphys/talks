@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Copy Paste Desk</title>
+<style>
+  /* kami palette of the deck */
+  :root{--paper:#f5f4ed !important;--ink:#141413;--muted:#6b6a63;--rule:#e0ddd2}
+  body{background:#f5f4ed !important;background-image:none !important}
+  body, .act, button, .stat .k, .stat .v, .toast{font-family:Inter, "PingFang SC", sans-serif !important}
+  .act{border-color:#1B365D !important;color:#1B365D !important;font-size:14px !important}
+  .stat .k{letter-spacing:.04em !important;font-size:12px !important;text-transform:none !important}
+  .stat .v{color:#b53333 !important}
+  html.embed body{padding:2px 4px 0 !important}
+  html.embed header, html.embed .controls, html.embed .made-with, html.embed .zchip, html.embed .actions, html.embed .toast{display:none !important}
+  html.embed #fig{height:calc(100vh - 6px) !important;max-height:none !important;margin:0 auto !important}
+  html.embed .stage{position:relative !important}
+  html.embed .stats{position:absolute !important;top:2px !important;right:0 !important;margin:0 !important}
+  html.embed .stat .v{font-size:24px !important}
+  html.still .stats{display:none !important}
+</style>
+</head><body>
+<script src="core.js"></script>
+<script>
+/* The copy-paste desk: why a web chat makes you the courier, and what an agent changes.
+   How the real thing works (one press = one real step):
+     WEB    1 the chat window shows code             (it lives only in the browser)
+            2 you copy it, save it onto the computer, run it in the terminal -> error
+            3 you copy the error back into the chat
+            4 the chat gives a fixed version; you carry it to the computer and the terminal again -> xs.png
+            every leg between the windows is carried by you (counter)
+     AGENT  1 the agent in the terminal reads plot_xs.py and runs/*.out itself (reach line to the computer)
+            2 it runs the script and sees the error itself
+            3 it reads the error, edits line 14 of plot_xs.py on the computer
+            4 it runs again -> xs.png comes out of the printer; you carried nothing
+     SEES   what the model can see: web = only what was pasted into the chat window; agent = the terminal and
+            the whole project on the computer
+   Parts (each held by another):
+     DESK      wooden desk top (board), everything stands on it
+     MONITORS  two monitors, each panel on a neck on a foot; left = web chat (light screen), right = terminal
+               (dark screen); screen content drawn on the panel's front face
+     HOST      the computer (tower case) holding ~/project; a window on its face lists plot_xs.py and runs/ (6 .out);
+               cables run to both screens and the printer
+     PRINTER   xs.png comes out of its front slot onto the desk when the plot is made
+     CLOUD     the model; a dashed line to the chat window (web) or to the terminal (agent)
+     SLIP      the paper slip you carry (code, or the error in red)
+     REACH     dashed ink-blue line from the terminal to the computer while the agent reads or edits */
+
+const DW = 70, DD = 120, DH = 4;                               // desk depth (x), width (y), top height
+const KB = '#1B365D', KR = '#b53333', KG = '#4a6b3a';
+const DESK = { l:'#eadfc8', m:'#d6c7a8', d:'#ab9c7e' }, FOLD = { l:'#efd9a6', m:'#d9bf86', d:'#a88f5c' };
+const PAPER = { l:'#fdfcf8', m:'#ebe8df', d:'#c9c5b8' }, BODY = { l:'#5d5b56', m:'#3d3d3a', d:'#262624' };
+for (const k of Object.keys(PALS)) delete PALS[k];
+PALS.kami = { l:'#E4ECF5', m:'#c9d6e6', d:KB };
+const SANS = 'Inter, PingFang SC, sans-serif', MONO = 'SF Mono, Menlo, monospace';
+
+/* ---------- text on a face: o = 3D anchor, U = reading direction, V = text-down direction ---------- */
+const txF = (p, U, V, str, size, col, fam = SANS, weight = 600, anchor = 'start') =>
+  `<text transform="${txM(P(...p), Dv(...U), Dv(...V))}" font-size="${size}" fill="${col}" text-anchor="${anchor}" font-family="${fam}" font-weight="${weight}">${str}</text>`;
+const txScreen = (p, str, size, col, fam, w, a) => txF(p, [0,-1,0], [0,0,-1], str, size, col, fam, w, a);   // front plane x = const
+const txTop = (p, str, size, col, fam, w, a) => txF(p, [0,-1,0], [1,0,0], str, size, col, fam, w, a);        // desk-level plane z = const
+
+/* ---------- monitors ---------- */
+const MON = {
+  chat: { y0: 64, y1: 118 },
+  term: { y0: 4, y1: 58 } };
+const PX0 = 10, PX1 = 13, PZ0 = 20, PZ1 = 56, SB = 1.6;          // panel depth and height, bezel
+// a point on a screen: u from the screen's left edge, v down from its top (model units)
+const scr = (m, u, v, lift = .06) => [PX1 + lift, m.y1 - SB - u, PZ1 - SB - v];
+const SW = MON.chat.y1 - MON.chat.y0 - 2*SB, SHt = PZ1 - PZ0 - 2*SB;
+const srect = (m, u0, v0, u1, v1, lift) => [scr(m, u0, v0, lift), scr(m, u1, v0, lift), scr(m, u1, v1, lift), scr(m, u0, v1, lift)];
+
+function monitor(m, screen){
+  const yc = (m.y0 + m.y1)/2, parts = [];
+  parts.push({ box: [[2, yc - 11, DH], [19, yc + 11, DH + 1.2]], svg: box(2, yc - 11, DH, 19, yc + 11, DH + 1.2, BODY, toneI, 1.1) });
+  parts.push({ box: [[7, yc - 2.2, DH + 1.2], [10, yc + 2.2, PZ0 + 6]], svg: box(7, yc - 2.2, DH + 1.2, 10, yc + 2.2, PZ0 + 6, BODY, toneI, 1) });
+  let pan = box(PX0, m.y0, PZ0, PX1, m.y1, PZ1, BODY, tone, 1.3);
+  if (facing([1,0,0])) pan += screen;
+  parts.push({ box: [[PX0, m.y0, PZ0], [PX1, m.y1, PZ1]], svg: pan });
+  return byDepth(parts);
+}
+
+/* screen contents */
+function chatScreen(st){
+  const m = MON.chat, B = BUB(st);
+  let s = shape(srect(m, 0, 0, SW, SHt), '#faf9f5', .8);
+  s += fill(pd(srect(m, 0, 0, SW, 4.2, .08)), '#e8e6dc') + txScreen(scr(m, 2, 3.2, .1), '网页聊天', 3, '#3d3d3a');
+  for (const c of [[SW - 7, '#d1cfc5'], [SW - 4.5, '#d1cfc5'], [SW - 2, '#d1cfc5']]) s += fill(pd(srect(m, c[0], 1.6, c[0] + 1.4, 2.8, .09)), c[1]);
+  // bubbles, newest at the bottom: AI on the left, you on the right
+  let v = 6.5;
+  for (const b of B){
+    const w = b.who === 'ai' ? 33 : 29, u0 = b.who === 'ai' ? 2 : SW - 2 - w, h = 7.4;
+    s += shape(srect(m, u0, v, u0 + w, v + h, .1), b.bg, .6);
+    s += txScreen(scr(m, u0 + 1.6, v + 3.1, .12), b.t1, 2.9, b.fg, b.mono ? MONO : SANS, 600);
+    s += txScreen(scr(m, u0 + 1.6, v + 6.3, .12), b.t2, 2.5, b.fg2 || '#6b6a63', MONO, 500);
+    v += h + 1.3;
+  }
+  // input box
+  s += shape(srect(m, 2, SHt - 4.4, SW - 2, SHt - 1.2, .1), '#ffffff', .5) + txScreen(scr(m, 3.4, SHt - 2, .12), '有什么可以帮你？', 2.2, '#a3a199', SANS, 400);
+  if (st.over && st.mode === 'web') s += seeGlow(srect(m, 0, 0, SW, SHt, .14));
+  return s;
+}
+function termScreen(st){
+  const m = MON.term, L = TERM(st);
+  let s = shape(srect(m, 0, 0, SW, SHt), '#1d2a26', .8);
+  s += fill(pd(srect(m, 0, 0, SW, 4.2, .08)), '#2b3a35') + txScreen(scr(m, 2, 3.2, .1), '终端  ~/project', 2.8, '#cfe8d6', MONO, 600);
+  L.forEach((ln, i) => { s += txScreen(scr(m, 2, 8 + i*3.9, .12), ln.t, 2.8, ln.c, MONO, ln.c === '#ff7b6e' ? 700 : 500); });
+  // blinking cursor at the next free line
+  const blink = Math.floor(performance.now()/450) % 2 === 0;
+  if (blink && L.length < 7) s += fill(pd(srect(m, 2, 8 + L.length*3.9 - 2.5, 3.6, 8 + L.length*3.9 + .3, .12)), '#8af0ae');
+  if (st.over && st.mode === 'agent') s += seeGlow(srect(m, 0, 0, SW, SHt, .14));
+  return s;
+}
+const seeGlow = q => `<path d="${pd(q)}" fill="${KB}" fill-opacity=".16" stroke="${KB}" stroke-width="2.4" stroke-dasharray="5 3"/>`;
+
+/* ---------- the computer holding the project, the printer, the model in the cloud ---------- */
+// The project lives on the computer's disk: the terminal (an agent running on this computer) reads and writes
+// it, the web chat cannot. A window in the case side lists what is on the disk; the row being read or edited
+// lights up. Results come out of the printer. The model itself is in the cloud in both modes.
+const T = { x0: 40, x1: 50, y0: 50, y1: 80, z1: DH + 28 };     // tower case, its wide face toward the viewer
+const PR = { x0: 30, x1: 48, y0: 5, y1: 29, z1: DH + 8 };      // printer
+const CASE = { l:'#6a6862', m:'#4a4945', d:'#2e2d2b' }, PRN = { l:'#ecebe6', m:'#cfccc3', d:'#a19e94' };
+const frontQ = (x, ya, yb, za, zb) => [[x, ya, za], [x, yb, za], [x, yb, zb], [x, ya, zb]];
+const WX = T.x1 + .06, WIN = { ya: T.y1 - 2, yb: T.y0 + 2, za: 7.5, zb: 27 };
+function host(st){
+  let s = box(T.x0, T.y0, DH, T.x1, T.y1, T.z1, CASE, tone, 1.3);
+  if (!facing([1,0,0])) return s;
+  // top strip: power button and the disk light (blue while the disk is read or written)
+  s += shape(frontQ(WX, T.y0 + 5.5, T.y0 + 2, T.z1 - 3.6, T.z1 - 1.6), '#2e2d2b', .5);
+  s += fill(pd(frontQ(WX + .02, T.y0 + 9.5, T.y0 + 7, T.z1 - 3.2, T.z1 - 2)), sheetLit(st) ? '#3fa0ff' : '#5fbf6a');
+  // window: what is on the disk
+  s += shape(frontQ(WX, WIN.ya, WIN.yb, WIN.za, WIN.zb), PAPER.l, .7);
+  const Y = WIN.ya - 1.2, x = WX + .02, at = (z, str, size, col, w) => txScreen([x + .01, Y, z], str, size, col, MONO, w);
+  s += at(24, '~/project', 3, KB, 700);
+  s += line([[x, Y, 22.6], [x, WIN.yb + 1, 22.6]], .4);
+  const lit = sheetLit(st), ed = editedLine(st), hl = (za, zb, c) => c ? fill(pd(frontQ(x, WIN.ya - .5, WIN.yb + .5, za, zb)), c, 'opacity=".7"') : '';
+  s += hl(15.4, 21.8, lit);
+  s += at(19.4, 'plot_xs.py', 2.9, '#3d3d3a', 700);
+  s += at(16.6, ed ? 'line 14 改过' : '32 行', 2.3, ed ? '#d9822b' : '#6b6a63', ed ? 700 : 500);
+  s += hl(8.4, 14.4, st.mode === 'agent' && st.step === 1 && st.t > .55 ? lit : '');
+  s += at(12.4, 'runs/', 2.9, '#3d3d3a', 700);
+  s += at(9.6, '6 × .out', 2.3, '#6b6a63', 500);
+  return s;
+}
+function printer(){
+  let s = box(PR.x0, PR.y0, DH, PR.x1, PR.y1, PR.z1, PRN, tone, 1.2);
+  // paper standing in the feed tray at the back
+  s += box(PR.x0 + 1, PR.y0 + 4, PR.z1, PR.x0 + 2, PR.y1 - 4, PR.z1 + 6, PAPER, toneI, .7);
+  if (facing([1,0,0])){
+    const x = PR.x1 + .06;
+    s += fill(pd(frontQ(x, PR.y0 + 2.5, PR.y1 - 2.5, DH + 4.4, DH + 5.6)), '#3d3d3a');   // output slot
+    s += fill(pd(frontQ(x, PR.y1 - 2.5, PR.y1 - 5, PR.z1 - 2.4, PR.z1 - 1.2)), '#5fbf6a');
+  }
+  return s;
+}
+// the model, drawn in screen space above the desk
+const CLOUD = [8, 104, 70];
+function cloud(st){
+  const k = INK_K, [X0, Y0] = P(...CLOUD), X = X0 - 34*k, Y = Y0 - 30*k, C = [[-26, 4, 14], [-8, -7, 18], [12, -3, 16], [30, 5, 13], [-40, 10, 10], [44, 11, 9], [2, 10, 13]];
+  const to = st.mode === 'web' ? [PX1, (MON.chat.y0 + MON.chat.y1)/2, PZ1] : [PX1, (MON.term.y0 + MON.term.y1)/2, PZ1];
+  const [tx, ty] = P(...to);
+  let s = `<path d="M${f2(X)} ${f2(Y + 14*k)}L${f2(tx)} ${f2(ty)}" stroke="${KB}" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round"/>`;
+  s += C.map(([dx, dy, r]) => `<circle cx="${f2(X + dx*k)}" cy="${f2(Y + dy*k)}" r="${f2(r*k)}" fill="#fcfbf7" stroke="${INK}" stroke-width="2.4"/>`).join('');
+  s += C.map(([dx, dy, r]) => `<circle cx="${f2(X + dx*k)}" cy="${f2(Y + dy*k)}" r="${f2(r*k - 1.2)}" fill="#fcfbf7"/>`).join('');
+  s += `<text x="${f2(X)}" y="${f2(Y + 7*k)}" font-size="${f2(9*k)}" text-anchor="middle" font-family="${SANS}" font-weight="600" fill="${INK}">AI 模型（云端）</text>`;
+  return s;
+}
+function card(st){
+  const k = CARD(st); if (k <= 0) return null;
+  // printed: slides out of the printer's front slot and settles on the desk in front of it
+  const e = ease(k), w = 18, d = 20, X0 = PR.x1 - w*(1 - e), Y0 = PR.y0 + 2, z = DH + .05 + 5*(1 - e);
+  const Xv = Math.max(X0, PR.x1 + .1), X1 = X0 + w, Y1 = Y0 + d;                 // only the part outside the printer shows
+  let s = box(Xv, Y0, z, X1, Y1, z + .35, PAPER, toneI, .9);
+  const zt = z + .37, pu = (u, v) => [X0 + 3 + v*(w - 6), Y1 - 3 - u*(d - 6), zt], out = p => p[0] > Xv + .3;
+  const seg = pts => { const q = pts.filter(out); return q.length > 1 ? pd(q, false) : ''; };
+  const ax = seg([pu(0, 0), pu(0, 1), pu(1, 1)]);
+  if (ax) s += `<path d="${ax}" fill="none" stroke="#3d3d3a" stroke-width=".7"/>`;
+  const cols = ['#1B365D', '#2D5A8A', '#4a6b3a', '#b53333', '#8a6d3b', '#6b6a63'];
+  cols.forEach((c, i) => { const p = seg(Array.from({ length: 16 }, (_, j) => { const u = j/15; return pu(u, .12 + (.55 + .05*i)*(1 - Math.exp(-u*(1.5 + .9*i)))); }));
+    if (p) s += `<path d="${p}" fill="none" stroke="${c}" stroke-width=".9" stroke-linejoin="round"/>`; });
+  if (e > .9) s += txTop([X0 + 1.8, Y1 - 3, zt], 'xs.png', 2, '#3d3d3a', MONO, 700);
+  return { box: [[Xv, Y0, z], [X1, Y1, z + .4]], svg: s };
+}
+// cables on the desk: both screens and the printer hang on the computer
+function cables(){
+  const c = pts => `<path d="${pd(pts.map(([x, y]) => [x, y, DH + .15]), false)}" fill="none" stroke="#3d3d3a" stroke-width="1.6" stroke-linejoin="round"/>`;
+  return c([[T.x0, 58], [22, 58], [22, 31], [14, 31]]) + c([[T.x0, 70], [22, 70], [22, 91], [14, 91]]) + c([[T.x0 + 4, T.y0], [T.x0 + 4, 40], [39, 40], [39, PR.y1]]);
+}
+
+/* ---------- the slip you carry, and the agent's reach ---------- */
+const CHAT_OUT = [18, 91, 40], TERM_OUT = [18, 31, 40], FOLD_IN = [45, 64, T.z1 + 3];
+const bez = (a, c, b, t) => a.map((_, i) => (1-t)*(1-t)*a[i] + 2*(1-t)*t*c[i] + t*t*b[i]);
+const arcCtl = (a, b) => [(a[0] + b[0])/2 + 14, (a[1] + b[1])/2, Math.max(a[2], b[2]) + 16];
+function slip(st){
+  const S = SLIP(st); if (!S) return null;
+  const p = bez(S.a, arcCtl(S.a, S.b), S.b, ease(S.t)), [x, y, z] = p, w = 10, d = 7;
+  const q = [[x - d/2, y - w/2, z], [x + d/2, y - w/2, z], [x + d/2, y + w/2, z], [x - d/2, y + w/2, z]];
+  let s = shape(q, S.err ? '#fbe9e4' : '#ffffff', 1.1);
+  for (let i = 0; i < 4; i++) s += `<path d="${pd([[x - d/2 + 1.4 + i*1.4, y + w/2 - 1.5, z + .01], [x - d/2 + 1.4 + i*1.4, y + w/2 - 1.5 - [7, 5, 6.5, 4][i], z + .01]], false)}" stroke="${S.err ? KR : KB}" stroke-width=".8" stroke-linecap="round"/>`;
+  s += pill(p, 0, -15, S.err ? '你在搬：报错' : '你在搬：代码', true);
+  return { box: [[x - 4, y - 5, z - .5], [x + 4, y + 5, z + .5]], svg: s };
+}
+function reach(st){
+  const f = REACH(st); if (f <= 0) return '';
+  const a = [PX1 + .4, 31, PZ0 + 3], b = [WX, 64, 18], c = [40, 44, 36];
+  const pts = Array.from({ length: 30 }, (_, i) => bez(a, c, b, f*i/29));
+  const h = pts[pts.length - 1], [X, Y] = P(...h);
+  return `<path d="${pd(pts, false)}" fill="none" stroke="${KB}" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round"/><circle cx="${f2(X)}" cy="${f2(Y)}" r="${f2(2.2*INK_K)}" fill="${KB}"/>`;
+}
+const f2 = v => v.toFixed(1);
+
+/* ---------- labels: pills that fit Chinese text ---------- */
+function pill(p3, dx, dy, text, on = false){
+  const k = INK_K, [X, Y] = P(...p3), fs = 9.5*k, h = fs*1.85;
+  const w = [...text].reduce((a, ch) => a + (/[　-鿿＀-￯]/.test(ch) ? 1 : .6), 0)*fs + fs*1.4;
+  const cx = X + dx*k, cy = Y + dy*k;
+  return `<g><path d="M${f2(X)} ${f2(Y)}L${f2(cx)} ${f2(cy)}" stroke="${INK}" stroke-width="1"/><circle cx="${f2(X)}" cy="${f2(Y)}" r="${f2(1.4*k)}" fill="${INK}"/>`
+    + `<rect x="${f2(cx - w/2)}" y="${f2(cy - h/2)}" width="${f2(w)}" height="${f2(h)}" rx="${f2(h/2)}" fill="${on ? '#fbe9e4' : '#fcfbf7'}" stroke="${on ? KR : INK}" stroke-width="1.2"/>`
+    + `<text x="${f2(cx)}" y="${f2(cy + fs*.36)}" font-size="${f2(fs)}" text-anchor="middle" font-family="${SANS}" font-weight="600" fill="${on ? KR : INK}">${text}</text></g>`;
+}
+
+/* ---------- the story: everything on the desk follows from (mode, step, t) ---------- */
+const after = (st, k, tt) => st.step > k || (st.step === k && st.t >= tt);
+const during = (st, k, a, b) => st.step === k && st.t >= a && st.t < b;
+function BUB(st){
+  if (st.mode !== 'web') return [];
+  const B = [];
+  if (after(st, 1, .3)) B.push({ who: 'ai', bg: '#f0eee6', fg: '#3d3d3a', t1: 'AI：这是代码', t2: 'np.loadtxt(f) ...', mono: false });
+  if (after(st, 3, .85)) B.push({ who: 'you', bg: '#fbe9e4', fg: KR, t1: '你：报错了', t2: 'ValueError ...', fg2: KR });
+  if (after(st, 4, .12)) B.push({ who: 'ai', bg: '#f0eee6', fg: '#3d3d3a', t1: 'AI：改好了', t2: 'skiprows=1', mono: false });
+  return B;
+}
+const RUN = { t: '$ python plot_xs.py', c: '#cfe8d6' }, ERR = { t: 'ValueError (line 14)', c: '#ff7b6e' }, OK = { t: 'saved xs.png', c: '#8af0ae' };
+function TERM(st){
+  const L = [];
+  if (st.mode === 'web'){
+    if (after(st, 2, .68)) L.push(RUN); if (after(st, 2, .82)) L.push(ERR);
+    if (after(st, 4, .76)) L.push(RUN); if (after(st, 4, .88)) L.push(OK);
+  } else {
+    if (after(st, 1, .45)) L.push({ t: 'read plot_xs.py', c: '#9fc3ea' }); if (after(st, 1, .7)) L.push({ t: 'read runs/*.out (6)', c: '#9fc3ea' });
+    if (after(st, 2, .3)) L.push(RUN); if (after(st, 2, .6)) L.push(ERR);
+    if (after(st, 3, .65)) L.push({ t: 'edit line 14: skiprows=1', c: '#f0b46a' });
+    if (after(st, 4, .3)) L.push(RUN); if (after(st, 4, .6)) L.push(OK);
+  }
+  return L;
+}
+function CARD(st){ const t0 = st.mode === 'web' ? .88 : .6; return !after(st, 4, t0) ? 0 : Math.min(1, (st.t - t0)/(1 - t0)); }
+function SLIP(st){
+  if (st.mode !== 'web') return null;
+  const seg = (a, b, t0, t1, err) => st.t >= t0 && st.t < t1 ? { a, b, t: (st.t - t0)/(t1 - t0), err } : null;
+  if (st.step === 2) return seg(CHAT_OUT, FOLD_IN, 0, .33) || seg(FOLD_IN, TERM_OUT, .33, .62);
+  if (st.step === 3) return seg(TERM_OUT, CHAT_OUT, .05, .8, true);
+  if (st.step === 4) return seg(CHAT_OUT, FOLD_IN, .15, .45) || seg(FOLD_IN, TERM_OUT, .45, .7);
+  return null;
+}
+// one carry = one delivery between the chat and the computer: the code, the error, the fixed code (running it is not a carry)
+const CARRIES = st => st.mode !== 'web' ? 0 : [after(st, 2, .62), after(st, 3, .8), after(st, 4, .7)].filter(Boolean).length;
+function REACH(st){
+  if (st.mode !== 'agent') return 0;
+  if (st.step === 1) return Math.min(1, st.t/.4);
+  if (st.step === 3) return Math.min(1, st.t/.4);
+  return 0;
+}
+function sheetLit(st){
+  if (st.mode === 'web') return during(st, 2, .26, .4) || during(st, 4, .38, .52) ? '#f6d58f' : '';
+  return (st.step === 1 && st.t > .4) ? '#c9d6e6' : (st.step === 3 && st.t > .4) ? '#f6d58f' : '';
+}
+const editedLine = st => st.mode === 'agent' ? after(st, 3, .65) : after(st, 4, .45);
+
+/* ---------- scene ---------- */
+function scene(st){
+  let s = board(0, 0, DW, DD, DH, 6, DESK);
+  // soft shadows of the monitors on the desk
+  const [sx, sy] = yawTurn(SH), sk = SHADOW_LEN/SHADOW_K;
+  const shade = pts => fill(sp(hull(pts.map(([x, y, z]) => P(x + (z - DH)*sx*sk, y + (z - DH)*sy*sk, DH)))), '#cdbd9c');
+  let sh = '';
+  for (const m of [MON.chat, MON.term]) sh += shade([[PX0, m.y0, PZ0], [PX1, m.y0, PZ0], [PX0, m.y1, PZ0], [PX1, m.y1, PZ0], [PX0, m.y0, PZ1], [PX1, m.y0, PZ1], [PX0, m.y1, PZ1], [PX1, m.y1, PZ1], [7, (m.y0+m.y1)/2, DH], [10, (m.y0+m.y1)/2, PZ0]]);
+  const cube = (b, z1) => [b.x0, b.x1].flatMap(x => [b.y0, b.y1].flatMap(y => [[x, y, DH], [x, y, z1]]));
+  sh += shade(cube(T, T.z1)) + shade(cube(PR, PR.z1));
+  s += cables();
+  s += clipTo(boardTop(0, 0, DW, DD, DH, 6), sh);
+  const items = [
+    { box: [[T.x0, T.y0, DH], [T.x1, T.y1, T.z1]], svg: host(st) },
+    { box: [[PR.x0, PR.y0, DH], [PR.x1, PR.y1, PR.z1 + 6]], svg: printer() },
+    card(st),
+    { box: [[2, MON.chat.y0, DH], [19, MON.chat.y1, PZ1]], svg: monitor(MON.chat, chatScreen(st)) },
+    { box: [[2, MON.term.y0, DH], [19, MON.term.y1, PZ1]], svg: monitor(MON.term, termScreen(st)) },
+  ];
+  s += byDepth(items);
+  // what the agent can see: the whole project on the computer's disk
+  if (st.over && st.mode === 'agent' && facing([1,0,0])) s += seeGlow(frontQ(WX + .1, WIN.ya + 1, WIN.yb - 1, WIN.za - 1, WIN.zb + 1));
+  if (facing([1,0,0])) s += cloud(st);
+  if (facing([1,0,0])) s += reach(st);          // seen from behind, the screens hide the reach
+  const sl = slip(st); if (sl) s += sl.svg;
+  // names of the things on the desk
+  if (facing([1,0,0])){
+    s += pill([PX1, MON.chat.y1 - 6, PZ1], -6, -14, '网页聊天');
+    s += pill([PX1, MON.term.y0 + 6, PZ1], 6, -14, '终端');
+  }
+  if (facing([1,0,0])) s += pill([T.x1, T.y0 + 3, DH + 3], 8, 16, '主机') + pill([PR.x0 + 4, PR.y0 + 2, PR.z1], 18, -14, '打印机');
+  if (CARD(st) >= 1) s += pill([PR.x1 + 12, 10, DH + .4], 14, 12, 'xs.png');
+  if (st.over) s += st.mode === 'web'
+    ? pill([PX1, (MON.chat.y0 + MON.chat.y1)/2, PZ0 + 2], 0, 26, 'AI 只看得到你贴进来的', true)
+    : pill([WX, WIN.ya - 2, WIN.za], -8, 40, 'agent 看得到主机上的整个项目', true);
+  return s;
+}
+
+/* ---------- driving the story ---------- */
+const DUR = { web: [0, 1.0, 2.6, 1.9, 2.8], agent: [0, 1.8, 1.6, 1.8, 1.8] };
+let ui, job = 0;
+function go(st, step, animate = true){
+  const id = ++job;
+  st.step = Math.max(0, Math.min(4, step));
+  if (!animate || st.step === 0){ st.t = 1; ui.render(); return; }
+  st.t = 0; const T = DUR[st.mode][st.step];
+  ui.animate(dt => { if (id !== job) return false; st.t = Math.min(1, st.t + dt/T); return st.t < 1; });
+}
+// the deck sends a click number; a step forward animates, any other jump lands at once
+function toClick(st, mode, k){
+  const want = mode === 'web' ? { step: Math.min(4, k), over: k >= 5 } : { step: Math.min(4, k + 1), over: k >= 4 };
+  if (mode !== st.mode){ st.mode = mode; st.step = 0; st.t = 1; }
+  st.over = want.over;
+  if (want.step === st.step + 1) go(st, want.step);
+  else if (want.step !== st.step || st.t < 1) go(st, want.step, false);
+  ui.render();
+}
+const q0 = new URLSearchParams(location.search);
+const MODE0 = q0.get('mode') === 'agent' ? 'agent' : 'web';
+if (window.parent !== window || q0.get('embed') === '1'){ window.FIG_A = () => .75; window.LBL_U = () => 0; }
+const steps = MODE0 === 'web'
+  ? ['AI 给代码', '复制、保存、运行', '把报错贴回去', '给修改版，再跑']
+  : ['读文件', '运行', '看报错、改一行', '再运行'];
+ui = mountFigure({
+  fig: '3', title: 'Copy paste desk', turn: 'full', credit: false,
+  size: [DW, DD, 72], center: [DW/2, DD/2], palette: 'kami',
+  state: { mode: MODE0, step: 0, t: 1, over: false },
+  scene,
+  buttons: [
+    ...steps.map((label, i) => ({ label, onClick: st => go(st, i + 1) })),
+    { label: '它能看到什么', onClick: st => { st.over = !st.over; } },
+    { label: MODE0 === 'web' ? '换成 agent' : '换成网页', onClick: () => { location.search = '?mode=' + (MODE0 === 'web' ? 'agent' : 'web'); } },
+  ],
+  stats: st => [{ label: '你搬了', value: CARRIES(st) + ' 次' }],
+  params(st, q){
+    if (q.get('embed') === '1') document.documentElement.classList.add('embed');
+    if (q.get('still') === '1') document.documentElement.classList.add('still');
+  },
+});
+if (q0.has('k')) toClick(ui.st, MODE0, +q0.get('k'));
+// the terminal cursor blinks
+setInterval(() => { if (!document.hidden) ui.render(); }, 450);
+const embedded = window.parent !== window;
+if (embedded){ window.GAME_KEYS = true; document.documentElement.classList.add('embed');
+  addEventListener('pointerup', () => setTimeout(() => { try { document.activeElement && document.activeElement.blur(); window.parent.focus(); } catch (e) {} }, 0), true); }
+addEventListener('message', e => { const d = e.data && e.data.desk; if (!d) return; toClick(ui.st, d.mode, d.k); });
+</script></body></html>

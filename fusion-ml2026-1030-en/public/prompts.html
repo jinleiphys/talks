@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prompts from the talk</title>
+<style>
+  :root { --paper:#f5f4ed; --card:#fcfbf7; --ink:#141413; --muted:#6b6a63; --rule:#e0ddd2; --accent:#1B365D; --ok:#4a6b3a; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --paper:#1d1d1b; --card:#262624; --ink:#ecebe6; --muted:#a3a199; --rule:#3d3d3a; --accent:#9fc3ea; --ok:#8fbf7a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 Inter, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+  header { border-bottom: 1px solid var(--rule); padding-bottom: 14px; margin-bottom: 8px; }
+  .kicker { font-size: 13px; color: var(--muted); letter-spacing: .04em; }
+  h1 { font-size: 24px; margin: 4px 0 6px; }
+  header p { margin: 0; color: var(--muted); font-size: 14px; }
+  h2 { font-size: 19px; margin: 34px 0 6px; color: var(--accent); }
+  .lead { margin: 0 0 12px; font-size: 15px; color: var(--muted); }
+  .block { background: var(--card); border: 1px solid var(--rule); border-radius: 10px; margin: 12px 0 18px; overflow: hidden; }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 12px; border-bottom: 1px solid var(--rule); }
+  .bar b { font-size: 15px; }
+  .bar small { display: block; color: var(--muted); font-size: 12.5px; font-weight: 400; }
+  button { flex: none; font: 600 14px/1 inherit; font-family: inherit; color: #fff; background: var(--accent); border: 0; border-radius: 8px; padding: 9px 14px; cursor: pointer; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) button { color: #141413; } }
+  button.done { background: var(--ok); }
+  pre { margin: 0; padding: 12px; white-space: pre-wrap; word-break: break-word; font: 14px/1.55 "SF Mono", Menlo, Consolas, "PingFang SC", monospace; -webkit-user-select: all; user-select: all; }
+  .note { font-size: 13.5px; color: var(--muted); margin: -8px 0 16px; }
+  footer { margin-top: 40px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 12px; }
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="kicker">Using AI in Research · Jin Lei · 2026.10.30</div>
+  <h1>Prompts used in the talk</h1>
+  <p>Click "Copy" and paste into the AI you use. If the button does not work, long-press the text to select all.</p>
+</header>
+
+<h2>1. Checking references: what difference does a protocol make?</h2>
+<p class="lead">Same AI, a new conversation each time. Round one with web search off; round two once with search off and once with search on.</p>
+
+<div class="block">
+  <div class="bar"><div><b>Round one: just ask</b><small>Note its verdict: which entries does it flag?</small></div><button data-copy="r1">Copy</button></div>
+<pre id="r1">Check whether these references are correct.
+
+[1] M. Ichimura, N. Austern, and C. M. Vincent, Equivalence of post and prior sum rules for inclusive breakup reactions, Phys. Rev. C 32, 431 (1985).
+[2] A. M. Lane and R. G. Thomas, R-matrix theory of nuclear reactions, Rev. Mod. Phys. 30, 275 (1958).
+[3] A. J. Koning and J. P. Delaroche, Local and global nucleon optical models from 1 keV to 200 MeV, Nucl. Phys. A 713, 231 (2003).
+[4] J. Lei and A. M. Moro, Continuum effects in the nonelastic breakup of 6Li on heavy targets, Phys. Rev. C 96, 064607 (2017).
+[5] W. Hauser and H. Feshbach, The inelastic scattering of neutrons, Phys. Rev. 87, 366 (1952).</pre>
+</div>
+
+<div class="block">
+  <div class="bar"><div><b>Round two: protocol first, then ask</b><small>New conversation. Protocol and question are already combined; copy once.</small></div><button data-copy="r2">Copy</button></div>
+<pre id="r2">When checking references, follow this protocol:
+1. Never conclude from memory. Any entry whose original record you have not retrieved is marked UNVERIFIED; never call it "correct".
+2. Check every field of each entry: authors and their order, title, journal, volume, first page or article number, year.
+3. For each field, state the evidence: which database you queried and what the record says.
+4. A DOI that resolves is not a pass; confirm that what it opens is this very paper.
+5. When something does not match, state what the entry says and what the record says; do not "correct" it yourself.
+6. End with a table: entry number, verdict (correct / wrong / UNVERIFIED), evidence.
+
+Check whether these references are correct.
+
+[1] M. Ichimura, N. Austern, and C. M. Vincent, Equivalence of post and prior sum rules for inclusive breakup reactions, Phys. Rev. C 32, 431 (1985).
+[2] A. M. Lane and R. G. Thomas, R-matrix theory of nuclear reactions, Rev. Mod. Phys. 30, 275 (1958).
+[3] A. J. Koning and J. P. Delaroche, Local and global nucleon optical models from 1 keV to 200 MeV, Nucl. Phys. A 713, 231 (2003).
+[4] J. Lei and A. M. Moro, Continuum effects in the nonelastic breakup of 6Li on heavy targets, Phys. Rev. C 96, 064607 (2017).
+[5] W. Hauser and H. Feshbach, The inelastic scattering of neutrons, Phys. Rev. 87, 366 (1952).</pre>
+</div>
+<p class="note">Some of these 5 entries are wrong. The answers are given in the talk.</p>
+
+<h2 id="task">2. Live demo: one sentence, from optical potential to experimental data</h2>
+<p class="lead">This is the sentence I ran live with Claude Code plus the FUSION skills. You can also paste it as is into a web AI and compare what each hands back.</p>
+
+<div class="block">
+  <div class="bar"><div><b>The live-demo sentence</b><small>Send after starting the agent in an empty folder</small></div><button data-copy="live">Copy</button></div>
+<pre id="live">Use the KD02 optical potential to compute the elastic-scattering angular distribution (ratio to Rutherford) for p + 208Pb at 30 MeV, and plot it together with the experimental data from EXFOR in one figure, using Python, saved as results/p208pb_30MeV.png. Tell me which experimental data set you used and which checks you did.</pre>
+</div>
+<p class="note">FUSION skills: github.com/jinleiphys/FUSION. It also runs without the skills; see what is missing.</p>
+
+<h2 id="doi">3. Let a skill verify one paper</h2>
+<p class="lead">Send in an agent with FUSION installed. It fetches the raw record from CrossRef and hands back three files: the raw record, BibTeX, and a verification note.</p>
+
+<div class="block">
+  <div class="bar"><div><b>Verify one DOI</b><small>See which database it queried and what it saved</small></div><button data-copy="doi1">Copy</button></div>
+<pre id="doi1">Use literature-search to verify DOI 10.1103/PhysRevC.97.011601. Save the raw database record, the BibTeX and a verification note. Leave anything you cannot find empty; do not fill it in yourself.</pre>
+</div>
+
+<h2 id="collab">4. Read a new paper, find a collaboration</h2>
+<p class="lead">Download a paper from arXiv into a paper/ directory, then start the agent in that directory. Replace "personal wiki" with your own notes or publication list.</p>
+
+<div class="block">
+  <div class="bar"><div><b>New paper + two wikis</b><small>Its guesses and collaboration ideas are guesses; you judge whether they hold up</small></div><button data-copy="collab1">Copy</button></div>
+<pre id="collab1">paper/ contains a paper I just downloaded from arXiv. First read it, then search the arXiv wiki for this group's earlier papers, summarize what they have been working on, guess what they might do next, and list the papers that support each guess. Then search my personal wiki, using only my published papers and public code, and find problems we could work on together. Give a source for every point (arXiv number or my paper).</pre>
+</div>
+
+<h2>5. One comparison to try at home</h2>
+<p class="lead">Pick a code you use often and ask the same sentence twice: once giving nothing; once after giving it a verified input and a known result. Compare what comes back.</p>
+
+<footer>Jin Lei · Tongji University · Material from the talk "Using AI in Research: Lessons from FUSION"</footer>
+</main>
+<script>
+  function copyText(t) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t);
+    return new Promise(function (ok, bad) {
+      var a = document.createElement('textarea'); a.value = t; a.setAttribute('readonly', '');
+      a.style.position = 'fixed'; a.style.opacity = '0'; document.body.appendChild(a); a.select();
+      try { document.execCommand('copy') ? ok() : bad(); } catch (e) { bad(e); } finally { document.body.removeChild(a); }
+    });
+  }
+  document.querySelectorAll('button[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = document.getElementById(b.dataset.copy).textContent;
+      copyText(t).catch(function () {
+        var a = document.createElement('textarea'); a.value = t; document.body.appendChild(a); a.select();
+        document.execCommand('copy'); document.body.removeChild(a);
+      }).then(function () { b.textContent = 'Copied'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Copy'; b.classList.remove('done'); }, 1600); });
+    });
+  });
+</script>
+</body>
+</html>
