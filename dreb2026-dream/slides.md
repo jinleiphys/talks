@@ -407,8 +407,8 @@ Talking points:
 Timing target: 1 minute 30 seconds.
 
 - The takeaway is scoped to King et al.'s comparison: the band from sampled potentials covered better.
-  If asked for the coverage of our own band: the noise-inclusive predictive check has not
-  been computed (slide 19 notes); do not quote a number.
+  If asked for the coverage of my own band: the noise-inclusive predictive check has not
+  been computed (slide 20 notes); do not quote a number.
 
 Transition: this lesson is what moved the field to Bayesian optical potentials.
 -->
@@ -618,65 +618,111 @@ Transition: the second ingredient the field developed is the emulator.
 
 <div class="ui-label">emulator: a fast stand-in built from full calculations</div>
 
-<svg viewBox="0 0 600 200" style="width: 100%; height: 10rem;">
-  <defs><marker id="ar7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1B365D"/></marker></defs>
-  <g font-family="Newsreader, Georgia, serif" text-anchor="middle" font-size="20px" fill="#1B365D" font-weight="600">
-    <text x="104" y="24">full solve</text>
-    <text x="430" y="24">emulator</text>
-  </g>
-  <path d="M16.0 86.0 L18.2 85.5 L20.4 84.1 L22.6 82.1 L24.8 79.8 L27.0 77.5 L29.2 75.5 L31.4 74.2 L33.6 73.6 L35.8 73.9 L38.0 75.3 L40.2 77.6 L42.4 80.8 L44.6 84.6 L46.8 88.9 L49.0 93.2 L51.2 97.5 L53.4 101.2 L55.6 104.2 L57.8 106.3 L60.0 107.3 L62.2 107.0 L64.4 105.5 L66.6 102.9 L68.8 99.2 L71.0 94.7 L73.2 89.6 L75.4 84.2 L77.6 78.9 L79.8 73.9 L82.0 69.5 L84.2 66.1 L86.4 63.7 L88.6 62.6 L90.8 62.7 L93.0 64.2 L95.2 66.9 L97.4 70.7 L99.6 75.3 L101.8 80.5 L104.0 86.0 L106.2 91.5 L108.4 96.6 L110.6 101.2 L112.8 104.9 L115.0 107.5 L117.2 108.9 L119.4 109.1 L121.6 107.9 L123.8 105.6 L126.0 102.2 L128.2 97.9 L130.4 93.0 L132.6 87.8 L134.8 82.5 L137.0 77.4 L139.2 72.9 L141.4 69.1 L143.6 66.3 L145.8 64.6 L148.0 64.1 L150.2 64.8 L152.4 66.7 L154.6 69.6 L156.8 73.4 L159.0 77.8 L161.2 82.7 L163.4 87.7 L165.6 92.5 L167.8 96.9 L170.0 100.6 L172.2 103.5 L174.4 105.5 L176.6 106.3 L178.8 106.0 L181.0 104.6 L183.2 102.1 L185.4 98.9 L187.6 94.9 L189.8 90.6 L192.0 86.0" stroke="#1B365D" stroke-width="1.2" fill="none" opacity="0.45"/>
-  <circle cx="16.0" cy="86.0" r="2.3" fill="#1B365D"/><circle cx="21.9" cy="82.8" r="2.3" fill="#1B365D"/><circle cx="27.7" cy="76.8" r="2.3" fill="#1B365D"/><circle cx="33.6" cy="73.6" r="2.3" fill="#1B365D"/><circle cx="39.5" cy="76.7" r="2.3" fill="#1B365D"/><circle cx="45.3" cy="86.0" r="2.3" fill="#1B365D"/><circle cx="51.2" cy="97.5" r="2.3" fill="#1B365D"/><circle cx="57.1" cy="105.7" r="2.3" fill="#1B365D"/><circle cx="62.9" cy="106.6" r="2.3" fill="#1B365D"/><circle cx="68.8" cy="99.2" r="2.3" fill="#1B365D"/><circle cx="74.7" cy="86.0" r="2.3" fill="#1B365D"/><circle cx="80.5" cy="72.3" r="2.3" fill="#1B365D"/><circle cx="86.4" cy="63.7" r="2.3" fill="#1B365D"/><circle cx="92.3" cy="63.6" r="2.3" fill="#1B365D"/><circle cx="98.1" cy="72.1" r="2.3" fill="#1B365D"/><circle cx="104.0" cy="86.0" r="2.3" fill="#1B365D"/><circle cx="109.9" cy="99.8" r="2.3" fill="#1B365D"/><circle cx="115.7" cy="108.1" r="2.3" fill="#1B365D"/><circle cx="121.6" cy="107.9" r="2.3" fill="#1B365D"/><circle cx="127.5" cy="99.4" r="2.3" fill="#1B365D"/><circle cx="133.3" cy="86.0" r="2.3" fill="#1B365D"/><circle cx="139.2" cy="72.9" r="2.3" fill="#1B365D"/><circle cx="145.1" cy="65.1" r="2.3" fill="#1B365D"/><circle cx="150.9" cy="65.3" r="2.3" fill="#1B365D"/><circle cx="156.8" cy="73.4" r="2.3" fill="#1B365D"/><circle cx="162.7" cy="86.0" r="2.3" fill="#1B365D"/><circle cx="168.5" cy="98.2" r="2.3" fill="#1B365D"/><circle cx="174.4" cy="105.5" r="2.3" fill="#1B365D"/><circle cx="180.3" cy="105.1" r="2.3" fill="#1B365D"/><circle cx="186.1" cy="97.6" r="2.3" fill="#1B365D"/><circle cx="192.0" cy="86.0" r="2.3" fill="#1B365D"/>
-  <path d="M210 86 L252 86" stroke="#1B365D" stroke-width="2" marker-end="url(#ar7)"/>
-  <g font-family="Newsreader, Georgia, serif" font-size="21px" fill="#1B365D">
-    <text x="270" y="93" text-anchor="start">c<tspan font-size="14px" dy="5">1</tspan></text><path d="M298.0 86.0 L299.0 84.9 L300.0 83.3 L301.0 81.4 L302.0 79.7 L303.0 78.4 L304.0 77.8 L305.0 77.9 L306.0 78.8 L307.0 80.4 L308.0 82.6 L309.0 85.2 L310.0 87.9 L311.0 90.7 L312.0 93.2 L313.0 95.3 L314.0 96.8 L315.0 97.7 L316.0 97.7 L317.0 97.0 L318.0 95.6 L319.0 93.6 L320.0 91.1 L321.0 88.3 L322.0 85.4 L323.0 82.6 L324.0 80.1 L325.0 77.9 L326.0 76.3 L327.0 75.3 L328.0 75.1 L329.0 75.5 L330.0 76.5 L331.0 78.2 L332.0 80.3 L333.0 82.7 L334.0 85.2 L335.0 87.8 L336.0 90.1 L337.0 92.2 L338.0 93.8" stroke="#1B365D" stroke-width="2" fill="none"/><text x="350" y="93" text-anchor="start">+ c<tspan font-size="14px" dy="5">2</tspan></text><path d="M400.0 86.0 L401.0 84.0 L402.0 82.2 L403.0 81.3 L404.0 81.5 L405.0 83.0 L406.0 85.4 L407.0 88.5 L408.0 91.7 L409.0 94.4 L410.0 96.3 L411.0 96.9 L412.0 96.2 L413.0 94.1 L414.0 91.0 L415.0 87.2 L416.0 83.1 L417.0 79.4 L418.0 76.5 L419.0 74.7 L420.0 74.3 L421.0 75.2 L422.0 77.5 L423.0 80.7 L424.0 84.5 L425.0 88.4 L426.0 92.0 L427.0 94.9 L428.0 96.6 L429.0 97.0 L430.0 96.2 L431.0 94.2 L432.0 91.2 L433.0 87.7 L434.0 84.1 L435.0 80.8 L436.0 78.2 L437.0 76.5 L438.0 76.0 L439.0 76.7 L440.0 78.5" stroke="#1B365D" stroke-width="2" fill="none"/><text x="452" y="93" text-anchor="start">+ c<tspan font-size="14px" dy="5">3</tspan></text><path d="M502.0 86.0 L503.0 84.4 L504.0 84.4 L505.0 86.1 L506.0 89.0 L507.0 92.1 L508.0 94.3 L509.0 94.8 L510.0 93.3 L511.0 89.8 L512.0 85.2 L513.0 80.5 L514.0 76.7 L515.0 74.7 L516.0 75.0 L517.0 77.7 L518.0 82.1 L519.0 87.4 L520.0 92.4 L521.0 96.1 L522.0 97.7 L523.0 96.9 L524.0 93.9 L525.0 89.3 L526.0 84.1 L527.0 79.3 L528.0 76.0 L529.0 74.8 L530.0 75.8 L531.0 78.9 L532.0 83.4 L533.0 88.3 L534.0 92.6 L535.0 95.6 L536.0 96.5 L537.0 95.3 L538.0 92.2 L539.0 88.0 L540.0 83.4 L541.0 79.5 L542.0 77.0" stroke="#1B365D" stroke-width="2" fill="none"/>
-    <text x="554" y="93" text-anchor="start">+ …</text>
-  </g>
-  <g font-family="Newsreader, Georgia, serif" font-size="18px" fill="#66655f" text-anchor="middle">
-    <text x="104" y="156">values at N mesh points</text>
-    <text x="104" y="182">N: thousands</text>
-    <text x="430" y="156">n stored solutions, n ≈ 10</text>
-    <text x="430" y="182">new potential: only the weights c</text>
-  </g>
+<svg viewBox="0 0 600 250" style="width: 100%; height: 12.4rem;" font-family="Newsreader, Georgia, serif">
+<defs><marker id="ar9" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1B365D"/></marker><filter id="sh9" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#1B365D" flood-opacity="0.13"/></filter></defs>
+<g filter="url(#sh9)"><rect x="2" y="6" width="226" height="236" rx="10" fill="#fff" stroke="#c9d3df"/></g>
+<path d="M2 42 V16 a10 10 0 0 1 10 -10 H218 a10 10 0 0 1 10 10 V42 Z" fill="#1B365D"/>
+<text x="115.0" y="30.0" text-anchor="middle" fill="#fff" style="font-size:18px">full solve</text>
+<path d="M20.0 118.0 L20.8 117.7 L21.6 117.3 L22.4 116.8 L23.2 116.3 L24.0 115.6 L24.8 114.9 L25.5 114.2 L26.3 113.4 L27.1 112.5 L27.9 111.7 L28.7 110.8 L29.5 109.9 L30.3 109.1 L31.1 108.2 L31.9 107.4 L32.7 106.7 L33.5 106.0 L34.2 105.4 L35.0 104.8 L35.8 104.4 L36.6 104.0 L37.4 103.8 L38.2 103.6 L39.0 103.6 L39.8 103.6 L40.6 103.8 L41.4 104.1 L42.2 104.6 L43.0 105.1 L43.8 105.8 L44.5 106.6 L45.3 107.5 L46.1 108.5 L46.9 109.6 L47.7 110.8 L48.5 112.1 L49.3 113.5 L50.1 114.9 L50.9 116.4 L51.7 118.0 L52.5 119.6 L53.2 121.2 L54.0 122.9 L54.8 124.5 L55.6 126.1 L56.4 127.7 L57.2 129.3 L58.0 130.9 L58.8 132.3 L59.6 133.7 L60.4 135.1 L61.2 136.3 L62.0 137.5 L62.8 138.5 L63.5 139.4 L64.3 140.2 L65.1 140.9 L65.9 141.4 L66.7 141.7 L67.5 142.0 L68.3 142.0 L69.1 142.0 L69.9 141.7 L70.7 141.3 L71.5 140.8 L72.2 140.1 L73.0 139.3 L73.8 138.3 L74.6 137.2 L75.4 135.9 L76.2 134.5 L77.0 133.0 L77.8 131.4 L78.6 129.7 L79.4 127.9 L80.2 126.0 L81.0 124.1 L81.8 122.1 L82.5 120.1 L83.3 118.0 L84.1 115.9 L84.9 113.9 L85.7 111.8 L86.5 109.8 L87.3 107.8 L88.1 105.8 L88.9 103.9 L89.7 102.1 L90.5 100.4 L91.2 98.8 L92.0 97.3 L92.8 95.9 L93.6 94.7 L94.4 93.6 L95.2 92.6 L96.0 91.8 L96.8 91.2 L97.6 90.7 L98.4 90.4 L99.2 90.2 L100.0 90.2 L100.8 90.5 L101.5 90.8 L102.3 91.4 L103.1 92.1 L103.9 93.0 L104.7 94.0 L105.5 95.2 L106.3 96.5 L107.1 98.0 L107.9 99.6 L108.7 101.3 L109.5 103.2 L110.2 105.1 L111.0 107.1 L111.8 109.2 L112.6 111.3 L113.4 113.5 L114.2 115.8 L115.0 118.0 L115.8 120.3 L116.6 122.5 L117.4 124.7 L118.2 126.9 L119.0 129.0 L119.8 131.1 L120.5 133.1 L121.3 135.0 L122.1 136.8 L122.9 138.5 L123.7 140.0 L124.5 141.5 L125.3 142.8 L126.1 143.9 L126.9 144.9 L127.7 145.7 L128.5 146.3 L129.2 146.8 L130.0 147.1 L130.8 147.2 L131.6 147.1 L132.4 146.9 L133.2 146.4 L134.0 145.8 L134.8 145.1 L135.6 144.1 L136.4 143.0 L137.2 141.7 L138.0 140.3 L138.8 138.8 L139.5 137.1 L140.3 135.3 L141.1 133.4 L141.9 131.4 L142.7 129.3 L143.5 127.1 L144.3 124.9 L145.1 122.6 L145.9 120.3 L146.7 118.0 L147.5 115.7 L148.2 113.4 L149.0 111.1 L149.8 108.9 L150.6 106.7 L151.4 104.6 L152.2 102.5 L153.0 100.6 L153.8 98.8 L154.6 97.1 L155.4 95.5 L156.2 94.0 L157.0 92.7 L157.8 91.6 L158.5 90.6 L159.3 89.8 L160.1 89.1 L160.9 88.7 L161.7 88.4 L162.5 88.3 L163.3 88.4 L164.1 88.7 L164.9 89.1 L165.7 89.7 L166.5 90.5 L167.2 91.5 L168.0 92.6 L168.8 93.9 L169.6 95.4 L170.4 97.0 L171.2 98.7 L172.0 100.5 L172.8 102.4 L173.6 104.5 L174.4 106.6 L175.2 108.8 L176.0 111.0 L176.8 113.3 L177.5 115.7 L178.3 118.0 L179.1 120.3 L179.9 122.7 L180.7 125.0 L181.5 127.2 L182.3 129.4 L183.1 131.5 L183.9 133.6 L184.7 135.5 L185.5 137.4 L186.2 139.1 L187.0 140.7 L187.8 142.2 L188.6 143.5 L189.4 144.6 L190.2 145.6 L191.0 146.4 L191.8 147.1 L192.6 147.5 L193.4 147.8 L194.2 147.9 L195.0 147.8 L195.8 147.5 L196.5 147.1 L197.3 146.4 L198.1 145.6 L198.9 144.6 L199.7 143.5 L200.5 142.2 L201.3 140.7 L202.1 139.2 L202.9 137.4 L203.7 135.6 L204.5 133.6 L205.2 131.6 L206.0 129.5 L206.8 127.2 L207.6 125.0 L208.4 122.7 L209.2 120.3 L210.0 118.0" fill="none" stroke="#1B365D" stroke-width="1.2" stroke-opacity="0.35"/>
+<circle cx="20.0" cy="118.0" r="2.2" fill="#1B365D"/>
+<circle cx="24.8" cy="114.9" r="2.2" fill="#1B365D"/>
+<circle cx="29.5" cy="109.9" r="2.2" fill="#1B365D"/>
+<circle cx="34.2" cy="105.4" r="2.2" fill="#1B365D"/>
+<circle cx="39.0" cy="103.6" r="2.2" fill="#1B365D"/>
+<circle cx="43.8" cy="105.8" r="2.2" fill="#1B365D"/>
+<circle cx="48.5" cy="112.1" r="2.2" fill="#1B365D"/>
+<circle cx="53.2" cy="121.2" r="2.2" fill="#1B365D"/>
+<circle cx="58.0" cy="130.9" r="2.2" fill="#1B365D"/>
+<circle cx="62.8" cy="138.5" r="2.2" fill="#1B365D"/>
+<circle cx="67.5" cy="142.0" r="2.2" fill="#1B365D"/>
+<circle cx="72.2" cy="140.1" r="2.2" fill="#1B365D"/>
+<circle cx="77.0" cy="133.0" r="2.2" fill="#1B365D"/>
+<circle cx="81.8" cy="122.1" r="2.2" fill="#1B365D"/>
+<circle cx="86.5" cy="109.8" r="2.2" fill="#1B365D"/>
+<circle cx="91.2" cy="98.8" r="2.2" fill="#1B365D"/>
+<circle cx="96.0" cy="91.8" r="2.2" fill="#1B365D"/>
+<circle cx="100.8" cy="90.5" r="2.2" fill="#1B365D"/>
+<circle cx="105.5" cy="95.2" r="2.2" fill="#1B365D"/>
+<circle cx="110.2" cy="105.1" r="2.2" fill="#1B365D"/>
+<circle cx="115.0" cy="118.0" r="2.2" fill="#1B365D"/>
+<circle cx="119.8" cy="131.1" r="2.2" fill="#1B365D"/>
+<circle cx="124.5" cy="141.5" r="2.2" fill="#1B365D"/>
+<circle cx="129.2" cy="146.8" r="2.2" fill="#1B365D"/>
+<circle cx="134.0" cy="145.8" r="2.2" fill="#1B365D"/>
+<circle cx="138.8" cy="138.8" r="2.2" fill="#1B365D"/>
+<circle cx="143.5" cy="127.1" r="2.2" fill="#1B365D"/>
+<circle cx="148.2" cy="113.4" r="2.2" fill="#1B365D"/>
+<circle cx="153.0" cy="100.6" r="2.2" fill="#1B365D"/>
+<circle cx="157.8" cy="91.6" r="2.2" fill="#1B365D"/>
+<circle cx="162.5" cy="88.3" r="2.2" fill="#1B365D"/>
+<circle cx="167.2" cy="91.5" r="2.2" fill="#1B365D"/>
+<circle cx="172.0" cy="100.5" r="2.2" fill="#1B365D"/>
+<circle cx="176.8" cy="113.3" r="2.2" fill="#1B365D"/>
+<circle cx="181.5" cy="127.2" r="2.2" fill="#1B365D"/>
+<circle cx="186.2" cy="139.1" r="2.2" fill="#1B365D"/>
+<circle cx="191.0" cy="146.4" r="2.2" fill="#1B365D"/>
+<circle cx="195.8" cy="147.5" r="2.2" fill="#1B365D"/>
+<circle cx="200.5" cy="142.2" r="2.2" fill="#1B365D"/>
+<circle cx="205.2" cy="131.6" r="2.2" fill="#1B365D"/>
+<circle cx="210.0" cy="118.0" r="2.2" fill="#1B365D"/>
+<text x="115.0" y="202" text-anchor="middle" fill="#4d4c48" style="font-size:16px">values at N mesh points</text>
+<text x="115.0" y="226" text-anchor="middle" fill="#4d4c48" style="font-size:16px">N: thousands</text>
+<path d="M234 124 L276 124" stroke="#1B365D" stroke-width="2.2" marker-end="url(#ar9)"/>
+<g filter="url(#sh9)"><rect x="284" y="6" width="314" height="236" rx="10" fill="#fff" stroke="#c9d3df"/></g>
+<path d="M284 42 V16 a10 10 0 0 1 10 -10 H588 a10 10 0 0 1 10 10 V42 Z" fill="#1B365D"/>
+<text x="441.0" y="30.0" text-anchor="middle" fill="#fff" style="font-size:18px">emulator</text>
+<rect x="314" y="49" width="40" height="26" rx="13" fill="#E4ECF5" stroke="#1B365D" stroke-width="1.3"/>
+<text x="334" y="68" text-anchor="middle" fill="#1B365D" font-style="italic" style="font-size:18px">c<tspan style="font-size:12px" dy="4">1</tspan></text>
+<text x="364" y="67" text-anchor="middle" fill="#4d4c48" style="font-size:15px">×</text>
+<path d="M376.0 61.6 L377.7 61.2 L379.4 60.8 L381.1 60.3 L382.7 59.7 L384.4 59.2 L386.1 58.6 L387.8 58.0 L389.5 57.5 L391.1 57.0 L392.8 56.5 L394.5 56.2 L396.2 55.8 L397.9 55.6 L399.6 55.5 L401.2 55.4 L402.9 55.5 L404.6 55.6 L406.3 55.9 L408.0 56.3 L409.7 56.8 L411.4 57.3 L413.0 58.0 L414.7 58.7 L416.4 59.5 L418.1 60.4 L419.8 61.3 L421.4 62.2 L423.1 63.2 L424.8 64.2 L426.5 65.2 L428.2 66.1 L429.9 67.0 L431.6 67.9 L433.2 68.7 L434.9 69.5 L436.6 70.1 L438.3 70.7 L440.0 71.1 L441.6 71.5 L443.3 71.7 L445.0 71.9 L446.7 71.9 L448.4 71.7 L450.1 71.5 L451.8 71.1 L453.4 70.6 L455.1 70.1 L456.8 69.4 L458.5 68.6 L460.2 67.7 L461.9 66.7 L463.5 65.7 L465.2 64.6 L466.9 63.5 L468.6 62.4 L470.3 61.2 L471.9 60.1 L473.6 59.0 L475.3 57.9 L477.0 56.8 L478.7 55.8 L480.4 54.9 L482.1 54.1 L483.7 53.3 L485.4 52.7 L487.1 52.2 L488.8 51.7 L490.5 51.5 L492.1 51.3 L493.8 51.3 L495.5 51.4 L497.2 51.6 L498.9 52.0 L500.6 52.4 L502.2 53.0 L503.9 53.8 L505.6 54.6 L507.3 55.5 L509.0 56.4 L510.7 57.5 L512.4 58.6 L514.0 59.8 L515.7 60.9 L517.4 62.1 L519.1 63.3 L520.8 64.5 L522.5 65.6 L524.1 66.8 L525.8 67.8 L527.5 68.8 L529.2 69.7 L530.9 70.5 L532.5 71.2 L534.2 71.8 L535.9 72.3 L537.6 72.6 L539.3 72.8 L541.0 72.9 L542.6 72.9 L544.3 72.7 L546.0 72.4 L547.7 72.0 L549.4 71.4 L551.1 70.8 L552.8 70.0 L554.4 69.2 L556.1 68.2 L557.8 67.2 L559.5 66.1 L561.2 64.9 L562.9 63.8 L564.5 62.6 L566.2 61.4 L567.9 60.2 L569.6 59.0 L571.3 57.8 L573.0 56.8 L574.6 55.7 L576.3 54.8 L578.0 53.9" fill="none" stroke="#1B365D" stroke-width="2" stroke-opacity="1"/>
+<text x="302" y="104" text-anchor="middle" fill="#1B365D" style="font-size:20px">+</text>
+<rect x="314" y="85" width="40" height="26" rx="13" fill="#E4ECF5" stroke="#1B365D" stroke-width="1.3"/>
+<text x="334" y="104" text-anchor="middle" fill="#1B365D" font-style="italic" style="font-size:18px">c<tspan style="font-size:12px" dy="4">2</tspan></text>
+<text x="364" y="103" text-anchor="middle" fill="#4d4c48" style="font-size:15px">×</text>
+<path d="M376.0 96.1 L377.7 95.6 L379.4 95.1 L381.1 94.6 L382.7 94.2 L384.4 93.9 L386.1 93.8 L387.8 93.9 L389.5 94.1 L391.1 94.4 L392.8 94.9 L394.5 95.6 L396.2 96.4 L397.9 97.4 L399.6 98.4 L401.2 99.5 L402.9 100.6 L404.6 101.7 L406.3 102.7 L408.0 103.7 L409.7 104.5 L411.4 105.3 L413.0 105.8 L414.7 106.2 L416.4 106.3 L418.1 106.3 L419.8 106.0 L421.4 105.5 L423.1 104.8 L424.8 103.9 L426.5 102.9 L428.2 101.7 L429.9 100.3 L431.6 98.9 L433.2 97.5 L434.9 96.0 L436.6 94.5 L438.3 93.1 L440.0 91.9 L441.6 90.7 L443.3 89.7 L445.0 89.0 L446.7 88.4 L448.4 88.1 L450.1 88.0 L451.8 88.2 L453.4 88.6 L455.1 89.2 L456.8 90.1 L458.5 91.2 L460.2 92.4 L461.9 93.9 L463.5 95.4 L465.2 97.0 L466.9 98.6 L468.6 100.2 L470.3 101.8 L471.9 103.3 L473.6 104.7 L475.3 105.9 L477.0 106.9 L478.7 107.7 L480.4 108.3 L482.1 108.6 L483.7 108.6 L485.4 108.4 L487.1 107.9 L488.8 107.2 L490.5 106.3 L492.1 105.1 L493.8 103.8 L495.5 102.3 L497.2 100.7 L498.9 99.1 L500.6 97.4 L502.2 95.7 L503.9 94.1 L505.6 92.5 L507.3 91.1 L509.0 89.9 L510.7 88.9 L512.4 88.1 L514.0 87.5 L515.7 87.2 L517.4 87.1 L519.1 87.4 L520.8 87.9 L522.5 88.6 L524.1 89.6 L525.8 90.8 L527.5 92.1 L529.2 93.6 L530.9 95.2 L532.5 96.9 L534.2 98.6 L535.9 100.3 L537.6 102.0 L539.3 103.5 L541.0 104.9 L542.6 106.2 L544.3 107.2 L546.0 108.0 L547.7 108.6 L549.4 108.9 L551.1 108.9 L552.8 108.7 L554.4 108.2 L556.1 107.5 L557.8 106.5 L559.5 105.3 L561.2 103.9 L562.9 102.4 L564.5 100.8 L566.2 99.1 L567.9 97.4 L569.6 95.7 L571.3 94.0 L573.0 92.5 L574.6 91.0 L576.3 89.8 L578.0 88.8" fill="none" stroke="#1B365D" stroke-width="2" stroke-opacity="1"/>
+<text x="302" y="140" text-anchor="middle" fill="#1B365D" style="font-size:20px">+</text>
+<rect x="314" y="121" width="40" height="26" rx="13" fill="#E4ECF5" stroke="#1B365D" stroke-width="1.3"/>
+<text x="334" y="140" text-anchor="middle" fill="#1B365D" font-style="italic" style="font-size:18px">c<tspan style="font-size:12px" dy="4">3</tspan></text>
+<text x="364" y="139" text-anchor="middle" fill="#4d4c48" style="font-size:15px">×</text>
+<path d="M376.0 132.1 L377.7 132.1 L379.4 132.2 L381.1 132.6 L382.7 133.2 L384.4 134.0 L386.1 135.0 L387.8 136.0 L389.5 137.0 L391.1 138.0 L392.8 138.9 L394.5 139.6 L396.2 140.1 L397.9 140.4 L399.6 140.3 L401.2 139.9 L402.9 139.2 L404.6 138.2 L406.3 137.0 L408.0 135.5 L409.7 134.0 L411.4 132.3 L413.0 130.7 L414.7 129.1 L416.4 127.8 L418.1 126.6 L419.8 125.8 L421.4 125.3 L423.1 125.2 L424.8 125.5 L426.5 126.2 L428.2 127.2 L429.9 128.6 L431.6 130.3 L433.2 132.1 L434.9 134.1 L436.6 136.0 L438.3 138.0 L440.0 139.7 L441.6 141.3 L443.3 142.5 L445.0 143.4 L446.7 143.9 L448.4 143.9 L450.1 143.5 L451.8 142.7 L453.4 141.5 L455.1 139.9 L456.8 138.1 L458.5 136.1 L460.2 133.9 L461.9 131.8 L463.5 129.7 L465.2 127.9 L466.9 126.2 L468.6 124.9 L470.3 124.0 L471.9 123.6 L473.6 123.5 L475.3 124.0 L477.0 124.9 L478.7 126.2 L480.4 127.8 L482.1 129.7 L483.7 131.8 L485.4 134.1 L487.1 136.3 L488.8 138.4 L490.5 140.3 L492.1 142.0 L493.8 143.3 L495.5 144.2 L497.2 144.7 L498.9 144.7 L500.6 144.2 L502.2 143.3 L503.9 142.0 L505.6 140.3 L507.3 138.3 L509.0 136.2 L510.7 133.9 L512.4 131.7 L514.0 129.5 L515.7 127.6 L517.4 125.9 L519.1 124.6 L520.8 123.6 L522.5 123.2 L524.1 123.2 L525.8 123.7 L527.5 124.6 L529.2 125.9 L530.9 127.6 L532.5 129.6 L534.2 131.8 L535.9 134.1 L537.6 136.3 L539.3 138.5 L541.0 140.5 L542.6 142.2 L544.3 143.5 L546.0 144.4 L547.7 144.9 L549.4 144.9 L551.1 144.4 L552.8 143.5 L554.4 142.1 L556.1 140.4 L557.8 138.4 L559.5 136.2 L561.2 133.9 L562.9 131.7 L564.5 129.5 L566.2 127.5 L567.9 125.8 L569.6 124.5 L571.3 123.5 L573.0 123.1 L574.6 123.1 L576.3 123.6 L578.0 124.5" fill="none" stroke="#1B365D" stroke-width="2" stroke-opacity="1"/>
+<text x="302" y="166" text-anchor="middle" fill="#1B365D" style="font-size:20px">+</text><text x="334" y="166" text-anchor="middle" fill="#1B365D" style="font-size:20px">…</text>
+<text x="441.0" y="202" text-anchor="middle" fill="#4d4c48" style="font-size:16px">n stored solutions, n ≈ 10</text>
+<text x="441.0" y="226" text-anchor="middle" fill="#4d4c48" style="font-size:16px">new potential: only the weights <tspan font-style="italic">c</tspan></text>
 </svg>
-
-<div class="text-sm" style="line-height: 1.6;">
-
-- Established for scattering, optical models and coupled channels. Gaussian-process emulators have also enabled Bayesian breakup analysis.
-
-</div>
-
-<div class="fig-caption">
-Frame et al., PRL 121, 032501 (2018). Melendez et al., PLB 821, 136608 (2021). Duguet et al., Rev. Mod. Phys. 96, 031002 (2024). Odell et al., PRC 109, 044612 (2024). Catacora-Rios et al., PRC 113, 044623 (2026). Sürer et al., PRC 106, 024607 (2022).
-</div>
 
 </div>
 <div class="col-span-6">
 
-<div class="box-idea">
-
-<b>What it buys</b>
-
-<div class="mt-1 text-sm">Milliseconds per evaluation instead of minutes, so a sampler can afford 10<sup>5</sup> to 10<sup>6</sup> of them.</div>
-
+<div class="why-card">
+<svg viewBox="0 0 40 40" class="why-ic"><circle cx="20" cy="20" r="17" fill="#E4ECF5" stroke="#1B365D" stroke-width="2"/><path d="M22 7 L12 22 H19 L17 33 L28 17 H21 Z" fill="#1B365D"/></svg>
+<div><b>What it buys.</b> Each evaluation becomes orders of magnitude cheaper, so a sampler can afford 10<sup>5</sup> to 10<sup>6</sup> of them.</div>
 </div>
 
-<div class="box-gap mt-3">
+<div class="why-card">
+<svg viewBox="0 0 40 40" class="why-ic"><circle cx="20" cy="20" r="17" fill="#E4ECF5" stroke="#1B365D" stroke-width="2"/><path d="M12 20.5 L18 26.5 L29 14" fill="none" stroke="#1B365D" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<div><b>Where it is established.</b> Scattering, optical models and coupled channels. Gaussian-process emulators have also enabled a Bayesian breakup analysis.</div>
+</div>
 
-<b>What the fits of slide 7 do not use</b>
+<style>
+.why-card { display: flex; gap: 14px; align-items: center; margin-top: 14px; padding: 14px 16px; background: #fff; border: 1px solid #c9d3df; border-left: 4px solid #1B365D; border-radius: 10px; box-shadow: 0 2px 5px rgba(27,54,93,0.12); font-size: 16px; line-height: 1.45; color: #2b2a27; }
+.why-card b { color: #1B365D; }
+.why-ic { width: 40px; height: 40px; flex: none; }
+</style>
 
-<div class="mt-1 text-sm">The slope: which way to change the potential to fit better.</div>
-
+<div class="fig-caption" style="margin-top: 18px;">
+Frame et al., PRL 121, 032501 (2018). Melendez et al., PLB 821, 136608 (2021). Duguet et al., Rev. Mod. Phys. 96, 031002 (2024). Odell et al., PRC 109, 044612 (2024). Catacora-Rios et al., PRC 113, 044623 (2026). Sürer et al., PRC 106, 024607 (2022).
 </div>
 
 </div>
 </div>
 
 <div class="takeaway">
-An emulator makes <b>each solve cheap</b>; the fits of slide 7 use its value, <b>not its slope</b>.
+An emulator makes <b>each solve cheap</b>, so the random walk of slide 8 can afford <b>many more steps</b>.
 </div>
 
 <!--
-Central message: emulators solved the cost of one evaluation. Gradient samplers exist where
+Central message: emulators solved the cost of one evaluation. Do not raise the slope on this
+slide (slides 8 and 13 own it); the gradient material below is for questions only. Gradient samplers exist where
 the structure allows it (chiral EFT; a differentiable photonuclear emulator with NUTS, Walton,
 Khatiwada and Kawano, PRC 114, 034621 (2026)), but the optical-potential calibrations
 cited here are gradient-free. Non-affine emulators exist (Odell et al. 2024, ROSE, single-channel optical
@@ -702,13 +748,208 @@ Talking points:
 
 Timing target: 1 minute 15 seconds.
 
-Slide 13's takeaway names "non-affine emulators": Odell et al. 2024 (ROSE, single-channel) and
-Catacora-Rios et al. 2026 (coupled channels), both cited here. Point back to them there.
+The next slide (10) explains affine versus non-affine and names the non-affine emulators: Odell
+et al. 2024 (ROSE, single-channel) and Catacora-Rios et al. 2026 (coupled channels).
 
 If asked where gradients are already used: chiral NN interactions sampled with HMC
 (Svensson et al. 2022-2024; couplings multiply fixed operators, so emulator derivatives are
 analytic, Melendez et al. 2021) and a photonuclear emulator with NUTS (Walton et al., PRC 114,
 034621 (2026)).
+
+Transition: why is the emulator cheap? Because of how the parameters enter.
+-->
+
+---
+
+<div class="act-label">II · How it is done now</div>
+
+# An emulator is cheapest when the parameters just multiply
+
+<div class="mt-3">
+
+<svg viewBox="0 0 940 322" style="width: 100%; height: 19rem;" font-family="Newsreader, Georgia, serif">
+<defs><filter id="sh10" x="-5%" y="-5%" width="110%" height="115%"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#1B365D" flood-opacity="0.13"/></filter><marker id="a10r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b53333"/></marker></defs>
+<g filter="url(#sh10)"><rect x="4" y="4" width="458" height="314" rx="12" fill="#fff" stroke="#c9d3df"/></g>
+<path d="M4 46 V16 a12 12 0 0 1 12 -12 H450 a12 12 0 0 1 12 12 V46 Z" fill="#1B365D"/>
+<text x="233.0" y="32" text-anchor="middle" fill="#fff" style="font-size:21px">affine: depth  V  only multiplies</text>
+<text x="30" y="126" fill="#1B365D" font-style="italic" style="font-size:26px">U</text><text x="48" y="126" fill="#1B365D" style="font-size:26px">(<tspan font-style="italic">r</tspan>) =</text>
+<rect x="116" y="98" width="40" height="40" rx="20" fill="#E4ECF5" stroke="#1B365D" stroke-width="1.5"/><text x="136" y="126" text-anchor="middle" fill="#1B365D" font-style="italic" style="font-size:24px">V</text>
+<text x="172" y="126" text-anchor="middle" fill="#4d4c48" style="font-size:24px">×</text>
+<rect x="192" y="74" width="240" height="88" rx="8" fill="#FBFAF6" stroke="#1B365D" stroke-width="1.5" stroke-dasharray="none"/>
+<line x1="206" y1="90" x2="420" y2="90" stroke="#b9c2cc" stroke-width="1"/>
+<path d="M206.0 152.0 L207.8 152.0 L209.6 152.0 L211.3 152.0 L213.1 152.0 L214.9 152.0 L216.7 152.0 L218.5 152.0 L220.3 152.0 L222.1 151.9 L223.8 151.9 L225.6 151.9 L227.4 151.9 L229.2 151.9 L231.0 151.9 L232.8 151.9 L234.5 151.9 L236.3 151.8 L238.1 151.8 L239.9 151.8 L241.7 151.8 L243.4 151.7 L245.2 151.7 L247.0 151.6 L248.8 151.6 L250.6 151.5 L252.4 151.5 L254.2 151.4 L255.9 151.3 L257.7 151.2 L259.5 151.1 L261.3 150.9 L263.1 150.8 L264.9 150.6 L266.6 150.4 L268.4 150.1 L270.2 149.9 L272.0 149.6 L273.8 149.2 L275.6 148.8 L277.3 148.4 L279.1 147.9 L280.9 147.3 L282.7 146.7 L284.5 145.9 L286.2 145.1 L288.0 144.2 L289.8 143.2 L291.6 142.2 L293.4 140.9 L295.2 139.6 L296.9 138.2 L298.7 136.6 L300.5 135.0 L302.3 133.2 L304.1 131.4 L305.9 129.4 L307.6 127.4 L309.4 125.3 L311.2 123.1 L313.0 121.0 L314.8 118.9 L316.6 116.7 L318.4 114.6 L320.1 112.6 L321.9 110.6 L323.7 108.8 L325.5 107.0 L327.3 105.4 L329.1 103.8 L330.8 102.4 L332.6 101.1 L334.4 99.8 L336.2 98.8 L338.0 97.8 L339.8 96.9 L341.5 96.1 L343.3 95.3 L345.1 94.7 L346.9 94.1 L348.7 93.6 L350.4 93.2 L352.2 92.8 L354.0 92.4 L355.8 92.1 L357.6 91.9 L359.4 91.6 L361.1 91.4 L362.9 91.2 L364.7 91.1 L366.5 90.9 L368.3 90.8 L370.1 90.7 L371.9 90.6 L373.6 90.5 L375.4 90.5 L377.2 90.4 L379.0 90.4 L380.8 90.3 L382.6 90.3 L384.3 90.2 L386.1 90.2 L387.9 90.2 L389.7 90.2 L391.5 90.1 L393.2 90.1 L395.0 90.1 L396.8 90.1 L398.6 90.1 L400.4 90.1 L402.2 90.1 L403.9 90.1 L405.7 90.0 L407.5 90.0 L409.3 90.0 L411.1 90.0 L412.9 90.0 L414.6 90.0 L416.4 90.0 L418.2 90.0 L420.0 90.0" fill="none" stroke="#1B365D" stroke-width="2.4"/>
+<text x="312.0" y="186" text-anchor="middle" fill="#1B365D" style="font-size:18px">one fixed shape</text>
+<line x1="28" y1="196" x2="438" y2="196" stroke="#c9d3df" stroke-dasharray="3 4"/>
+<rect x="44" y="222" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.25"/>
+<rect x="59" y="222" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.43"/>
+<rect x="74" y="222" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.61"/>
+<rect x="89" y="222" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.25"/>
+<rect x="44" y="237" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.43"/>
+<rect x="59" y="237" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.61"/>
+<rect x="74" y="237" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.25"/>
+<rect x="89" y="237" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.43"/>
+<rect x="44" y="252" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.61"/>
+<rect x="59" y="252" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.25"/>
+<rect x="74" y="252" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.43"/>
+<rect x="89" y="252" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.61"/>
+<rect x="44" y="267" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.25"/>
+<rect x="59" y="267" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.43"/>
+<rect x="74" y="267" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.61"/>
+<rect x="89" y="267" width="13" height="13" rx="2" fill="#1B365D" fill-opacity="0.25"/>
+<text x="74" y="306" text-anchor="middle" fill="#4d4c48" style="font-size:15px">n × n</text>
+<text x="134" y="242" fill="#2b2a27" style="font-size:19px">project the shape on the stored</text>
+<text x="134" y="266" fill="#2b2a27" style="font-size:19px">solutions <tspan font-weight="700" fill="#1B365D">once</tspan>, offline</text>
+<text x="134" y="294" fill="#1B365D" style="font-size:19px">new V: rescale a small matrix</text>
+<g filter="url(#sh10)"><rect x="478" y="4" width="458" height="314" rx="12" fill="#fff" stroke="#c9d3df"/></g>
+<path d="M478 46 V16 a12 12 0 0 1 12 -12 H924 a12 12 0 0 1 12 12 V46 Z" fill="#b53333"/>
+<text x="707.0" y="32" text-anchor="middle" fill="#fff" style="font-size:21px">non-affine: radius  R,  diffuseness  a  reshape</text>
+<text x="504" y="126" fill="#1B365D" font-style="italic" style="font-size:26px">U</text><text x="522" y="126" fill="#1B365D" style="font-size:26px">(<tspan font-style="italic">r</tspan>) =</text>
+<rect x="590" y="98" width="40" height="40" rx="20" fill="#E4ECF5" stroke="#1B365D" stroke-width="1.5"/><text x="610" y="126" text-anchor="middle" fill="#1B365D" font-style="italic" style="font-size:24px">V</text>
+<text x="646" y="126" text-anchor="middle" fill="#4d4c48" style="font-size:24px">×</text>
+<rect x="666" y="74" width="240" height="88" rx="8" fill="#FBFAF6" stroke="#b53333" stroke-width="1.5" stroke-dasharray="5 4"/>
+<line x1="680" y1="90" x2="894" y2="90" stroke="#b9c2cc" stroke-width="1"/>
+<path d="M680.0 151.9 L681.8 151.9 L683.6 151.9 L685.4 151.9 L687.1 151.9 L688.9 151.8 L690.7 151.8 L692.5 151.8 L694.3 151.8 L696.0 151.7 L697.8 151.7 L699.6 151.6 L701.4 151.6 L703.2 151.5 L705.0 151.5 L706.8 151.4 L708.5 151.3 L710.3 151.2 L712.1 151.1 L713.9 150.9 L715.7 150.8 L717.5 150.6 L719.2 150.4 L721.0 150.1 L722.8 149.9 L724.6 149.6 L726.4 149.2 L728.1 148.8 L729.9 148.4 L731.7 147.9 L733.5 147.3 L735.3 146.7 L737.1 145.9 L738.9 145.1 L740.6 144.2 L742.4 143.2 L744.2 142.2 L746.0 140.9 L747.8 139.6 L749.5 138.2 L751.3 136.6 L753.1 135.0 L754.9 133.2 L756.7 131.4 L758.5 129.4 L760.2 127.4 L762.0 125.3 L763.8 123.1 L765.6 121.0 L767.4 118.9 L769.2 116.7 L771.0 114.6 L772.7 112.6 L774.5 110.6 L776.3 108.8 L778.1 107.0 L779.9 105.4 L781.6 103.8 L783.4 102.4 L785.2 101.1 L787.0 99.8 L788.8 98.8 L790.6 97.8 L792.4 96.9 L794.1 96.1 L795.9 95.3 L797.7 94.7 L799.5 94.1 L801.3 93.6 L803.0 93.2 L804.8 92.8 L806.6 92.4 L808.4 92.1 L810.2 91.9 L812.0 91.6 L813.8 91.4 L815.5 91.2 L817.3 91.1 L819.1 90.9 L820.9 90.8 L822.7 90.7 L824.5 90.6 L826.2 90.5 L828.0 90.5 L829.8 90.4 L831.6 90.4 L833.4 90.3 L835.1 90.3 L836.9 90.2 L838.7 90.2 L840.5 90.2 L842.3 90.2 L844.1 90.1 L845.9 90.1 L847.6 90.1 L849.4 90.1 L851.2 90.1 L853.0 90.1 L854.8 90.1 L856.5 90.1 L858.3 90.0 L860.1 90.0 L861.9 90.0 L863.7 90.0 L865.5 90.0 L867.2 90.0 L869.0 90.0 L870.8 90.0 L872.6 90.0 L874.4 90.0 L876.2 90.0 L878.0 90.0 L879.7 90.0 L881.5 90.0 L883.3 90.0 L885.1 90.0 L886.9 90.0 L888.6 90.0 L890.4 90.0 L892.2 90.0 L894.0 90.0" fill="none" stroke="#E2A39D" stroke-width="2.4"/>
+<path d="M680.0 152.0 L681.8 152.0 L683.6 152.0 L685.4 152.0 L687.1 152.0 L688.9 152.0 L690.7 152.0 L692.5 152.0 L694.3 152.0 L696.0 151.9 L697.8 151.9 L699.6 151.9 L701.4 151.9 L703.2 151.9 L705.0 151.9 L706.8 151.9 L708.5 151.9 L710.3 151.8 L712.1 151.8 L713.9 151.8 L715.7 151.8 L717.5 151.7 L719.2 151.7 L721.0 151.6 L722.8 151.6 L724.6 151.5 L726.4 151.5 L728.1 151.4 L729.9 151.3 L731.7 151.2 L733.5 151.1 L735.3 150.9 L737.1 150.8 L738.9 150.6 L740.6 150.4 L742.4 150.1 L744.2 149.9 L746.0 149.6 L747.8 149.2 L749.5 148.8 L751.3 148.4 L753.1 147.9 L754.9 147.3 L756.7 146.7 L758.5 145.9 L760.2 145.1 L762.0 144.2 L763.8 143.2 L765.6 142.2 L767.4 140.9 L769.2 139.6 L771.0 138.2 L772.7 136.6 L774.5 135.0 L776.3 133.2 L778.1 131.4 L779.9 129.4 L781.6 127.4 L783.4 125.3 L785.2 123.1 L787.0 121.0 L788.8 118.9 L790.6 116.7 L792.4 114.6 L794.1 112.6 L795.9 110.6 L797.7 108.8 L799.5 107.0 L801.3 105.4 L803.0 103.8 L804.8 102.4 L806.6 101.1 L808.4 99.8 L810.2 98.8 L812.0 97.8 L813.8 96.9 L815.5 96.1 L817.3 95.3 L819.1 94.7 L820.9 94.1 L822.7 93.6 L824.5 93.2 L826.2 92.8 L828.0 92.4 L829.8 92.1 L831.6 91.9 L833.4 91.6 L835.1 91.4 L836.9 91.2 L838.7 91.1 L840.5 90.9 L842.3 90.8 L844.1 90.7 L845.9 90.6 L847.6 90.5 L849.4 90.5 L851.2 90.4 L853.0 90.4 L854.8 90.3 L856.5 90.3 L858.3 90.2 L860.1 90.2 L861.9 90.2 L863.7 90.2 L865.5 90.1 L867.2 90.1 L869.0 90.1 L870.8 90.1 L872.6 90.1 L874.4 90.1 L876.2 90.1 L878.0 90.1 L879.7 90.0 L881.5 90.0 L883.3 90.0 L885.1 90.0 L886.9 90.0 L888.6 90.0 L890.4 90.0 L892.2 90.0 L894.0 90.0" fill="none" stroke="#C96A61" stroke-width="2.4"/>
+<path d="M680.0 152.0 L681.8 152.0 L683.6 152.0 L685.4 152.0 L687.1 152.0 L688.9 152.0 L690.7 152.0 L692.5 152.0 L694.3 152.0 L696.0 152.0 L697.8 152.0 L699.6 152.0 L701.4 152.0 L703.2 152.0 L705.0 152.0 L706.8 152.0 L708.5 152.0 L710.3 152.0 L712.1 152.0 L713.9 152.0 L715.7 152.0 L717.5 151.9 L719.2 151.9 L721.0 151.9 L722.8 151.9 L724.6 151.9 L726.4 151.9 L728.1 151.9 L729.9 151.9 L731.7 151.8 L733.5 151.8 L735.3 151.8 L737.1 151.8 L738.9 151.7 L740.6 151.7 L742.4 151.6 L744.2 151.6 L746.0 151.5 L747.8 151.5 L749.5 151.4 L751.3 151.3 L753.1 151.2 L754.9 151.1 L756.7 150.9 L758.5 150.8 L760.2 150.6 L762.0 150.4 L763.8 150.1 L765.6 149.9 L767.4 149.6 L769.2 149.2 L771.0 148.8 L772.7 148.4 L774.5 147.9 L776.3 147.3 L778.1 146.7 L779.9 145.9 L781.6 145.1 L783.4 144.2 L785.2 143.2 L787.0 142.2 L788.8 140.9 L790.6 139.6 L792.4 138.2 L794.1 136.6 L795.9 135.0 L797.7 133.2 L799.5 131.4 L801.3 129.4 L803.0 127.4 L804.8 125.3 L806.6 123.1 L808.4 121.0 L810.2 118.9 L812.0 116.7 L813.8 114.6 L815.5 112.6 L817.3 110.6 L819.1 108.8 L820.9 107.0 L822.7 105.4 L824.5 103.8 L826.2 102.4 L828.0 101.1 L829.8 99.8 L831.6 98.8 L833.4 97.8 L835.1 96.9 L836.9 96.1 L838.7 95.3 L840.5 94.7 L842.3 94.1 L844.1 93.6 L845.9 93.2 L847.6 92.8 L849.4 92.4 L851.2 92.1 L853.0 91.9 L854.8 91.6 L856.5 91.4 L858.3 91.2 L860.1 91.1 L861.9 90.9 L863.7 90.8 L865.5 90.7 L867.2 90.6 L869.0 90.5 L870.8 90.5 L872.6 90.4 L874.4 90.4 L876.2 90.3 L878.0 90.3 L879.7 90.2 L881.5 90.2 L883.3 90.2 L885.1 90.2 L886.9 90.1 L888.6 90.1 L890.4 90.1 L892.2 90.1 L894.0 90.1" fill="none" stroke="#b53333" stroke-width="2.4"/>
+<text x="786.0" y="186" text-anchor="middle" fill="#b53333" style="font-size:18px">shape changes with R and a</text>
+<line x1="502" y1="196" x2="912" y2="196" stroke="#c9d3df" stroke-dasharray="3 4"/>
+<circle cx="508.0" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="513.2" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="518.4" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="523.6" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="528.8" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="534.0" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="539.2" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="544.4" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="549.6" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="554.8" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="560.0" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="565.2" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="570.4" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="575.6" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="580.8" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="586.0" cy="220" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="508.0" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="513.2" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="518.4" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="523.6" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="528.8" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="534.0" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="539.2" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="544.4" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="549.6" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="554.8" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="560.0" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="565.2" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="570.4" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="575.6" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="580.8" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="586.0" cy="229" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="508.0" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="513.2" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="518.4" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="523.6" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="528.8" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="534.0" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="539.2" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="544.4" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="549.6" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="554.8" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="560.0" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="565.2" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="570.4" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="575.6" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="580.8" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="586.0" cy="238" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="508.0" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="513.2" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="518.4" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="523.6" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="528.8" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="534.0" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="539.2" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="544.4" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="549.6" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="554.8" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="560.0" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="565.2" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="570.4" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="575.6" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="580.8" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="586.0" cy="247" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="508.0" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="513.2" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="518.4" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="523.6" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="528.8" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="534.0" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="539.2" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="544.4" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="549.6" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="554.8" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="560.0" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="565.2" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="570.4" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="575.6" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="580.8" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="586.0" cy="256" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="508.0" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="513.2" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="518.4" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="523.6" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="528.8" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="534.0" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="539.2" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="544.4" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="549.6" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="554.8" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="560.0" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="565.2" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="570.4" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="575.6" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="580.8" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<circle cx="586.0" cy="265" r="1.7" fill="#b53333" fill-opacity="0.75"/>
+<text x="550" y="304" text-anchor="middle" fill="#4d4c48" style="font-size:15px">N mesh points</text>
+<text x="616" y="242" fill="#2b2a27" style="font-size:19px">every new R or a: rebuild on</text>
+<text x="616" y="266" fill="#2b2a27" style="font-size:19px">the full mesh, project again</text>
+<text x="616" y="294" fill="#b53333" style="font-size:19px">the <tspan font-weight="700">main online cost</tspan></text>
+</svg>
+
+</div>
+
+<div class="fig-caption">My CDCC emulator frees all 18 Woods-Saxon parameters this way: ≈220× faster than full CDCC, projection its main online cost (<b>Jin Lei</b>, PRC 113, 044610 (2026)). Empirical interpolation moves it offline: Odell et al., PRC 109, 044612 (2024); Catacora-Rios et al., PRC 113, 044623 (2026).</div>
+
+<div class="takeaway">
+Depth only <b>rescales</b> the potential; radius and diffuseness <b>reshape</b> it.
+</div>
+
+<!--
+Central message: why the emulator of the previous slide is cheap, and when it stops being cheap.
+Say it with the two pictures before the formulas.
+
+Talking points:
+- Left: change the depth V and the curve only gets deeper; the shape is the same. In general,
+  if the Hamiltonian is a fixed piece plus parameters times fixed pieces (affine), each piece is
+  projected onto the n stored solutions once, offline. A new parameter set then only adds small
+  n by n matrices with new weights: the cost no longer depends on the mesh size N. The chiral
+  low-energy constants are the textbook case (Melendez et al. 2021).
+- Right: change R and the surface moves; a changes how sharp it is. R and a sit inside the
+  exponential, so there is no fixed piece to precompute: every new R or a means building the
+  operator on all N mesh points and projecting it again. The saving shrinks but does not vanish:
+  my CDCC emulator (PRC 113, 044610) frees all 18 Woods-Saxon parameters this way and is still
+  about 220 times faster than full CDCC, but the rebuild-and-project step is its dominant online
+  cost.
+- An optical potential has both kinds: depths are affine, geometry is not. A calibration that
+  frees only depths is cheap; one that frees geometry is not, unless the emulator handles it.
+- Non-affine emulators exist: empirical interpolation (Odell et al. 2024, ROSE, single
+  channel; Catacora-Rios et al. 2026, coupled channels). DREAM's own answer is on slide 15.
+- If asked about derivatives: in the affine case the derivative with respect to theta_k is the
+  fixed piece H_k itself, which is why HMC is routine for chiral interactions. Do not raise it
+  unprompted; slides 13 and 15 own the slope.
+- The curves are analytic Woods-Saxon shapes (left R = 5 fm; right R = 4, 5, 6 fm; a = 0.6 fm),
+  not a fitted potential. The small matrix and the dot grid are icons, not data.
+
+Timing target: 1 minute.
 
 Transition: now move from one channel to coupled channels, and the recipe stops working.
 Three difficulties.
@@ -741,7 +982,7 @@ coupled channels.
 Talking points:
 - One converged CDCC solve of this model space: about 29 minutes on 16 cores, roughly 7.7
   core-hours per likelihood evaluation.
-- 1e5 is a floor, not an estimate: our own gradient-free ensemble run on the emulator used
+- 1e5 is a floor, not an estimate: my own gradient-free ensemble run on the emulator used
   6.4e6 calls, and NUTS 6e5 gradients. The real gap is larger than the slide says.
 - A gradient-free campaign is of order 1e5 evaluations; the product is of order 1e6
   core-hours. This is the paper's own cost accounting.
@@ -795,7 +1036,7 @@ Talking points:
   surface absorption geometry and the real diffuseness; they leave the volume absorption, the
   imaginary geometry and the imaginary spin-orbit nearly free.
 - One spoken bridge: the same thing shows up in the real calibration as the p-n ridge on
-  slide 20.
+  slide 21.
 - Say "a different 13": these are 13 single-channel potential parameters, not DREAM's 13
   sampled coordinates.
 - The sparse-data line (computed for this talk: figures/make_potential_information.py --count,
@@ -820,7 +1061,7 @@ class: scene-slide
 
 # Difficulty 2, as a shape: a curved ridge
 
-<div class="subtitle">Only a narrow, curved band of parameter sets fits the data. Schematic: random steps mostly fall off it; moves guided by the slope travel far and are still accepted. Measured comparison: slide 16.</div>
+<div class="subtitle">Only a narrow, curved band of parameter sets fits the data. Schematic: random steps mostly fall off it; moves guided by the slope travel far and are still accepted. Measured comparison: slide 17.</div>
 
 <HmcScene :step="$clicks" :height="322" />
 
@@ -883,14 +1124,14 @@ solver. DREAM is built to meet exactly these.
 | | DREAM's answer |
 |---|---|
 | 1 · expensive solve | build a small model once, from ≈10<sup>3</sup> direct-solve equivalents; milliseconds per evaluation afterwards |
-| 2 · correlated ridge | a sampler that follows the slope (No-U-Turn, a form of Hamiltonian Monte Carlo); the small model returns its own slope exactly, for ≈1.2 extra evaluations; built for many-parameter fits, about parity here (slide 16) |
+| 2 · correlated ridge | a sampler that follows the slope (No-U-Turn, a form of Hamiltonian Monte Carlo); the small model returns its own slope exactly, for ≈1.2 extra evaluations; built for many-parameter fits, about parity here (slide 17) |
 | 3 · geometry reshapes the potential | store the coupling matrices on a grid of radius and diffuseness, compress them, rebuild them for each trial potential |
 | new risk · a wrong emulator fails silently | rerun the full CDCC at points the sampler visits; enlarge the small model when they disagree |
 
 </div>
 
 <div class="fig-caption">
-Builds on Lei, PRC 113, 024614 (2026), the direct solver, and PRC 113, 044610 (2026), the reduced-basis emulator (220× per solve).
+Builds on <b>Jin Lei</b>, PRC 113, 024614 (2026), the direct solver, and PRC 113, 044610 (2026), the reduced-basis emulator (220× per solve).
 </div>
 
 <div class="takeaway">
@@ -923,7 +1164,7 @@ Talking points:
   automatic differentiation returns the exact gradient of the emulated posterior; measured
   cost 7.3 ms against 3.3 ms forward on one A800.
 - The last row is part of the method, not a check added afterwards. Act V shows why.
-- Rows follow the three difficulties in the order of slides 10 to 13; the last row is the risk the
+- Rows follow the three difficulties in the order of slides 11 to 14; the last row is the risk the
   emulator itself brings.
 - The two earlier papers: the exact solver every claim is checked against, and the reduced
   basis that made one solve 220 times cheaper. Neither returned a derivative.
@@ -994,9 +1235,9 @@ Talking points:
 - 6e5 gradient evaluations in the production run: on the direct solver each would be a solve
   plus 12 more for finite differences (the error scale beta enters the likelihood
   analytically, so only the 12 optical coordinates need solves). That is the cost argument,
-  set against slide 10.
+  set against slide 11.
 - Sixteen thousand samples in under an hour on one GPU, and say the qualifier: zero
-  divergent trajectories in this run (it does not prove every region was explored; slide 17 notes).
+  divergent trajectories in this run (it does not prove every region was explored; slide 18 notes).
 - Do not present the speed-up as a single headline ratio. The honest statement is the two
   budgets side by side.
 - Rehearse one sentence for "why differentiate, then?": "In this calibration the emulator is the
@@ -1151,15 +1392,15 @@ Talking points:
 - Explain why silence is the danger. A solver that is wrong usually diverges or returns
   nonsense. An emulator that is wrong returns a slightly wrong smooth curve, and the
   posterior quietly moves.
-- "By your own slide 17, a 0.30 discrepancy aligned with the data could move chi2 by up to
+- "By your own slide 18, a 0.30 discrepancy aligned with the data could move chi2 by up to
   2 sqrt(chi2_data x 0.30), about 7 to 12 here. What does it actually do?" Computed at all 10
   points (figures/curves_gate_v728.npz, assigned errors, beta not applied): emulator minus
   solver chi2 against the data is -1.6 to +3.1, signs mixed (mean +0.6), so about a quarter
   of the bound and no systematic pull towards the data. With beta in the likelihood the effect
-  on log p is smaller still. Before the rebuild (slide 17) it was -28, one-signed.
+  on log p is smaller still. Before the rebuild (slide 18) it was -28, one-signed.
 - If asked about model inadequacy: the error scale beta is sampled jointly and absorbs
   model inadequacy only to the extent that it mimics independent fractional noise; correlated
-  model-space errors are not represented (slide 20 notes).
+  model-space errors are not represented (slide 21 notes).
 - Say that the results after this slide were produced with the rule in place.
 
 Timing target: 1 minute 15 seconds.
@@ -1374,7 +1615,7 @@ Transition: the check passed and the run is the one the paper reports. Read the 
 
 <div class="outlook-grid">
 <div><div class="ui-label">demonstrated</div><h2>One system.<br>One energy.<br>Elastic scattering.</h2><p>d + <sup>58</sup>Ni, with direct-solver checks in the<br>posterior region. Within this spinless,<br>inert-target model, the summed real<br>volume integral is 15% below KD02.</p><p><b>For a new system and energy:</b> ≈10<sup>3</sup> full<br>CDCC solves once, then &lt; 1 h per calibration.</p></div>
-<div><div class="ui-label">what would tighten it: from experiment</div><div class="next-row"><span>01</span><div><b>Elastic where you measure transfer</b><p>Same target, same energy as the (d,p): the posterior then carries into S, and a swing like <sup>48</sup>Ca’s (0.49 vs 0.58) becomes an interval.</p></div></div><div class="next-row"><span>02</span><div><b>Quote every error</b><p>Point-by-point and normalization uncertainties. Here 60 of 64 error bars had to be assigned.</p></div></div><div class="next-row"><span>03</span><div><b>Pin the absorption</b><p>Wide angular range before smaller error bars (slide 11), several energies, σ<sub>R</sub>: absorption is the weak part here.</p></div></div></div>
+<div><div class="ui-label">what would tighten it: from experiment</div><div class="next-row"><span>01</span><div><b>Elastic where you measure transfer</b><p>Same target, same energy as the (d,p): the posterior then carries into S, and a swing like <sup>48</sup>Ca’s (0.49 vs 0.58) becomes an interval.</p></div></div><div class="next-row"><span>02</span><div><b>Quote every error</b><p>Point-by-point and normalization uncertainties. Here 60 of 64 error bars had to be assigned.</p></div></div><div class="next-row"><span>03</span><div><b>Pin the absorption</b><p>Wide angular range before smaller error bars (slide 12), several energies, σ<sub>R</sub>: absorption is the weak part here.</p></div></div></div>
 </div>
 <div class="takeaway">A 151-channel CDCC calibration is now practical. <b>Next: several energies and (d,p) on the same target.</b></div>
 
@@ -1397,7 +1638,7 @@ Talking points:
   the next step, not as a result.
 - Cost line (left): the paper's offline database is roughly 1e3 direct-solve equivalents
   (snapshots about 5e3 core-hours plus operator grids and checks); the basis is per system and
-  energy. "< 1 h" is the sampling on one GPU. Item 03's "angular range" points to slide 11.
+  energy. "< 1 h" is the sampling on one GPU. Item 03's "angular range" points to slide 12.
 - The right column is addressed to the experimentalists in the room; say it as a request.
   Item 01 is the (d,p) step: same target and energy, so the deuteron posterior propagates
   into the transfer calculation. Item 02: EXFOR carried errors for 4 of the 64 points.

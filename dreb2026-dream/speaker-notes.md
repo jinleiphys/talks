@@ -2,7 +2,7 @@
 
 Jin Lei · DREB 2026, Shenzhen, November 2026
 
-Extracted from `slides.md` (22 slides).
+Extracted from `slides.md` (23 slides).
 
 ---
 
@@ -240,8 +240,8 @@ fits the same pattern holds: frequentist 44 to 92 percent, Bayesian 76 to 100 pe
 **Timing target:** 1 minute 30 seconds.
 
 - The takeaway is scoped to King et al.'s comparison: the band from sampled potentials covered better.
-  If asked for the coverage of our own band: the noise-inclusive predictive check has not
-  been computed (slide 19 notes); do not quote a number.
+  If asked for the coverage of my own band: the noise-inclusive predictive check has not
+  been computed (slide 20 notes); do not quote a number.
 
 **Transition:** this lesson is what moved the field to Bayesian optical potentials.
 
@@ -304,7 +304,8 @@ exactly this recipe.
 
 ## 9. Emulators make each solve cheap
 
-**Central message:** emulators solved the cost of one evaluation. Gradient samplers exist where
+**Central message:** emulators solved the cost of one evaluation. Do not raise the slope on this
+slide (slides 8 and 13 own it); the gradient material below is for questions only. Gradient samplers exist where
 the structure allows it (chiral EFT; a differentiable photonuclear emulator with NUTS, Walton,
 Khatiwada and Kawano, PRC 114, 034621 (2026)), but the optical-potential calibrations
 cited here are gradient-free. Non-affine emulators exist (Odell et al. 2024, ROSE, single-channel optical
@@ -330,20 +331,53 @@ by an existing solver without rewriting it, plus direct-solver checks at posteri
 
 **Timing target:** 1 minute 15 seconds.
 
-Slide 13's takeaway names "non-affine emulators": Odell et al. 2024 (ROSE, single-channel) and
-Catacora-Rios et al. 2026 (coupled channels), both cited here. Point back to them there.
+The next slide (10) explains affine versus non-affine and names the non-affine emulators: Odell
+et al. 2024 (ROSE, single-channel) and Catacora-Rios et al. 2026 (coupled channels).
 
 **If asked where gradients are already used:** chiral NN interactions sampled with HMC
 (Svensson et al. 2022-2024; couplings multiply fixed operators, so emulator derivatives are
 analytic, Melendez et al. 2021) and a photonuclear emulator with NUTS (Walton et al., PRC 114,
 034621 (2026)).
 
+**Transition:** why is the emulator cheap? Because of how the parameters enter.
+
+---
+
+## 10. An emulator is cheapest when the parameters just multiply
+
+**Central message:** why the emulator of the previous slide is cheap, and when it stops being cheap.
+Say it with the two pictures before the formulas.
+
+**Talking points:**
+- Left: change the depth V and the curve only gets deeper; the shape is the same. In general,
+  if the Hamiltonian is a fixed piece plus parameters times fixed pieces (affine), each piece is
+  projected onto the n stored solutions once, offline. A new parameter set then only adds small
+  n by n matrices with new weights: the cost no longer depends on the mesh size N. The chiral
+  low-energy constants are the textbook case (Melendez et al. 2021).
+- Right: change R and the surface moves; a changes how sharp it is. R and a sit inside the
+  exponential, so there is no fixed piece to precompute: every new R or a means building the
+  operator on all N mesh points and projecting it again. The saving shrinks but does not vanish:
+  my CDCC emulator (PRC 113, 044610) frees all 18 Woods-Saxon parameters this way and is still
+  about 220 times faster than full CDCC, but the rebuild-and-project step is its dominant online
+  cost.
+- An optical potential has both kinds: depths are affine, geometry is not. A calibration that
+  frees only depths is cheap; one that frees geometry is not, unless the emulator handles it.
+- Non-affine emulators exist: empirical interpolation (Odell et al. 2024, ROSE, single
+  channel; Catacora-Rios et al. 2026, coupled channels). DREAM's own answer is on slide 15.
+- If asked about derivatives: in the affine case the derivative with respect to theta_k is the
+  fixed piece H_k itself, which is why HMC is routine for chiral interactions. Do not raise it
+  unprompted; slides 13 and 15 own the slope.
+- The curves are analytic Woods-Saxon shapes (left R = 5 fm; right R = 4, 5, 6 fm; a = 0.6 fm),
+  not a fitted potential. The small matrix and the dot grid are icons, not data.
+
+**Timing target:** 1 minute.
+
 **Transition:** now move from one channel to coupled channels, and the recipe stops working.
 Three difficulties.
 
 ---
 
-## 10. Difficulty 1: one coupled-channel solve is expensive
+## 11. Difficulty 1: one coupled-channel solve is expensive
 
 **Central message:** the "cheap forward model" of the established recipe does not exist for
 coupled channels.
@@ -351,7 +385,7 @@ coupled channels.
 **Talking points:**
 - One converged CDCC solve of this model space: about 29 minutes on 16 cores, roughly 7.7
   core-hours per likelihood evaluation.
-- 1e5 is a floor, not an estimate: our own gradient-free ensemble run on the emulator used
+- 1e5 is a floor, not an estimate: my own gradient-free ensemble run on the emulator used
   6.4e6 calls, and NUTS 6e5 gradients. The real gap is larger than the slide says.
 - A gradient-free campaign is of order 1e5 evaluations; the product is of order 1e6
   core-hours. This is the paper's own cost accounting.
@@ -364,7 +398,7 @@ coupled channels.
 
 ---
 
-## 11. Difficulty 2: the data constrain combinations, not parameters
+## 12. Difficulty 2: the data constrain combinations, not parameters
 
 **Central message:** the information the data carry about the potential is anisotropic, which is
 the physical reason a posterior over many parameters is a ridge.
@@ -389,7 +423,7 @@ computed for this talk):
   surface absorption geometry and the real diffuseness; they leave the volume absorption, the
   imaginary geometry and the imaginary spin-orbit nearly free.
 - One spoken bridge: the same thing shows up in the real calibration as the p-n ridge on
-  slide 20.
+  slide 21.
 - Say "a different 13": these are 13 single-channel potential parameters, not DREAM's 13
   sampled coordinates.
 - The sparse-data line (computed for this talk: figures/make_potential_information.py --count,
@@ -406,7 +440,7 @@ computed for this talk):
 
 ---
 
-## 12. Difficulty 2, as a shape: a curved ridge
+## 13. Difficulty 2, as a shape: a curved ridge
 
 **Central message:** gradients help construct proposals in a correlated parameter space.
 This is a schematic two-parameter density, not the 13-coordinate (18-parameter) posterior of the calculation.
@@ -424,7 +458,7 @@ Do not infer an efficiency ratio from this schematic or from the counters, and d
 
 ---
 
-## 13. Difficulty 3: geometry changes the operator
+## 14. Difficulty 3: geometry changes the operator
 
 **Central message:** optical-model geometry cannot be represented by merely scaling one fixed radial function.
 Click 0: define the Woods–Saxon formula and the reference V = 50 MeV, R = 5 fm, a = 0.6 fm.
@@ -438,7 +472,7 @@ solver. DREAM is built to meet exactly these.
 
 ---
 
-## 14. DREAM: one answer to each difficulty, one check for its risk
+## 15. DREAM: one answer to each difficulty, one check for its risk
 
 **Central message:** DREAM is not a new sampler or a new emulator; it is the combination that
 removes each obstacle of Act III, one row per difficulty.
@@ -465,7 +499,7 @@ removes each obstacle of Act III, one row per difficulty.
   automatic differentiation returns the exact gradient of the emulated posterior; measured
   cost 7.3 ms against 3.3 ms forward on one A800.
 - The last row is part of the method, not a check added afterwards. Act V shows why.
-- Rows follow the three difficulties in the order of slides 10 to 13; the last row is the risk the
+- Rows follow the three difficulties in the order of slides 11 to 14; the last row is the risk the
   emulator itself brings.
 - The two earlier papers: the exact solver every claim is checked against, and the reduced
   basis that made one solve 220 times cheaper. Neither returned a derivative.
@@ -476,7 +510,7 @@ removes each obstacle of Act III, one row per difficulty.
 
 ---
 
-## 15. The construction
+## 16. The construction
 
 **Central message:** show explicitly what is computed offline and what happens at each sampler evaluation.
 Click 0: read the two rows, offline construction and online evaluation.
@@ -490,7 +524,7 @@ No ring, puck, or physical machine is intended. The diagram labels the actual ma
 
 ---
 
-## 16. What it costs, and what it buys
+## 17. What it costs, and what it buys
 
 **Central message:** separate the two budgets. The offline budget is large and finite; the online
 budget is the one that used to be hopeless.
@@ -502,9 +536,9 @@ budget is the one that used to be hopeless.
 - 6e5 gradient evaluations in the production run: on the direct solver each would be a solve
   plus 12 more for finite differences (the error scale beta enters the likelihood
   analytically, so only the 12 optical coordinates need solves). That is the cost argument,
-  set against slide 10.
+  set against slide 11.
 - Sixteen thousand samples in under an hour on one GPU, and say the qualifier: zero
-  divergent trajectories in this run (it does not prove every region was explored; slide 17 notes).
+  divergent trajectories in this run (it does not prove every region was explored; slide 18 notes).
 - Do not present the speed-up as a single headline ratio. The honest statement is the two
   budgets side by side.
 - Rehearse one sentence for "why differentiate, then?": "In this calibration the emulator is the
@@ -526,7 +560,7 @@ careful.
 
 ---
 
-## 17. A smooth emulator error can fake a better fit
+## 18. A smooth emulator error can fake a better fit
 
 **Central message:** this is the methodological slide of the talk. A validation that is
 geometrically comfortable is not a validation.
@@ -583,7 +617,7 @@ production run.
 
 ---
 
-## 18. Verify before reading the posterior
+## 19. Verify before reading the posterior
 
 **Central message:** the verification step is part of the method, not a nicety, and the failure
 mode it prevents is a silent one.
@@ -599,15 +633,15 @@ mode it prevents is a silent one.
 - Explain why silence is the danger. A solver that is wrong usually diverges or returns
   nonsense. An emulator that is wrong returns a slightly wrong smooth curve, and the
   posterior quietly moves.
-- "By your own slide 17, a 0.30 discrepancy aligned with the data could move chi2 by up to
+- "By your own slide 18, a 0.30 discrepancy aligned with the data could move chi2 by up to
   2 sqrt(chi2_data x 0.30), about 7 to 12 here. What does it actually do?" Computed at all 10
   points (figures/curves_gate_v728.npz, assigned errors, beta not applied): emulator minus
   solver chi2 against the data is -1.6 to +3.1, signs mixed (mean +0.6), so about a quarter
   of the bound and no systematic pull towards the data. With beta in the likelihood the effect
-  on log p is smaller still. Before the rebuild (slide 17) it was -28, one-signed.
+  on log p is smaller still. Before the rebuild (slide 18) it was -28, one-signed.
 - If asked about model inadequacy: the error scale beta is sampled jointly and absorbs
   model inadequacy only to the extent that it mimics independent fractional noise; correlated
-  model-space errors are not represented (slide 20 notes).
+  model-space errors are not represented (slide 21 notes).
 - Say that the results after this slide were produced with the rule in place.
 
 **Timing target:** 1 minute 15 seconds.
@@ -616,7 +650,7 @@ mode it prevents is a silent one.
 
 ---
 
-## 19. The posterior in data space
+## 20. The posterior in data space
 
 **Central message:** the posterior is best shown in data space (a postdiction on the fitted data), because that is what it is
 for.
@@ -663,7 +697,7 @@ Figure explanation:
 
 ---
 
-## 20. What the data determine
+## 21. What the data determine
 
 **Central message:** the posterior compresses into two well-determined numbers per target
 nucleon, and everything else is a correlated ridge.
@@ -742,7 +776,7 @@ Figure explanation:
 
 ---
 
-## 21. Limits and outlook
+## 22. Limits and outlook
 
 **Central message:** separate what has been shown from what has not, and give the audience the
 honest next step.
@@ -762,7 +796,7 @@ honest next step.
   the next step, not as a result.
 - Cost line (left): the paper's offline database is roughly 1e3 direct-solve equivalents
   (snapshots about 5e3 core-hours plus operator grids and checks); the basis is per system and
-  energy. "< 1 h" is the sampling on one GPU. Item 03's "angular range" points to slide 11.
+  energy. "< 1 h" is the sampling on one GPU. Item 03's "angular range" points to slide 12.
 - The right column is addressed to the experimentalists in the room; say it as a request.
   Item 01 is the (d,p) step: same target and energy, so the deuteron posterior propagates
   into the transfer calculation. Item 02: EXFOR carried errors for 4 of the 64 points.
@@ -781,7 +815,7 @@ honest next step.
 
 ---
 
-## 22. Thank you
+## 23. Thank you
 
 **Central message:** stop, thank, and leave the contact and the support line on screen.
 
