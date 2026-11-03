@@ -37,8 +37,8 @@ error bar on anything computed with them.
 Talking points:
 - This is a methods talk about how a coupled-channel reaction model gets calibrated,
   and it is deliberately framed as a physics problem rather than a statistics problem.
-- Twenty minutes, one argument: the reaction model in the denominator of every
-  extraction is not determined by the data, full Bayesian calibration is the honest
+- Twenty minutes, one argument: the optical potentials in the denominator of every
+  extraction are not fixed by the elastic data, full Bayesian calibration is the honest
   way to say what the data do determine, and it is now affordable.
 
 Timing target: 20 seconds.
@@ -84,7 +84,7 @@ Pink diamonds: nuclei used to fit the Koning-Delaroche potential. Left: reach of
 </div>
 
 <div class="takeaway">
-An extrapolated potential is only as useful as <b>its error bar</b>.
+The question is not only the best potential, but <b>how wrong it can be</b>.
 </div>
 
 <!--
@@ -198,7 +198,7 @@ Timing target: 1 minute 30 seconds.
 <div class="sf-row" style="border-color: #1b365d;">
 <div class="sf-label">CH89 · across four energies</div>
 <div class="sf-num" style="color: #1b365d;">43% spread</div>
-<div class="sf-note">S of the same level moves with beam energy alone.</div>
+<div class="sf-note">S of one state, <sup>49</sup>Ca g.s., moves with beam energy alone.</div>
 </div>
 
 <div class="sf-row mt-4" style="border-color: #b53333;">
@@ -213,7 +213,7 @@ Timing target: 1 minute 30 seconds.
 </div>
 
 <div class="takeaway mt-3">
-Same data, same level: swapping the potential alone changes S by <b>13 to 57%</b>.
+Same data, same state: swapping the potential alone changes S by <b>13 to 57%</b>.
 </div>
 
 <style>
@@ -333,36 +333,40 @@ Transition: so how has the field answered this? That is the next block.
 
 <div class="act-label">I · Why a Bayesian analysis</div>
 
-# Same elastic data: the Bayesian band covers better
+# The best-fit band holds only 11 of 16 (d,p) points
 
-<div class="grid grid-cols-12 gap-6 mt-1">
-<div class="col-span-6">
-
-<img src="./figures/king2019_48cadp_bands.png" class="kami-img" style="width: 100%;" />
-
-<div class="fig-caption">
-<sup>48</sup>Ca(d,p) at 19.3 MeV, 95% bands from the same data and model. F: frequentist, χ² around the best fit. B: Bayesian posterior. Figure from King et al., PRL 122, 232502 (2019).
+<div class="cov-row">
+<div class="cov-panel">
+<div class="ui-label">the two 95% bands</div>
+<img src="./figures/king2019_48cadp_bands_full.png" style="height: 278px;" />
 </div>
-
-</div>
-<div class="col-span-6">
-
-<div class="ui-label">same elastic data, two ways to build the band</div>
-
-<span class="metric" style="font-size: 32px; margin: 2px 0 6px;">44–92%</span>
-<div class="text-sm">of elastic data inside the nominal 95% frequentist bands (nine data sets); Bayesian: 76–100%. <span class="citation">King et al. 2019</span></div>
-
-<div class="mt-2" style="font-size: 16px;">
-
-<div class="text-sm" style="line-height:1.45;"><b>posterior</b> (potentials allowed) ∝ <b>likelihood</b> (fit to the data) × <b>prior</b> (plausible before) → band on S</div>
-
-</div>
-
+<div class="cov-nums">
+<div class="ui-label">data points inside the 95% band</div>
+<div class="cov-num kF"><span class="n">11</span><span class="of">/ 16</span></div>
+<div class="cov-name">F · χ² best fit</div>
+<div class="cov-num kB" style="margin-top: 22px;"><span class="n">16</span><span class="of">/ 16</span></div>
+<div class="cov-name">B · Bayesian</div>
 </div>
 </div>
+
+<div class="fig-caption" style="margin-top: 6px;">
+<sup>48</sup>Ca(d,p)<sup>49</sup>Ca g.s., 19.3 MeV. Both bands come from potentials fitted to the same nucleon elastic data; the 16 (d,p) points were not fitted, only normalized at the peak. King et al., PRL 122, 232502 (2019), Fig. 3(a,c).
+</div>
+
+<style>
+.cov-row { display: flex; justify-content: center; align-items: flex-start; gap: 72px; margin-top: 0; }
+.cov-panel img { display: block; }
+.cov-nums { padding-top: 0; }
+.cov-num { font-family: Inter, sans-serif; font-weight: 500; letter-spacing: -0.03em; line-height: 1; margin-top: 26px; }
+.cov-num .n { font-size: 64px; }
+.cov-num .of { font-size: 30px; margin-left: 6px; opacity: 0.75; }
+.cov-name { font-family: Inter, sans-serif; font-size: 15px; color: #4d4c48; margin-top: 4px; }
+.kF { color: #1a237e; }
+.kB { color: #e6501b; }
+</style>
 
 <div class="takeaway">
-Here the best-fit band undercovered; the band from <b>sampled potentials</b> did better.
+Same elastic data, same model: <b>the Bayesian band holds all 16</b>.
 </div>
 
 <!--
@@ -375,18 +379,29 @@ Figure explanation (King et al. PRL 2019, Fig. 3a):
 - Same elastic data, same model, same assigned 10% errors; the interval constructions differ,
   and some frequentist parameters had to be fixed. Transfer predictions are normalized at the
   peak.
-- The Bayesian band is wider, especially past 80 degrees. The data stop near 75 degrees, so
-  coverage is a statement about the elastic sets, not about this backward region.
+- The Bayesian band is wider, most of all past 80 degrees, where there are no data (they stop near 75).
+- The (d,p) points were not used in the fit (only the peak normalization), so they are a
+  test set. The figure shows what the two bands look like; the counts on the right come from
+  King et al.'s coverage plot. If asked which points miss: King et al. do not list them, and the five sit
+  within a marker width of the dashed edge, so do not point at any.
+
+Where 11 and 16 come from (only if asked): King et al. Fig. 3(c) plots, for bands of every
+confidence level from 10 to 95 percent, the fraction of the 16 (d,p) points inside. At 95 the
+frequentist band holds 69 percent = 11 of 16 and the Bayesian band 100 percent = 16 of 16 (read
+from the figure and turned into counts with the 16 points of panel (a); the paper prints no
+number). The frequentist points sit below the diagonal at every level, so it is not a 95-percent
+accident. The bands come from the parameter samples alone. On the nine elastic sets used in the
+fits the same pattern holds: frequentist 44 to 92 percent, Bayesian 76 to 100 percent (Table I).
 
 Talking points:
-- Coverage is how King et al. compared them: across nine elastic data sets the nominal-95% frequentist band
-  contained 44 to 92 percent of the data, the Bayesian one 76 to 100 percent (their Table I).
+- King et al. compared the two by counting: how many of the 16 (d,p) points fall inside each
+  95% band. The chi-square best-fit band held 11, the Bayesian band all 16.
 - If asked (no longer on screen): King 2018 shows the same lesson inside the chi-square world: once angle-angle correlations
   are put into the fit, (d,p) band widths at the peak go from 8.3 to 34 percent to 30 to 158
   percent (their Table VI). The naive error bar was far too narrow.
-- Coverage here is the fraction of the fitted data inside the band; even the Bayesian case
-  has one set at 76 percent. Do not claim a posterior is calibrated in general.
-- The formula: prior times likelihood gives the posterior; push it through the reaction
+- Even the Bayesian band holds only 76 percent on one elastic set. Do not claim a posterior
+  is calibrated in general.
+- Only if asked how the Bayesian band is built: prior times likelihood gives the posterior; push it through the reaction
   model to get a band on the calculated cross section, hence on S.
 
 Timing target: 1 minute 30 seconds.
@@ -409,7 +424,7 @@ Transition: this lesson is what moved the field to Bayesian optical potentials.
 
 <div class="timeline text-sm">
 <div><b>2017</b><span>χ² bands for optical-model fits. <i class="citation">Lovell et al., PRC 95</i></span></div>
-<div><b>2018</b><span>Distributions of potentials (Markov-chain sampling) propagated to transfer: 25–100%. <i class="citation">Lovell and Nunes, PRC 97</i></span></div>
+<div><b>2018</b><span>Sampled potentials carried into (d,p): S uncertain by <b style="white-space: nowrap;">±12 to ±50%</b> from the optical potential alone. <i class="citation">Lovell and Nunes, PRC 97</i></span></div>
 <div><b>2019</b><span>Bayesian against frequentist, head to head. <i class="citation">King et al., PRL 122</i></span></div>
 <div><b>2019</b><span>Which measurement reduces the uncertainty. <i class="citation">Catacora-Rios et al., PRC 100</i></span></div>
 <div><b>2023</b><span>Global KD and CH89 with uncertainties (KDUQ, CHUQ). <i class="citation">Pruitt et al., PRC 107</i></span></div>
@@ -440,7 +455,16 @@ the art. Give its history in the right order.
 Talking points:
 - 2017: Lovell et al. was frequentist, chi-square bands, the starting point.
 - 2018: Lovell and Nunes, Bayesian (MCMC) optical-potential posteriors, propagated
-  to transfer; uncertainties of 25 to 100 percent depending on the reaction.
+  to transfer; uncertainties of 25 to 100 percent on the transfer cross section, depending on the reaction
+  (their abstract: "Uncertainties in transfer cross sections can vary significantly (25-100%)
+  depending on the reaction"; arXiv:1801.06096).
+- How the on-screen "±12 to ±50%" is obtained (my conversion, not printed in the paper): their
+  Eq. (12) defines eps95 = (sigma_max - sigma_min)/mean at the peak of the (d,p) angular
+  distribution, i.e. the FULL width of the 95% band. Table III gives eps95 from 20% (90Zr(d,n),
+  ADWA, 5% elastic errors) to 122% (116Sn(d,p), ADWA, 10% errors); the abstract rounds to
+  25-100%. Half of the full width: about +-12 to +-50%. S = sigma_exp/sigma_th uses the peak,
+  so S inherits it. Elastic data errors assumed 10% or 5%; experimental and structure errors
+  are not included.
 - 2019: King et al., the head-to-head of the previous slide; Catacora-Rios et al. asked which
   measurement would shrink the posterior most.
 - 2023: Pruitt, Escher and Rahman put uncertainties on the two global workhorses, KDUQ and
@@ -462,7 +486,7 @@ Transition: how do these analyses actually sample the posterior?
 
 <div class="act-label">II · How it is done now</div>
 
-# The recipe: a cheap model and a gradient-free walk
+# The recipe: a cheap model and a random walk
 
 <div class="grid grid-cols-12 gap-6 mt-2">
 <div class="col-span-7">
@@ -481,7 +505,7 @@ Transition: how do these analyses actually sample the posterior?
     <path d="M142 39 L172 39"/><path d="M314 39 L344 39"/><path d="M486 39 L516 39"/>
     <path d="M588 64 L588 104 L72 104 L72 67"/>
   </g>
-  <text x="330" y="136" font-size="18px" fill="#b53333" text-anchor="middle" font-family="Newsreader, Georgia, serif">repeat until converged; no likelihood gradient</text>
+  <text x="330" y="136" font-size="18px" fill="#b53333" text-anchor="middle" font-family="Newsreader, Georgia, serif">repeat many times; each step is a random guess, it never uses the slope of χ²</text>
 </svg>
 
 <div class="box-evidence mt-3">
@@ -495,23 +519,31 @@ Transition: how do these analyses actually sample the posterior?
 </div>
 <div class="col-span-5">
 
-<div class="ui-label">potential parameters (hyperparameters not counted)</div>
+<div class="ui-label">three published calibrations</div>
 
-| | | |
+<div class="ptab">
+
+| parameters | model | reference |
 |---|---|---|
-| <b>9</b> | one Woods-Saxon set | King 2019 |
+| <b>9</b> | single-system fit | King 2019 |
 | <b>21</b> | ELM, global | Beyer 2026 |
 | <b>46</b> | KDUQ, global | Pruitt 2023 |
 
+</div>
+
+<style>
+.ptab td, .ptab th { white-space: nowrap; }
+</style>
+
 <div class="fig-caption" style="text-align: left;">
-Different models and data sets. Parameter counts are not a performance comparison.
+Optical-potential parameters only (hyperparameters not counted). Different models and data sets; not a performance comparison.
 </div>
 
 </div>
 </div>
 
 <div class="takeaway">
-The proven route: a <b>cheap forward model</b>, sampled <b>without gradients</b>.
+The proven route: a <b>cheap forward model</b>, sampled by <b>random steps</b> that never use the slope of χ².
 </div>
 
 <!--
@@ -520,7 +552,7 @@ exactly this recipe.
 
 Talking points:
 - Propose, solve, compare, accept or reject; every step is one reaction solve, and no step
-  uses a derivative. KDUQ, for example, used the affine-invariant ensemble sampler (emcee)
+  uses the slope of chi-square with respect to the parameters (the likelihood gradient). KDUQ, for example, used the affine-invariant ensemble sampler (emcee)
   for 46 parameters.
 - The parameter column: nine in a single-system Woods-Saxon fit, 21 in ELM, 46 in KDUQ.
 - Why it works: the forward model is a single-channel optical-model solve, which is cheap.
@@ -542,16 +574,25 @@ Transition: the second ingredient the field developed is the emulator.
 
 <div class="ui-label">emulator: a fast stand-in built from full calculations</div>
 
-<svg viewBox="0 0 560 190" style="width: 100%; height: 9.5rem;">
+<svg viewBox="0 0 600 200" style="width: 100%; height: 10rem;">
   <defs><marker id="ar7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1B365D"/></marker></defs>
-  <rect x="10" y="12" width="150" height="150" fill="#E4ECF5" stroke="#1B365D" stroke-width="1.5"/>
-  <text x="85" y="84" font-size="20px" fill="#1B365D" text-anchor="middle" font-family="Newsreader, Georgia, serif">full CDCC</text>
-  <text x="85" y="110" font-size="18px" fill="#66655f" text-anchor="middle" font-family="Newsreader, Georgia, serif">N unknowns</text>
-  <path d="M180 87 L350 87" stroke="#1B365D" stroke-width="2" marker-end="url(#ar7)"/>
-  <text x="265" y="72" font-size="17px" fill="#66655f" text-anchor="middle" font-family="Newsreader, Georgia, serif">keep the n shapes</text>
-  <text x="265" y="114" font-size="17px" fill="#66655f" text-anchor="middle" font-family="Newsreader, Georgia, serif">that matter</text>
-  <rect x="380" y="57" width="60" height="60" fill="#1B365D" opacity="0.85"/>
-  <text x="410" y="145" font-size="18px" fill="#1B365D" text-anchor="middle" font-family="Newsreader, Georgia, serif">small model, n ≪ N</text>
+  <g font-family="Newsreader, Georgia, serif" text-anchor="middle" font-size="20px" fill="#1B365D" font-weight="600">
+    <text x="104" y="24">full solve</text>
+    <text x="430" y="24">emulator</text>
+  </g>
+  <path d="M16.0 86.0 L18.2 85.5 L20.4 84.1 L22.6 82.1 L24.8 79.8 L27.0 77.5 L29.2 75.5 L31.4 74.2 L33.6 73.6 L35.8 73.9 L38.0 75.3 L40.2 77.6 L42.4 80.8 L44.6 84.6 L46.8 88.9 L49.0 93.2 L51.2 97.5 L53.4 101.2 L55.6 104.2 L57.8 106.3 L60.0 107.3 L62.2 107.0 L64.4 105.5 L66.6 102.9 L68.8 99.2 L71.0 94.7 L73.2 89.6 L75.4 84.2 L77.6 78.9 L79.8 73.9 L82.0 69.5 L84.2 66.1 L86.4 63.7 L88.6 62.6 L90.8 62.7 L93.0 64.2 L95.2 66.9 L97.4 70.7 L99.6 75.3 L101.8 80.5 L104.0 86.0 L106.2 91.5 L108.4 96.6 L110.6 101.2 L112.8 104.9 L115.0 107.5 L117.2 108.9 L119.4 109.1 L121.6 107.9 L123.8 105.6 L126.0 102.2 L128.2 97.9 L130.4 93.0 L132.6 87.8 L134.8 82.5 L137.0 77.4 L139.2 72.9 L141.4 69.1 L143.6 66.3 L145.8 64.6 L148.0 64.1 L150.2 64.8 L152.4 66.7 L154.6 69.6 L156.8 73.4 L159.0 77.8 L161.2 82.7 L163.4 87.7 L165.6 92.5 L167.8 96.9 L170.0 100.6 L172.2 103.5 L174.4 105.5 L176.6 106.3 L178.8 106.0 L181.0 104.6 L183.2 102.1 L185.4 98.9 L187.6 94.9 L189.8 90.6 L192.0 86.0" stroke="#1B365D" stroke-width="1.2" fill="none" opacity="0.45"/>
+  <circle cx="16.0" cy="86.0" r="2.3" fill="#1B365D"/><circle cx="21.9" cy="82.8" r="2.3" fill="#1B365D"/><circle cx="27.7" cy="76.8" r="2.3" fill="#1B365D"/><circle cx="33.6" cy="73.6" r="2.3" fill="#1B365D"/><circle cx="39.5" cy="76.7" r="2.3" fill="#1B365D"/><circle cx="45.3" cy="86.0" r="2.3" fill="#1B365D"/><circle cx="51.2" cy="97.5" r="2.3" fill="#1B365D"/><circle cx="57.1" cy="105.7" r="2.3" fill="#1B365D"/><circle cx="62.9" cy="106.6" r="2.3" fill="#1B365D"/><circle cx="68.8" cy="99.2" r="2.3" fill="#1B365D"/><circle cx="74.7" cy="86.0" r="2.3" fill="#1B365D"/><circle cx="80.5" cy="72.3" r="2.3" fill="#1B365D"/><circle cx="86.4" cy="63.7" r="2.3" fill="#1B365D"/><circle cx="92.3" cy="63.6" r="2.3" fill="#1B365D"/><circle cx="98.1" cy="72.1" r="2.3" fill="#1B365D"/><circle cx="104.0" cy="86.0" r="2.3" fill="#1B365D"/><circle cx="109.9" cy="99.8" r="2.3" fill="#1B365D"/><circle cx="115.7" cy="108.1" r="2.3" fill="#1B365D"/><circle cx="121.6" cy="107.9" r="2.3" fill="#1B365D"/><circle cx="127.5" cy="99.4" r="2.3" fill="#1B365D"/><circle cx="133.3" cy="86.0" r="2.3" fill="#1B365D"/><circle cx="139.2" cy="72.9" r="2.3" fill="#1B365D"/><circle cx="145.1" cy="65.1" r="2.3" fill="#1B365D"/><circle cx="150.9" cy="65.3" r="2.3" fill="#1B365D"/><circle cx="156.8" cy="73.4" r="2.3" fill="#1B365D"/><circle cx="162.7" cy="86.0" r="2.3" fill="#1B365D"/><circle cx="168.5" cy="98.2" r="2.3" fill="#1B365D"/><circle cx="174.4" cy="105.5" r="2.3" fill="#1B365D"/><circle cx="180.3" cy="105.1" r="2.3" fill="#1B365D"/><circle cx="186.1" cy="97.6" r="2.3" fill="#1B365D"/><circle cx="192.0" cy="86.0" r="2.3" fill="#1B365D"/>
+  <path d="M210 86 L252 86" stroke="#1B365D" stroke-width="2" marker-end="url(#ar7)"/>
+  <g font-family="Newsreader, Georgia, serif" font-size="21px" fill="#1B365D">
+    <text x="270" y="93" text-anchor="start">c<tspan font-size="14px" dy="5">1</tspan></text><path d="M298.0 86.0 L299.0 84.9 L300.0 83.3 L301.0 81.4 L302.0 79.7 L303.0 78.4 L304.0 77.8 L305.0 77.9 L306.0 78.8 L307.0 80.4 L308.0 82.6 L309.0 85.2 L310.0 87.9 L311.0 90.7 L312.0 93.2 L313.0 95.3 L314.0 96.8 L315.0 97.7 L316.0 97.7 L317.0 97.0 L318.0 95.6 L319.0 93.6 L320.0 91.1 L321.0 88.3 L322.0 85.4 L323.0 82.6 L324.0 80.1 L325.0 77.9 L326.0 76.3 L327.0 75.3 L328.0 75.1 L329.0 75.5 L330.0 76.5 L331.0 78.2 L332.0 80.3 L333.0 82.7 L334.0 85.2 L335.0 87.8 L336.0 90.1 L337.0 92.2 L338.0 93.8" stroke="#1B365D" stroke-width="2" fill="none"/><text x="350" y="93" text-anchor="start">+ c<tspan font-size="14px" dy="5">2</tspan></text><path d="M400.0 86.0 L401.0 84.0 L402.0 82.2 L403.0 81.3 L404.0 81.5 L405.0 83.0 L406.0 85.4 L407.0 88.5 L408.0 91.7 L409.0 94.4 L410.0 96.3 L411.0 96.9 L412.0 96.2 L413.0 94.1 L414.0 91.0 L415.0 87.2 L416.0 83.1 L417.0 79.4 L418.0 76.5 L419.0 74.7 L420.0 74.3 L421.0 75.2 L422.0 77.5 L423.0 80.7 L424.0 84.5 L425.0 88.4 L426.0 92.0 L427.0 94.9 L428.0 96.6 L429.0 97.0 L430.0 96.2 L431.0 94.2 L432.0 91.2 L433.0 87.7 L434.0 84.1 L435.0 80.8 L436.0 78.2 L437.0 76.5 L438.0 76.0 L439.0 76.7 L440.0 78.5" stroke="#1B365D" stroke-width="2" fill="none"/><text x="452" y="93" text-anchor="start">+ c<tspan font-size="14px" dy="5">3</tspan></text><path d="M502.0 86.0 L503.0 84.4 L504.0 84.4 L505.0 86.1 L506.0 89.0 L507.0 92.1 L508.0 94.3 L509.0 94.8 L510.0 93.3 L511.0 89.8 L512.0 85.2 L513.0 80.5 L514.0 76.7 L515.0 74.7 L516.0 75.0 L517.0 77.7 L518.0 82.1 L519.0 87.4 L520.0 92.4 L521.0 96.1 L522.0 97.7 L523.0 96.9 L524.0 93.9 L525.0 89.3 L526.0 84.1 L527.0 79.3 L528.0 76.0 L529.0 74.8 L530.0 75.8 L531.0 78.9 L532.0 83.4 L533.0 88.3 L534.0 92.6 L535.0 95.6 L536.0 96.5 L537.0 95.3 L538.0 92.2 L539.0 88.0 L540.0 83.4 L541.0 79.5 L542.0 77.0" stroke="#1B365D" stroke-width="2" fill="none"/>
+    <text x="554" y="93" text-anchor="start">+ …</text>
+  </g>
+  <g font-family="Newsreader, Georgia, serif" font-size="18px" fill="#66655f" text-anchor="middle">
+    <text x="104" y="156">values at N mesh points</text>
+    <text x="104" y="182">N: thousands</text>
+    <text x="430" y="156">n stored solutions, n ≈ 10</text>
+    <text x="430" y="182">new potential: only the weights c</text>
+  </g>
 </svg>
 
 <div class="text-sm" style="line-height: 1.6;">
@@ -601,6 +642,11 @@ new piece here is the exact gradient of the emulated posterior, built from opera
 by an existing solver without rewriting it, plus direct-solver checks at posterior points.
 
 Talking points:
+- The picture, in words: a full solve gives the wave function at N mesh points (thousands of
+  numbers). The emulator stores n full solutions (about ten) and writes the wave function for a
+  new potential as a weighted sum of them, so only the n weights c are computed. This is the
+  reduced-basis (eigenvector-continuation) type; Gaussian-process emulators interpolate the
+  observable instead.
 - Be fair: eigenvector continuation and reduced bases changed what is affordable; Sürer et
   al. already did a Bayesian breakup analysis with Gaussian-process emulators in 2022.
 - The chiral case is the instructive contrast: low-energy constants multiply fixed
