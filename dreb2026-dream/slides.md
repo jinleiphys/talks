@@ -548,12 +548,9 @@ Transition: how do these analyses actually sample the posterior?
 <text x="330" y="237" text-anchor="middle" fill="#b53333" style="font-size:16.5px">each step is a random guess; it never uses the slope of χ²</text>
 </svg>
 
-<div class="box-evidence" style="margin-top: 4px;">
-
-<b>Why it works</b>
-
-<div class="text-sm">Single-channel optical-model solves are cheap, so many random steps are affordable, even when one likelihood needs many targets and energies.</div>
-
+<div class="why-card">
+<svg viewBox="0 0 40 40" class="why-ic"><circle cx="20" cy="23" r="14" fill="#E4ECF5" stroke="#1B365D" stroke-width="2"/><rect x="16" y="3" width="8" height="4" rx="1.5" fill="#1B365D"/><path d="M20 23 L20 13 M20 23 L27 26" stroke="#1B365D" stroke-width="2.4" stroke-linecap="round"/></svg>
+<div><b>Why it works.</b> Single-channel optical-model solves are cheap, so many random steps are affordable, even when one likelihood needs many targets and energies.</div>
 </div>
 
 </div>
@@ -561,22 +558,29 @@ Transition: how do these analyses actually sample the posterior?
 
 <div class="ui-label">three published calibrations</div>
 
-<div class="ptab">
-
-| parameters | model | reference |
-|---|---|---|
-| <b>9</b> | single-system fit | King 2019 |
-| <b>21</b> | ELM, global | Beyer 2026 |
-| <b>46</b> | KDUQ, global | Pruitt 2023 |
-
+<div class="pbars">
+<div class="pb-row"><div class="pb-lab"><b>King 2019</b><span>single-system fit</span></div><div class="pb-track"><div class="pb-bar" style="width: 15.3%;"></div><span class="pb-n">9</span></div></div>
+<div class="pb-row"><div class="pb-lab"><b>Beyer 2026</b><span>ELM, global</span></div><div class="pb-track"><div class="pb-bar" style="width: 35.6%;"></div><span class="pb-n">21</span></div></div>
+<div class="pb-row"><div class="pb-lab"><b>Pruitt 2023</b><span>KDUQ, global</span></div><div class="pb-track"><div class="pb-bar" style="width: 78.0%;"></div><span class="pb-n">46</span></div></div>
+<div class="pb-axis">optical-potential parameters sampled</div>
 </div>
 
 <style>
-.ptab td, .ptab th { white-space: nowrap; }
+.why-card { display: flex; gap: 14px; align-items: center; margin-top: 6px; padding: 12px 16px; background: #fff; border: 1px solid #c9d3df; border-left: 4px solid #1B365D; border-radius: 10px; box-shadow: 0 2px 5px rgba(27,54,93,0.12); font-size: 15px; line-height: 1.45; color: #2b2a27; }
+.why-card b { color: #1B365D; }
+.why-ic { width: 40px; height: 40px; flex: none; }
+.pbars { margin-top: 10px; }
+.pb-row { margin-bottom: 16px; }
+.pb-lab { font-size: 15px; color: #2b2a27; margin-bottom: 5px; }
+.pb-lab span { color: #6b6a64; margin-left: 8px; }
+.pb-track { display: flex; align-items: center; gap: 10px; }
+.pb-bar { height: 22px; border-radius: 0 6px 6px 0; background: linear-gradient(90deg, #9DB2CB, #1B365D); }
+.pb-n { font-family: Newsreader, Georgia, serif; font-size: 30px; font-weight: 600; color: #1B365D; line-height: 1; }
+.pb-axis { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #6b6a64; border-top: 1px solid #d8d4c8; padding-top: 6px; }
 </style>
 
 <div class="fig-caption" style="text-align: left;">
-Optical-potential parameters only (hyperparameters not counted). Different models and data sets; not a performance comparison.
+Hyperparameters not counted. Different models and data sets; not a performance comparison.
 </div>
 
 </div>
