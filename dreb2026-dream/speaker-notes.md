@@ -639,46 +639,32 @@ mode it prevents is a silent one.
 
 ---
 
-## 18. The posterior in data space
+## 18. Calibration puts the model back in phase with the data
 
-**Central message:** the posterior is best shown in data space (a postdiction on the fitted data), because that is what it is
-for.
+**Central message:** calibrated on this one angular distribution, the model is back in phase with
+the data across the whole angular range; the uncalibrated global potential is not.
 
 Figure explanation:
-- Black points: the elastic angular distribution, with its experimental uncertainties.
-- Green line: the median of the posterior predictive. Green band: its 95 percent credible
-  interval.
-- Dashed pink: the global reference potential the calibration starts from.
-- Read the band width, not the line. Narrow through the forward minima; beyond 150 degrees
-  it widens and misses a few points, and that is where the spinless model is weakest.
+- Black points: the 64 measured cross sections (ratio to Rutherford), with their error bars.
+- Pink dashed: KD02, the global potential the calibration starts from, in the same CDCC model,
+  not refitted. It follows the first few points and drifts out of phase beyond about 40 degrees.
+- Green line: the median of the calibrated predictions. Light green band: at each angle, the
+  central 95 percent of the predictions from the sampled calibrated potentials.
+- The numbers on the right: chi2/N 51.8 for KD02, 1.16 for the calibrated model (computed at
+  the mean potential; the green median curve itself gives 1.10).
 
 **Talking points:**
-- Say what a credible interval is in one clause, because the audience is a reaction audience
-  and not all of them work in Bayesian terms.
-- The interesting feature is the minima. A potential that is slightly wrong misses the
-  minima badly, so a narrow band there is a real statement about how much the data
-  constrain the prediction. Do not say the band is narrow because the model has eighteen
-  parameters; the point is where it is narrow, not that it is.
-- Be descriptive about the dashed curve, not dismissive: it is a global fit to a very large
-  body of data, and it was never fitted to this system at this energy. Numbers if asked:
-  KD02 chi2/N = 51.8 in this CDCC model, the posterior mean 1.16. That is not a test of KD02
-  as a nucleon potential: it is the unrenormalized proton-plus-neutron fold, spinless, failing
-  for this deuteron angular distribution, which is why one calibrates.
-- First experimentalist question, "how did you assign 60 error bars?": absolute errors of
-  0.005, 0.01, 0.02 or 0.05 in sigma/sigma_R, one common value forward, beyond that graded by
-  the size of the ratio so the assignment follows the diffraction pattern: median 13 percent
-  relative. "Did you inflate errors until chi2 = 1?": no. With all errors halved the sampled
-  error scale beta rises to 0.122 +- 0.022 and restores nearly the same total uncertainty:
-  the likelihood itself rejects an assignment tighter than the scatter of the data.
-- If asked for coverage (slide 6 made coverage the referee): the band drawn is the 95 percent
-  credible interval of the model curve, without the measurement noise, so the fraction of
-  points inside it is not the right test. The proper check is a posterior predictive with
-  the beta-inflated noise; it has not been computed for this talk. What exists: chi2/N = 1.16
-  at the posterior mean with the assigned errors alone, and both headline integrals stable
-  under halving or doubling those errors. Offer the predictive check as the obvious next
-  diagnostic; do not quote a coverage number.
-- Do not read the parameter values off this slide. They come next, and they come with a
-  warning.
+- Say what the band is in one clause: take the sampled potentials, compute each one's angular
+  distribution, and at every angle keep the middle 95 percent.
+- Only if asked how the error bars were set: EXFOR quotes 4 of the 64, the rest were assigned
+  (median 13 percent), and halving them does not change the integrals on the next slide.
+- Why the pink ellipse and bar in the absorption panel sit right of the KD02 star (219 against
+  198): the volume absorption depth W_v is only 0.74 MeV in KD02 with a 2 MeV prior width, and
+  a depth cannot be negative, so the prior is truncated at zero and its mean rises to 1.89 MeV.
+  At 8.7 MeV fm^3/nucleon per MeV, p + n, that is +20, the whole offset. The data then pull
+  the absorption back to 204, onto KD02, not onto the prior mean. In the real panel the
+  bounds are five sigma away and the offset is 2.9 (915 against 913), invisible.
+- Do not read the parameter values off this slide. They come next.
 
 **Timing target:** 1 minute 15 seconds.
 
@@ -686,38 +672,42 @@ Figure explanation:
 
 ---
 
-## 19. What the data determine
+## 19. The data move the real strength; the absorption stays at KD02
 
-**Central message:** the posterior compresses into two well-determined numbers per target
-nucleon, and everything else is a correlated ridge.
+**Central message:** one elastic angular distribution moves the real strength of the potential 15
+percent below KD02 and leaves the absorption where KD02 put it, only sharper.
 
 Figure explanation:
-- Panel (a): the real part, proton axis against neutron axis. Contours are the 68 and 95
-  percent posterior regions, the dashed ellipse is the reference prior, the star is the
-  reference value, and the dotted line is a constant total.
-- The posterior has moved off the prior and sits compactly, but its long axis is close to
-  the constant-total direction.
-- Panel (b): the imaginary part. The posterior centre sits on the prior centre; the data
-  narrow the sum threefold but do not shift it.
+- Each panel: proton share on the x axis, neutron share on the y axis, of the volume integral
+  per target nucleon (the strength of the potential summed over space). (a) real part, (b)
+  imaginary part (absorption).
+- Pink dashed ellipse and star: KD02 and its spread, before the data. Green: what the data
+  allow (68 and 95 percent). Dotted line: every split with the same total as KD02.
+- Beside each panel, a small scale of the total: pink bar = before the data (KD02 prior,
+  plus-minus one sigma), green bar = after, dotted mark = KD02. Real: the green bar sits far
+  left of KD02 and is eight times shorter. Absorption: it sits on KD02, three times shorter.
+  The green regions in the panels are not smaller along the dotted line, only across it.
+- (a): the green region lies along a line parallel to the dotted one but below it: same
+  direction, smaller total, 772 against 913. (b): the green region sits on the dotted line,
+  total unchanged, only narrower.
+- The green regions are long along the dotted direction: the data fix the total, not the
+  proton or neutron share. Say this once; do not dwell on it.
 
 **Talking points:**
-- Quote the two numbers with their uncertainties and say what the percent means: the summed
-  real volume integral is determined to 1.7 percent by this single elastic data set, and the
-  imaginary one to 6.9 percent. Say them separately; the real part is the sharp number.
-- The comparison number is the reference: 772 against about 913. Say it as a shift, not as a
-  correction, and remember the scope: one system, one energy. If someone asks whether the
-  shift is the data or the prior pulling, the honest answer is that the prior sits at 915 (KD02 nominal 913) and
-  the data pulled the posterior to 772, and the one-energy comparison to the reference is a
-  statement about this data set, not a verdict on the reference.
-- The anti-correlation is the physics content of panel (a): deuteron elastic sees mainly
-  U_p + U_n, so the sum is fixed and the split is not. Do not call it the Igo ambiguity. The
-  depth-radius (Igo) move is separate: depth sum 94.0 +- 3.3 against KD02 104.8 MeV, with a
-  slightly smaller radius.
-- Panel (b) is the contrast to hold: the imaginary centre did not move (204 against KD02 198),
-  but its width shrank threefold (219 +- 40 -> 204 +- 14); 7 percent against 1.7 percent for
-  the real sum.
-- If asked why panel (a) sits far from the prior along the split direction when the split is
-  not determined: with doubled errors the posterior slides back along the ridge toward the
+- Quote the two numbers with their uncertainties: the real total is determined to 1.7 percent
+  by this single elastic data set, the imaginary one to 7 percent. The real part is the sharp
+  number. Both hold within the Woods-Saxon shape with a 3 percent radius prior; say that
+  condition in words when reading the bottom line.
+- Say the real result as a shift, not as a correction, and remember the scope: one system, one
+  energy. The prior sits at 915 (KD02 nominal 913); the data pulled it to 772.
+- The absorption is the contrast: its centre did not move (204 against KD02 198), its width
+  shrank threefold. For (d,p) this matters, because absorption drove the 48Ca swing of slide 4,
+  and it is the less pinned of the two.
+- Only the totals are results. The proton and neutron shares separately are not determined:
+  deuteron elastic sees mainly U_p + U_n (p-n anti-correlation -0.92), so do not quote a split.
+  Do not call that the Igo ambiguity. The depth-radius (Igo) move is separate: depth sum
+  94.0 +- 3.3 against KD02 104.8 MeV, with a slightly smaller radius.
+- If asked how the proton-neutron split behaves: with doubled errors the posterior slides back along the ridge toward the
   prior centre (V_v^p 34 -> 44, V_v^n 60 -> 46 MeV; J_R^p 282 -> 379, J_R^n 490 -> 398) while
   the sum stays. The location along the ridge depends on the error model and the reaction
   model; only the sum is a result.
@@ -765,38 +755,35 @@ Figure explanation:
 
 ---
 
-## 20. Limits and outlook
+## 20. Shown for one case; your data take it further
 
-**Central message:** separate what has been shown from what has not, and give the audience the
-honest next step.
+**Central message:** what has been shown is one case; the three things the audience's experiments
+can give, and what each buys them.
 
 **Talking points:**
-- Say the scope sentence exactly once, plainly, and do not hedge it further. The audience
-  will respect a stated limit more than a soft claim.
-- The energies item is cheap and true: the machinery is dimension-agnostic.
-- U_p + U_n: in the zero-range adiabatic (Johnson-Soper) entrance channel the deuteron sees
-  the sum of the nucleon potentials at half the deuteron energy, so the combination elastic
-  pins is the one ADWA uses. Finite range and the CDCC continuum make this approximate; say
-  it as the reason the next step is promising, not as a result.
-- The (d,p) item closes the loop with slide 3: there the extracted S moved by 17 percent when
-  the potential was swapped, mostly through the deuteron-channel absorption. Be straight that
-  the absorption is the less-constrained part (7 percent against 1.7, centre not shifted), so
-  the interval on S may stay wide until several energies or breakup data enter. Say it as
-  the next step, not as a result.
-- Cost line (left): the paper's offline database is roughly 1e3 direct-solve equivalents
-  (snapshots about 5e3 core-hours plus operator grids and checks); the basis is per system and
-  energy. "< 1 h" is the sampling on one GPU.
-- The right column is addressed to the experimentalists in the room; say it as a request.
-  Item 01 is the (d,p) step: same target and energy, so the deuteron posterior propagates
-  into the transfer calculation. Item 02: EXFOR carried errors for 4 of the 64 points.
-  Item 03: the imaginary sum is the weak part (7 percent against 1.7, centre not moved), and
-  slide 3 showed the deuteron absorption drove the 17 percent swing in S. A reaction cross
-  section constrains the absorption directly; several energies constrain its energy
-  dependence. Do not promise how much each would shrink the interval; not computed.
+- Read the left lead line once, plainly: one system, one energy, elastic only, in a simple model.
+  Do not hedge it further; a stated limit earns more trust than a soft claim.
+- Cost (left, the two numbers): the offline database is roughly 1e3 direct-solve equivalents
+  (snapshots about 5e3 core-hours plus operator grids and checks), per system and energy;
+  "under an hour" is the sampling on one GPU.
+- First card: same target and energy, so the deuteron posterior goes straight into the transfer
+  calculation. Slide 4: 48Ca S moved 0.49 vs 0.58 (17 percent) when the potential was swapped;
+  with matched elastic data that becomes one value with an error.
+- Second card: EXFOR quoted errors for 4 of the 64 points here; the other 60 had to be assigned.
+  Say it as a fact about the data set, not as a complaint: quoted errors go straight into the
+  likelihood, so the width of the potential is set by the experiment, not by our assignment.
+- Third card: the absorption drove most of that 48Ca swing, and here it is the less pinned part
+  (7 percent against 1.7, centre not moved): "the weak part, which moved S most". Say
+  "constrained", not "S gets tighter by X". σ_R is the total reaction cross section. A reaction cross section constrains it directly;
+  more energies constrain its energy dependence. Do not promise how much each would shrink
+  the interval on S; not computed.
+- U_p + U_n, if asked why elastic helps (d,p): in the zero-range adiabatic (Johnson-Soper)
+  entrance channel the deuteron sees the sum of the nucleon potentials at half the deuteron
+  energy, so the combination elastic pins is the one ADWA uses. Finite range and the CDCC
+  continuum make this approximate.
 - Theory next steps if asked: breakup observables need far higher emulator fidelity than
   elastic, and global or multi-energy fits are where the gradient is expected to pay off
   (not yet measured).
-- End on the closing line without dressing it up. It is the honest state of the field.
 
 **Timing target:** 1 minute 15 seconds.
 
@@ -812,7 +799,7 @@ honest next step.
 - Say the funding number, because the Chinese funding agencies expect it and it is the right
   thing to do.
 - The closing lines are for the experimentalists: their elastic data, with errors quoted,
-  are what this calibration consumes. Read the last line as the one request.
+  are what this calibration consumes; the requests are on the previous slide.
 - Invite the two questions this talk is built to get: what happens at other energies, and
   what happens for breakup.
 
