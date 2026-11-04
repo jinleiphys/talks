@@ -1718,12 +1718,34 @@ Transition: thank you.
 
 # Thank you
 
-<div class="closing-message">Coupled-channel models can now<br>be calibrated on your data,<br>the emulator checked against full CDCC.</div>
-<div class="closing-contact"><b>Jin Lei</b><br>jinl@tongji.edu.cn</div>
+<style>
+.close2 { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr); gap: 34px; align-items: center; margin-top: 6px; }
+h1 { font-size: 60px !important; }
+.close2 .msg { white-space: nowrap; font-family: 'Newsreader', Georgia, serif; font-size: 27px; line-height: 1.22; color: #2b2a27; }
+.close2 .msg span { color: var(--ink-blue, #1B365D); }
+.close2 .rule { width: 48px; height: 2px; background: var(--ink-blue, #1B365D); margin: 30px 0 18px; }
+.close2 .who { font-size: 17px; line-height: 1.6; color: #2b2a27; }
+.close2 .who b { color: var(--ink-blue, #1B365D); font-size: 19px; }
+.close2 .art { position: relative; }
+.close2 .art img { width: 100%; display: block; }
+.close2 .art .cap { text-align: right; margin-bottom: 6px; font-size: 12px; color: var(--stone, #66655f); }
+.close2 .art .cap i { font-style: normal; color: #3F7A4F; font-weight: 600; }
+</style>
+
+<div class="close2">
+<div>
+<div class="msg">Coupled-channel models can now<br>be calibrated on <span>your data</span>,<br>the emulator checked<br>against full CDCC.</div>
+<div class="rule"></div>
+<div class="who"><b>Jin Lei</b><br>jinl@tongji.edu.cn</div>
+</div>
+<div class="art"><div class="cap">d + <sup>58</sup>Ni, 20 MeV: <i>calibrated</i> against the 64 measured points</div><img src="./figures/closing_curve.png" /></div>
+</div>
 <div class="closing-credit">Tongji University · SCNT, IMP, CAS<br>Supported by NSFC 12475132 and 12535009</div>
 
 <!--
 Central message: stop, thank, and leave the contact and the support line on screen.
+The graphic on the right is slide 18 again, without axes: the calibrated curve through the 64
+measured points, KD02 faint behind it. No need to talk about it.
 
 Talking points:
 - Say the funding number, because the Chinese funding agencies expect it and it is the right

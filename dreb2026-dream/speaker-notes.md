@@ -794,6 +794,8 @@ can give, and what each buys them.
 ## 21. Thank you
 
 **Central message:** stop, thank, and leave the contact and the support line on screen.
+The graphic on the right is slide 18 again, without axes: the calibrated curve through the 64
+measured points, KD02 faint behind it. No need to talk about it.
 
 **Talking points:**
 - Say the funding number, because the Chinese funding agencies expect it and it is the right
