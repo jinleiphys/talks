@@ -1009,7 +1009,7 @@ class: scene-slide
 
 # Difficulty 2: change one parameter and the others must follow
 
-<div class="subtitle">As on slide 5: a deeper potential still fits if it is also smaller. The good fits form a narrow, curved band; random steps mostly fall off it, steps that follow the slope stay on it.</div>
+<div class="subtitle">Good fits require parameters to move together, so they form a narrow, curved band; gradients let a sampler travel along it.</div>
 
 <HmcScene :step="$clicks" :height="322" />
 
@@ -1520,7 +1520,7 @@ Transition: so which numbers did the data actually determine.
 <div class="vi-key">
 <span><i class="c68"></i>after the data, 68%</span>
 <span><i class="c95"></i>after, 95%</span>
-<span><i class="ell"></i>before the data: KD02 ±1σ</span>
+<span><i class="ell"></i>prior: KD02 ± assumed widths</span>
 <span><i class="star">★</i>KD02</span>
 <span><i class="dot"></i>same total as KD02</span>
 </div>
